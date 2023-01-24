@@ -1,24 +1,37 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import SignUp from "./components/SignUp";
-import LogIn from "./components/LogIn";
+import Signup from "./components/SignUp";
+import Login from "./components/LogIn";
 import Home from "./components/Home";
 import { Routes, Route, Navigate } from "react-router-dom";
+import Navbartop from "./components/Navbartop";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState("dark");
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    console.log("hello", theme);
+  };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
+      <Navbartop switchTheme={switchTheme} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/login"
-          element={!user ? <LogIn setUser={setUser} /> : <Navigate to="/" />}
+          element={!user ? <Login setUser={setUser} /> : <Navigate to="/" />}
         />
         <Route
           path="/signup"
-          element={!user ? <SignUp setUser={setUser} /> : <Navigate to="/" />}
+          element={!user ? <Signup setUser={setUser} /> : <Navigate to="/" />}
         />
       </Routes>
     </div>
