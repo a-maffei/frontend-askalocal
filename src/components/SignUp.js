@@ -8,18 +8,9 @@ const Signup = ({ setUser }) => {
   const password = useRef();
   const phone = useRef();
   const city = useRef();
-  const url = "http://localhost:8080/user/signup";
+  const url = "https://backend-askalocal.onrender.com/user/signup";
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   setIsLoading(true);
-  //   setError(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
