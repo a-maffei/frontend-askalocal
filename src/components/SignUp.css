@@ -1,0 +1,69 @@
+.signupOuterDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.signupField {
+  width: 65vw;
+  align-self: center;
+  margin: 3%;
+  background-color: rgb(79, 79, 79);
+  color: white;
+}
+
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signupDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.signupLabel {
+  margin-left: 20px;
+  font-size: large;
+  text-align: center;
+  cursor: text;
+  font-weight: bold;
+}
+
+.signupInput {
+  margin: 10px 0 25px;
+  width: 50vw;
+  font-size: medium;
+  background-color: var(--border);
+  color: var(--border-secondary);
+}
+
+.signupInput:focus {
+  outline: 2px solid var(--accent);
+}
+
+.signupButton {
+  color: var(--text-primary);
+  background-color: var(--accent);
+  font-size: large;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--border);
+  padding: 5px 15px;
+  box-shadow: 0 0 10px 1px var(--text-primary);
+  cursor: pointer;
+  margin: 0 0 15px;
+}
+
+.signupButton:hover {
+  background-color: var(--text-secondary);
+}
+
+.signupLegend {
+  color: var(--text-secondary);
+}
+
+textarea {
+  resize: vertical;
+}
