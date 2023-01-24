@@ -1,33 +1,26 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: var(--background);
   color: var(--text-primary);
   font-size: 1em;
   position: sticky;
   top: 10px;
   width: 100vw;
-  /* border-width: 1px 0px;
-  border-color: var(--accent);
-  border-style: solid; */
   opacity: 95%;
   z-index: 10;
-  /* padding: 1.5rem; */
+
   box-shadow: 0px 0px 15px var(--border);
-  /* opacity: 0.7; */
+}
+
+.navbarTwo {
+  display: flex;
 }
 
 .imgNavbar {
-  height: 60px;
+  height: 50px;
   margin: 10px 50px 0px;
-}
-
-.lang {
-  height: 20px;
-  width: 30px;
-  margin: 0 0 10px;
-  cursor: pointer;
 }
 
 .navLinks {
@@ -38,6 +31,8 @@
   text-decoration: none;
   position: relative;
   border-radius: 25px;
+  margin: 0 10px;
+  background-color: var(--background);
 }
 
 .navLinks:hover,
@@ -59,8 +54,9 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 30px;
-  height: 17px;
+  width: 17px;
+  height: 30px;
+  margin: 0 15px 0 10px;
 }
 
 .switch input {
@@ -101,9 +97,9 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
+  -webkit-transform: translateY(-13px);
+  -ms-transform: translateY(-13px);
+  transform: translateY(-13px);
 }
 
 a.active {
