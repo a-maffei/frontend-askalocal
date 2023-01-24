@@ -7,8 +7,8 @@
   width: 65vw;
   align-self: center;
   margin: 3%;
-  background-color: rgb(79, 79, 79);
-  color: white;
+  background-color: var(--background);
+  color: var(--text-primary);
 }
 
 .signupForm {

@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import "./SignUp.css";
 
-const Signup = ({ setUser }) => {
+const Login = ({ setUser }) => {
   const email = useRef();
   const password = useRef();
   const url = "http://localhost:8080/user/login";
@@ -30,6 +30,7 @@ const Signup = ({ setUser }) => {
       // setIsLoading(false);
       setUser(data);
     }
+    console.log(data, response);
   };
 
   return (
@@ -74,4 +75,4 @@ const Signup = ({ setUser }) => {
   );
 };
 
-export default Signup;
+export default Login;
