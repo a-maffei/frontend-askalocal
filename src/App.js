@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
-      <Navbartop switchTheme={switchTheme} />
+      <Navbartop switchTheme={switchTheme} user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
