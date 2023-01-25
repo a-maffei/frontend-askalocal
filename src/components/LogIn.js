@@ -85,6 +85,7 @@ const Login = ({ setUser }) => {
           <button className="signupButton">{"Login"}</button>
         </form>
       </fieldset>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };
