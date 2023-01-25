@@ -10,6 +10,7 @@
 
 .avatarSmall {
   max-height: 100px;
+  border-radius: 25%;
 }
 
 .postDiv {
@@ -18,7 +19,14 @@
   color: var(--text-primary);
   justify-content: space-between;
   align-content: flex-start;
-  /* align-items: flex-end; */
+  align-items: center;
+  text-decoration: none;
+}
+
+.postDiv:hover {
+  border: 2px solid var(--accent);
+  border-radius: 25px;
+  /* background-color: aqua; */
 }
 
 .nameCity {
