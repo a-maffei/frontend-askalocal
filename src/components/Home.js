@@ -51,26 +51,32 @@ const Home = () => {
       {posts ? <h2 className="sample">Sample Offers</h2> : []}
       {posts ? <PostDisplay posts={posts.locals} /> : []}
       <div className="categoriesDiv">
-        <div>
+        <div className="flex-row">
           <Link to="/email" className="categories">
-            <img src={cat1} className="categories" alt="Email Reviews" />
+            <img src={cat4} className="categoriesPic" alt="Email Reviews" />
+            <p>Email Reviews</p>
           </Link>
           <Link to="/phone" className="categories">
-            <img src={cat2} className="categories" alt="Phone Calls" />
+            <img src={cat5} className="categoriesPic" alt="Phone Calls" />
+            <p>Phone Calls</p>
           </Link>
           <Link to="/Flat" className="categories">
-            <img src={cat3} className="categories" alt="Flat Viewings" />
+            <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
+            <p>Flat Viewings</p>
           </Link>
         </div>
-        <div>
+        <div className="flex-row">
           <Link to="/appointments" className="categories">
-            <img src={cat4} className="categories" alt="Appointments" />
+            <img src={cat3} className="categoriesPic" alt="Appointments" />
+            <p>Appointments</p>
           </Link>
           <Link to="/service" className="categories">
-            <img src={cat5} className="categories" alt="Service Providers" />
+            <img src={cat2} className="categoriesPic" alt="Service Providers" />
+            <p>Contact to Service Providers</p>
           </Link>
           <Link to="/interview" className="categories">
-            <img src={cat7} className="categories" alt="Interview Help" />
+            <img src={cat7} className="categoriesPic" alt="Interview Help" />
+            <p>Help with Interviews</p>
           </Link>
         </div>
       </div>
