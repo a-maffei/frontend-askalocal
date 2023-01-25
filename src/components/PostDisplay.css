@@ -24,7 +24,9 @@
 }
 
 .postDiv:hover {
-  border: 2px solid var(--accent);
+  /* border: 2px solid var(--accent); */
+  background-color: var(--accent);
+  color: var(--border);
   border-radius: 25px;
   /* background-color: aqua; */
 }

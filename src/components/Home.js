@@ -27,7 +27,6 @@ const Home = () => {
       throw new Response("Not Found", { status: 404 });
     }
     setPosts(data);
-    console.log("whatup", data);
   };
 
   useEffect(() => {
