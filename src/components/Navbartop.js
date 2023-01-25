@@ -10,15 +10,23 @@ const Navbartop = ({ switchTheme, user }) => {
         <img src={image} alt="PC" className="imgNavbar" />
       </NavLink>
       <div className="navbarTwo">
-        <NavLink to="/signup" state="gi" className="navLinks">
-          Signup
-        </NavLink>
-        <NavLink to="/login" state="login" className="navLinks">
-          {user ? "Logout" : "Login"}
-        </NavLink>
-        <NavLink to="/signup" state="gi" className="navLinks">
-          Localsignup
-        </NavLink>
+        {user ? (
+          <NavLink to="/login" state="login" className="navLinks">
+            Logout
+          </NavLink>
+        ) : (
+          <div>
+            <NavLink to="/signup" state="gi" className="navLinks">
+              Signup
+            </NavLink>
+            <NavLink to="/login" state="login" className="navLinks">
+              Login
+            </NavLink>
+            <NavLink to="/signup" state="gi" className="navLinks">
+              Localsignup
+            </NavLink>
+          </div>
+        )}
 
         <div id="toggledark" title={"(De)activate dark mode"}>
           <label className="switch">

@@ -44,3 +44,22 @@
 .hidden {
   visibility: hidden;
 }
+
+.sample {
+  margin: 25px 0 0 0;
+  color: var(--text-primary);
+  background-color: var(--background);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.categoriesDiv {
+  background-color: grey;
+  border-radius: 25px;
+  padding: 2vw;
+}
+
+.categories {
+  width: 15vw;
+  margin: 1vw;
+}

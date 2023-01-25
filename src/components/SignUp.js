@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 const Signup = ({ setUser }) => {
@@ -51,6 +52,13 @@ const Signup = ({ setUser }) => {
         </legend>
         <form onSubmit={handleSubmit} className="signupForm">
           <div className="signupDiv">
+            <div className="alreadyDiv">
+              <Link to="/login">
+                <button className="already">
+                  {"I already have an account"}
+                </button>
+              </Link>
+            </div>
             <label className="signupLabel" htmlFor="firstName">
               Firstname
             </label>

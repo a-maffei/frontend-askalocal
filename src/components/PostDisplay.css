@@ -1,0 +1,25 @@
+.postDisplay {
+  background-color: var(--background);
+  width: 45vw;
+  border-radius: 25px;
+  margin: 3vh;
+  padding: 1vw;
+  overflow-y: scroll;
+  height: 35vh;
+}
+
+.avatarSmall {
+  height: 7vh;
+}
+
+.postDiv {
+  display: flex;
+  margin: 10px;
+  color: var(--text-primary);
+  justify-content: space-between;
+  align-content: flex-start;
+  /* align-items: flex-end; */
+}
+
+.nameCity {
+}
