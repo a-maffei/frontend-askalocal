@@ -12,7 +12,11 @@ const PostDisplay = ({ posts }) => {
         {
           ((keys = Object.keys(posts)),
           keys?.map((element, i) => (
-            <Link key={i} className="postDiv" to={`/${posts[element]._id}`}>
+            <Link
+              key={i}
+              className="postDiv"
+              to={`/local/${posts[element]._id}`}
+            >
               {posts[element].pic ? (
                 <img src={posts[element].pic} className="avatarSmall" />
               ) : (
