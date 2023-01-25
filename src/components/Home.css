@@ -57,9 +57,31 @@
   background-color: grey;
   border-radius: 25px;
   padding: 2vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* align-content: flex-end; */
+  /* align-items: center; */
+  /* align-items: center; */
+  /* align-content: space-around; */
 }
 
 .categories {
-  width: 15vw;
+  width: 10vw;
   margin: 1vw;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.categoriesPic {
+  max-width: 150px;
+  max-height: 150px;
+  /* margin: 1vw; */
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

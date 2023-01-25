@@ -9,7 +9,7 @@
 }
 
 .avatarSmall {
-  height: 7vh;
+  max-height: 100px;
 }
 
 .postDiv {
