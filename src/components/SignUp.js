@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import axios from "axios";
 import "./SignUp.css";
 
 const Signup = ({ setUser }) => {
@@ -8,6 +9,7 @@ const Signup = ({ setUser }) => {
   const password = useRef();
   const phone = useRef();
   const city = useRef();
+  const [selectedFile, setSelectedFile] = useState("");
   const url = "http://localhost:8080/user/signup";
 
   // const [email, setEmail] = useState("");
@@ -21,11 +23,40 @@ const Signup = ({ setUser }) => {
   //   setIsLoading(true);
   //   setError(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("this is it: ", e);
     console.log("cest finit", email.current.value);
-    const response = await fetch(url, {
+
+    let formData = new FormData();
+    formData.append("email", email.current.value);
+    formData.append("password", password.current.value);
+    formData.append("firstname", firstname.current.value);
+    formData.append("lastname", lastname.current.value);
+    formData.append("phone", phone.current.value);
+    formData.append("city", city.current.value);
+    formData.append("pic", selectedFile);
+
+    console.log(selectedFile);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          "Content-type": "multipart-formdata",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        //setIsLoading(false);
+        setUser(res.data);
+      })
+      .catch((error) => {
+        // setIsLoading(false);
+        setError(error);
+      });
+
+    /*     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -49,7 +80,7 @@ const Signup = ({ setUser }) => {
       localStorage.setItem("user", JSON.stringify(data));
       // setIsLoading(false);
       setUser(data);
-    }
+    } */
   };
 
   return (
@@ -58,7 +89,12 @@ const Signup = ({ setUser }) => {
         <legend>
           <h1 className="signupLegend">Signup</h1>
         </legend>
-        <form onSubmit={handleSubmit} className="signupForm">
+        <form
+          onSubmit={handleSubmit}
+          className="signupForm"
+          encType="multipart/form-data"
+          method="post"
+        >
           <div className="signupDiv">
             <label className="signupLabel" htmlFor="firstName">
               Firstname
@@ -115,7 +151,21 @@ const Signup = ({ setUser }) => {
               placeholder="Password"
               required
             />
-
+            <label className="signupLabel" htmlFor="pic">
+              Image
+              <input
+                type="file"
+                accept="image/*"
+                className="form-control-file"
+                id="pic"
+                name="pic"
+                required
+                onChange={(e) => {
+                  setSelectedFile(e.target.files[0]);
+                  console.log(e.target.files);
+                }}
+              ></input>
+            </label>
             <label className="signupLabel" htmlFor="phone">
               Phone
             </label>

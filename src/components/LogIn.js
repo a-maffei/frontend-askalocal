@@ -70,6 +70,7 @@ const Signup = ({ setUser }) => {
           <button className="signupButton">{"Submit"}</button>
         </form>
       </fieldset>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };
