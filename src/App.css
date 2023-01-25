@@ -3,18 +3,32 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-primary);
 }
 
-.App-link {
-  color: #61dafb;
+:root {
+  --background: ghostwhite;
+  --text-primary: Black;
+  --text-secondary: orange;
+  --accent: turquoise;
+  --border: #333;
+  --border-secondary: #fff;
+}
+
+[data-theme="light"] {
+  --background: black;
+  --text-primary: ghostwhite;
+  --text-secondary: orange;
+  --accent: turquoise;
+  --border: #fff;
+  --border-secondary: #333;
 }
 
 html,
@@ -39,22 +53,4 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
-
-:root {
-  --background: ghostwhite;
-  --text-primary: Black;
-  --text-secondary: orange;
-  --accent: turquoise;
-  --border: #333;
-  --border-secondary: #fff;
-}
-
-[data-theme="dark"] {
-  --background: black;
-  --text-primary: ghostwhite;
-  --text-secondary: orange;
-  --accent: turquoise;
-  --border: #fff;
-  --border-secondary: #333;
 }

@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./SignUp.css";
 
-const Signup = ({ setUser }) => {
+const Login = ({ setUser }) => {
   const email = useRef();
   const password = useRef();
-  const url = "http://localhost:8080/user/login";
+  const url = "https://backend-askalocal.onrender.com/user/login";
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -30,6 +31,7 @@ const Signup = ({ setUser }) => {
       // setIsLoading(false);
       setUser(data);
     }
+    console.log(data, response);
   };
 
   return (
@@ -40,6 +42,11 @@ const Signup = ({ setUser }) => {
         </legend>
         <form onSubmit={handleSubmit} className="signupForm">
           <div className="signupDiv">
+            <div className="alreadyDiv">
+              <Link to="/signup">
+                <button className="already">{"I don't have an account"}</button>
+              </Link>
+            </div>
             <label className="signupLabel" htmlFor="email">
               eMail
             </label>
@@ -51,6 +58,7 @@ const Signup = ({ setUser }) => {
               ref={email}
               placeholder="eMail"
               required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             />
 
             <label className="signupLabel" htmlFor="password">
@@ -67,7 +75,14 @@ const Signup = ({ setUser }) => {
               required
             />
           </div>
-          <button className="signupButton">{"Submit"}</button>
+          {error ? (
+            <p style={{ color: "red" }}>
+              <b>{error}</b>
+            </p>
+          ) : (
+            []
+          )}
+          <button className="signupButton">{"Login"}</button>
         </form>
       </fieldset>
       {error && <div className="error">{error}</div>}
@@ -75,4 +90,4 @@ const Signup = ({ setUser }) => {
   );
 };
 
-export default Signup;
+export default Login;

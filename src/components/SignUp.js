@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 const Signup = ({ setUser }) => {
@@ -10,18 +11,9 @@ const Signup = ({ setUser }) => {
   const phone = useRef();
   const city = useRef();
   const [selectedFile, setSelectedFile] = useState("");
-  const url = "http://localhost:8080/user/signup";
+  const url = "https://backend-askalocal.onrender.com/user/signup";
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   setIsLoading(true);
-  //   setError(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,6 +88,13 @@ const Signup = ({ setUser }) => {
           method="post"
         >
           <div className="signupDiv">
+            <div className="alreadyDiv">
+              <Link to="/login">
+                <button className="already">
+                  {"I already have an account"}
+                </button>
+              </Link>
+            </div>
             <label className="signupLabel" htmlFor="firstName">
               Firstname
             </label>
