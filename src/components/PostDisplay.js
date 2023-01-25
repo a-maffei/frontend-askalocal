@@ -1,6 +1,7 @@
 import React from "react";
 import img from "./profile.png";
 import "./PostDisplay.css";
+import { Link } from "react-router-dom";
 
 const PostDisplay = ({ posts }) => {
   let keys = null;
@@ -11,7 +12,7 @@ const PostDisplay = ({ posts }) => {
         {
           ((keys = Object.keys(posts)),
           keys?.map((element, i) => (
-            <div key={i} className="postDiv">
+            <Link key={i} className="postDiv" to={`/${posts[element]._id}`}>
               {posts[element].pic ? (
                 <img src={posts[element].pic} className="avatarSmall" />
               ) : (
@@ -25,7 +26,7 @@ const PostDisplay = ({ posts }) => {
               </div>
               <p>{posts[element].appointmentP.category}</p>
               <p>{posts[element].appointmentP.price} €</p>
-            </div>
+            </Link>
           )))
         }
       </div>
