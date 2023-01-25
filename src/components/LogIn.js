@@ -58,6 +58,7 @@ const Login = ({ setUser }) => {
               ref={email}
               placeholder="eMail"
               required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             />
 
             <label className="signupLabel" htmlFor="password">
@@ -74,7 +75,14 @@ const Login = ({ setUser }) => {
               required
             />
           </div>
-          <button className="signupButton">{"Submit"}</button>
+          {error ? (
+            <p style={{ color: "red" }}>
+              <b>{error}</b>
+            </p>
+          ) : (
+            []
+          )}
+          <button className="signupButton">{"Login"}</button>
         </form>
       </fieldset>
     </div>
