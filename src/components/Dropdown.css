@@ -45,3 +45,29 @@
   background-color: var(--accent);
   color: var(--text-secondary);
 }
+
+.green {
+  background-color: green;
+}
+
+select:focus {
+  border-color: blue;
+}
+
+/* option {
+  background-color: orange;
+} */
+
+option:hover,
+option:focus,
+/* select:hover, */
+select:focus,
+div.select:focus,
+div.select:hover,
+div.select,
+div.select:hover,
+div.option:hover,
+div.label,
+div.header:hover::after {
+  background-color: purple;
+}
