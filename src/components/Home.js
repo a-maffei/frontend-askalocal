@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import Searchbar from "./Searchbar";
 import PostDisplay from "./PostDisplay";
-import optionsImp from "./options.json";
+// import optionsImp from "./options.json";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
 import cat3 from "./svg/doctor.svg";
@@ -13,8 +13,8 @@ import cat6 from "./svg/resume.svg";
 import cat7 from "./svg/writer.svg";
 
 const Home = () => {
-  const options = optionsImp;
-  const [selectedValue, setSelectedValue] = useState(options[0].value);
+  // const options = optionsImp;
+  const [selectedValue, setSelectedValue] = useState("Berlin");
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const url = `https://backend-askalocal.onrender.com/local`;
@@ -27,11 +27,27 @@ const Home = () => {
       throw new Response("Not Found", { status: 404 });
     }
     setPosts(data);
+    console.log(data);
   };
 
   useEffect(() => {
     getData(url);
   }, []);
+
+  const options = (
+    <>
+      <option value="">City</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Berlin">Berlin</option>
+      <option value="Vienna">Vienna</option>
+      <option value="Paris">Paris</option>
+      <option value="Rom">Rom</option>
+    </>
+  );
+
+  const category = "appointmentP";
+
+  console.log("home", category);
 
   return (
     <div className="home">
@@ -48,7 +64,7 @@ const Home = () => {
         Signup
       </Link>
       {posts ? <h2 className="sample">Sample Offers</h2> : []}
-      {posts ? <PostDisplay posts={posts.locals} /> : []}
+      {posts ? <PostDisplay posts={posts.locals} category={category} /> : []}
       <div className="categoriesDiv">
         <div className="flex-row">
           <Link to="/email" className="categories">

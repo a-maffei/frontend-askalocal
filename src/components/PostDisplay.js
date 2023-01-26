@@ -1,9 +1,9 @@
 import React from "react";
-import img from "./profile.png";
+import img from "./pics/profile.png";
 import "./PostDisplay.css";
 import { Link } from "react-router-dom";
 
-const PostDisplay = ({ posts }) => {
+const PostDisplay = ({ posts, category }) => {
   let keys = null;
 
   return (
@@ -28,8 +28,9 @@ const PostDisplay = ({ posts }) => {
                   <p>{posts[element].city}</p>
                 </b>
               </div>
-              <p>{posts[element].appointmentP.category}</p>
-              <p>{posts[element].appointmentP.price} €</p>
+              <p>{posts[element].categories[category].category}</p>
+              <p>{posts[element].categories[category].price} €</p>
+              {console.log(category)}
             </Link>
           )))
         }

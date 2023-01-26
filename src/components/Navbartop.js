@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 import "./Navbartop.css";
-import image from "./logo.png";
+import image from "./pics/logo.png";
 
 const Navbartop = ({ switchTheme, user }) => {
   return (

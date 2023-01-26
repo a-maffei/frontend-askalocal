@@ -152,19 +152,20 @@ const Signup = ({ setUser }) => {
             />
             <label className="signupLabel" htmlFor="pic">
               Image
-              <input
-                type="file"
-                accept="image/*"
-                className="form-control-file"
-                id="pic"
-                name="pic"
-                required
-                onChange={(e) => {
-                  setSelectedFile(e.target.files[0]);
-                  console.log(e.target.files);
-                }}
-              ></input>
             </label>
+            <input
+              type="file"
+              accept="image/*"
+              className="form-control-file signupInput"
+              id="pic"
+              name="pic"
+              required
+              onChange={(e) => {
+                setSelectedFile(e.target.files[0]);
+                console.log(e.target.files);
+              }}
+            />
+
             <label className="signupLabel" htmlFor="phone">
               Phone
             </label>
