@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import "./SignUp.css";
+import { Link } from "react-router-dom";
 
 const Login = ({ setUser }) => {
   const email = useRef();
   const password = useRef();
-  const url = "https://backend-askalocal.onrender.com/user/login";
+  const url = "http://localhost:8080/user/login";
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -30,23 +30,23 @@ const Login = ({ setUser }) => {
       localStorage.setItem("user", JSON.stringify(data));
       // setIsLoading(false);
       setUser(data);
+      console.log(data);
     }
-    console.log(data, response);
   };
 
   return (
     <div className="signupOuterDiv">
+      <div className="alreadyDiv">
+        <Link to="/signup">
+          <button className="already">{"I don't have an account"}</button>
+        </Link>
+      </div>
       <fieldset className="signupField">
         <legend>
           <h1 className="signupLegend">Login</h1>
         </legend>
         <form onSubmit={handleSubmit} className="signupForm">
           <div className="signupDiv">
-            <div className="alreadyDiv">
-              <Link to="/signup">
-                <button className="already">{"I don't have an account"}</button>
-              </Link>
-            </div>
             <label className="signupLabel" htmlFor="email">
               eMail
             </label>

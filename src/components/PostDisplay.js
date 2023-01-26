@@ -28,8 +28,8 @@ const PostDisplay = ({ posts }) => {
                   <p>{posts[element].city}</p>
                 </b>
               </div>
-              <p>{posts[element].appointmentP.category}</p>
-              <p>{posts[element].appointmentP.price} €</p>
+              <p>{posts[element].categories.appointmentP.category}</p>
+              <p>{posts[element].categories.appointmentP.price} €</p>
             </Link>
           )))
         }
