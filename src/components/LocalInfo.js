@@ -8,10 +8,10 @@ export default function LocalInfo(){
     // const { id } = useParams()
     const {id} = useParams()
     const [local , setLocal] = useState([])
-    const [review , setReview] = useState('')
+    
     
 
-    console.log('bamm ',id) 
+    
 
     const fetchData = async () => {  
         console.log('test',id)          
@@ -28,16 +28,7 @@ export default function LocalInfo(){
        
     }, [])
 
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        axios.post(`https://backend-askalocal.onrender.com/local/${id}/review`, {
-            review
-        })
-        .then(res => setLocal(res.data.local))
-        .catch(err => console.log(err))
-        
-    }
+   
 
 
     console.log(local)
@@ -65,18 +56,18 @@ export default function LocalInfo(){
            <div className="offers">
 
            
-           <h3>{local.emailP?.category}</h3>
-           <p>{local.emailP?.textfield}</p>
-           <p>{local.emailP?.price} €</p>
+           <h3>{local.categories?.emailP.category}</h3>
+           <p>{local.categories?.emailP?.textfield}</p>
+           <p>{local.categories?.emailP?.price} €</p>
 
            </div>
 
            <div className="offers">
 
            
-           <h3>{local.interviewP?.category}</h3>
-           <p>{local.interviewP?.textfield}</p>
-           <p>{local.interviewP?.price} €</p>
+           <h3>{local.categories?.interviewP?.category}</h3>
+           <p>{local.categories?.interviewP?.textfield}</p>
+           <p>{local.categories?.interviewP?.price} €</p>
 
            </div>
 
@@ -84,9 +75,9 @@ export default function LocalInfo(){
            <div className="offers">
 
            
-           <h3>{local.appointmentP?.category}</h3>
-           <p>{local.appointmentP?.textfield}</p>
-           <p>{local.appointmentP?.price} €</p>
+           <h3>{local.categories?.appointmentP?.category}</h3>
+           <p>{local.categories?.appointmentP?.textfield}</p>
+           <p>{local.categories?.appointmentP?.price} €</p>
 
            </div>
 
