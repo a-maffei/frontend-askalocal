@@ -7,6 +7,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Navbartop from "./components/Navbartop";
 import LocalInfo from "./components/LocalInfo";
 import Welcome from "./components/Welcome";
+import Categories from "./components/Categories";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,6 +36,7 @@ function App() {
           path="/welcome"
           element={user ? <Welcome user={user} /> : <Navigate to="/" />}
         />
+        <Route path="/categories" element={<Categories />} />
         <Route
           path="/login"
           element={!user ? <Login setUser={setUser} /> : <Navigate to="/" />}
