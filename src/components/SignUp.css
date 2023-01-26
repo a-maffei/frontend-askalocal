@@ -1,6 +1,9 @@
 .signupOuterDiv {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .signupField {
@@ -67,7 +70,8 @@
   /* padding: 5px 15px; */
   box-shadow: 0 0 10px 1px var(--text-primary);
   cursor: pointer;
-  margin: 0 0 15px;
+  margin-top: 4rem;
+  padding: 0.5rem;
   display: flex;
   justify-self: center;
   justify-items: center;

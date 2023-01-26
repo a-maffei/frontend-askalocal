@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
+import ProfileDrop from "./ProfileDrop";
 import React from "react";
 import "./Navbartop.css";
 import image from "./pics/logo.png";
 
-const Navbartop = ({ switchTheme, user }) => {
+const Navbartop = ({ switchTheme, user, setUser }) => {
   return (
     <div className="navbar">
       <NavLink to="/" className="navLinks">
@@ -11,9 +12,7 @@ const Navbartop = ({ switchTheme, user }) => {
       </NavLink>
       <div className="navbarTwo">
         {user ? (
-          <NavLink to="/login" state="login" className="navLinks">
-            Logout
-          </NavLink>
+          <ProfileDrop user={user} setUser={setUser} />
         ) : (
           <div>
             <NavLink to="/signup" state="gi" className="navLinks">
