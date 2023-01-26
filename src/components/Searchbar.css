@@ -1,0 +1,45 @@
+/* .wrapper {
+  width: 50rem;
+} */
+
+.search-input {
+  color: var(--text-primary);
+  border: 1px solid var(--background);
+  border-radius: 5px;
+  margin: 2rem;
+  box-shadow: 0 0 8px white;
+  width: 20rem;
+  /* padding: 3px 16px 3px 3px; */
+  height: 1.5rem;
+  outline: 0;
+  background-color: #676767;
+}
+
+.clear-icon {
+  position: absolute;
+  top: 36px;
+  right: 138px;
+  width: 10px;
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.dropdown-container {
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  width: 6rem;
+  height: 1.5rem;
+  background-color: #676767;
+}
+
+select:focus {
+  border-color: var(--accent);
+}
+
+.options {
+  background-color: var(--accent);
+}

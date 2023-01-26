@@ -1,11 +1,12 @@
 .postDisplay {
   background-color: var(--background);
-  width: 45vw;
+  width: 48rem;
   border-radius: 25px;
   margin: 3vh;
-  padding: 1vw;
+  padding: 1rem;
   overflow-y: scroll;
   height: 35vh;
+  padding-top: 4rem;
 }
 
 .avatarSmall {
@@ -16,6 +17,7 @@
 .postDiv {
   display: flex;
   margin: 10px;
+
   color: var(--text-primary);
   justify-content: space-between;
   align-content: flex-start;
@@ -31,5 +33,22 @@
   /* background-color: aqua; */
 }
 
+.absolute {
+  position: absolute;
+
+  /* top: 0; */
+}
+
 .nameCity {
+}
+
+.categoryLink {
+  background-color: aqua;
+  padding: 1rem;
+  border-radius: 25px;
+}
+
+.categoryLink:hover {
+  background-color: var(--background);
+  color: var(--accent);
 }

@@ -17,9 +17,6 @@ const Signup = ({ setUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this is it: ", e);
-    console.log("cest finit", email.current.value);
-
     let formData = new FormData();
     formData.append("email", email.current.value);
     formData.append("password", password.current.value);
@@ -29,8 +26,6 @@ const Signup = ({ setUser }) => {
     formData.append("city", city.current.value);
     formData.append("pic", selectedFile);
 
-    console.log(selectedFile);
-
     axios
       .post(url, formData, {
         headers: {
@@ -38,7 +33,6 @@ const Signup = ({ setUser }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("user", JSON.stringify(res.data));
         //setIsLoading(false);
         setUser(res.data);
@@ -160,7 +154,6 @@ const Signup = ({ setUser }) => {
               required
               onChange={(e) => {
                 setSelectedFile(e.target.files[0]);
-                console.log(e.target.files);
               }}
             />
 

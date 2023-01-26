@@ -7,8 +7,11 @@ const PostDisplay = ({ posts, category }) => {
   let keys = null;
 
   return (
-    <div className="postDisplay">
-      <div className="postsDiv">
+    <div>
+      <Link to={`/categories/${category}`} className="categoryLinksd ">
+        <h1 className="signupLegend absolute categoryLink">{category}</h1>
+      </Link>
+      <div className="postDisplay">
         {
           ((keys = Object.keys(posts)),
           keys?.map((element, i) => (
@@ -28,9 +31,10 @@ const PostDisplay = ({ posts, category }) => {
                   <p>{posts[element].city}</p>
                 </b>
               </div>
-              <p>{posts[element].categories[category].category}</p>
+              <p>
+                {posts[element].categories[category].textfield.slice(0, 50)}
+              </p>
               <p>{posts[element].categories[category].price} €</p>
-              {console.log(category)}
             </Link>
           )))
         }
