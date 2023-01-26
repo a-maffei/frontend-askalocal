@@ -58,7 +58,13 @@ function App() {
         />
         <Route
           path="/welcome"
-          element={user ? <Welcome user={user} /> : <Navigate to="/" />}
+          element={
+            user ? (
+              <Welcome user={user} input={input} setInput={setInput} />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
         />
         <Route
           path="/login"
