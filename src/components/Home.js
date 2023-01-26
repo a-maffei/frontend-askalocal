@@ -12,11 +12,13 @@ import cat5 from "./svg/reminder.svg";
 import cat6 from "./svg/resume.svg";
 import cat7 from "./svg/writer.svg";
 
-const Home = () => {
+const Home = ({ input, setInput }) => {
   // const options = optionsImp;
   const [selectedValue, setSelectedValue] = useState("Berlin");
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
+  const [searchedPosts, setSearchedPosts] = useState([]);
+  const [cityPosts, setCityPosts] = useState([]);
   const url = `https://backend-askalocal.onrender.com/local`;
 
   const getData = async (url) => {
@@ -27,7 +29,6 @@ const Home = () => {
       throw new Response("Not Found", { status: 404 });
     }
     setPosts(data);
-    console.log(data);
   };
 
   useEffect(() => {
@@ -45,9 +46,40 @@ const Home = () => {
     </>
   );
 
-  const category = "appointmentP";
+  const findPosts = () => {
+    if (input) {
+      const result = input
+        ? [
+            // posts.filter(
+            //   (post) =>
+            //     post.name[lang].toLowerCase().includes(input.toLowerCase()),
+            //   pokemons.filter((poke) =>
+            //     Object.values(poke.type).find((element) =>
+            //       element.toLowerCase().includes(input.toLowerCase())
+            //     )
+            //   )
+            // ),
+          ]
+        : // )
+          [];
+      setSearchedPosts(result[0]);
+      console.log(result);
+    }
+  };
 
-  console.log("home", category);
+  const filterCities = (city) => {
+    let postList = posts?.locals.filter((el) => el.city === city);
+    setCityPosts(postList);
+    console.log("postlist", postList);
+  };
+
+  useEffect(() => {
+    return () => {
+      filterCities(selectedValue);
+    };
+  }, [selectedValue]);
+
+  const category = "appointmentP";
 
   return (
     <div className="home">
@@ -59,12 +91,24 @@ const Home = () => {
         options={options}
         setSelectedValue={setSelectedValue}
         selectedValue={selectedValue}
+        searchedPosts={searchedPosts}
+        setSearchedPosts={setSearchedPosts}
+        input={input}
+        setInput={setInput}
+        filterFunction={filterCities}
       />
       <Link to="/signup" state="gi" className="navLinks">
         Signup
       </Link>
       {posts ? <h2 className="sample">Sample Offers</h2> : []}
-      {posts ? <PostDisplay posts={posts.locals} category={category} /> : []}
+      {posts ? (
+        <PostDisplay
+          posts={cityPosts ? cityPosts : posts.locals}
+          category={category}
+        />
+      ) : (
+        []
+      )}
       <div className="categoriesDiv">
         <div className="flex-row">
           <Link to="/email" className="categories">

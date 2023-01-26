@@ -11,6 +11,8 @@ import Categories from "./components/Categories";
 function App() {
   const [user, setUser] = useState(null);
   const [theme, setTheme] = useState("dark");
+  const [input, setInput] = useState("");
+  const [searchedPosts, setSearchedPosts] = useState([]);
 
   const switchTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -21,8 +23,28 @@ function App() {
     <div className="App" data-theme={theme}>
       <Navbartop switchTheme={switchTheme} user={user} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/categories" element={<Categories />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              searchedPosts={searchedPosts}
+              setSearchedPosts={setSearchedPosts}
+              input={input}
+              setInput={setInput}
+            />
+          }
+        />
+        <Route
+          path="/categories"
+          element={
+            <Categories
+              searchedPosts={searchedPosts}
+              setSearchedPosts={setSearchedPosts}
+              input={input}
+              setInput={setInput}
+            />
+          }
+        />
         <Route
           path="/login"
           element={!user ? <Login setUser={setUser} /> : <Navigate to="/" />}

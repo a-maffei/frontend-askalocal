@@ -1,18 +1,5 @@
-.dropdown-container {
-  text-align: left;
-  border: 1px solid #ccc;
-  position: relative;
-  border-radius: 5px;
-  top: 30px;
-  width: 100px;
-  height: 22px;
-
-  background-color: #676767;
-}
-
 .dropdown-input {
   /* background-color: var(--border); */
-
   margin: 0 0 0 5px;
   display: flex;
   justify-content: space-between;
@@ -48,26 +35,4 @@
 
 .green {
   background-color: green;
-}
-
-select:focus {
-  border-color: blue;
-}
-
-/* option {
-  background-color: orange;
-} */
-
-option:hover,
-option:focus,
-/* select:hover, */
-select:focus,
-div.select:focus,
-div.select:hover,
-div.select,
-div.select:hover,
-div.option:hover,
-div.label,
-div.header:hover::after {
-  background-color: purple;
 }

@@ -31,7 +31,6 @@ const Login = ({ setUser }) => {
       // setIsLoading(false);
       setUser(data);
     }
-    console.log(data, response);
   };
 
   return (
