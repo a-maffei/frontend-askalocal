@@ -32,11 +32,18 @@ function App() {
       <Routes>
         <Route
           path="/"
-
-          element={!user ? <Home searchedPosts={searchedPosts}
-              setSearchedPosts={setSearchedPosts}
-              input={input}
-              setInput={setInput}   /> : <Navigate to="/welcome" />}
+          element={
+            !user ? (
+              <Home
+                searchedPosts={searchedPosts}
+                setSearchedPosts={setSearchedPosts}
+                input={input}
+                setInput={setInput}
+              />
+            ) : (
+              <Navigate to="/welcome" />
+            )
+          }
         />
         <Route
           path="/categories"
@@ -49,18 +56,10 @@ function App() {
             />
           }
         />
-
-          element={!user ? <Home searchedPosts={searchedPosts}
-              setSearchedPosts={setSearchedPosts}
-              input={input}
-              setInput={setInput}   /> : <Navigate to="/welcome" />}
-        />
         <Route
           path="/welcome"
           element={user ? <Welcome user={user} /> : <Navigate to="/" />}
         />
-
-
         <Route
           path="/login"
           element={!user ? <Login setUser={setUser} /> : <Navigate to="/" />}

@@ -7,7 +7,7 @@ const Categories = ({ input, setInput }) => {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
-  const [cityPosts, setCityPosts] = useState([]);
+  const [cityPosts, setCityPosts] = useState(null);
 
   const url = `https://backend-askalocal.onrender.com/local`;
 
@@ -19,6 +19,7 @@ const Categories = ({ input, setInput }) => {
       throw new Response("Not Found", { status: 404 });
     }
     setPosts(data);
+    console.log(data);
   };
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Categories = ({ input, setInput }) => {
 
   const options = (
     <>
-      <option value="" className="options">
+      <option value="City" className="options">
         City
       </option>
       <option value="Barcelona" className="options">
@@ -49,6 +50,10 @@ const Categories = ({ input, setInput }) => {
   );
 
   const filterCities = (city) => {
+    if (city === "City") {
+      setCityPosts(null);
+      return;
+    }
     let postList = posts?.locals.filter((el) => el.city === city);
     setCityPosts(postList);
     console.log("postlist", postList);

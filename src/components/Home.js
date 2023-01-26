@@ -14,11 +14,11 @@ import cat7 from "./svg/writer.svg";
 
 const Home = ({ input, setInput }) => {
   // const options = optionsImp;
-  const [selectedValue, setSelectedValue] = useState("Berlin");
+  const [selectedValue, setSelectedValue] = useState("All");
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
-  const [cityPosts, setCityPosts] = useState([]);
+  const [cityPosts, setCityPosts] = useState(null);
   const url = `https://backend-askalocal.onrender.com/local`;
 
   const getData = async (url) => {
@@ -37,7 +37,7 @@ const Home = ({ input, setInput }) => {
 
   const options = (
     <>
-      <option value="">City</option>
+      <option value="City">City</option>
       <option value="Barcelona">Barcelona</option>
       <option value="Berlin">Berlin</option>
       <option value="Vienna">Vienna</option>
@@ -68,6 +68,10 @@ const Home = ({ input, setInput }) => {
   };
 
   const filterCities = (city) => {
+    if (city === "City") {
+      setCityPosts(null);
+      return;
+    }
     let postList = posts?.locals.filter((el) => el.city === city);
     setCityPosts(postList);
     console.log("postlist", postList);
