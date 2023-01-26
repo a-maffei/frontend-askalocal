@@ -5,6 +5,7 @@ import Login from "./components/LogIn";
 import Home from "./components/Home";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbartop from "./components/Navbartop";
+import LocalInfo from "./components/LocalInfo"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,7 +34,13 @@ function App() {
           path="/signup"
           element={!user ? <Signup setUser={setUser} /> : <Navigate to="/" />}
         />
+        <Route
+        path="/local/:id"
+        element={<LocalInfo />}
+       />
+        
       </Routes>
+      
     </div>
   );
 }
