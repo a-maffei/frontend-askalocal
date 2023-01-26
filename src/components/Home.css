@@ -44,3 +44,38 @@
 .hidden {
   visibility: hidden;
 }
+
+.sample {
+  margin: 30px 0 0 0;
+  color: var(--text-primary);
+  background-color: var(--background);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.categoriesDiv {
+  background-color: grey;
+  border-radius: 25px;
+  padding: 2vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.categories {
+  width: 10vw;
+  margin: 1vw;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.categoriesPic {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

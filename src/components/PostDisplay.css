@@ -1,0 +1,35 @@
+.postDisplay {
+  background-color: var(--background);
+  width: 45vw;
+  border-radius: 25px;
+  margin: 3vh;
+  padding: 1vw;
+  overflow-y: scroll;
+  height: 35vh;
+}
+
+.avatarSmall {
+  max-height: 100px;
+  border-radius: 25%;
+}
+
+.postDiv {
+  display: flex;
+  margin: 10px;
+  color: var(--text-primary);
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+}
+
+.postDiv:hover {
+  /* border: 2px solid var(--accent); */
+  background-color: var(--accent);
+  color: var(--border);
+  border-radius: 25px;
+  /* background-color: aqua; */
+}
+
+.nameCity {
+}
