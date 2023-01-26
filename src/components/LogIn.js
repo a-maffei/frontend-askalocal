@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import "./SignUp.css";
+import { Link } from "react-router-dom";
 
 const Login = ({ setUser }) => {
   const email = useRef();
@@ -30,22 +30,23 @@ const Login = ({ setUser }) => {
       localStorage.setItem("user", JSON.stringify(data));
       // setIsLoading(false);
       setUser(data);
+      console.log(data);
     }
   };
 
   return (
     <div className="signupOuterDiv">
+      <div className="alreadyDiv">
+        <Link to="/signup">
+          <button className="already">{"I don't have an account"}</button>
+        </Link>
+      </div>
       <fieldset className="signupField">
         <legend>
           <h1 className="signupLegend">Login</h1>
         </legend>
         <form onSubmit={handleSubmit} className="signupForm">
           <div className="signupDiv">
-            <div className="alreadyDiv">
-              <Link to="/signup">
-                <button className="already">{"I don't have an account"}</button>
-              </Link>
-            </div>
             <label className="signupLabel" htmlFor="email">
               eMail
             </label>

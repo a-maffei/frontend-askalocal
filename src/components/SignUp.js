@@ -71,6 +71,11 @@ const Signup = ({ setUser }) => {
 
   return (
     <div className="signupOuterDiv">
+      <div className="alreadyDiv">
+        <Link to="/login">
+          <button className="already">{"I already have an account"}</button>
+        </Link>
+      </div>
       <fieldset className="signupField">
         <legend>
           <h1 className="signupLegend">Signup</h1>
@@ -82,13 +87,6 @@ const Signup = ({ setUser }) => {
           method="post"
         >
           <div className="signupDiv">
-            <div className="alreadyDiv">
-              <Link to="/login">
-                <button className="already">
-                  {"I already have an account"}
-                </button>
-              </Link>
-            </div>
             <label className="signupLabel" htmlFor="firstName">
               Firstname
             </label>
