@@ -26,12 +26,15 @@
   background-color: var(--background);
   color: var(--text-primary);
   font-weight: bold;
-  border-radius: 25px;
-  padding: 2rem;
-  margin: 3rem;
+  border-radius: 1.5rem;
+  width: 13rem;
+  height: 15rem;
+  /* padding: 2rem;
+  margin: 3rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   transition: transform 0.7s ease-in-out;
 }
 
@@ -63,4 +66,14 @@
 .topMargin {
   margin-top: 3rem !important;
   margin-bottom: 3rem !important;
+}
+
+.cardOuterDiv {
+  /* height: min-content; */
+  /* width: min-content; */
+  background-color: var(--background);
+  border-radius: 1.5rem;
+  width: 13rem;
+  height: 15rem;
+  margin: 1.5rem;
 }

@@ -10,6 +10,7 @@ const Categories = ({ input, setInput }) => {
   const [cityPosts, setCityPosts] = useState(null);
 
   const url = `https://backend-askalocal.onrender.com/local`;
+  const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
     const data = await fetch(url)
@@ -23,7 +24,7 @@ const Categories = ({ input, setInput }) => {
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (

@@ -118,32 +118,48 @@ const Home = ({ input, setInput }) => {
       )}
       <div className="">
         <div className="flex-row">
-          <Link to="/email" className="categoriesDiv">
-            <img src={cat4} className="categoriesPic" alt="Email Reviews" />
-            <p>Email Reviews</p>
-          </Link>
-          <Link to="/phone" className="categoriesDiv">
-            <img src={cat5} className="categoriesPic" alt="Phone Calls" />
-            <p>Phone Calls</p>
-          </Link>
-          <Link to="/Flat" className="categoriesDiv">
-            <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
-            <p>Flat Viewings</p>
-          </Link>
+          <div className="cardOuterDiv">
+            <Link to="/categories/emailp" className="categoriesDiv">
+              <img src={cat4} className="categoriesPic" alt="Email Reviews" />
+              <p>Email Reviews</p>
+            </Link>
+          </div>
+          <div className="cardOuterDiv">
+            <Link to="/categories/phonep" className="categoriesDiv">
+              <img src={cat5} className="categoriesPic" alt="Phone Calls" />
+              <p>Phone Calls</p>
+            </Link>
+          </div>
+          <div className="cardOuterDiv">
+            <Link to="/categories/flatp" className="categoriesDiv">
+              <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
+              <p>Flat Viewings</p>
+            </Link>
+          </div>
         </div>
         <div className="flex-row">
-          <Link to="/appointments" className="categoriesDiv">
-            <img src={cat3} className="categoriesPic" alt="Appointments" />
-            <p>Appointments</p>
-          </Link>
-          <Link to="/service" className="categoriesDiv">
-            <img src={cat2} className="categoriesPic" alt="Service Providers" />
-            <p>Contact to Service Providers</p>
-          </Link>
-          <Link to="/interview" className="categoriesDiv">
-            <img src={cat7} className="categoriesPic" alt="Interview Help" />
-            <p>Help with Interviews</p>
-          </Link>
+          <div className="cardOuterDiv">
+            <Link to="/categories/appointmentsp" className="categoriesDiv">
+              <img src={cat3} className="categoriesPic" alt="Appointments" />
+              <p>Appointments</p>
+            </Link>
+          </div>
+          <div className="cardOuterDiv">
+            <Link to="/categories/servicep" className="categoriesDiv">
+              <img
+                src={cat2}
+                className="categoriesPic"
+                alt="Service Providers"
+              />
+              <p>Contact Service Providers</p>
+            </Link>
+          </div>
+          <div className="cardOuterDiv">
+            <Link to="/categories/interviewp" className="categoriesDiv">
+              <img src={cat7} className="categoriesPic" alt="Interview Help" />
+              <p>Help with Interviews</p>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
