@@ -10,7 +10,7 @@ const PostDisplay = ({ posts, category, size, link }) => {
     <div>
       <Link
         to={link === "all" ? `/categories` : `/categories/${category}`}
-        className="categoryLinksd "
+        className="categoryLinks"
       >
         <h1 className="signupLegend absolute categoryLink">
           {link === "all" ? `Category Overview` : `${cat[category]}`}

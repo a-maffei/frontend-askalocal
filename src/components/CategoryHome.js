@@ -63,16 +63,14 @@ const Categories = ({ input, setInput }) => {
 
   return (
     <div className="home">
-      <div className="homeDiv">
-        <Searchbar
-          options={options}
-          searchedPosts={searchedPosts}
-          setSearchedPosts={setSearchedPosts}
-          input={input}
-          setInput={setInput}
-          filterFunction={filterCities}
-        />
-      </div>
+      <Searchbar
+        options={options}
+        searchedPosts={searchedPosts}
+        setSearchedPosts={setSearchedPosts}
+        input={input}
+        setInput={setInput}
+        filterFunction={filterCities}
+      />
       {posts ? (
         <>
           <PostDisplay

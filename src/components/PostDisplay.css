@@ -2,7 +2,7 @@
   background-color: var(--background);
   width: 48rem;
   border-radius: 25px;
-  margin: 3vh;
+  margin: 2rem;
   padding: 1rem;
   overflow-y: scroll;
   height: 35vh;
@@ -13,7 +13,7 @@
   background-color: var(--background);
   width: 48rem;
   border-radius: 25px;
-  margin: 3vh;
+  margin: 2rem;
   padding: 1rem;
   padding-top: 4rem;
 }
@@ -43,8 +43,7 @@
 }
 
 .absolute {
-  position: absolute;
-
+  position: absolute !important;
   /* top: 0; */
 }
 
