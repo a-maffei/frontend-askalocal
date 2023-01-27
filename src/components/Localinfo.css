@@ -1,0 +1,25 @@
+/* Local Info Page */
+
+.first-section {
+  display: flex;
+}
+
+.offers {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contact-button {
+  display: flex;
+  justify-content: center;
+}
+
+.reviews {
+  display: flex;
+  justify-content: center;
+}
+
+.review {
+  display: flex;
+  align-content: space-between;
+}

@@ -1,4 +1,3 @@
-
 .App-header {
   background-color: var(--background);
   min-height: 100vh;
@@ -50,22 +49,4 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
-
-
-/* Local Info Page */
-
-.first-section{
-  display: flex;
-}
-
-.offers{
-  display: flex;
-  justify-content: space-around;
-  
-}
-
-.contact-button{
-  display: flex;
-  justify-content: center;
 }
