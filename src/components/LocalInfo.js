@@ -10,7 +10,7 @@ export default function LocalInfo() {
   const [review, setReview] = useState("");
   const [error, setError] = useState(null);
 
-  const url = `http://localhost:8080/local/${id}`;
+  const url = `http://localhost:8080/local/${id}/review`;
 
   const fetchData = async () => {
     try {
@@ -92,11 +92,13 @@ export default function LocalInfo() {
               onChange={(e) => setReview(e.target.value)}
             />
           </label>
-          <button type="submit">Submit</button>
+          <button className="button-review" type="submit">
+            Submit
+          </button>
         </div>
       </form>
-      <div className="contact-button">
-        <button>Contact a Local</button>
+      <div className="button-contact">
+        <button className="contact-button">Contact a Local</button>
       </div>
       ;
     </div>

@@ -9,7 +9,7 @@
   justify-content: space-around;
 }
 
-.contact-button {
+.button-contact {
   display: flex;
   justify-content: center;
 }
@@ -22,4 +22,35 @@
 .review {
   display: flex;
   align-content: space-between;
+}
+.button-review {
+  width: 110px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: lightblue;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.contact-button {
+  width: 170px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: lightblue;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
