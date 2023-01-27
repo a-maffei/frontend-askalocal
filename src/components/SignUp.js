@@ -36,7 +36,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
         localStorage.setItem(urlPath, JSON.stringify(res.data));
         //setIsLoading(false);
         if (urlPath === "user") setUser(res.data);
-        if (urlPath === "local") setLocal(res.data);
+        else setLocal(res.data);
       })
       .catch((error) => {
         // setIsLoading(false);
@@ -190,6 +190,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
           <button className="signupButton">{"Submit"}</button>
         </form>
       </fieldset>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };

@@ -29,8 +29,9 @@ const Login = ({ setUser, setLocal, urlPath }) => {
     if (response.ok) {
       localStorage.setItem(urlPath, JSON.stringify(data));
       // setIsLoading(false);
-      if (urlPath === "user") setUser(data);
-      if (urlPath === "local") setLocal(data);
+      if (urlPath === "user") {
+        setUser(data);
+      } else setLocal(data);
       console.log(data);
     }
   };

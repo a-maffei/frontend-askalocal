@@ -15,13 +15,13 @@ const Navbartop = ({ switchTheme, user, setUser }) => {
           <ProfileDrop user={user} setUser={setUser} />
         ) : (
           <div>
-            <NavLink to="/signup" state="gi" className="navLinks">
+            <NavLink to="/user-signup" state="gi" className="navLinks">
               Signup
             </NavLink>
             <NavLink to="/login" state="login" className="navLinks">
               Login
             </NavLink>
-            <NavLink to="/signup" state="gi" className="navLinks">
+            <NavLink to="/local-signup" state="gi" className="navLinks">
               Localsignup
             </NavLink>
           </div>
