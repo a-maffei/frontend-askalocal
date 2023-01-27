@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./LocalInfo.css";
@@ -8,14 +9,35 @@ export default function LocalInfo() {
   // const { id } = useParams()
   const { id } = useParams();
   const [local, setLocal] = useState([]);
-  let keys = null;
+  const [review, setReview] = useState("");
+  const [error, setError] = useState(null);
+    let keys = null;
   const navigate = useNavigate();
 
+  const url = `http://localhost:8080/local/${id}/review`;
+
   const fetchData = async () => {
-    const result = await axios.get(
-      `https://backend-askalocal.onrender.com/local/${id}`
-    );
-    setLocal(result.data.local);
+    try {
+      const result = await axios.get(`http://localhost:8080/local/${id}`);
+      setLocal(result.data.local);
+    } catch (err) {
+      setError(err);
+    }
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(url, {
+        review,
+      })
+      .then((res) => {
+        setLocal({ ...local, reviews: [...local.reviews, review] });
+        setReview("");
+      })
+      .catch((err) => console.error(err));
+
   };
 
   useEffect(() => {
@@ -75,6 +97,38 @@ export default function LocalInfo() {
       ) : (
         []
       )}
+ <div>
+      <div className="reviews">
+        <h2>Reviews</h2>
+      </div>
+      <div className="review">
+        <ul>
+          {local.reviews?.map((review, index) => (
+            <li key={index}>
+              user name
+              <br />
+              {review}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="reviews">
+          <label>
+            Leave a review:
+            <textarea
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+            />
+          </label>
+          <button className="button-review" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+      <div className="button-contact">
+        <button className="contact-button">Contact a Local</button>
+      </div>
     </div>
   );
 }
