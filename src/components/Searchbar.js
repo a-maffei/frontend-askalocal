@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
+import "./Searchbar.css";
 
-const Searchbar = ({ options, setSelectedValue, selectedValue }) => {
-  const [input, setInput] = useState("");
+const Searchbar = ({
+  options,
+  setSelectedValue,
+  selectedValue,
+  searchedPosts,
+  setSearchedPosts,
+  input,
+  setInput,
+  filterFunction,
+}) => {
   const changeHandler = (e) => {
     setInput(e.target.value);
   };
+
+  useEffect(() => {
+    console.log(selectedValue);
+  }, [selectedValue]);
+
   return (
-    <div>
+    <div className="homeDiv">
       <div className="wrapper">
         <input
           className="search-input"
@@ -28,7 +42,12 @@ const Searchbar = ({ options, setSelectedValue, selectedValue }) => {
           setSelectedValue={setSelectedValue}
           selectedValue={selectedValue}
         /> */}
-        <select name="cities" id="cities" className="dropdown-container">
+        <select
+          name="cities"
+          id="cities"
+          className="dropdown-container"
+          onChange={(e) => filterFunction(e.target.value)}
+        >
           {options}
         </select>
       </div>

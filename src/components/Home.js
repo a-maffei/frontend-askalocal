@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import Searchbar from "./Searchbar";
 import PostDisplay from "./PostDisplay";
-// import optionsImp from "./options.json";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
 import cat3 from "./svg/doctor.svg";
@@ -12,12 +11,15 @@ import cat5 from "./svg/reminder.svg";
 import cat6 from "./svg/resume.svg";
 import cat7 from "./svg/writer.svg";
 
-const Home = () => {
+const Home = ({ input, setInput }) => {
   // const options = optionsImp;
-  const [selectedValue, setSelectedValue] = useState("Berlin");
+  const [selectedValue, setSelectedValue] = useState("All");
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
+  const [searchedPosts, setSearchedPosts] = useState([]);
+  const [cityPosts, setCityPosts] = useState(null);
   const url = `https://backend-askalocal.onrender.com/local`;
+  const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
     const data = await fetch(url)
@@ -31,12 +33,12 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (
     <>
-      <option value="">City</option>
+      <option value="City">City</option>
       <option value="Barcelona">Barcelona</option>
       <option value="Berlin">Berlin</option>
       <option value="Vienna">Vienna</option>
@@ -45,9 +47,44 @@ const Home = () => {
     </>
   );
 
-  const category = "appointmentP";
+  const findPosts = () => {
+    if (input) {
+      const result = input
+        ? [
+            // posts.filter(
+            //   (post) =>
+            //     post.name[lang].toLowerCase().includes(input.toLowerCase()),
+            //   pokemons.filter((poke) =>
+            //     Object.values(poke.type).find((element) =>
+            //       element.toLowerCase().includes(input.toLowerCase())
+            //     )
+            //   )
+            // ),
+          ]
+        : // )
+          [];
+      setSearchedPosts(result[0]);
+      console.log(result);
+    }
+  };
 
-  console.log("home", category);
+  const filterCities = (city) => {
+    if (city === "City") {
+      setCityPosts(null);
+      return;
+    }
+    let postList = posts?.locals.filter((el) => el.city === city);
+    setCityPosts(postList);
+    console.log("postlist", postList);
+  };
+
+  useEffect(() => {
+    return () => {
+      filterCities(selectedValue);
+    };
+  }, [selectedValue]);
+
+  const category = "appointmentP";
 
   return (
     <div className="home">
@@ -59,37 +96,51 @@ const Home = () => {
         options={options}
         setSelectedValue={setSelectedValue}
         selectedValue={selectedValue}
+        searchedPosts={searchedPosts}
+        setSearchedPosts={setSearchedPosts}
+        input={input}
+        setInput={setInput}
+        filterFunction={filterCities}
       />
-      <Link to="/signup" state="gi" className="navLinks">
+      <Link to="/signup" state="gi" className="navLinks topMargin">
         Signup
       </Link>
       {posts ? <h2 className="sample">Sample Offers</h2> : []}
-      {posts ? <PostDisplay posts={posts.locals} category={category} /> : []}
-      <div className="categoriesDiv">
+      {posts ? (
+        <PostDisplay
+          posts={cityPosts ? cityPosts : posts.locals}
+          category={category}
+          size={"small"}
+          link={"all"}
+        />
+      ) : (
+        []
+      )}
+      <div className="">
         <div className="flex-row">
-          <Link to="/email" className="categories">
+          <Link to="/email" className="categoriesDiv">
             <img src={cat4} className="categoriesPic" alt="Email Reviews" />
             <p>Email Reviews</p>
           </Link>
-          <Link to="/phone" className="categories">
+          <Link to="/phone" className="categoriesDiv">
             <img src={cat5} className="categoriesPic" alt="Phone Calls" />
             <p>Phone Calls</p>
           </Link>
-          <Link to="/Flat" className="categories">
+          <Link to="/Flat" className="categoriesDiv">
             <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
             <p>Flat Viewings</p>
           </Link>
         </div>
         <div className="flex-row">
-          <Link to="/appointments" className="categories">
+          <Link to="/appointments" className="categoriesDiv">
             <img src={cat3} className="categoriesPic" alt="Appointments" />
             <p>Appointments</p>
           </Link>
-          <Link to="/service" className="categories">
+          <Link to="/service" className="categoriesDiv">
             <img src={cat2} className="categoriesPic" alt="Service Providers" />
             <p>Contact to Service Providers</p>
           </Link>
-          <Link to="/interview" className="categories">
+          <Link to="/interview" className="categoriesDiv">
             <img src={cat7} className="categoriesPic" alt="Interview Help" />
             <p>Help with Interviews</p>
           </Link>

@@ -17,9 +17,6 @@ const Signup = ({ setUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this is it: ", e);
-    console.log("cest finit", email.current.value);
-
     let formData = new FormData();
     formData.append("email", email.current.value);
     formData.append("password", password.current.value);
@@ -29,8 +26,6 @@ const Signup = ({ setUser }) => {
     formData.append("city", city.current.value);
     formData.append("pic", selectedFile);
 
-    console.log(selectedFile);
-
     axios
       .post(url, formData, {
         headers: {
@@ -38,7 +33,6 @@ const Signup = ({ setUser }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("user", JSON.stringify(res.data));
         //setIsLoading(false);
         setUser(res.data);
@@ -77,6 +71,11 @@ const Signup = ({ setUser }) => {
 
   return (
     <div className="signupOuterDiv">
+      <div className="alreadyDiv">
+        <Link to="/login">
+          <button className="already">{"I already have an account"}</button>
+        </Link>
+      </div>
       <fieldset className="signupField">
         <legend>
           <h1 className="signupLegend">Signup</h1>
@@ -88,13 +87,6 @@ const Signup = ({ setUser }) => {
           method="post"
         >
           <div className="signupDiv">
-            <div className="alreadyDiv">
-              <Link to="/login">
-                <button className="already">
-                  {"I already have an account"}
-                </button>
-              </Link>
-            </div>
             <label className="signupLabel" htmlFor="firstName">
               Firstname
             </label>
@@ -162,7 +154,6 @@ const Signup = ({ setUser }) => {
               required
               onChange={(e) => {
                 setSelectedFile(e.target.files[0]);
-                console.log(e.target.files);
               }}
             />
 
