@@ -8,6 +8,8 @@ import Navbartop from "./components/Navbartop";
 import LocalInfo from "./components/LocalInfo";
 import Welcome from "./components/Welcome";
 import Categories from "./components/Categories";
+import PostDisplay from "./components/PostDisplay";
+import CategoryHome from "./components/CategoryHome";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -64,6 +66,17 @@ function App() {
             ) : (
               <Navigate to="/" />
             )
+          }
+        />
+        <Route
+          path="/categories/:category"
+          element={
+            <CategoryHome
+              searchedPosts={searchedPosts}
+              setSearchedPosts={setSearchedPosts}
+              input={input}
+              setInput={setInput}
+            />
           }
         />
         <Route
