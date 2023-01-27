@@ -11,7 +11,7 @@ export default function LocalInfo() {
   const [local, setLocal] = useState([]);
   const [review, setReview] = useState("");
   const [error, setError] = useState(null);
-    let keys = null;
+  let keys = null;
   const navigate = useNavigate();
 
   const url = `http://localhost:8080/local/${id}/review`;
@@ -24,7 +24,7 @@ export default function LocalInfo() {
       setError(err);
     }
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,7 +37,6 @@ export default function LocalInfo() {
         setReview("");
       })
       .catch((err) => console.error(err));
-
   };
 
   useEffect(() => {
@@ -97,37 +96,35 @@ export default function LocalInfo() {
       ) : (
         []
       )}
- <div>
-      <div className="reviews">
-        <h2>Reviews</h2>
-      </div>
-      <div className="review">
-        <ul>
-          {local.reviews?.map((review, index) => (
-            <li key={index}>
-              user name
-              <br />
-              {review}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <form onSubmit={handleSubmit}>
+      <div>
         <div className="reviews">
-          <label>
-            Leave a review:
-            <textarea
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-            />
-          </label>
-          <button className="button-review" type="submit">
-            Submit
-          </button>
+          <h2>Reviews</h2>
         </div>
-      </form>
-      <div className="button-contact">
-        <button className="contact-button">Contact a Local</button>
+        <div className="review">
+          <ul>
+            {local.reviews?.map((review, index) => (
+              <li key={index}>
+                user name
+                <br />
+                {review}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="reviews">
+            <label>
+              Leave a review:
+              <textarea
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+              />
+            </label>
+            <button className="button-review" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
