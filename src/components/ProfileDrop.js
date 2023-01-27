@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./ProfileDrop.css";
 
-export default function ProfileDrop({ user, setUser }) {
+export default function ProfileDrop({ user, setUser, local, setLocal, type }) {
   const ref = useRef();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +24,7 @@ export default function ProfileDrop({ user, setUser }) {
   }, [isMenuOpen]);
 
   const handleClick = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem(type);
     setUser(null);
     // navigate("/");
   };
@@ -34,7 +34,6 @@ export default function ProfileDrop({ user, setUser }) {
       <div
         id="profile-pic-cont"
         style={{
-          backgroundImage: `url(${user.pic})`,
           backgroundSize: "cover",
         }}
         onClick={() => setIsMenuOpen(true)}
