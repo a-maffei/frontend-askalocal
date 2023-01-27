@@ -24,7 +24,7 @@ const Categories = ({ input, setInput }) => {
   };
 
   useEffect(() => {
-    getData(url2);
+    getData(url);
   }, []);
 
   const options = (
