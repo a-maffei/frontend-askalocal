@@ -6,6 +6,7 @@
 
 .localDetailDiv {
   background-color: var(--background);
+  color: var(--text-primary);
   width: 48rem;
   border-radius: 25px;
   margin: 3vh;

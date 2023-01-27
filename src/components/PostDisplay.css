@@ -43,7 +43,7 @@
 }
 
 .absolute {
-  position: absolute !important;
+  position: absolute;
   /* top: 0; */
 }
 

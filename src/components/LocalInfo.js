@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./LocalInfo.css";
 
@@ -9,6 +9,7 @@ export default function LocalInfo() {
   const { id } = useParams();
   const [local, setLocal] = useState([]);
   let keys = null;
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     const result = await axios.get(
@@ -24,7 +25,7 @@ export default function LocalInfo() {
   // const oneLocal = local.find((local) => local._id === id)
 
   return (
-    <div className="flex-row">
+    <div className="home">
       {local.categories ? (
         <div className="localDetailDiv">
           <h1>
@@ -67,6 +68,9 @@ export default function LocalInfo() {
               {`Contact ${local.firstname}`}
             </Link>
           </div>
+          <button onClick={() => navigate(-1)} className="navLinks topMargin">
+            Back
+          </button>
         </div>
       ) : (
         []
