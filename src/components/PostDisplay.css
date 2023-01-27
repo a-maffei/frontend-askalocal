@@ -9,6 +9,15 @@
   padding-top: 4rem;
 }
 
+.postDisplayBig {
+  background-color: var(--background);
+  width: 48rem;
+  border-radius: 25px;
+  margin: 3vh;
+  padding: 1rem;
+  padding-top: 4rem;
+}
+
 .avatarSmall {
   max-height: 100px;
   border-radius: 25%;
@@ -37,9 +46,6 @@
   position: absolute;
 
   /* top: 0; */
-}
-
-.nameCity {
 }
 
 .categoryLink {

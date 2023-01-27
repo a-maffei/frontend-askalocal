@@ -109,6 +109,8 @@ const Home = ({ input, setInput }) => {
         <PostDisplay
           posts={cityPosts ? cityPosts : posts.locals}
           category={category}
+          size={"small"}
+          link={"all"}
         />
       ) : (
         []

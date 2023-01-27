@@ -2,16 +2,21 @@ import React from "react";
 import img from "./pics/profile.png";
 import "./PostDisplay.css";
 import { Link } from "react-router-dom";
+import cat from "./categories.json";
 
-const PostDisplay = ({ posts, category }) => {
+const PostDisplay = ({ posts, category, size, link }) => {
   let keys = null;
-
   return (
     <div>
-      <Link to={`/categories/${category}`} className="categoryLinksd ">
-        <h1 className="signupLegend absolute categoryLink">{category}</h1>
+      <Link
+        to={link === "all" ? `/categories` : `/categories/${category}`}
+        className="categoryLinksd "
+      >
+        <h1 className="signupLegend absolute categoryLink">
+          {link === "all" ? `Category Overview` : `${cat[category]}`}
+        </h1>
       </Link>
-      <div className="postDisplay">
+      <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
         {
           ((keys = Object.keys(posts)),
           keys?.map((element, i) => (

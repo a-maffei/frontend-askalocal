@@ -2,12 +2,14 @@ import React from "react";
 import PostDisplay from "./PostDisplay";
 import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Categories = ({ input, setInput }) => {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [cityPosts, setCityPosts] = useState(null);
+  const { category } = useParams();
 
   const url = `https://backend-askalocal.onrender.com/local`;
 
@@ -75,33 +77,9 @@ const Categories = ({ input, setInput }) => {
         <>
           <PostDisplay
             posts={cityPosts ? cityPosts : posts.locals}
-            category={"appointmentP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"serviceP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"interviewP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"flatP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"callP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"emailP"}
-            size={"small"}
+            category={category}
+            size={"big"}
+            link={"all"}
           />
         </>
       ) : (
