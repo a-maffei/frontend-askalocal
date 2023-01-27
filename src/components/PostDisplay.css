@@ -37,7 +37,7 @@
 .postDiv:hover {
   /* border: 2px solid var(--accent); */
   background-color: var(--accent);
-  color: var(--border);
+  color: var(--text-secondary);
   border-radius: 25px;
   /* background-color: aqua; */
 }

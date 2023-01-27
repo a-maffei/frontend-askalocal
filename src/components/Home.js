@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import Searchbar from "./Searchbar";
 import PostDisplay from "./PostDisplay";
-// import optionsImp from "./options.json";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
 import cat3 from "./svg/doctor.svg";
@@ -103,7 +102,7 @@ const Home = ({ input, setInput }) => {
         setInput={setInput}
         filterFunction={filterCities}
       />
-      <Link to="/signup" state="gi" className="navLinks">
+      <Link to="/signup" state="gi" className="navLinks topMargin">
         Signup
       </Link>
       {posts ? <h2 className="sample">Sample Offers</h2> : []}
@@ -117,31 +116,31 @@ const Home = ({ input, setInput }) => {
       ) : (
         []
       )}
-      <div className="categoriesDiv">
+      <div className="">
         <div className="flex-row">
-          <Link to="/email" className="categories">
+          <Link to="/email" className="categoriesDiv">
             <img src={cat4} className="categoriesPic" alt="Email Reviews" />
             <p>Email Reviews</p>
           </Link>
-          <Link to="/phone" className="categories">
+          <Link to="/phone" className="categoriesDiv">
             <img src={cat5} className="categoriesPic" alt="Phone Calls" />
             <p>Phone Calls</p>
           </Link>
-          <Link to="/Flat" className="categories">
+          <Link to="/Flat" className="categoriesDiv">
             <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
             <p>Flat Viewings</p>
           </Link>
         </div>
         <div className="flex-row">
-          <Link to="/appointments" className="categories">
+          <Link to="/appointments" className="categoriesDiv">
             <img src={cat3} className="categoriesPic" alt="Appointments" />
             <p>Appointments</p>
           </Link>
-          <Link to="/service" className="categories">
+          <Link to="/service" className="categoriesDiv">
             <img src={cat2} className="categoriesPic" alt="Service Providers" />
             <p>Contact to Service Providers</p>
           </Link>
-          <Link to="/interview" className="categories">
+          <Link to="/interview" className="categoriesDiv">
             <img src={cat7} className="categoriesPic" alt="Interview Help" />
             <p>Help with Interviews</p>
           </Link>

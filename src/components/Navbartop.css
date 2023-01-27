@@ -2,15 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   background-color: var(--background);
   color: var(--text-primary);
   font-size: 1em;
   position: sticky;
-  top: 10px;
-  width: 100vw;
+  left: 10vw;
+  top: 1rem;
+  width: 80vw;
   opacity: 95%;
   z-index: 10;
-
+  border-radius: 35px;
   box-shadow: 0px 0px 15px var(--border);
 }
 
@@ -20,7 +22,6 @@
 
 .imgNavbar {
   height: 50px;
-  margin: 10px 50px 0px;
 }
 
 .navLinks {
