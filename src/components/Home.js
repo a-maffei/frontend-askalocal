@@ -20,6 +20,7 @@ const Home = ({ input, setInput }) => {
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [cityPosts, setCityPosts] = useState(null);
   const url = `https://backend-askalocal.onrender.com/local`;
+  const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
     const data = await fetch(url)
@@ -29,10 +30,11 @@ const Home = ({ input, setInput }) => {
       throw new Response("Not Found", { status: 404 });
     }
     setPosts(data);
+    console.log(data);
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (
