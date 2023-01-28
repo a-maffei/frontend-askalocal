@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 
-const Login = ({ setUser, setLocal, urlPath }) => {
+const Login = ({ setUser, setLocal, urlPath, user, local }) => {
   const email = useRef();
   const password = useRef();
   const url = `http://localhost:8080/${urlPath}/login`;
@@ -31,8 +31,10 @@ const Login = ({ setUser, setLocal, urlPath }) => {
       // setIsLoading(false);
       if (urlPath === "user") {
         setUser(data);
-      } else setLocal(data);
-      console.log(data);
+      }
+      if (urlPath === "local") {
+        setLocal(data);
+      }
     }
   };
 
@@ -87,7 +89,6 @@ const Login = ({ setUser, setLocal, urlPath }) => {
           <button className="signupButton">{"Login"}</button>
         </form>
       </fieldset>
-      {error && <div className="error">{error}</div>}
     </div>
   );
 };

@@ -28,7 +28,6 @@ function App() {
     if (!user) {
       setUser(JSON.parse(localStorage.getItem("user")));
     }
-
     if (!local) {
       setLocal(JSON.parse(localStorage.getItem("local")));
     }
@@ -84,16 +83,18 @@ function App() {
             )
           }
         />
-        <Route
-          path="/form"
-          element={
-            local ? (
-              <LocalForm local={local} setLocal={local} />
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
+        {
+          <Route
+            path="/form"
+            element={
+              local ? (
+                <LocalForm local={local} setLocal={setLocal} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+        }
         <Route
           path="/categories/:category"
           element={
@@ -119,7 +120,7 @@ function App() {
           path="/user-signup"
           element={
             !user ? (
-              <Signup setUser={setUser} urlPath="user" />
+              <Signup user={user} setUser={setUser} urlPath="user" />
             ) : (
               <Navigate to="/welcome" />
             )
@@ -129,9 +130,9 @@ function App() {
           path="/local-login"
           element={
             !local ? (
-              <Login setLocal={setLocal} urlPath="local" />
+              <Login setLocal={setLocal} local={local} urlPath="local" />
             ) : (
-              <Navigate to="/form" />
+              <Navigate to="/" />
             )
           }
         />
@@ -139,9 +140,9 @@ function App() {
           path="/local-signup"
           element={
             !local ? (
-              <Signup setLocal={setLocal} urlPath="local" />
+              <Signup setLocal={setLocal} local={local} urlPath="local" />
             ) : (
-              <Navigate to="/form" />
+              <Navigate to="/" />
             )
           }
         />

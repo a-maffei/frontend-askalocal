@@ -105,3 +105,25 @@ input:checked + .slider:before {
 a.active {
   color: var(--text-secondary);
 }
+
+#main-nav-drop-cont {
+  position: relative;
+  /* right: 0.5rem; */
+  border: none;
+}
+
+#main-nav-drop-menu {
+  position: absolute;
+  font-size: 0.8em;
+  top: 2.5rem;
+  right: 0.5rem;
+  list-style-type: none;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-local-drop {
+  padding: 0.4em;
+}
