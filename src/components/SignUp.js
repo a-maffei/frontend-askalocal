@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 
-const Signup = ({ setUser }) => {
+const Signup = ({ setUser, setLocal, urlPath }) => {
   const firstname = useRef();
   const lastname = useRef();
   const email = useRef();
@@ -11,7 +11,7 @@ const Signup = ({ setUser }) => {
   const phone = useRef();
   const city = useRef();
   const [selectedFile, setSelectedFile] = useState("");
-  const url = "https://backend-askalocal.onrender.com/user/signup";
+  const url = `http://localhost:8080/${urlPath}/signup`;
 
   const [error, setError] = useState(null);
 
@@ -33,9 +33,10 @@ const Signup = ({ setUser }) => {
         },
       })
       .then((res) => {
-        localStorage.setItem("user", JSON.stringify(res.data));
+        localStorage.setItem(urlPath, JSON.stringify(res.data));
         //setIsLoading(false);
-        setUser(res.data);
+        if (urlPath === "user") setUser(res.data);
+        else setLocal(res.data);
       })
       .catch((error) => {
         // setIsLoading(false);
@@ -189,6 +190,7 @@ const Signup = ({ setUser }) => {
           <button className="signupButton">{"Submit"}</button>
         </form>
       </fieldset>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };

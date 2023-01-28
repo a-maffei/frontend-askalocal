@@ -10,9 +10,11 @@ import Welcome from "./components/Welcome";
 import Categories from "./components/Categories";
 import PostDisplay from "./components/PostDisplay";
 import CategoryHome from "./components/CategoryHome";
+import LocalForm from "./components/LocalForm";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [local, setLocal] = useState(null);
   const [theme, setTheme] = useState("dark");
   const [input, setInput] = useState("");
   const [searchedPosts, setSearchedPosts] = useState([]);
@@ -26,22 +28,35 @@ function App() {
     if (!user) {
       setUser(JSON.parse(localStorage.getItem("user")));
     }
-  }, [user]);
+    if (!local) {
+      setLocal(JSON.parse(localStorage.getItem("local")));
+    }
+  }, [user, local]);
 
   return (
     <div className="App" data-theme={theme}>
-      <Navbartop switchTheme={switchTheme} user={user} setUser={setUser} />
+      <Navbartop
+        switchTheme={switchTheme}
+        user={user}
+        setUser={setUser}
+        local={local}
+        setLocal={setLocal}
+      />
       <Routes>
         <Route
           path="/"
           element={
             !user ? (
-              <Home
-                searchedPosts={searchedPosts}
-                setSearchedPosts={setSearchedPosts}
-                input={input}
-                setInput={setInput}
-              />
+              !local ? (
+                <Home
+                  searchedPosts={searchedPosts}
+                  setSearchedPosts={setSearchedPosts}
+                  input={input}
+                  setInput={setInput}
+                />
+              ) : (
+                <Navigate to="/form" />
+              )
             ) : (
               <Navigate to="/welcome" />
             )
@@ -68,6 +83,18 @@ function App() {
             )
           }
         />
+        {
+          <Route
+            path="/form"
+            element={
+              local ? (
+                <LocalForm local={local} setLocal={setLocal} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+        }
         <Route
           path="/categories/:category"
           element={
@@ -80,12 +107,44 @@ function App() {
           }
         />
         <Route
-          path="/login"
-          element={!user ? <Login setUser={setUser} /> : <Navigate to="/" />}
+          path="/user-login"
+          element={
+            !user ? (
+              <Login setUser={setUser} urlPath="user" />
+            ) : (
+              <Navigate to="/welcome" />
+            )
+          }
         />
         <Route
-          path="/signup"
-          element={!user ? <Signup setUser={setUser} /> : <Navigate to="/" />}
+          path="/user-signup"
+          element={
+            !user ? (
+              <Signup user={user} setUser={setUser} urlPath="user" />
+            ) : (
+              <Navigate to="/welcome" />
+            )
+          }
+        />
+        <Route
+          path="/local-login"
+          element={
+            !local ? (
+              <Login setLocal={setLocal} local={local} urlPath="local" />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        <Route
+          path="/local-signup"
+          element={
+            !local ? (
+              <Signup setLocal={setLocal} local={local} urlPath="local" />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
         />
         <Route path="/local/:id" element={<LocalInfo />} />
       </Routes>
