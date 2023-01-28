@@ -10,21 +10,45 @@
 }
 
 :root {
-  --background: ghostwhite;
-  --text-primary: Black;
+  --background: #f3f3f1;
+  --nav-background: white;
+  --text-primary: #1e2330;
+  --recurring-text: #676b5f;
   --text-secondary: orange;
-  --accent: turquoise;
-  --border: #333;
-  --border-secondary: #fff;
+  --accent: #d2e823;
+  --green-light: #d2e823;
+  --green-dark: #254f1a;
+  --red--dark: #780016;
+  --red--light: #e9c0e9;
+  --border: #1e2330;
+  --border-secondary: #f3f3f1;
+  --button-primary: Black;
+  --button-primary-hover: #1e2330;
+  --button-primary-text: #f3f3f1;
+  --button-secondary: #f3f3f1;
+  --button-secondary-hover: #eff0ec;
+  --button-secondary-text: #1e2330;
 }
 
 [data-theme="light"] {
-  --background: black;
-  --text-primary: ghostwhite;
+  --background: #1e2330;
+  --nav-background: black;
+  --text-primary: #f3f3f1;
+  --recurring-text: #eff0ec;
   --text-secondary: orange;
   --accent: turquoise;
-  --border: #fff;
-  --border-secondary: #333;
+  --green-light: #d2e823;
+  --green-dark: #254f1a;
+  --red--dark: #780016;
+  --red--light: #e9c0e9;
+  --border: #f3f3f1;
+  --border-secondary: #1e2330;
+  --button-primary: #1e2330;
+  --button-primary-hover: #eff0ec;
+  --button-primary-text: #f3f3f1;
+  --button-secondary: black;
+  --button-secondary-hover: #1e2330;
+  --button-secondary-text: #1e2330;
 }
 
 html,
@@ -34,9 +58,11 @@ body {
 }
 
 body {
-  background: linear-gradient(-45deg, #000000, #01320f, #093342, #012b22);
+  background: #264f1a;
+  /* linear-gradient(-45deg, #000000, #01320f, #093342, #012b22); */
   background-size: 500% 500%;
   animation: wsBackground 30s ease infinite;
+  font-family: "Montserrat", sans-serif;
 }
 
 @keyframes wsBackground {
@@ -50,4 +76,3 @@ body {
     background-position: 0% 50%;
   }
 }
-
