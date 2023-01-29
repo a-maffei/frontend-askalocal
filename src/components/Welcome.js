@@ -17,11 +17,9 @@ export default function Welcome({ user, input, setInput }) {
         break;
       case "Paris":
         setGreeting("🇫🇷 Salut");
-        // Expected output: "Mangoes and papayas are $2.79 a pound."
         break;
       case "Rome":
         setGreeting("🇮🇹 Ciao");
-        // Expected output: "Mangoes and papayas are $2.79 a pound."
         break;
       default:
         setGreeting("Hi");

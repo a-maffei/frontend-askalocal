@@ -2,10 +2,10 @@ import { useState, useRef } from "react";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setLocal, urlPath, user, local }) => {
   const email = useRef();
   const password = useRef();
-  const url = "https://backend-askalocal.onrender.com/user/login";
+  const url = `http://localhost:8080/${urlPath}/login`;
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -27,10 +27,14 @@ const Login = ({ setUser }) => {
     }
 
     if (response.ok) {
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem(urlPath, JSON.stringify(data));
       // setIsLoading(false);
-      setUser(data);
-      console.log(data);
+      if (urlPath === "user") {
+        setUser(data);
+      }
+      if (urlPath === "local") {
+        setLocal(data);
+      }
     }
   };
 
@@ -85,7 +89,6 @@ const Login = ({ setUser }) => {
           <button className="signupButton">{"Login"}</button>
         </form>
       </fieldset>
-      {error && <div className="error">{error}</div>}
     </div>
   );
 };
