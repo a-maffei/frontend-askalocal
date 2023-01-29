@@ -21,7 +21,7 @@ const Searchbar = ({
   }, [selectedValue]);
 
   return (
-    <div className="homeDiv">
+    <div className="">
       <div className="wrapper">
         <input
           className="search-input"

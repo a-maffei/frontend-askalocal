@@ -4,8 +4,13 @@ import "./PostDisplay.css";
 import { Link } from "react-router-dom";
 import cat from "./categories.json";
 
-const PostDisplay = ({ posts, category, size, link }) => {
+const PostDisplay = ({ posts, category, size, link, input }) => {
   let keys = null;
+  console.log("input", input);
+
+  // input.length > 0 &&
+  // posts[element].categories[category].textfield.contains(input) ?
+
   return (
     <div>
       <Link
@@ -21,7 +26,11 @@ const PostDisplay = ({ posts, category, size, link }) => {
           ((keys = Object.keys(posts)),
           console.log("hey", posts),
           keys?.map((element, i) =>
-            posts[element].categories ? (
+            posts[element].categories &&
+            (input.length < 1 ||
+              posts[element].categories[category].textfield
+                .toLowerCase()
+                .includes(input)) ? (
               <Link
                 key={i}
                 className="postDiv"
