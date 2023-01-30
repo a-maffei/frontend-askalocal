@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ProfileDrop from "./ProfileDrop";
 import { useRef, useState, useEffect } from "react";
 import React from "react";
 import "./Navbartop.css";
-import image from "./svg/isolated-monochrome-black.svg";
-import cat5 from "./svg/reminder.svg";
+import logo from "./svg/default-monochrome-black.svg";
+import { ReactComponent as Logo } from "./svg/default-monochrome-black.svg";
 const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
   const ref = useRef();
 
@@ -32,8 +32,16 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
 
   return (
     <div className="navbar">
-      <NavLink to="/" className="navLinks">
-        <img src={cat5} alt="PC" className="imgNavbar" />
+      {/*       <img
+        src={logo}
+        alt="PC"
+        className="imgNavbar"
+        style={{ textColor: "blue" }}
+      /> */}{" "}
+      <NavLink className="nav-logo-link" to="/">
+        <>
+          <Logo alt="PC" className="imgNavbar" />
+        </>
       </NavLink>
       <div className="navbarTwo">
         {user ? (
@@ -54,15 +62,15 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
           />
         ) : (
           <div>
-            <NavLink to="/about-us" state="about-us" className="navLinks">
-              About us
-            </NavLink>
             <NavLink
               to="/how-it-works"
               state="how-it-works"
               className="navLinks"
             >
               How it works
+            </NavLink>
+            <NavLink to="/about-us" state="about-us" className="navLinks">
+              About us
             </NavLink>
             <NavLink to="/user-signup" state="gi" className="navLinks">
               Signup
@@ -74,7 +82,7 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
             <button
               onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
               id="main-nav-drop-cont"
-              className="navLinks"
+              className="bttn-primary nav-local-bttn"
               ref={ref}
             >
               {" "}

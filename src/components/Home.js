@@ -89,22 +89,26 @@ const Home = ({ input, setInput }) => {
   return (
     <div className="home">
       <div className="homeDiv">
-        <h1>Ask a Local</h1>
-        <h2>The best place to get help in a foreign country</h2>
+        <h2>New in a city where you don't speak the language?</h2>
+        <h3>Let the locals help you.</h3>
+        <Searchbar
+          options={options}
+          setSelectedValue={setSelectedValue}
+          selectedValue={selectedValue}
+          searchedPosts={searchedPosts}
+          setSearchedPosts={setSearchedPosts}
+          input={input}
+          setInput={setInput}
+          filterFunction={filterCities}
+        />
       </div>
-      <Searchbar
-        options={options}
-        setSelectedValue={setSelectedValue}
-        selectedValue={selectedValue}
-        searchedPosts={searchedPosts}
-        setSearchedPosts={setSearchedPosts}
-        input={input}
-        setInput={setInput}
-        filterFunction={filterCities}
-      />
-      <Link to="/signup" state="gi" className="navLinks topMargin">
-        Signup
-      </Link>
+
+      <div className="bright-bttn-cont">
+        <Link to="/signup" state="gi">
+          <button className="bright-bttn">Sign up for free</button>
+        </Link>
+      </div>
+
       {posts ? <h2 className="sample">Sample Offers</h2> : []}
       {posts ? (
         <PostDisplay

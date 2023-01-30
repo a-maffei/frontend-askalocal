@@ -14,8 +14,8 @@
   --nav-background: white;
   --text-primary: #1e2330;
   --recurring-text: #676b5f;
-  --text-secondary: orange;
-  --accent: #d2e823;
+  --text-secondary: #d2e823;
+  --accent: #e9c0e9;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red--dark: #780016;
@@ -28,6 +28,9 @@
   --button-secondary: #f3f3f1;
   --button-secondary-hover: #eff0ec;
   --button-secondary-text: #1e2330;
+  --button-bright: #e9c0e9;
+  --button-bright-hover: #d2e823;
+  --button-bright-text: #1e2330;
 }
 
 [data-theme="light"] {
@@ -35,8 +38,8 @@
   --nav-background: black;
   --text-primary: #f3f3f1;
   --recurring-text: #eff0ec;
-  --text-secondary: orange;
-  --accent: turquoise;
+  --text-secondary: #e9c0e9;
+  --accent: #d2e823;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red--dark: #780016;
@@ -46,9 +49,9 @@
   --button-primary: #1e2330;
   --button-primary-hover: #eff0ec;
   --button-primary-text: #f3f3f1;
-  --button-secondary: black;
-  --button-secondary-hover: #1e2330;
-  --button-secondary-text: #1e2330;
+  --button-secondary: #1e2330;
+  --button-secondary-hover: black;
+  --button-secondary-text: #e2bae3;
 }
 
 html,
@@ -65,7 +68,51 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-@keyframes wsBackground {
+.bttn-primary {
+  background-color: var(--button-primary);
+  padding: 1rem;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+.bttn-primary:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.bttn-primary {
+  background-color: var(--button-primary);
+  padding: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.bttn-primary:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.bright-bttn {
+  background-color: var(--button-bright);
+  color: var(--text-primary);
+  font-family: "Montserrat", sans-serif;
+  padding: 1.3rem 2rem;
+  margin: 2rem auto;
+
+  border-radius: 40px;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.bright-bttn:hover {
+  background-color: var(--button-bright-hover);
+}
+
+.bright-bttn-cont {
+  display: flex;
+  justify-content: center;
+}
+
+/* @keyframes wsBackground {
   0% {
     background-position: 0% 50%;
   }
@@ -75,4 +122,4 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
