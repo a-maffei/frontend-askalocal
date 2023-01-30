@@ -12,9 +12,9 @@ const PostDisplay = ({ posts, category, size, link }) => {
         to={link === "all" ? `/categories` : `/categories/${category}`}
         className="categoryLinks"
       >
-        <h1 className="signupLegend absolute categoryLink">
+        <button className="signupLegend absolute categoryLink category-bttn">
           {link === "all" ? `Category Overview` : `${cat[category]}`}
-        </h1>
+        </button>
       </Link>
       <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
         {
@@ -28,20 +28,25 @@ const PostDisplay = ({ posts, category, size, link }) => {
                 to={`/local/${posts[element]._id}`}
               >
                 {posts[element].pic ? (
-                  <img src={posts[element].pic} className="avatarSmall" />
+                  <img src={posts[element].pic} className="cat-avatarSmall" />
                 ) : (
-                  <img src={img} className="avatarSmall" />
+                  <img src={img} className="cat-avatarSmall" />
                 )}
-                <div className="nameCity">
+                <div className="cat-nameCity">
                   <b>
-                    <p>{posts[element].firstname}</p>
-                    <p>{posts[element].city}</p>
+                    <p className="cat-label">{posts[element].city}</p>
                   </b>
                 </div>
-                <p>
-                  {posts[element].categories[category].textfield.slice(0, 50)}
-                </p>
-                <p>{posts[element].categories[category].price} €</p>
+                <div className="cat-message">
+                  <p>
+                    "
+                    {posts[element].categories[category].textfield.slice(0, 50)}
+                    "
+                  </p>
+                </div>
+                <div className="cat-price">
+                  <p>{posts[element].categories[category].price} €</p>
+                </div>
               </Link>
             ) : (
               []

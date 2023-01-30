@@ -26,13 +26,16 @@
 
 .home-cont-pink {
   background-color: var(--button-bright);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.sample {
+.section-title {
   color: var(--text-primary);
-  background-color: var(--background);
-  padding: 15px;
-  border-radius: 10px;
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 1em;
 }
 
 .categoriesDiv {

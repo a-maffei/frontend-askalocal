@@ -1,12 +1,12 @@
 .postDisplay {
   background-color: var(--background);
-  width: 48rem;
-  border-radius: 25px;
+  width: 52rem;
+  border-radius: 5px;
   margin: 2rem;
   padding: 1rem;
   overflow-y: scroll;
-  height: 35vh;
-  padding-top: 4rem;
+  height: 40vh;
+  padding-top: 3rem;
 }
 
 .postDisplayBig {
@@ -15,21 +15,44 @@
   border-radius: 25px;
   margin: 2rem;
   padding: 1rem;
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
 
-.avatarSmall {
-  max-height: 100px;
+.cat-avatarSmall {
   border-radius: 25%;
+  width: 15%;
+}
+
+.cat-nameCity,
+.cat-message,
+.cat-price {
+  /*   margin-left: 1em; */
+}
+
+.cat-nameCity {
+  width: 10%;
+}
+
+.cat-message {
+  width: 50%;
+  font-style: italic;
+}
+
+.cat-price {
+  width: 10%;
+}
+
+.cat-label {
+  background-color: var(--green-dark);
 }
 
 .postDiv {
   display: flex;
   margin: 10px;
-
   color: var(--text-primary);
-  justify-content: space-between;
-  align-content: flex-start;
+  justify-content: flex-start;
+  gap: 2.5em;
+  align-content: center;
   align-items: center;
   text-decoration: none;
 }
@@ -46,16 +69,4 @@
 .absolute {
   position: absolute;
   /* top: 0; */
-}
-
-.categoryLink {
-  background-color: aqua;
-  padding: 1rem;
-  border-radius: 25px;
-}
-
-.categoryLink:hover {
-  background-color: var(--background);
-  color: var(--accent);
-  box-shadow: 0 0 50px var(--accent);
 }

@@ -98,7 +98,7 @@ body {
 
   border-radius: 40px;
   border: none;
-  font-size: 1em;
+  font-size: 1.3em;
   font-weight: 600;
   text-decoration: none !important;
 }
@@ -110,6 +110,21 @@ body {
 .bright-bttn-cont {
   display: flex;
   justify-content: center;
+}
+
+.category-bttn {
+  background-color: var(--button-primary);
+  color: var(--button-primary-text);
+  padding: 1em;
+  font-size: 1.2em;
+  font-weight: 500;
+  border-radius: 25px;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+.category-bttn:hover {
+  background-color: var(--button-primary-hover);
 }
 
 /* @keyframes wsBackground {

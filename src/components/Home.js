@@ -111,7 +111,7 @@ const Home = ({ input, setInput }) => {
         </div>
       </div>
       <div className="home-cont-pink">
-        {posts ? <h2 className="sample">Sample Offers</h2> : []}
+        {posts ? <h2 className="section-title">You ask, we translate.</h2> : []}
         {posts ? (
           <PostDisplay
             posts={cityPosts ? cityPosts : posts.locals}
