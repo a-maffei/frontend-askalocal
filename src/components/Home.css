@@ -24,9 +24,8 @@
   margin: 0;
 }
 
-.home-signup-bttn {
+.home-cont-pink {
   background-color: var(--button-bright);
-  color: var(--text-primary);
 }
 
 .sample {

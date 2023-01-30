@@ -75,7 +75,6 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
             <NavLink to="/user-signup" state="gi" className="navLinks">
               Signup
             </NavLink>
-
             <NavLink to="/user-login" state="login" className="navLinks">
               Login
             </NavLink>

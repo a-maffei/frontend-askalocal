@@ -88,39 +88,42 @@ const Home = ({ input, setInput }) => {
 
   return (
     <div className="home">
-      <div className="homeDiv">
-        <h2>New in a city where you don't speak the language?</h2>
-        <h3>Let the locals help you.</h3>
-        <Searchbar
-          options={options}
-          setSelectedValue={setSelectedValue}
-          selectedValue={selectedValue}
-          searchedPosts={searchedPosts}
-          setSearchedPosts={setSearchedPosts}
-          input={input}
-          setInput={setInput}
-          filterFunction={filterCities}
-        />
-      </div>
+      <div className="home-cont-green">
+        <div className="homeDiv">
+          <h2>New in a city where you don't speak the language?</h2>
+          <h3>Let the locals help you.</h3>
+          <Searchbar
+            options={options}
+            setSelectedValue={setSelectedValue}
+            selectedValue={selectedValue}
+            searchedPosts={searchedPosts}
+            setSearchedPosts={setSearchedPosts}
+            input={input}
+            setInput={setInput}
+            filterFunction={filterCities}
+          />
+        </div>
 
-      <div className="bright-bttn-cont">
-        <Link to="/signup" state="gi">
-          <button className="bright-bttn">Sign up for free</button>
-        </Link>
+        <div className="bright-bttn-cont">
+          <Link to="/user-signup" state="gi">
+            <button className="bright-bttn">Sign up for free</button>
+          </Link>
+        </div>
       </div>
-
-      {posts ? <h2 className="sample">Sample Offers</h2> : []}
-      {posts ? (
-        <PostDisplay
-          posts={cityPosts ? cityPosts : posts.locals}
-          category={category}
-          size={"small"}
-          link={"all"}
-        />
-      ) : (
-        []
-      )}
-      <div className="">
+      <div className="home-cont-pink">
+        {posts ? <h2 className="sample">Sample Offers</h2> : []}
+        {posts ? (
+          <PostDisplay
+            posts={cityPosts ? cityPosts : posts.locals}
+            category={category}
+            size={"small"}
+            link={"all"}
+          />
+        ) : (
+          []
+        )}
+      </div>
+      <div className="home-cont-white">
         <div className="flex-row">
           <div className="cardOuterDiv">
             <Link to="/categories/emailp" className="categoriesDiv">
