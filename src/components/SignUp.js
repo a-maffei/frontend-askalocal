@@ -11,7 +11,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   const phone = useRef();
   const city = useRef();
   const [selectedFile, setSelectedFile] = useState("");
-  const url = `http://localhost:8080/${urlPath}/signup`;
+  const url = `https://backend-askalocal.onrender.com/${urlPath}/signup`;
 
   const [error, setError] = useState(null);
 

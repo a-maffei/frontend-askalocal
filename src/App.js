@@ -55,10 +55,7 @@ function App() {
                   setInput={setInput}
                 />
               ) : (
-                <div>
-                  {/* // <Navigate to="/form" /> */}
-                  Success
-                </div>
+                <Navigate to="/form" />
               )
             ) : (
               <Navigate to="/welcome" />
