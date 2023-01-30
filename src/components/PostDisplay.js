@@ -36,13 +36,10 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
           element.categories[category].textfield.toLowerCase().includes(input)
         )) ? ( */}
       <div>
-        <Link
-          to={link === "all" ? `/categories` : `/categories/${category}`}
-          className="categoryLinks"
-        >
-          <h1 className="signupLegend absolute categoryLink">
+        <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
+          <div className="signupLegend absolute categoryLink">
             {link === "all" ? `Category Overview` : `${cat[category]}`}
-          </h1>
+          </div>
         </Link>
         <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
           {keys?.map((element, i) =>

@@ -52,6 +52,8 @@
   background-color: aqua;
   padding: 1rem;
   border-radius: 25px;
+  font-size: x-large;
+  font-weight: 900;
 }
 
 .categoryLink:hover {
