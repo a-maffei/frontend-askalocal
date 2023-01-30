@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import img from "./pics/profile.png";
 import "./PostDisplay.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import cat from "./categories.json";
 
 const PostDisplay = ({ posts, category, size, link }) => {
   let keys = null;
+
+  const [flag, setFlag] = useState(null);
+
   return (
     <div>
       <Link
@@ -33,7 +37,11 @@ const PostDisplay = ({ posts, category, size, link }) => {
                   <img src={img} className="cat-avatarSmall" />
                 )}
                 <div className="cat-nameCity">
+                  <p className="">
+                    <b>{posts[element].firstname}</b> in{" "}
+                  </p>
                   <b>
+                    {" "}
                     <p className="cat-label">{posts[element].city}</p>
                   </b>
                 </div>
@@ -45,7 +53,9 @@ const PostDisplay = ({ posts, category, size, link }) => {
                   </p>
                 </div>
                 <div className="cat-price">
-                  <p>{posts[element].categories[category].price} €</p>
+                  <p>
+                    <b>{posts[element].categories[category].price} €</b>
+                  </p>
                 </div>
               </Link>
             ) : (

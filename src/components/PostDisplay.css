@@ -11,6 +11,7 @@
 
 .postDisplayBig {
   background-color: var(--background);
+  border: 1px solid var(--border);
   width: 48rem;
   border-radius: 25px;
   margin: 2rem;
@@ -19,36 +20,40 @@
 }
 
 .cat-avatarSmall {
-  border-radius: 25%;
+  border-radius: 25px;
   width: 15%;
 }
 
-.cat-nameCity,
-.cat-message,
-.cat-price {
-  /*   margin-left: 1em; */
-}
-
 .cat-nameCity {
-  width: 10%;
+  height: 50;
+  width: 15%;
 }
 
 .cat-message {
-  width: 50%;
+  width: 70%;
   font-style: italic;
 }
 
 .cat-price {
   width: 10%;
+  font-size: 1.2em;
+  border-left: 1px solid var(--border);
+  padding-left: 1em;
 }
 
 .cat-label {
   background-color: var(--green-dark);
+  color: var(--accent);
+  border-radius: 5px;
+  padding: 0.5em;
+  text-align: center;
+  font-weight: 500;
 }
 
 .postDiv {
   display: flex;
   margin: 10px;
+  background-color: var(--background);
   color: var(--text-primary);
   justify-content: flex-start;
   gap: 2.5em;
@@ -58,12 +63,12 @@
 }
 
 .postDiv:hover {
-  /* border: 2px solid var(--accent); */
-  background-color: var(--accent);
-  color: var(--text-secondary);
+  border: 2px solid var(--accent);
+  /*  background-color: var(--accent); 
+  color: var(--text-secondary);*/
   border-radius: 25px;
   /* background-color: aqua; */
-  box-shadow: 0 0 50px var(--accent);
+  /* box-shadow: 0 0 50px var(--accent); */
 }
 
 .absolute {

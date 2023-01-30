@@ -23,10 +23,10 @@
   background-color: var(--background);
   color: var(--text-primary);
   border: none;
-  width: 90%;
+  width: 85%;
   border-radius: 0 5px 5px 0;
   padding: 0.5em;
-  font-size: 1.1em;
+  font-size: 1em;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -42,11 +42,10 @@
   font-weight: 500;
   border: 1px solid var(--border);
   border-radius: 5px;
-  width: 6rem;
+  width: 8em;
   height: 3rem;
   background-color: var(--background);
   padding: 0.5em;
-  margin-left: 0.8em;
   font-family: "Montserrat", sans-serif;
   color: var(--text-primary);
 }
