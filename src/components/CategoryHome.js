@@ -76,6 +76,7 @@ const Categories = ({ input, setInput }) => {
           <PostDisplay
             posts={cityPosts ? cityPosts : posts.locals}
             category={category}
+            input={input}
             size={"big"}
             link={"all"}
           />

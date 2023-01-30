@@ -112,6 +112,7 @@ const Home = ({ input, setInput }) => {
           category={category}
           size={"small"}
           link={"all"}
+          input={input}
         />
       ) : (
         []
