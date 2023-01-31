@@ -46,6 +46,8 @@ export default function LocalInfo() {
 
   // const oneLocal = local.find((local) => local._id === id)
 
+  console.log("HERE", local);
+
   return (
     <div className="home">
       {local.categories ? (
@@ -65,8 +67,8 @@ export default function LocalInfo() {
           </div>
 
           <h2>{local.firstname} Offers:</h2>
-          <div className="offers">
-            {
+
+          {/* {
               ((keys = Object.keys(local?.categories)),
               local.categories &&
                 keys?.map((element, i) => (
@@ -74,6 +76,7 @@ export default function LocalInfo() {
                     <h3 className="textstart">
                       {local.categories[element].category}
                     </h3>
+
                     <p className="textstart">
                       {local.categories[element].textfield}
                     </p>
@@ -82,7 +85,66 @@ export default function LocalInfo() {
                     </p>
                   </div>
                 )))
-            }
+            } */}
+          <div className="offers">
+            {local.categories.appointmentP.textfield && (
+              <div className="offersInnerDiv">
+                <h3 className="textstart">
+                  {local.categories.appointmentP.category}
+                </h3>
+                <p className="textstart">
+                  {local.categories.appointmentP.textfield}
+                </p>
+                <p className="textend">
+                  {local.categories.appointmentP.price} €
+                </p>
+              </div>
+            )}
+            {local.categories.callP.textfield && (
+              <div className="offersInnerDiv">
+                <h3 className="textstart">{local.categories.callP.category}</h3>
+                <p className="textstart">{local.categories.callP.textfield}</p>
+                <p className="textend">{local.categories.callP.price} €</p>
+              </div>
+            )}
+            {local.categories.emailP.textfield && (
+              <div className="offersInnerDiv">
+                <h3 className="textstart">
+                  {local.categories.emailP.category}
+                </h3>
+                <p className="textstart">{local.categories.emailP.textfield}</p>
+                <p className="textend">{local.categories.emailP.price} €</p>
+              </div>
+            )}
+            {local.categories.flatP.textfield && (
+              <div className="offersInnerDiv">
+                <h3 className="textstart">{local.categories.flatP.category}</h3>
+                <p className="textstart">{local.categories.flatP.textfield}</p>
+                <p className="textend">{local.categories.flatP.price} €</p>
+              </div>
+            )}
+            {local.categories.interviewP.textfield && (
+              <div className="offersInnerDiv">
+                <h3 className="textstart">
+                  {local.categories.interviewP.category}
+                </h3>
+                <p className="textstart">
+                  {local.categories.interviewP.textfield}
+                </p>
+                <p className="textend">{local.categories.interviewP.price} €</p>
+              </div>
+            )}
+            {local.categories.serviceP.textfield && (
+              <div className="offersInnerDiv">
+                <h3 className="textstart">
+                  {local.categories.serviceP.category}
+                </h3>
+                <p className="textstart">
+                  {local.categories.serviceP.textfield}
+                </p>
+                <p className="textend">{local.categories.serviceP.price} €</p>
+              </div>
+            )}
           </div>
 
           <div className="contact-button">
