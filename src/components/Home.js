@@ -11,10 +11,10 @@ import cat5 from "./svg/reminder.svg";
 import cat6 from "./svg/resume.svg";
 import cat7 from "./svg/writer.svg";
 
-const Home = ({ input, setInput }) => {
+const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   // const options = optionsImp;
-  const [selectedValue, setSelectedValue] = useState("All");
-  const [posts, setPosts] = useState(null);
+  // const [selectedValue, setSelectedValue] = useState("City");
+  const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [cityPosts, setCityPosts] = useState(null);
@@ -105,8 +105,8 @@ const Home = ({ input, setInput }) => {
       <Link to="/signup" state="gi" className="navLinks topMargin">
         Signup
       </Link>
-      {posts ? <h2 className="sample">Sample Offers</h2> : []}
-      {posts ? (
+      {posts ? <h2 className="sample">Sample Offers</h2> : ""}
+      {posts.locals ? (
         <PostDisplay
           posts={cityPosts ? cityPosts : posts.locals}
           category={category}
@@ -115,24 +115,24 @@ const Home = ({ input, setInput }) => {
           input={input}
         />
       ) : (
-        []
+        ""
       )}
       <div className="">
         <div className="flex-row">
           <div className="cardOuterDiv">
-            <Link to="/categories/emailp" className="categoriesDiv">
+            <Link to="/categories/emailP" className="categoriesDiv">
               <img src={cat4} className="categoriesPic" alt="Email Reviews" />
               <p>Email Reviews</p>
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/phonep" className="categoriesDiv">
+            <Link to="/categories/callP" className="categoriesDiv">
               <img src={cat5} className="categoriesPic" alt="Phone Calls" />
               <p>Phone Calls</p>
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/flatp" className="categoriesDiv">
+            <Link to="/categories/flatP" className="categoriesDiv">
               <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
               <p>Flat Viewings</p>
             </Link>
@@ -140,13 +140,13 @@ const Home = ({ input, setInput }) => {
         </div>
         <div className="flex-row">
           <div className="cardOuterDiv">
-            <Link to="/categories/appointmentsp" className="categoriesDiv">
+            <Link to="/categories/appointmentP" className="categoriesDiv">
               <img src={cat3} className="categoriesPic" alt="Appointments" />
               <p>Appointments</p>
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/servicep" className="categoriesDiv">
+            <Link to="/categories/serviceP" className="categoriesDiv">
               <img
                 src={cat2}
                 className="categoriesPic"
@@ -156,7 +156,7 @@ const Home = ({ input, setInput }) => {
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/interviewp" className="categoriesDiv">
+            <Link to="/categories/interviewP" className="categoriesDiv">
               <img src={cat7} className="categoriesPic" alt="Interview Help" />
               <p>Help with Interviews</p>
             </Link>

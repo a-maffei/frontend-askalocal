@@ -9,16 +9,42 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   let keys = Object.keys(posts);
   console.log("input", input);
 
+  console.log("POSSSSSTTTTSSS", posts, "length: ", posts.length);
+
   // input.length > 0 &&
   // posts[element].categories[category].textfield.contains(input) ?
 
   // useEffect(() => {
+  //   const what = Object.values(posts[0].categories[category]);
+  //   const whatone = what;
   //   console.log(
-  //     posts.some((element) =>
-  //       Object.values(element?.categories[category]).includes("trans")
-  //     )
+  //     "first",
+  //     posts.some(
+  //       (element) =>
+  //         -1 !==
+  //         Object.values(element.categories[category]).findIndex((elem) =>
+  //           elem.toString().toLowerCase().includes(input)
+  //         )
+  //     ),
+  //     // .map((el) => el)
+
+  //     "what",
+  //     what.findIndex((elem) => elem.toString().includes(input)),
+  //     what
+  //     // .includes(input.toLowerCase())
   //   );
-  // .includes(input);
+  //   console.log(
+  //     Object.values(posts[0].categories[category]).map((el) =>
+  //       Object.values(el).includes(input.toLowerCase())
+  //     ),
+  //     // Object.values(posts[0].categories[category])[0],
+  //     Object.values(posts[0].categories[category]).find((el) =>
+  //       Object.values(el).includes(input.toLowerCase())
+  //     )
+  //     // posts.some((element) => Object.values(element?.categories[category]))
+  //   );
+  // Object.values(posts[0].categories[category])
+  //.includes(input);
   // posts.forEach(
   //   (element) =>
   //     Object.values(element?.categories[category]).includes("trans")
@@ -30,11 +56,6 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
 
   return (
     <div>
-      {/* {input?.length < 1 ||
-      (input?.length > 0 &&
-        posts.find((element) =>
-          element.categories[category].textfield.toLowerCase().includes(input)
-        )) ? ( */}
       <div>
         <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
           <div className="signupLegend absolute categoryLink">
@@ -43,11 +64,11 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
         </Link>
         <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
           {keys?.map((element, i) =>
-            posts[element].categories &&
+            posts[element]?.categories &&
             (input?.length < 1 ||
               posts[element].categories[category].textfield
                 .toLowerCase()
-                .includes(input)) ? (
+                .includes(input.toLowerCase())) ? (
               <Link
                 key={i}
                 className="postDiv"
@@ -70,7 +91,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
                 <p>{posts[element].categories[category].price} €</p>
               </Link>
             ) : (
-              []
+              <div />
             )
           )}
         </div>{" "}

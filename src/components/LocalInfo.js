@@ -14,11 +14,12 @@ export default function LocalInfo() {
   let keys = null;
   const navigate = useNavigate();
 
-  const url = `http://localhost:8080/local/${id}/review`;
+  const url = `https://backend-askalocal.onrender.com/local/${id}`;
+  const url2 = `http://localhost:8080/local/${id}`;
 
-  const fetchData = async () => {
+  const fetchData = async (url) => {
     try {
-      const result = await axios.get(`http://localhost:8080/local/${id}`);
+      const result = await axios.get(url);
       setLocal(result.data.local);
     } catch (err) {
       setError(err);
@@ -40,7 +41,7 @@ export default function LocalInfo() {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData(url2);
   }, []);
 
   // const oneLocal = local.find((local) => local._id === id)
@@ -94,7 +95,7 @@ export default function LocalInfo() {
           </button>
         </div>
       ) : (
-        []
+        ""
       )}
       <div>
         <div className="reviews">

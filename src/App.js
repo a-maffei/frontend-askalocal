@@ -18,6 +18,7 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [input, setInput] = useState("");
   const [searchedPosts, setSearchedPosts] = useState([]);
+  const [selectedValue, setSelectedValue] = useState("City");
 
   const switchTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -53,6 +54,8 @@ function App() {
                   setSearchedPosts={setSearchedPosts}
                   input={input}
                   setInput={setInput}
+                  selectedValue={selectedValue}
+                  setSelectedValue={setSelectedValue}
                 />
               ) : (
                 <Navigate to="/form" />
@@ -70,6 +73,8 @@ function App() {
               setSearchedPosts={setSearchedPosts}
               input={input}
               setInput={setInput}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
             />
           }
         />
@@ -103,6 +108,8 @@ function App() {
               setSearchedPosts={setSearchedPosts}
               input={input}
               setInput={setInput}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
             />
           }
         />

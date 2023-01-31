@@ -12,8 +12,11 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   const city = useRef();
   const [selectedFile, setSelectedFile] = useState("");
   const url = `https://backend-askalocal.onrender.com/${urlPath}/signup`;
+  const url2 = `http://localhost:8080/${urlPath}/signup`;
 
   const [error, setError] = useState(null);
+
+  console.log(urlPath);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +30,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("pic", selectedFile);
 
     axios
-      .post(url, formData, {
+      .post(url2, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },

@@ -1,5 +1,5 @@
 [
-  { "value": "", "label": "All" },
+  { "value": "City", "label": "All" },
   { "value": "Barcelona", "label": "Barcelona" },
   { "value": "Berlin", "label": "Berlin" },
   { "value": "Vienna", "label": "Vienna" },
