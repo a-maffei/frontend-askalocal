@@ -11,15 +11,15 @@ const PostDisplay = ({ posts, category, size, link }) => {
   const [flag, setFlag] = useState(null);
 
   return (
-    <div>
-      <Link
+    <div className="post-macro-cont">
+      {/*       <Link
         to={link === "all" ? `/categories` : `/categories/${category}`}
         className="categoryLinks"
       >
         <button className="signupLegend absolute categoryLink category-bttn">
           {link === "all" ? `Category Overview` : `${cat[category]}`}
         </button>
-      </Link>
+      </Link> */}
       <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
         {
           ((keys = Object.keys(posts)),
@@ -32,18 +32,34 @@ const PostDisplay = ({ posts, category, size, link }) => {
                 to={`/local/${posts[element]._id}`}
               >
                 {posts[element].pic ? (
+                  <div
+                    className="cat-avatarSmall"
+                    style={{
+                      backgroundImage: `url(${posts[element].pic})`,
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                ) : (
+                  <div
+                    className="cat-avatarSmall"
+                    style={{
+                      backgroundImage: `url(${img})`,
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                )}
+                {/*                 {posts[element].pic ? (
                   <img src={posts[element].pic} className="cat-avatarSmall" />
                 ) : (
                   <img src={img} className="cat-avatarSmall" />
-                )}
+                )} */}
                 <div className="cat-nameCity">
-                  <p className="">
-                    <b>{posts[element].firstname}</b> in{" "}
+                  <p className="cat-name">
+                    <b>{posts[element].firstname} in</b>
+                  </p>{" "}
+                  <p className="cat-label">
+                    <b>{posts[element].city}</b>
                   </p>
-                  <b>
-                    {" "}
-                    <p className="cat-label">{posts[element].city}</p>
-                  </b>
                 </div>
                 <div className="cat-message">
                   <p>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import Searchbar from "./Searchbar";
 import { CircleFlag } from "react-circle-flags";
+import { GoChevronDown } from "react-icons/go";
+import { HashLink } from "react-router-hash-link";
 import PostDisplay from "./PostDisplay";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
@@ -89,45 +91,40 @@ const Home = ({ input, setInput }) => {
 
   return (
     <div className="home">
-      <div className="home-cont-green">
-        <div className="homeDiv">
+      <div className="homeDiv">
+        <div className="homeDiv-titles">
           <h2>New in a city where you don't speak the language?</h2>
           <h3>Let the locals help you.</h3>
-          <Searchbar
-            options={options}
-            setSelectedValue={setSelectedValue}
-            selectedValue={selectedValue}
-            searchedPosts={searchedPosts}
-            setSearchedPosts={setSearchedPosts}
-            input={input}
-            setInput={setInput}
-            filterFunction={filterCities}
-          />
         </div>
-
         <div className="bright-bttn-cont">
           <Link to="/user-signup" state="gi">
-            <button style={{ marginBottom: "5rem" }} className="bright-bttn">
-              Sign up for free
-            </button>
+            <button className="bright-bttn">Sign up for free</button>
           </Link>
+          <HashLink to="/#search-section">
+            <GoChevronDown className="homepage-arrow" />
+          </HashLink>
         </div>
       </div>
+      <div id="search-section"></div>
       <div className="home-cont-pink">
-        {posts ? (
-          <>
-            <h2 className="section-title">You ask, they translate.</h2>
-            <div className="home-flags-cont">
-              <CircleFlag countryCode="de" height="40" />
-              <CircleFlag countryCode="fr" height="40" />
-              <CircleFlag countryCode="es" height="40" />
-              <CircleFlag countryCode="at" height="40" />
-              <CircleFlag countryCode="it" height="40" />
-            </div>
-          </>
-        ) : (
-          []
-        )}
+        <h2 className="section-title-pink">You ask, they translate.</h2>
+        <div className="home-flags-cont">
+          <CircleFlag countryCode="de" height="40" />
+          <CircleFlag countryCode="fr" height="40" />
+          <CircleFlag countryCode="es" height="40" />
+          <CircleFlag countryCode="at" height="40" />
+          <CircleFlag countryCode="it" height="40" />
+        </div>
+        <Searchbar
+          options={options}
+          setSelectedValue={setSelectedValue}
+          selectedValue={selectedValue}
+          searchedPosts={searchedPosts}
+          setSearchedPosts={setSearchedPosts}
+          input={input}
+          setInput={setInput}
+          filterFunction={filterCities}
+        />
         {posts ? (
           <PostDisplay
             posts={cityPosts ? cityPosts : posts.locals}
@@ -139,7 +136,15 @@ const Home = ({ input, setInput }) => {
           []
         )}
       </div>
-      <div className="home-cont-white">
+      <div className="home-cont-white" id="howitworks-section">
+        <h2 className="section-title-black">How it works</h2>
+        <h4 className="paragraph-title-black">
+          Once you have an account, browse through our list of locals in your
+          new city. <br></br>When you find the one that suits your needs, you
+          can start chatting with them (in English) to agree on the details and
+          final price. Payment takes place on our platform, too. Then you're all
+          set!{" "}
+        </h4>
         <div className="flex-row">
           <div className="cardOuterDiv">
             <Link to="/categories/emailp" className="categoriesDiv">

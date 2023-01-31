@@ -8,23 +8,25 @@
   font-size: 0.9em;
   position: sticky;
   left: 5vw;
-  top: 3rem;
-  width: 90vw;
-  height: 5rem;
+  top: 1rem;
+  width: 90%;
+  height: 6rem;
   opacity: 95%;
   z-index: 10;
   border-radius: 5rem;
-  padding: 0 2rem;
+
   /* box-shadow: 0px 0px 15px var(--border); */
 }
 
 .navbarTwo {
   display: flex;
+  margin-right: 2rem;
 }
 
 .imgNavbar {
   width: 70%;
   fill: var(--nav-background);
+  margin-left: 2rem;
 }
 
 .nav-logo-link:visited,

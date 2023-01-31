@@ -15,11 +15,11 @@
   --text-primary: #1e2330;
   --recurring-text: #676b5f;
   --text-secondary: #d2e823;
-  --accent: #e9c0e9;
+  --accent: #e8c0e8;
   --green-light: #d2e823;
   --green-dark: #254f1a;
-  --red--dark: #780016;
-  --red--light: #e9c0e9;
+  --red-dark: #49000d;
+  --red--light: #e8c0e8;
   --border: #1e2330;
   --border-secondary: #f3f3f1;
   --button-primary: #1e2330;
@@ -28,7 +28,7 @@
   --button-secondary: #f3f3f1;
   --button-secondary-hover: #eff0ec;
   --button-secondary-text: #1e2330;
-  --button-bright: #e9c0e9;
+  --button-bright: #e8c0e8;
   --button-bright-hover: #d2e823;
   --button-bright-text: #1e2330;
 }
@@ -38,12 +38,12 @@
   --nav-background: black;
   --text-primary: #f3f3f1;
   --recurring-text: #eff0ec;
-  --text-secondary: #e9c0e9;
+  --text-secondary: #e8c0e8;
   --accent: #d2e823;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red--dark: #780016;
-  --red--light: #e9c0e9;
+  --red--light: #e8c0e8;
   --border: #f3f3f1;
   --border-secondary: #1e2330;
   --button-primary: #1e2330;
@@ -93,14 +93,14 @@ body {
   background-color: var(--button-bright);
   color: var(--text-primary);
   font-family: "Montserrat", sans-serif;
+  margin-bottom: 3rem;
   padding: 1.3rem 2rem;
-  margin: 2rem auto;
-
   border-radius: 40px;
   border: none;
   font-size: 1.3em;
   font-weight: 600;
   text-decoration: none !important;
+  cursor: pointer;
 }
 
 .bright-bttn:hover {
@@ -125,6 +125,37 @@ body {
 
 .category-bttn:hover {
   background-color: var(--button-primary-hover);
+}
+
+.section-title-pink {
+  color: var(--accent);
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 0.8em;
+}
+
+.section-title-black {
+  color: var(--text-primary);
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 0.8em 0 0.5em;
+}
+
+.paragraph-title-black {
+  color: var(--text-primary);
+  display: inline-block;
+  font-size: 1.2em;
+  text-align: center;
+  width: 70%;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.section-title-green {
+  color: var(--green-light);
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 0.8em 0 0.5em;
 }
 
 /* @keyframes wsBackground {

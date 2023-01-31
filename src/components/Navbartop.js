@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import ProfileDrop from "./ProfileDrop";
 import { useRef, useState, useEffect } from "react";
+import { NavHashLink } from "react-router-hash-link";
 import React from "react";
 import "./Navbartop.css";
 import logo from "./svg/default-monochrome-black.svg";
@@ -62,16 +63,18 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
           />
         ) : (
           <div>
-            <NavLink
-              to="/how-it-works"
+            <NavHashLink
+              to="/#howitworks-section"
               state="how-it-works"
               className="navLinks"
+              // etc...
             >
               How it works
-            </NavLink>
+            </NavHashLink>
             <NavLink to="/about-us" state="about-us" className="navLinks">
               About us
             </NavLink>
+
             <NavLink to="/user-signup" state="gi" className="navLinks">
               Signup
             </NavLink>
