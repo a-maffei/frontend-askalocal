@@ -135,16 +135,28 @@ a {
 
 #main-nav-drop-menu {
   position: absolute;
-  font-size: 0.8em;
-  top: 2.5rem;
+  font-size: 1em;
+  top: 4rem;
   right: 0.5rem;
   list-style-type: none;
-  border: 1px solid var(--border);
-  background-color: var(--background);
+  border-radius: 10px;
+  border: none;
+  background-color: var(--button-primary);
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
 }
 
 .nav-local-drop {
-  padding: 0.4em;
+  padding: 0.5em 2em 0.5em 0.5em;
+  color: #f3f3f1;
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.nav-local-drop:hover {
+  color: var(--green-light);
 }

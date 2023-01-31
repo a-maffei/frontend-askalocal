@@ -11,6 +11,7 @@ import Categories from "./components/Categories";
 import PostDisplay from "./components/PostDisplay";
 import CategoryHome from "./components/CategoryHome";
 import LocalForm from "./components/LocalForm";
+import Footer from "./Footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,119 +36,124 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
-      <Navbartop
-        switchTheme={switchTheme}
-        user={user}
-        setUser={setUser}
-        local={local}
-        setLocal={setLocal}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            !user ? (
-              !local ? (
-                <Home
+      <div className="page-container">
+        <div className="content-wrapper">
+          <Navbartop
+            switchTheme={switchTheme}
+            user={user}
+            setUser={setUser}
+            local={local}
+            setLocal={setLocal}
+          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                !user ? (
+                  !local ? (
+                    <Home
+                      searchedPosts={searchedPosts}
+                      setSearchedPosts={setSearchedPosts}
+                      input={input}
+                      setInput={setInput}
+                    />
+                  ) : (
+                    <Navigate to="/form" />
+                  )
+                ) : (
+                  <Navigate to="/welcome" />
+                )
+              }
+            />
+            <Route
+              path="/categories"
+              element={
+                <Categories
                   searchedPosts={searchedPosts}
                   setSearchedPosts={setSearchedPosts}
                   input={input}
                   setInput={setInput}
                 />
-              ) : (
-                <Navigate to="/form" />
-              )
-            ) : (
-              <Navigate to="/welcome" />
-            )
-          }
-        />
-        <Route
-          path="/categories"
-          element={
-            <Categories
-              searchedPosts={searchedPosts}
-              setSearchedPosts={setSearchedPosts}
-              input={input}
-              setInput={setInput}
+              }
             />
-          }
-        />
-        <Route
-          path="/welcome"
-          element={
-            user ? (
-              <Welcome user={user} input={input} setInput={setInput} />
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
-        {
-          <Route
-            path="/form"
-            element={
-              local ? (
-                <LocalForm local={local} setLocal={setLocal} />
-              ) : (
-                <Navigate to="/" />
-              )
+            <Route
+              path="/welcome"
+              element={
+                user ? (
+                  <Welcome user={user} input={input} setInput={setInput} />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
+            {
+              <Route
+                path="/form"
+                element={
+                  local ? (
+                    <LocalForm local={local} setLocal={setLocal} />
+                  ) : (
+                    <Navigate to="/" />
+                  )
+                }
+              />
             }
-          />
-        }
-        <Route
-          path="/categories/:category"
-          element={
-            <CategoryHome
-              searchedPosts={searchedPosts}
-              setSearchedPosts={setSearchedPosts}
-              input={input}
-              setInput={setInput}
+            <Route
+              path="/categories/:category"
+              element={
+                <CategoryHome
+                  searchedPosts={searchedPosts}
+                  setSearchedPosts={setSearchedPosts}
+                  input={input}
+                  setInput={setInput}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/user-login"
-          element={
-            !user ? (
-              <Login setUser={setUser} urlPath="user" />
-            ) : (
-              <Navigate to="/welcome" />
-            )
-          }
-        />
-        <Route
-          path="/user-signup"
-          element={
-            !user ? (
-              <Signup user={user} setUser={setUser} urlPath="user" />
-            ) : (
-              <Navigate to="/welcome" />
-            )
-          }
-        />
-        <Route
-          path="/local-login"
-          element={
-            !local ? (
-              <Login setLocal={setLocal} local={local} urlPath="local" />
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
-        <Route
-          path="/local-signup"
-          element={
-            !local ? (
-              <Signup setLocal={setLocal} local={local} urlPath="local" />
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
-        <Route path="/local/:id" element={<LocalInfo />} />
-      </Routes>
+            <Route
+              path="/user-login"
+              element={
+                !user ? (
+                  <Login setUser={setUser} urlPath="user" />
+                ) : (
+                  <Navigate to="/welcome" />
+                )
+              }
+            />
+            <Route
+              path="/user-signup"
+              element={
+                !user ? (
+                  <Signup user={user} setUser={setUser} urlPath="user" />
+                ) : (
+                  <Navigate to="/welcome" />
+                )
+              }
+            />
+            <Route
+              path="/local-login"
+              element={
+                !local ? (
+                  <Login setLocal={setLocal} local={local} urlPath="local" />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
+            <Route
+              path="/local-signup"
+              element={
+                !local ? (
+                  <Signup setLocal={setLocal} local={local} urlPath="local" />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
+            <Route path="/local/:id" element={<LocalInfo />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </div>
   );
 }

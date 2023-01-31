@@ -5,6 +5,7 @@ import Searchbar from "./Searchbar";
 import { CircleFlag } from "react-circle-flags";
 import { GoChevronDown } from "react-icons/go";
 import { HashLink } from "react-router-hash-link";
+
 import PostDisplay from "./PostDisplay";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
@@ -13,6 +14,7 @@ import cat4 from "./svg/mail.svg";
 import cat5 from "./svg/reminder.svg";
 import cat6 from "./svg/resume.svg";
 import cat7 from "./svg/writer.svg";
+import AboutUs from "./AboutUs";
 
 const Home = ({ input, setInput }) => {
   // const options = optionsImp;
@@ -145,7 +147,7 @@ const Home = ({ input, setInput }) => {
           final price. Payment takes place on our platform, too. Then you're all
           set!{" "}
         </h4>
-        <div className="flex-row">
+        <div className="card-macro-cont">
           <div className="cardOuterDiv">
             <Link to="/categories/emailp" className="categoriesDiv">
               <div className="cat-container">
@@ -170,8 +172,7 @@ const Home = ({ input, setInput }) => {
               </div>
             </Link>
           </div>
-        </div>
-        <div className="flex-row">
+
           <div className="cardOuterDiv">
             <Link to="/categories/appointmentsp" className="categoriesDiv">
               <div className="cat-container">
@@ -203,6 +204,15 @@ const Home = ({ input, setInput }) => {
           </div>
         </div>
       </div>
+      <div className="home-cont-green" id="aboutus-section">
+        <h2 className="section-title-green">About us</h2>
+        <h4 className="paragraph-title-green">
+          We're web developers hailing from different parts of Europe. <br></br>
+          We know how it feels to move to a new country, and how important it is
+          to help newcomers feel at home.
+        </h4>
+      </div>
+      <AboutUs />
     </div>
   );
 };

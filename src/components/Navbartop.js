@@ -71,9 +71,14 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
             >
               How it works
             </NavHashLink>
-            <NavLink to="/about-us" state="about-us" className="navLinks">
+            <NavHashLink
+              to="/#aboutus-section"
+              state="about-us"
+              className="navLinks"
+              // etc...
+            >
               About us
-            </NavLink>
+            </NavHashLink>
 
             <NavLink to="/user-signup" state="gi" className="navLinks">
               Signup
@@ -102,7 +107,7 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
                     state="gi"
                     className="nav-local-drop"
                   >
-                    LoginLocal
+                    Log in
                   </NavLink>
                 </div>
               ) : null}{" "}
