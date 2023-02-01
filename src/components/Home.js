@@ -102,7 +102,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
         setInput={setInput}
         filterFunction={filterCities}
       />
-      <Link to="/signup" state="gi" className="navLinks topMargin">
+      <Link to="/user-signup" state="gi" className="navLinks topMargin">
         Signup
       </Link>
       {posts ? <h2 className="sample">Sample Offers</h2> : ""}

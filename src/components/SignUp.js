@@ -4,33 +4,41 @@ import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 const Signup = ({ setUser, setLocal, urlPath }) => {
-  const firstname = useRef();
+  /*   const firstname = useRef();
   const lastname = useRef();
   const email = useRef();
   const password = useRef();
   const phone = useRef();
-  const city = useRef();
+  const city = useRef(); */
+
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
+
   const [selectedFile, setSelectedFile] = useState("");
   const url = `https://backend-askalocal.onrender.com/${urlPath}/signup`;
   const url2 = `http://localhost:8080/${urlPath}/signup`;
 
   const [error, setError] = useState(null);
 
-  console.log(urlPath);
+  console.log("URL PATH", urlPath);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("email", email.current.value);
-    formData.append("password", password.current.value);
-    formData.append("firstname", firstname.current.value);
-    formData.append("lastname", lastname.current.value);
-    formData.append("phone", phone.current.value);
-    formData.append("city", city.current.value);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("firstname", firstname);
+    formData.append("lastname", lastname);
+    formData.append("phone", phone);
+    formData.append("city", city);
     formData.append("pic", selectedFile);
 
     axios
-      .post(url, formData, {
+      .post(url2, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },
@@ -42,9 +50,32 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
         else setLocal(res.data);
       })
       .catch((error) => {
-        // setIsLoading(false);
         setError(error);
       });
+
+    /*     const response = await fetch(url2, {
+      method: "POST",
+      headers: {
+        "Content-type": "multipart-formdata",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+    console.log("RESPONSE", response);
+    console.log("WHO'S YOUR DATA", data);
+    if (response.ok) {
+      console.log("DATA", data);
+      setError(null);
+      localStorage.setItem(urlPath, JSON.stringify(data));
+      if (urlPath === "user") setUser(data);
+      else setLocal(data);
+    }
+
+    if (!response.ok) {
+      console.log("RESPONSE", response);
+      setError(response.error);
+    } */
 
     /*     const response = await fetch(url, {
       method: "POST",
@@ -71,14 +102,24 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
       // setIsLoading(false);
       setUser(data);
     } */
+
+    console.log("FORMDATAaaaaa", formData);
   };
+
+  console.log("ERRRRROR", error);
 
   return (
     <div className="signupOuterDiv">
       <div className="alreadyDiv">
-        <Link to="/login">
-          <button className="already">{"I already have an account"}</button>
-        </Link>
+        {urlPath === "local" ? (
+          <Link to="/local-login">
+            <button className="already">{"I already have an account"}</button>
+          </Link>
+        ) : (
+          <Link to="/user-login">
+            <button className="already">{"I already have an account"}</button>
+          </Link>
+        )}
       </div>
       <fieldset className="signupField">
         <legend>
@@ -100,7 +141,9 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               name="firstName"
               pattern="[a-zA-Z]+"
               className="signupInput"
-              ref={firstname}
+              // ref={firstname}
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
               placeholder={"Your Firstname"}
               required
               title={"eg. 'John'"}
@@ -114,7 +157,8 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               name="lastName"
               pattern="[a-zA-Z]+"
               className="signupInput"
-              ref={lastname}
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
               placeholder={"Your Lastname"}
               required
               title={"eg. 'Doe'"}
@@ -128,7 +172,8 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               id="email"
               name="email"
               className="signupInput"
-              ref={email}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="eMail"
               required
             />
@@ -142,7 +187,8 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               name="password"
               minLength="8"
               className="signupInput"
-              ref={password}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
             />
@@ -171,7 +217,8 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               pattern="^[+]?[0-9]{9,13}$"
               title="+491683486813548"
               className="signupInput"
-              ref={phone}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               placeholder="Phonenumber"
               required
             />
@@ -185,7 +232,8 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               name="city"
               pattern="[a-zA-Z]+"
               className="signupInput"
-              ref={city}
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
               placeholder="City"
               required
             />
@@ -193,7 +241,14 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
           <button className="signupButton">{"Submit"}</button>
         </form>
       </fieldset>
-      {error && <div className="error">{error}</div>}
+      {error && (
+        <div
+          className="error"
+          style={{ color: "white", border: "2px solid red" }}
+        >
+          {error.response.data.error}
+        </div>
+      )}
     </div>
   );
 };
