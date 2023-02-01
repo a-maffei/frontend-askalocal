@@ -27,10 +27,11 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("lastname", lastname.current.value);
     formData.append("phone", phone.current.value);
     formData.append("city", city.current.value);
+    formData.append("isComplete", false);
     formData.append("pic", selectedFile);
 
     axios
-      .post(url, formData, {
+      .post(url2, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },
@@ -193,7 +194,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
           <button className="signupButton">{"Submit"}</button>
         </form>
       </fieldset>
-      {error && <div className="error">{error}</div>}
+      {/* {error && <div className="error">{error}</div>} */}
     </div>
   );
 };

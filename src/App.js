@@ -11,6 +11,7 @@ import Categories from "./components/Categories";
 import PostDisplay from "./components/PostDisplay";
 import CategoryHome from "./components/CategoryHome";
 import LocalForm from "./components/LocalForm";
+import YourInfo from "./components/YourInfo";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,6 +45,7 @@ function App() {
         setLocal={setLocal}
       />
       <Routes>
+        {/* Landing page rerouting based on whethere you're signed in/up as user or local */}
         <Route
           path="/"
           element={
@@ -57,62 +59,19 @@ function App() {
                   selectedValue={selectedValue}
                   setSelectedValue={setSelectedValue}
                 />
-              ) : (
+              ) : !local.isComplete ? (
                 <Navigate to="/form" />
+              ) : (
+                <Navigate to="/yourinfo" local={local} />
               )
             ) : (
               <Navigate to="/welcome" />
             )
           }
         />
-        <Route
-          path="/categories"
-          element={
-            <Categories
-              searchedPosts={searchedPosts}
-              setSearchedPosts={setSearchedPosts}
-              input={input}
-              setInput={setInput}
-              selectedValue={selectedValue}
-              setSelectedValue={setSelectedValue}
-            />
-          }
-        />
-        <Route
-          path="/welcome"
-          element={
-            user ? (
-              <Welcome user={user} input={input} setInput={setInput} />
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
-        {
-          <Route
-            path="/form"
-            element={
-              local ? (
-                <LocalForm local={local} setLocal={setLocal} />
-              ) : (
-                <Navigate to="/" />
-              )
-            }
-          />
-        }
-        <Route
-          path="/categories/:category"
-          element={
-            <CategoryHome
-              searchedPosts={searchedPosts}
-              setSearchedPosts={setSearchedPosts}
-              input={input}
-              setInput={setInput}
-              selectedValue={selectedValue}
-              setSelectedValue={setSelectedValue}
-            />
-          }
-        />
+
+        {/* Log in and sign ups */}
+
         <Route
           path="/user-login"
           element={
@@ -148,12 +107,68 @@ function App() {
           element={
             !local ? (
               <Signup setLocal={setLocal} local={local} urlPath="local" />
+            ) : local.isComplete ? (
+              <Navigate to="/yourinfo" local={local} />
+            ) : (
+              <Navigate to="/form" />
+            )
+          }
+        />
+
+        {/* Paths reserved for users */}
+        <Route
+          path="/welcome"
+          element={
+            user ? (
+              <Welcome user={user} input={input} setInput={setInput} />
             ) : (
               <Navigate to="/" />
             )
           }
         />
+        <Route
+          path="/categories"
+          element={
+            <Categories
+              searchedPosts={searchedPosts}
+              setSearchedPosts={setSearchedPosts}
+              input={input}
+              setInput={setInput}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
+            />
+          }
+        />
+        <Route
+          path="/categories/:category"
+          element={
+            <CategoryHome
+              searchedPosts={searchedPosts}
+              setSearchedPosts={setSearchedPosts}
+              input={input}
+              setInput={setInput}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
+            />
+          }
+        />
         <Route path="/local/:id" element={<LocalInfo />} />
+
+        {/* Paths reserved for  locals */}
+        <Route
+          path="/form"
+          element={
+            local ? (
+              <LocalForm local={local} setLocal={setLocal} />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        <Route
+          path="/yourinfo"
+          element={local ? <YourInfo local={local} /> : <Navigate to="/" />}
+        />
       </Routes>
     </div>
   );
