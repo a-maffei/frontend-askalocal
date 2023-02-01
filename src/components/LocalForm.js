@@ -35,6 +35,9 @@ export default function Form({ local, setLocal }) {
 
   const [error, setError] = useState(null);
 
+  const url = `https://backend-askalocal.onrender.com/local`;
+  const url2 = `http://localhost:8080/local`;
+
   /* const UpdateLocal = ({ id }) => {
     const [formData, setFormData] = useState({
       bio: "",
@@ -60,7 +63,7 @@ export default function Form({ local, setLocal }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8080/local`, {
+      const response = await fetch(url, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
