@@ -38,8 +38,8 @@
   --nav-background: black;
   --text-primary: #f3f3f1;
   --recurring-text: #eff0ec;
-  --text-secondary: #e8c0e8;
-  --accent: #d2e823;
+  --text-secondary: #d2e823;
+  --accent: #676b5f;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red--dark: #780016;
@@ -47,11 +47,14 @@
   --border: #f3f3f1;
   --border-secondary: #1e2330;
   --button-primary: #1e2330;
-  --button-primary-hover: #eff0ec;
+  --button-primary-hover: black;
   --button-primary-text: #f3f3f1;
-  --button-secondary: #1e2330;
-  --button-secondary-hover: black;
+  --button-secondary: black;
+  --button-secondary-hover: #1e2330;
   --button-secondary-text: #e2bae3;
+  --button-bright: #1e2330;
+  --button-bright-hover: #d2e823;
+  --button-bright-text: #e8c0e8;
 }
 
 html,
@@ -91,7 +94,7 @@ body {
 
 .bright-bttn {
   background-color: var(--button-bright);
-  color: var(--text-primary);
+  color: var(--button-secondary-text);
   font-family: "Montserrat", sans-serif;
   margin-bottom: 3rem;
   padding: 1.3rem 2rem;
@@ -128,7 +131,7 @@ body {
 }
 
 .section-title-pink {
-  color: var(--accent);
+  color: var(--red--light);
   display: inline-block;
   font-size: 2.5em;
   margin: 0.8em;

@@ -34,7 +34,7 @@
   flex-direction: column;
   justify-content: center;
   margin: 0.8rem;
-  gap: 0.3em;
+  gap: 0.4em;
 }
 
 .cat-nameCity > p {
@@ -55,7 +55,7 @@
 
 .cat-label {
   background-color: var(--button-primary);
-  color: var(--accent);
+  color: var(--red--light);
   border-radius: 25px;
   padding: 0.5em;
   text-align: center;
@@ -75,11 +75,11 @@
 }
 
 .postDiv:hover {
-  border: 2px solid var(--accent);
-  /*  background-color: var(--accent); 
+  border: 4px solid var(--accent);
+  /*background-color: var(--accent);
   color: var(--text-secondary);*/
   border-radius: 25px;
-  /* box-shadow: 0 0 50px var(--accent); */
+  /*box-shadow: 0 0 50px var(--accent); */
 }
 
 .absolute {

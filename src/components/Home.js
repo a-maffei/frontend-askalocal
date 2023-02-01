@@ -207,9 +207,12 @@ const Home = ({ input, setInput }) => {
       <div className="home-cont-green" id="aboutus-section">
         <h2 className="section-title-green">About us</h2>
         <h4 className="paragraph-title-green">
-          We're web developers hailing from different parts of Europe. <br></br>
+          We're web developers coming from all around Europe and speaking a
+          total of 7 languages. <br></br>
           We know how it feels to move to a new country, and how important it is
-          to help newcomers feel at home.
+          to help newcomers feel at home. <br></br>
+          <br></br>We built this website using: React, Node.js, Express,
+          MongoDB, Mongoose, and Cloudinary.
         </h4>
       </div>
       <AboutUs />

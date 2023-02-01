@@ -16,8 +16,8 @@
   align-items: center;
   justify-content: flex-start;
   width: 25%;
-  gap: 1em;
-  background-color: #1e2330;
+  gap: 0.3em;
+  /* background-color: #1e2330 */
   color: #e8c0e8;
 }
 
@@ -31,6 +31,7 @@
   border-radius: 50%;
   text-align: center;
   font-size: 1.5em;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -44,6 +45,7 @@
 }
 
 .us-social {
+  margin-top: 1em;
   display: flex;
   gap: 1em;
 }

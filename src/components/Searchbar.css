@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.5em;
   margin: 4em 0 1.5em;
   width: 60%;
 }
@@ -24,7 +23,7 @@
   background-color: var(--background);
   color: var(--text-primary);
   border: none;
-  width: 100%;
+  width: 85%;
   border-radius: 0 5px 5px 0;
   padding: 0.5em;
   font-size: 1em;
@@ -41,7 +40,7 @@
   text-align: left;
   font-size: 1.1em;
   font-weight: 500;
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
   border-radius: 5px;
   width: 8em;
   height: 3rem;
