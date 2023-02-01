@@ -30,7 +30,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("pic", selectedFile);
 
     axios
-      .post(url2, formData, {
+      .post(url, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },

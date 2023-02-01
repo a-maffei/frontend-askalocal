@@ -11,7 +11,7 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(url2, {
+    const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
