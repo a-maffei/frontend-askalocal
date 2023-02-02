@@ -76,7 +76,8 @@
 }
 
 .postDiv:hover {
-  background-color: var(--accent);
+  background-color: var(--button-primary);
+  color: var(--button-primary-text);
   /*color: var(--text-secondary);*/
   border-radius: 25px;
   /*box-shadow: 0 0 50px var(--accent); */

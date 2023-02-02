@@ -1,6 +1,8 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
-import alessandra from "./pics/alessandra.jpg";
+import alessandra from "./pics/alessandra.jpeg";
+import timon from "./pics/timon.jpeg";
+import antonio from "./pics/antonio.jpeg";
 import "./AboutUs.css";
 
 export default function AboutUs() {
@@ -27,7 +29,7 @@ export default function AboutUs() {
           </div>
         </div>
         <div className="us-individual-container">
-          <img className="us-pic" src={alessandra}></img>
+          <img className="us-pic" src={antonio}></img>
           <h5 className="us-name paragraph-title-green">Antonio</h5>
           <h6 className="us-city paragraph-title-green">Stuttgart</h6>
           <div className="us-social">
@@ -46,7 +48,7 @@ export default function AboutUs() {
           </div>
         </div>
         <div className="us-individual-container">
-          <img className="us-pic" src={alessandra}></img>
+          <img className="us-pic" src={timon}></img>
           <h5 className="us-name paragraph-title-green">Timon</h5>
           <h6 className="us-city paragraph-title-green">Berlin</h6>
           <div className="us-social">
