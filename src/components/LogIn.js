@@ -42,9 +42,15 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
   return (
     <div className="signupOuterDiv">
       <div className="alreadyDiv">
-        <Link to="/signup">
-          <button className="already">{"I don't have an account"}</button>
-        </Link>
+        {urlPath === "local" ? (
+          <Link to="/local-signup">
+            <button className="already">{"I don't have an account"}</button>
+          </Link>
+        ) : (
+          <Link to="/user-signup">
+            <button className="already">{"I don't have an account"}</button>
+          </Link>
+        )}
       </div>
       <fieldset className="signupField">
         <legend>
