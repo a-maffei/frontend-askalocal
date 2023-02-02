@@ -2,7 +2,11 @@
   display: none;
 }
 
+.starInactive,
+.star {
+  color: #d4af37;
+}
+
 .star {
   cursor: pointer;
-  transition: color 200ms;
 }

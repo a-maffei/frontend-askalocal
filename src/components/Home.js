@@ -38,7 +38,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (
@@ -120,28 +120,28 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <CircleFlag countryCode="at" height="40" />
           <CircleFlag countryCode="it" height="40" />
         </div>
-      <Searchbar
-        options={options}
-        setSelectedValue={setSelectedValue}
-        selectedValue={selectedValue}
-        searchedPosts={searchedPosts}
-        setSearchedPosts={setSearchedPosts}
-        input={input}
-        setInput={setInput}
-        filterFunction={filterCities}
-      /> 
-             
-      {posts.locals ? (
-        <PostDisplay
-          posts={cityPosts ? cityPosts : posts.locals}
-          category={category}
-          size={"small"}
-          link={"all"}
+        <Searchbar
+          options={options}
+          setSelectedValue={setSelectedValue}
+          selectedValue={selectedValue}
+          searchedPosts={searchedPosts}
+          setSearchedPosts={setSearchedPosts}
           input={input}
+          setInput={setInput}
+          filterFunction={filterCities}
         />
-      ) : (
-        ""
-      )}
+
+        {posts.locals ? (
+          <PostDisplay
+            posts={cityPosts ? cityPosts : posts.locals}
+            category={category}
+            size={"small"}
+            link={"all"}
+            input={input}
+          />
+        ) : (
+          ""
+        )}
       </div>
       <div className="home-cont-white" id="howitworks-section">
         <h2 className="section-title-black">How it works</h2>

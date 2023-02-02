@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./Starrating.css";
 
-const Starrating = ({ rating, setRating, total, active }) => {
+const Starrating = ({ rating, setRating, total, reactive }) => {
   const [hover, setHover] = useState(null);
 
   return (
     <div className="star-rating">
       {[...Array(total)].map((star, i) => {
         const ratingValue = i + 1;
-
         return (
-          <label>
-            {active ? (
+          <label key={i}>
+            {reactive ? (
               <>
                 <input
                   type="radio"
@@ -32,7 +31,7 @@ const Starrating = ({ rating, setRating, total, active }) => {
                 </span>
               </>
             ) : (
-              <span>
+              <span className="starInactive">
                 {ratingValue <= rating
                   ? String.fromCharCode(9733)
                   : String.fromCharCode(9734)}

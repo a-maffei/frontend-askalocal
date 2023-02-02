@@ -155,7 +155,7 @@ function App() {
                 />
               }
             />
-            <Route path="/local/:id" element={<LocalInfo />} />
+            <Route path="/local/:id" element={<LocalInfo user={user} />} />
 
             {/* Paths reserved for  locals */}
             <Route

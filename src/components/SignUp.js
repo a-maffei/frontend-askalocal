@@ -241,15 +241,15 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>
+        {error && (
+          <div
+            className="error"
+            style={{ color: "white", border: "2px solid red" }}
+          >
+            {error.response.data.error}
+          </div>
+        )}
       </fieldset>
-      {error && (
-        <div
-          className="error"
-          style={{ color: "white", border: "2px solid red" }}
-        >
-          {error.response.data.error}
-        </div>
-      )}
     </div>
   );
 };

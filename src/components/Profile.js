@@ -2,95 +2,72 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./LocalInfo.css";
+import Starrating from "./Starrating";
+import cat from "./categories.json";
 
 export default function Profile({ local }) {
-  console.log(local);
+  let keys = null;
 
   return (
     <div className="localDetailDiv">
-      {" "}
-      <h1>
-        {local?.firstname} {local?.lastname.charAt(0)}.
-      </h1>
       <div className="first-section">
         <img
           src={local?.pic}
           className="avatarBig"
           alt={`${local?.firstname}s Picture`}
         />
-        <div className="bio">
+        <div className="bioInfo">
+          <h1>
+            {local?.firstname} {local?.lastname.charAt(0)}.
+          </h1>
           <p>{local?.bio}</p>
         </div>
       </div>
-      <h2>{local?.firstname} Offers:</h2>
-      {/* {
-    ((keys = Object.keys(local?.categories)),
-    local.categories &&
-      keys?.map((element, i) => (
-        <div key={i} className="offersInnerDiv">
-          <h3 className="textstart">
-            {local.categories[element].category}
-          </h3>
-
-          <p className="textstart">
-            {local.categories[element].textfield}
-          </p>
-          <p className="textend">
-            {local.categories[element].price} €
-          </p>
-        </div>
-      )))
-  } */}
       <div className="offers">
-        {local?.categories.appointmentP.textfield && (
-          <div className="offersInnerDiv">
-            <h3 className="textstart">
-              {local?.categories.appointmentP.category}
-            </h3>
-            <p className="textstart">
-              {local?.categories.appointmentP.textfield}
-            </p>
-            <p className="textend">{local?.categories.appointmentP.price} €</p>
-          </div>
-        )}
-        {local?.categories.callP.textfield && (
-          <div className="offersInnerDiv">
-            <h3 className="textstart">{local?.categories.callP.category}</h3>
-            <p className="textstart">{local?.categories.callP.textfield}</p>
-            <p className="textend">{local?.categories.callP.price} €</p>
-          </div>
-        )}
-        {local?.categories.emailP.textfield && (
-          <div className="offersInnerDiv">
-            <h3 className="textstart">{local?.categories.emailP.category}</h3>
-            <p className="textstart">{local?.categories.emailP.textfield}</p>
-            <p className="textend">{local?.categories.emailP.price} €</p>
-          </div>
-        )}
-        {local?.categories.flatP.textfield && (
-          <div className="offersInnerDiv">
-            <h3 className="textstart">{local?.categories.flatP.category}</h3>
-            <p className="textstart">{local?.categories.flatP.textfield}</p>
-            <p className="textend">{local?.categories.flatP.price} €</p>
-          </div>
-        )}
-        {local?.categories.interviewP.textfield && (
-          <div className="offersInnerDiv">
-            <h3 className="textstart">
-              {local?.categories.interviewP.category}
-            </h3>
-            <p className="textstart">
-              {local?.categories.interviewP.textfield}
-            </p>
-            <p className="textend">{local?.categories.interviewP.price} €</p>
-          </div>
-        )}
-        {local?.categories.serviceP.textfield && (
-          <div className="offersInnerDiv">
-            <h3 className="textstart">{local?.categories.serviceP.category}</h3>
-            <p className="textstart">{local?.categories.serviceP.textfield}</p>
-            <p className="textend">{local?.categories.serviceP.price} €</p>
-          </div>
+        {
+          ((keys = Object.keys(local?.categories)),
+          local.categories &&
+            keys?.map((element, i) => (
+              <div key={i} className="offersInnerDiv">
+                <h3 className="textstart">{cat[element]}</h3>
+                <p className="textstart">
+                  {local.categories[element].textfield}
+                </p>
+                <p className="textend">{local.categories[element].price} €</p>
+              </div>
+            )))
+        }
+      </div>
+      <div className="review">
+        <div className="reviews">
+          <h2>
+            Rating{" "}
+            {local.ratings?.length > 0
+              ? Math.round(
+                  (local.ratings?.reduce((a, b) => a + b, 0) /
+                    local.ratings?.length) *
+                    10
+                ) / 10
+              : ""}{" "}
+            {String.fromCharCode(9733)}
+          </h2>
+        </div>
+        {local.reviews?.length > 0 ? (
+          <ul className="starsList">
+            {local.reviews?.map((review, index) => (
+              <li className="starsListLi" key={index}>
+                {review[0]}
+                {review[1]}
+                <Starrating
+                  rating={local.ratings[index]}
+                  total={5}
+                  reactive={false}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          ""
         )}
       </div>
     </div>

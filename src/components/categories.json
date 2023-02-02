@@ -1,8 +1,8 @@
 {
-  "appointmentP": "Official appointments",
-  "callP": "Phone calls",
-  "emailP": "Emails review",
-  "flatP": "Flat viewings",
+  "appointmentP": "Official appointment",
+  "callP": "Phone call",
+  "emailP": "Email review",
+  "flatP": "Flat viewing",
   "interviewP": "Job search",
-  "serviceP": "Service providers"
+  "serviceP": "Service provider"
 }

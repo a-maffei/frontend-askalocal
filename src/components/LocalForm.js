@@ -3,7 +3,6 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
 import "./LocalForm.css";
 
-
 export default function Form({ local, setLocal }) {
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
@@ -196,6 +195,7 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setEmailPrice(e.target.value)}
               disabled={!emailChecked}
               className="price"
+              min="0"
             />
           </div>
           <div>
@@ -219,6 +219,7 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setPhoneCallsPrice(e.target.value)}
               disabled={!phoneCallsChecked}
               className="price"
+              min="0"
             />
           </div>
           <div>
@@ -242,6 +243,7 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setFlatViewPrice(e.target.value)}
               disabled={!flatViewChecked}
               className="price"
+              min="0"
             />
           </div>
 
@@ -266,6 +268,7 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setAppointmentsPrice(e.target.value)}
               disabled={!appointmentsChecked}
               className="price"
+              min="0"
             />
           </div>
           <div>
@@ -289,6 +292,7 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setServicePrice(e.target.value)}
               disabled={!serviceChecked}
               className="price"
+              min="0"
             />
           </div>
           <div>
@@ -312,6 +316,7 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setInterviewsPrice(e.target.value)}
               disabled={!interviewsChecked}
               className="price"
+              min="0"
             />
           </div>
           <div>

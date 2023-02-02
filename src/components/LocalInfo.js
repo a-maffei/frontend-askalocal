@@ -4,13 +4,16 @@ import Profile from "./Profile";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./LocalInfo.css";
+import Starrating from "./Starrating";
 
-export default function LocalInfo() {
+export default function LocalInfo({ user }) {
   // const { id } = useParams()
   const { id } = useParams();
   const [local, setLocal] = useState([]);
   const [review, setReview] = useState("");
   const [error, setError] = useState(null);
+  const [rating, setRating] = useState(0);
+  const [starError, setStarError] = useState(null);
   let keys = null;
   const navigate = useNavigate();
 
@@ -28,14 +31,32 @@ export default function LocalInfo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (rating === 0) {
+      setStarError("Please give a star rating");
+      return;
+    }
+    if (!user) {
+      setStarError("Please login");
+      return;
+    }
+    setStarError(null);
 
     axios
-      .post(url, {
+      .post(url2 + "/review", {
         review,
+        rating,
       })
       .then((res) => {
-        setLocal({ ...local, reviews: [...local.reviews, review] });
+        setLocal({
+          ...local,
+          reviews: [
+            ...local.reviews,
+            [`${user.firstname} ${user.lastname.charAt(0)}.`, review],
+          ],
+          ratings: [...local.ratings, rating],
+        });
         setReview("");
+        setRating(0);
       })
       .catch((err) => console.error(err));
   };
@@ -49,7 +70,7 @@ export default function LocalInfo() {
   console.log("HERE", local);
 
   return (
-    <div className="home">
+    <div className="localDiv">
       {local.categories ? (
         <>
           <Profile local={local} />{" "}
@@ -66,20 +87,6 @@ export default function LocalInfo() {
         ""
       )}
       <div>
-        <div className="reviews">
-          <h2>Reviews</h2>
-        </div>
-        <div className="review">
-          <ul>
-            {local.reviews?.map((review, index) => (
-              <li key={index}>
-                user name
-                <br />
-                {review}
-              </li>
-            ))}
-          </ul>
-        </div>
         <form onSubmit={handleSubmit}>
           <div className="reviews">
             <label>
@@ -87,8 +94,22 @@ export default function LocalInfo() {
               <textarea
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
+                required
               />
             </label>
+            <Starrating
+              rating={rating}
+              setRating={setRating}
+              total={5}
+              reactive={true}
+            />
+            {starError ? (
+              <p>
+                <b>{starError}</b>
+              </p>
+            ) : (
+              ""
+            )}
             <button className="button-review" type="submit">
               Submit
             </button>

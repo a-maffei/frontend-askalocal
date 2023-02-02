@@ -1,7 +1,15 @@
+.localDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .avatarBig {
-  max-height: 20rem;
+  max-height: 18rem;
+  max-width: 18rem;
   border-radius: 25%;
-  padding: 1rem;
+  /* padding: 1rem; */
+  margin: 1.5rem 3rem;
 }
 
 .localDetailDiv {
@@ -9,20 +17,22 @@
   color: var(--text-primary);
   width: 48rem;
   border-radius: 25px;
-  margin: 3vh;
+  margin: 4rem;
   padding: 1rem;
   text-align: center;
+  /* margin-top: 4rem; */
 }
 
-.bio {
-  margin: 0 2rem 2rem 2rem;
+.bioInfo {
+  /* margin: 0 3rem 0 1.5rem; */
+  margin: 1.5rem 3rem 1.5rem 0;
   text-align: justify;
 }
 
 .offers {
   display: flex;
   flex-direction: column;
-  padding: 0 3rem 3rem 3rem;
+  padding: 0 3rem;
 }
 
 .offersInnerDiv {
@@ -31,10 +41,27 @@
   align-items: center;
 }
 
+.first-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 .textend {
   text-align: end;
 }
 
 .textstart {
   text-align: start;
+}
+
+.starsList {
+  background-color: var(--background);
+  border-radius: 5px;
+  overflow-y: scroll;
+  height: 7rem;
+}
+
+.starsListLi {
+  display: flex;
+  justify-content: space-between;
 }
