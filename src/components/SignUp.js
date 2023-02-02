@@ -29,17 +29,17 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("email", email.current.value);
-    formData.append("password", password.current.value);
-    formData.append("firstname", firstname.current.value);
-    formData.append("lastname", lastname.current.value);
-    formData.append("phone", phone.current.value);
-    formData.append("city", city.current.value);
-    formData.append("isComplete", false);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("firstname", firstname);
+    formData.append("lastname", lastname);
+    formData.append("phone", phone);
+    formData.append("city", city);
     formData.append("pic", selectedFile);
+    formData.append("isComplete", false);
 
     axios
-      .post(url2, formData, {
+      .post(url, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },
