@@ -1,5 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
+import { Link } from "react-router-dom";
 import "./LocalInfo.css";
 
 export default function YourInfo({ local }) {
@@ -15,6 +16,13 @@ export default function YourInfo({ local }) {
         in {local.city}.
       </h4>
       <Profile local={local} />{" "}
+      <h3>
+        Curious about the rest of our locals community in your city and all over
+        the world?
+      </h3>
+      <Link to="/categories">
+        <button>Discover our offering</button>
+      </Link>
     </div>
   );
 }
