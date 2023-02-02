@@ -3,6 +3,8 @@ import PostDisplay from "./PostDisplay";
 import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
 import cat from "./categories.json";
+import options from "./options.json";
+import "./Categories.css";
 
 const Categories = ({ input, setInput, selectedValue, setSelectedValue }) => {
   const [posts, setPosts] = useState(null);
@@ -62,7 +64,7 @@ const Categories = ({ input, setInput, selectedValue, setSelectedValue }) => {
   };
 
   return (
-    <div className="home">
+    <div className="categoriesBigDiv">
       {/* <div className="homeDiv"> */}
       <Searchbar
         options={options}

@@ -62,7 +62,7 @@ const Categories = ({ input, setInput }) => {
   };
 
   return (
-    <div className="home">
+    <div className="categoriesBigDiv">
       <Searchbar
         options={options}
         searchedPosts={searchedPosts}

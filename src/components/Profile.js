@@ -47,13 +47,13 @@ export default function Profile({ local }) {
                 (local.ratings?.reduce((a, b) => a + b, 0) /
                   local.ratings?.length) *
                   10
-              ) / 10}
+              ) / 10}{" "}
               {String.fromCharCode(9733)}
             </h2>
           </div>
-          <ul className="starsList">
+          <div className="starsList">
             {local.reviews?.map((review, index) => (
-              <li className="starsListLi" key={index}>
+              <div className="starsListLi" key={index}>
                 <div className="offersInnerDiv">
                   <p className="textstart reviewer">{review[0]}</p>
                   <p className="textstart reviewText">{review[1]}</p>
@@ -65,9 +65,9 @@ export default function Profile({ local }) {
                     />
                   </div>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       ) : (
         ""

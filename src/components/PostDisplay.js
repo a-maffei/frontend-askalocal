@@ -56,7 +56,24 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
 
   return (
     <div className="post-macro-cont">
-      <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
+      {size !== "home" ? (
+        <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
+          <div className="absolute bright-bttn">
+            {link === "all" ? `Category Overview` : `${cat[category]}`}
+          </div>
+        </Link>
+      ) : (
+        ""
+      )}
+      <div
+        className={
+          size === "small"
+            ? "postDisplay"
+            : size === "home"
+            ? "postDisplayHome"
+            : "postDisplayBig"
+        }
+      >
         {keys?.map((element, i) =>
           posts[element]?.categories &&
           (input?.length < 1 ||

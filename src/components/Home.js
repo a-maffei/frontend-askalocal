@@ -135,7 +135,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <PostDisplay
             posts={cityPosts ? cityPosts : posts.locals}
             category={category}
-            size={"small"}
+            size={"home"}
             link={"all"}
             input={input}
           />
@@ -154,7 +154,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
         </h4>
         <div className="card-macro-cont">
           <div className="cardOuterDiv">
-            <Link to="/categories/emailp" className="categoriesDiv">
+            <Link to="/categories/emailP" className="categoriesDiv">
               <div className="cat-container">
                 <img src={cat4} className="categoriesPic" alt="Email Reviews" />
                 <p>Email Reviews</p>
@@ -162,7 +162,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/phonep" className="categoriesDiv">
+            <Link to="/categories/callP" className="categoriesDiv">
               <div className="cat-container">
                 <img src={cat5} className="categoriesPic" alt="Phone Calls" />
                 <p>Phone Calls</p>
@@ -170,7 +170,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/flatp" className="categoriesDiv">
+            <Link to="/categories/flatP" className="categoriesDiv">
               <div className="cat-container">
                 <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
                 <p>Flat Viewings</p>
@@ -178,7 +178,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/appointmentsp" className="categoriesDiv">
+            <Link to="/categories/appointmentP" className="categoriesDiv">
               <div className="cat-container">
                 {" "}
                 <img src={cat3} className="categoriesPic" alt="Appointments" />
@@ -187,7 +187,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/servicep" className="categoriesDiv">
+            <Link to="/categories/serviceP" className="categoriesDiv">
               <div className="cat-container">
                 <img
                   src={cat2}
@@ -199,7 +199,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/interviewp" className="categoriesDiv">
+            <Link to="/categories/interviewP" className="categoriesDiv">
               <div className="cat-container">
                 <img src={cat7} className="categoriesPic" alt="Job Search" />
                 <p>Interview practice</p>

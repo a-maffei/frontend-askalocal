@@ -56,7 +56,6 @@
 
 .starsList {
   background-color: var(--background);
-  border-radius: 5px;
   overflow-y: scroll;
   max-height: 6rem;
 }
@@ -66,7 +65,7 @@
 }
 
 .review {
-  padding: 0 3rem 0 0;
+  padding: 0 3rem;
 }
 
 .reviewText {
@@ -80,4 +79,8 @@
 
 .starsList p {
   margin: 0;
+}
+
+.review ul {
+  /* margin: 0 */
 }

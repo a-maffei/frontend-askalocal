@@ -1,7 +1,7 @@
 .home-search-wrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   margin: 4em 0 1.5em;
   width: 60%;
 }
