@@ -95,13 +95,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.7s ease-in-out;
+  /* transition: transform 0.7s ease-in-out; */
 }
 
 .categoriesDiv:hover {
-  transform: rotate(-2deg);
+  /* transform: rotate(-3deg); */
+  animation: wobble 1.5s infinite normal linear;
   background-color: var(--accent);
   box-shadow: 0px 0px 6px var(--border);
+}
+
+@keyframes wobble {
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
 }
 
 .categories {

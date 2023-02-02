@@ -62,7 +62,8 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
           (input?.length < 1 ||
             posts[element].categories[category].textfield
               .toLowerCase()
-              .includes(input.toLowerCase())) ? (
+              .includes(input.toLowerCase())) &&
+          posts[element].categories[category].textfield?.length > 0 ? (
             <Link
               key={i}
               className="postDiv"

@@ -172,6 +172,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               type="email"
               id="email"
               name="email"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
               className="signupInput"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

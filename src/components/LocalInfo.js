@@ -43,7 +43,7 @@ export default function LocalInfo({ user }) {
 
     axios
       .post(url2 + "/review", {
-        review,
+        review: [`${user.firstname} ${user.lastname.charAt(0)}.`, review],
         rating,
       })
       .then((res) => {

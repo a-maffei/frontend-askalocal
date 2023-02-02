@@ -38,38 +38,47 @@ export default function Profile({ local }) {
             )))
         }
       </div>
-      <div className="review">
-        <div className="reviews">
-          <h2>
-            Rating{" "}
-            {local.ratings?.length > 0
-              ? Math.round(
-                  (local.ratings?.reduce((a, b) => a + b, 0) /
-                    local.ratings?.length) *
-                    10
-                ) / 10
-              : ""}{" "}
-            {String.fromCharCode(9733)}
-          </h2>
-        </div>
-        {local.reviews?.length > 0 ? (
+      {local.ratings?.length > 0 ? (
+        <div className="review">
+          <div className="reviews">
+            <h2>
+              Rating{" "}
+              {Math.round(
+                (local.ratings?.reduce((a, b) => a + b, 0) /
+                  local.ratings?.length) *
+                  10
+              ) / 10}
+              {String.fromCharCode(9733)}
+            </h2>
+          </div>
           <ul className="starsList">
             {local.reviews?.map((review, index) => (
               <li className="starsListLi" key={index}>
-                {review[0]}
-                {review[1]}
-                <Starrating
-                  rating={local.ratings[index]}
-                  total={5}
-                  reactive={false}
-                />
+                <div className="offersInnerDiv">
+                  <p className="textstart reviewer">{review[0]}</p>
+                  <p className="textstart reviewText">{review[1]}</p>
+                  <div className="textend">
+                    <Starrating
+                      rating={local.ratings[index]}
+                      total={5}
+                      reactive={false}
+                    />
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
-        ) : (
-          ""
-        )}
-      </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
+}
+
+{
+  /*  {local.reviews?.length > 0 ? (
+   ) : (
+           ""
+         )} */
 }

@@ -15,7 +15,7 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: email.current.value,
+        email: email.current.value.toLowerCase(),
         password: password.current.value,
       }),
     });
@@ -69,7 +69,7 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
               ref={email}
               placeholder="eMail"
               required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
             />
 
             <label className="signupLabel" htmlFor="password">

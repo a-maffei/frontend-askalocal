@@ -58,10 +58,26 @@
   background-color: var(--background);
   border-radius: 5px;
   overflow-y: scroll;
-  height: 7rem;
+  max-height: 6rem;
 }
 
 .starsListLi {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+}
+
+.review {
+  padding: 0 3rem 0 0;
+}
+
+.reviewText {
+  font-style: italic;
+}
+
+.reviewer {
+  font-weight: bold;
+  text-align: center;
+}
+
+.starsList p {
+  margin: 0;
 }
