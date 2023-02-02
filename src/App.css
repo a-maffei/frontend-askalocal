@@ -14,8 +14,7 @@
   --nav-background: white;
   --text-primary: #1e2330;
   --recurring-text: #676b5f;
-  --text-secondary: #d9faff;
-  --accent: #e8c0e8;
+  --text-secondary: #d2e823;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red-dark: #49000d;
@@ -64,7 +63,7 @@ body {
 }
 
 body {
-  background: #00204a;
+  background: #254f1a;
   /* linear-gradient(-45deg, #000000, #01320f, #093342, #012b22); */
   background-size: 500% 500%;
   animation: wsBackground 30s ease infinite;
