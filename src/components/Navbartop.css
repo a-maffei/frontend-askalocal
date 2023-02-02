@@ -2,48 +2,63 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  background-color: var(--background);
+  background-color: var(--nav-background);
   color: var(--text-primary);
-  font-size: 1em;
+  font-weight: 500;
+  font-size: 0.9em;
   position: sticky;
   left: 5vw;
-  top: 3rem;
-  width: 90vw;
-  height: 5rem;
+  top: 1rem;
+  width: 90%;
+  height: 6rem;
   opacity: 95%;
   z-index: 10;
   border-radius: 5rem;
-  box-shadow: 0px 0px 15px var(--border);
+
+  /* box-shadow: 0px 0px 15px var(--border); */
 }
 
 .navbarTwo {
   display: flex;
+  margin-right: 2rem;
 }
 
 .imgNavbar {
-  height: 50px;
+  width: 70%;
+  fill: var(--nav-background);
+  margin-left: 2rem;
+}
+
+.nav-logo-link:visited,
+:active {
+  fill: var(--nav-background);
 }
 
 .navLinks {
-  font-style: italic;
-  font-size: 2em;
-  padding: 2px 10px;
+  font-size: 1.1rem;
+  padding: 1rem;
   color: var(--text-primary);
   text-decoration: none;
-  position: relative;
+  /* position: relative; */
   border-radius: 25px;
-  margin: 0 10px;
-  background-color: var(--background);
+  /*  background-color: var(--background); */
 }
 
 .navLinks:hover,
 .logo:hover {
-  color: var(--text-secondary);
   text-decoration: none;
-  background-color: var(--accent);
-  box-shadow: 0 0 50px var(--accent);
+  background-color: var(--button-secondary-hover);
+  border-radius: 10px;
   cursor: pointer;
+}
+
+.nav-local-bttn {
+  background-color: var(--button-primary);
+  font-size: 1.1rem;
+  color: var(--button-primary-text);
+  padding: 1rem;
+  border-radius: 25px;
+  margin: 0 1rem;
 }
 
 #toggledark {
@@ -74,7 +89,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--accent);
+  background-color: var(--text-secondary);
   border-radius: 8px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
@@ -104,8 +119,12 @@ input:checked + .slider:before {
   transform: translateY(-13px);
 }
 
-a.active {
-  color: var(--text-secondary);
+/* a.active {
+  color: var(--text-primary);
+} */
+
+a {
+  color: var(--text-primary);
 }
 
 #main-nav-drop-cont {
@@ -116,16 +135,28 @@ a.active {
 
 #main-nav-drop-menu {
   position: absolute;
-  font-size: 0.8em;
-  top: 2.5rem;
+  font-size: 1em;
+  top: 4rem;
   right: 0.5rem;
   list-style-type: none;
-  border: 1px solid var(--border);
-  background-color: var(--background);
+  border-radius: 10px;
+  border: none;
+  background-color: var(--button-primary);
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
 }
 
 .nav-local-drop {
-  padding: 0.4em;
+  padding: 0.5em 2em 0.5em 0.5em;
+  color: #f3f3f1;
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.nav-local-drop:hover {
+  color: var(--green-light);
 }

@@ -1,46 +1,86 @@
+.post-macro-cont {
+  width: 60%;
+}
+
 .postDisplay {
   background-color: var(--background);
-  width: 48rem;
-  border-radius: 25px;
-  margin: 2rem;
-  padding: 1rem;
+  width: 100%;
+  border-radius: 5px;
   overflow-y: scroll;
-  height: 35vh;
-  padding-top: 4rem;
+  height: 50vh;
 }
 
 .postDisplayBig {
   background-color: var(--background);
+  border: 1px solid var(--border);
   width: 48rem;
   border-radius: 25px;
   margin: 2rem;
   padding: 1rem;
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
 
-.avatarSmall {
-  max-height: 100px;
-  border-radius: 25%;
+.cat-avatarSmall {
+  height: 8em;
+  width: 8em;
+  border-radius: 25px;
+  margin-left: 0;
+}
+
+.cat-nameCity {
+  height: 50;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.8rem;
+  gap: 0.4em;
+}
+
+.cat-nameCity > p {
+  margin: 0;
+}
+
+.cat-message {
+  width: 50%;
+  font-style: italic;
+  margin: 1rem;
+}
+
+.cat-price {
+  font-size: 1.2em;
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+}
+
+.cat-label {
+  background-color: var(--button-primary);
+  color: var(--red--light);
+  border-radius: 25px;
+  padding: 0.5em;
+  text-align: center;
+  font-weight: 600;
+  margin: none;
 }
 
 .postDiv {
   display: flex;
-  margin: 10px;
-
+  width: 90%;
+  background-color: var(--background);
   color: var(--text-primary);
-  justify-content: space-between;
-  align-content: flex-start;
+  justify-content: flex-start;
   align-items: center;
   text-decoration: none;
+  margin: 0.5em auto;
 }
 
 .postDiv:hover {
-  /* border: 2px solid var(--accent); */
-  background-color: var(--accent);
-  color: var(--text-secondary);
+  background-color: var(--button-primary);
+  color: var(--button-primary-text);
+  /*color: var(--text-secondary);*/
   border-radius: 25px;
-  /* background-color: aqua; */
-  box-shadow: 0 0 50px var(--accent);
+  /*box-shadow: 0 0 50px var(--accent); */
 }
 
 .absolute {
@@ -48,7 +88,8 @@
   /* top: 0; */
 }
 
-.categoryLink {
+
+ /* .categoryLink {
   background-color: aqua;
   padding: 1rem;
   border-radius: 25px;
@@ -60,4 +101,4 @@
   background-color: var(--background);
   color: var(--accent);
   box-shadow: 0 0 50px var(--accent);
-}
+}*/

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
 import "./LocalForm.css";
 
+
 export default function Form({ local, setLocal }) {
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");

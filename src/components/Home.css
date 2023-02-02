@@ -1,24 +1,91 @@
-.home {
+/* .home {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5rem;
-}
+} */
 
 .homeDiv {
-  color: var(--text-primary);
-  background-color: var(--background);
-  width: 45vw;
-  border-radius: 25px;
-  text-align: center;
-  margin-top: 2rem;
+  color: var(--text-secondary);
+  width: 70%;
+  margin: 4rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.sample {
-  color: var(--text-primary);
-  background-color: var(--background);
-  padding: 15px;
-  border-radius: 10px;
+.homeDiv-img {
+  width: 40%;
+}
+
+.homeDiv-img > img {
+  width: 80%;
+}
+
+.homeDiv-titles {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.homeDiv-titles > h2 {
+  font-size: 2.6em;
+  font-weight: 800;
+}
+
+.homeDiv-titles > h3 {
+  font-size: 1.6em;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.bright-bttn-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-arrow {
+  color: var(--button-bright);
+  font-size: 1.8em;
+  margin: auto;
+  display: inline-block;
+}
+
+.homepage-arrow:hover {
+  color: var(--green-light);
+  transform: translateY(0.2rem);
+  cursor: pointer;
+}
+
+.home-cont-pink,
+.home-cont-white,
+.home-cont-green {
+  background-color: #4c1a4c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.home-flags-cont {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.home-flag {
+  width: 5%;
+}
+
+.card-macro-cont {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 70%;
+  margin: 0;
 }
 
 .categoriesDiv {
@@ -39,10 +106,9 @@
 }
 
 .categoriesDiv:hover {
-  transform: scale(1.1) rotate(-5deg);
+  transform: rotate(-2deg);
   background-color: var(--accent);
-  color: var(--text-secondary);
-  box-shadow: 0px 0px 15px var(--border);
+  box-shadow: 0px 0px 6px var(--border);
 }
 
 .categories {
@@ -53,14 +119,29 @@
 }
 
 .categoriesPic {
-  max-width: 150px;
-  max-height: 150px;
+  height: 10em;
+  max-width: 80%;
+}
+
+.home-cont-white {
+  background-color: var(--background);
+  padding: 3rem;
+}
+
+.home-cont-green {
+  background-color: #264f1a;
+  padding: 3rem;
 }
 
 .flex-row {
   display: flex;
+  width: 70%;
+  margin: 0 auto;
   flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
 }
 
 .topMargin {
@@ -76,4 +157,15 @@
   width: 13rem;
   height: 15rem;
   margin: 1.5rem;
+}
+
+.cat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cat-container {
+  font-size: 1.1em;
 }

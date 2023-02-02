@@ -11,6 +11,7 @@ import Categories from "./components/Categories";
 import PostDisplay from "./components/PostDisplay";
 import CategoryHome from "./components/CategoryHome";
 import LocalForm from "./components/LocalForm";
+import Footer from "./components/Footer";
 import YourInfo from "./components/YourInfo";
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
+
+      <div className="page-container">
+        <div className="content-wrapper">
       <Navbartop
         switchTheme={switchTheme}
         user={user}
@@ -52,7 +56,7 @@ function App() {
             !user ? (
               !local ? (
                 <Home
-                  searchedPosts={searchedPosts}
+                searchedPosts={searchedPosts}
                   setSearchedPosts={setSearchedPosts}
                   input={input}
                   setInput={setInput}

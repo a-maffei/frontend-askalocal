@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Searchbar from "./Searchbar";
+import { CircleFlag } from "react-circle-flags";
+import { GoChevronDown } from "react-icons/go";
+import { HashLink } from "react-router-hash-link";
+import locals from "./pics/local_1.png";
 import PostDisplay from "./PostDisplay";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
@@ -10,6 +14,7 @@ import cat4 from "./svg/mail.svg";
 import cat5 from "./svg/reminder.svg";
 import cat6 from "./svg/resume.svg";
 import cat7 from "./svg/writer.svg";
+import AboutUs from "./AboutUs";
 
 const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   // const options = optionsImp;
@@ -43,7 +48,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
       <option value="Berlin">Berlin</option>
       <option value="Vienna">Vienna</option>
       <option value="Paris">Paris</option>
-      <option value="Rom">Rom</option>
+      <option value="Rom">Rome</option>
     </>
   );
 
@@ -89,9 +94,32 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   return (
     <div className="home">
       <div className="homeDiv">
-        <h1>Ask a Local</h1>
-        <h2>The best place to get help in a foreign country</h2>
+        <div className="homeDiv-titles">
+          <h2>New in a city where you don't speak the language?</h2>
+          <h3>Let the locals help you out.</h3>
+        </div>
+        <div className="homeDiv-img">
+          <img src={locals} />
+        </div>
       </div>
+      <div className="bright-bttn-cont">
+        <Link to="/user-signup" state="gi">
+          <button className="bright-bttn">Sign up for free</button>
+        </Link>
+        <HashLink to="/#search-section">
+          <GoChevronDown className="homepage-arrow" />
+        </HashLink>
+      </div>
+      <div id="search-section"></div>
+      <div className="home-cont-pink">
+        <h2 className="section-title-pink">You ask, they translate.</h2>
+        <div className="home-flags-cont">
+          <CircleFlag countryCode="de" height="40" />
+          <CircleFlag countryCode="fr" height="40" />
+          <CircleFlag countryCode="es" height="40" />
+          <CircleFlag countryCode="at" height="40" />
+          <CircleFlag countryCode="it" height="40" />
+        </div>
       <Searchbar
         options={options}
         setSelectedValue={setSelectedValue}
@@ -101,11 +129,8 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
         input={input}
         setInput={setInput}
         filterFunction={filterCities}
-      />
-      <Link to="/user-signup" state="gi" className="navLinks topMargin">
-        Signup
-      </Link>
-      {posts ? <h2 className="sample">Sample Offers</h2> : ""}
+      /> 
+             
       {posts.locals ? (
         <PostDisplay
           posts={cityPosts ? cityPosts : posts.locals}
@@ -117,52 +142,83 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
       ) : (
         ""
       )}
-      <div className="">
-        <div className="flex-row">
+      </div>
+      <div className="home-cont-white" id="howitworks-section">
+        <h2 className="section-title-black">How it works</h2>
+        <h4 className="paragraph-title-black">
+          Once you have an account, browse through our list of locals in your
+          new city. <br></br>When you find the one that suits your needs, you
+          can start chatting with them (in English) to agree on the details and
+          final price. Payment takes place on our platform, too. Then you're all
+          set!{" "}
+        </h4>
+        <div className="card-macro-cont">
           <div className="cardOuterDiv">
-            <Link to="/categories/emailP" className="categoriesDiv">
-              <img src={cat4} className="categoriesPic" alt="Email Reviews" />
-              <p>Email Reviews</p>
+            <Link to="/categories/emailp" className="categoriesDiv">
+              <div className="cat-container">
+                <img src={cat4} className="categoriesPic" alt="Email Reviews" />
+                <p>Email Reviews</p>
+              </div>
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/callP" className="categoriesDiv">
-              <img src={cat5} className="categoriesPic" alt="Phone Calls" />
-              <p>Phone Calls</p>
+            <Link to="/categories/phonep" className="categoriesDiv">
+              <div className="cat-container">
+                <img src={cat5} className="categoriesPic" alt="Phone Calls" />
+                <p>Phone Calls</p>
+              </div>
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/flatP" className="categoriesDiv">
-              <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
-              <p>Flat Viewings</p>
+            <Link to="/categories/flatp" className="categoriesDiv">
+              <div className="cat-container">
+                <img src={cat1} className="categoriesPic" alt="Flat Viewings" />
+                <p>Flat Viewings</p>
+              </div>
             </Link>
           </div>
-        </div>
-        <div className="flex-row">
           <div className="cardOuterDiv">
-            <Link to="/categories/appointmentP" className="categoriesDiv">
-              <img src={cat3} className="categoriesPic" alt="Appointments" />
+            <Link to="/categories/appointmentsp" className="categoriesDiv">
+              <div className="cat-container">
+                {" "}
+                <img src={cat3} className="categoriesPic" alt="Appointments" />
+              </div>
               <p>Appointments</p>
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/serviceP" className="categoriesDiv">
-              <img
-                src={cat2}
-                className="categoriesPic"
-                alt="Service Providers"
-              />
-              <p>Contact Service Providers</p>
+            <Link to="/categories/servicep" className="categoriesDiv">
+              <div className="cat-container">
+                <img
+                  src={cat2}
+                  className="categoriesPic"
+                  alt="Service Providers"
+                />
+                <p>Service Providers</p>
+              </div>
             </Link>
           </div>
           <div className="cardOuterDiv">
-            <Link to="/categories/interviewP" className="categoriesDiv">
-              <img src={cat7} className="categoriesPic" alt="Interview Help" />
-              <p>Help with Interviews</p>
+            <Link to="/categories/interviewp" className="categoriesDiv">
+              <div className="cat-container">
+                <img src={cat7} className="categoriesPic" alt="Job Search" />
+                <p>Interview practice</p>
+              </div>
             </Link>
           </div>
         </div>
       </div>
+      <div className="home-cont-green" id="aboutus-section">
+        <h2 className="section-title-green">About us</h2>
+        <h4 className="paragraph-title-green">
+          We're web developers coming from all around Europe. We know how it
+          feels to move to a new country, and how important it is to help
+          newcomers feel at home. <br></br>
+          <br></br>We built this website using: React, Node.js, Express,
+          MongoDB, Mongoose, and Cloudinary.
+        </h4>
+      </div>
+      <AboutUs />
     </div>
   );
 };

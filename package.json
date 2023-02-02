@@ -8,10 +8,14 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.4",
     "react": "^18.2.0",
+    "react-circle-flags": "^0.0.18",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-jwt": "^1.1.8",
     "react-router-dom": "^6.7.0",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",
+    "react-social-icons": "^5.15.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -37,5 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
+    "@webpack-cli/generators": "^3.0.1",
+    "webpack-cli": "^5.0.1"
   }
 }

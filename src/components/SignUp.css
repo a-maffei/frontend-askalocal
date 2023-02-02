@@ -91,9 +91,9 @@
   background-color: var(--text-secondary);
 }
 
-.signupLegend {
+/* .signupLegend {
   color: var(--text-secondary);
-}
+} */
 
 textarea {
   resize: vertical;

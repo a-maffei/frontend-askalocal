@@ -1,0 +1,18 @@
+.footer-container {
+  background-color: var(--nav-background);
+  color: var(--text-primary);
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*  position: absolute;
+  bottom: 0;
+  width: 100%; */
+}
+
+.footer-text {
+  font-weight: 500;
+  font-size: 0.8em;
+  display: inline-block;
+  margin: 0 auto;
+}

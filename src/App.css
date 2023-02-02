@@ -10,36 +10,173 @@
 }
 
 :root {
-  --background: ghostwhite;
-  --text-primary: Black;
-  --text-secondary: orange;
-  --accent: turquoise;
-  --border: #333;
-  --border-secondary: #fff;
+  --background: #f3f3f1;
+  --nav-background: #f3f3f1;
+  --text-primary: #1e2330;
+  --recurring-text: #676b5f;
+  --text-secondary: #d2e823;
+  --accent: #e8c0e8;
+  --green-light: #d2e823;
+  --green-dark: #254f1a;
+  --red-dark: #49000d;
+  --red--light: #e8c0e8;
+  --border: #1e2330;
+  --border-secondary: #f3f3f1;
+  --button-primary: #1e2330;
+  --button-primary-hover: Black;
+  --button-primary-text: #f3f3f1;
+  --button-secondary: #f3f3f1;
+  --button-secondary-hover: #eff0ec;
+  --button-secondary-text: #1e2330;
+  --button-bright: #d2e823;
+  --button-bright-hover: #1e2330;
+  --button-bright-text: #1e2330;
+  --button-bright-text-hover: #d2e823;
 }
 
 [data-theme="light"] {
   --background: black;
-  --text-primary: ghostwhite;
-  --text-secondary: orange;
-  --accent: turquoise;
-  --border: #fff;
-  --border-secondary: #333;
+  --nav-background: black;
+  --text-primary: #f3f3f1;
+  --recurring-text: #eff0ec;
+  --text-secondary: #d2e823;
+  --accent: #1e2330;
+  --green-light: #d2e823;
+  --green-dark: #254f1a;
+  --red--dark: #780016;
+  --border: #f3f3f1;
+  --border-secondary: #1e2330;
+  --button-primary: #1e2330;
+  --button-primary-hover: black;
+  --button-primary-text: #f3f3f1;
+  --button-secondary: black;
+  --button-secondary-hover: #1e2330;
+  --button-secondary-text: #e2bae3;
+  --button-bright: #1e2330;
+  --button-bright-hover: #f3f3f1;
+  --button-bright-text: #e8c0e8;
+  --button-bright: black;
+  --button-bright-hover: #1e2330;
+  --button-bright-text: #d2e823;
+  --button-bright-text-hover: #d2e823;
 }
 
 html,
 body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 body {
-  background: linear-gradient(-45deg, #000000, #01320f, #093342, #012b22);
+  background: #254f1a;
+  /* linear-gradient(-45deg, #000000, #01320f, #093342, #012b22); */
   background-size: 500% 500%;
   animation: wsBackground 30s ease infinite;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
 }
 
-@keyframes wsBackground {
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content-wrapper {
+  flex: 1;
+}
+
+.bttn-primary {
+  background-color: var(--button-primary);
+  padding: 1rem;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+.bttn-primary:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.bright-bttn {
+  background-color: var(--button-bright);
+  color: var(--button-bright-text);
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 1.5rem;
+  padding: 1.3rem 2rem;
+  border-radius: 40px;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.bright-bttn:hover {
+  background-color: var(--button-bright-hover);
+  color: var(--button-bright-text-hover);
+}
+
+.bright-bttn-cont {
+  display: flex;
+  justify-content: center;
+}
+
+.category-bttn {
+  background-color: var(--button-primary);
+  color: var(--button-primary-text);
+  padding: 1em;
+  font-size: 1.2em;
+  font-weight: 500;
+  border-radius: 25px;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+.category-bttn:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.section-title-pink {
+  color: var(--red--light);
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 0.8em;
+}
+
+.section-title-black {
+  color: var(--text-primary);
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 0.8em 0 0.5em;
+}
+
+.paragraph-title-black {
+  color: var(--text-primary);
+  display: inline-block;
+  font-size: 1.1em;
+  text-align: center;
+  width: 70%;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.section-title-green {
+  color: var(--green-light);
+  display: inline-block;
+  font-size: 2.3em;
+  margin: 0.8em 0 0.5em;
+}
+
+.paragraph-title-green {
+  color: var(--green-light);
+  display: inline-block;
+  font-size: 1.2em;
+  text-align: center;
+  width: 70%;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* @keyframes wsBackground {
   0% {
     background-position: 0% 50%;
   }
@@ -49,5 +186,4 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
-
+} */

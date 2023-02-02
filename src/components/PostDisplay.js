@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import img from "./pics/profile.png";
 import "./PostDisplay.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import cat from "./categories.json";
 import { useEffect } from "react";
 
@@ -54,6 +55,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   //   .includes("trans")
   // }, [input]);
 
+
   return (
     <div>
       <div>
@@ -75,20 +77,47 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
                 to={`/local/${posts[element]._id}`}
               >
                 {posts[element].pic ? (
-                  <img src={posts[element].pic} className="avatarSmall" />
+                  <div
+                    className="cat-avatarSmall"
+                    style={{
+                      backgroundImage: `url(${posts[element].pic})`,
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
                 ) : (
-                  <img src={img} className="avatarSmall" />
+                  <div
+                    className="cat-avatarSmall"
+                    style={{
+                      backgroundImage: `url(${img})`,
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
                 )}
-                <div className="nameCity">
-                  <b>
-                    <p>{posts[element].firstname}</p>
-                    <p>{posts[element].city}</p>
-                  </b>
+                {/*                 {posts[element].pic ? (
+                  <img src={posts[element].pic} className="cat-avatarSmall" />
+                ) : (
+                  <img src={img} className="cat-avatarSmall" />
+                )} */}
+                <div className="cat-nameCity">
+                  <p className="cat-name">
+                    <b>{posts[element].firstname} in</b>
+                  </p>{" "}
+                  <p className="cat-label">
+                    <b>{posts[element].city}</b>
+                  </p>
                 </div>
-                <p>
-                  {posts[element].categories[category].textfield.slice(0, 50)}
-                </p>
-                <p>{posts[element].categories[category].price} €</p>
+                <div className="cat-message">
+                  <p>
+                    "
+                    {posts[element].categories[category].textfield.slice(0, 50)}
+                    "
+                  </p>
+                </div>
+                <div className="cat-price">
+                  <p>
+                    <b>{posts[element].categories[category].price} €</b>
+                  </p>
+                </div>
               </Link>
             ) : (
               <div />

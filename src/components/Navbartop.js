@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ProfileDrop from "./ProfileDrop";
 import { useRef, useState, useEffect } from "react";
+import { NavHashLink } from "react-router-hash-link";
 import React from "react";
 import "./Navbartop.css";
-import image from "./pics/logo.png";
-
+import logo from "./svg/default-monochrome-black.svg";
+import { ReactComponent as Logo } from "./svg/default-monochrome-black.svg";
 const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
   const ref = useRef();
 
@@ -16,6 +17,10 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
       if (isMainMenuOpen && ref.current && !ref.current.contains(e.target)) {
         setIsMainMenuOpen(false);
       }
+
+      if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
     };
 
     document.addEventListener("mousedown", checkIfClickedOutside);
@@ -24,12 +29,20 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
       // Cleanup the event listener
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
-  }, [isMainMenuOpen]);
+  }, [isMainMenuOpen, isMenuOpen]);
 
   return (
     <div className="navbar">
-      <NavLink to="/" className="navLinks">
-        <img src={image} alt="PC" className="imgNavbar" />
+      {/*       <img
+        src={logo}
+        alt="PC"
+        className="imgNavbar"
+        style={{ textColor: "blue" }}
+      /> */}{" "}
+      <NavLink className="nav-logo-link" to="/">
+        <>
+          <Logo alt="PC" className="imgNavbar" />
+        </>
       </NavLink>
       <div className="navbarTwo">
         {user ? (
@@ -50,6 +63,23 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
           />
         ) : (
           <div>
+            <NavHashLink
+              to="/#howitworks-section"
+              state="how-it-works"
+              className="navLinks"
+              // etc...
+            >
+              How it works
+            </NavHashLink>
+            <NavHashLink
+              to="/#aboutus-section"
+              state="about-us"
+              className="navLinks"
+              // etc...
+            >
+              About us
+            </NavHashLink>
+
             <NavLink to="/user-signup" state="gi" className="navLinks">
               Signup
             </NavLink>
@@ -59,7 +89,7 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
             <button
               onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
               id="main-nav-drop-cont"
-              className="navLinks"
+              className="bttn-primary nav-local-bttn"
               ref={ref}
             >
               {" "}
@@ -77,7 +107,7 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
                     state="gi"
                     className="nav-local-drop"
                   >
-                    LoginLocal
+                    Log in
                   </NavLink>
                 </div>
               ) : null}{" "}
