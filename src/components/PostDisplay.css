@@ -43,13 +43,13 @@
 }
 
 .cat-message {
-  width: 50%;
+  width: 45%;
   font-style: italic;
   margin: 1rem;
 }
 
 .cat-price {
-  font-size: 1.2em;
+  font-size: 1em;
   border-left: 1px solid var(--border);
   padding-left: 1rem;
 }
@@ -88,8 +88,7 @@
   /* top: 0; */
 }
 
-
- /* .categoryLink {
+/* .categoryLink {
   background-color: aqua;
   padding: 1rem;
   border-radius: 25px;

@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import img from "./pics/profile.png";
 import "./PostDisplay.css";
 import { Link } from "react-router-dom";
@@ -55,79 +54,66 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   //   .includes("trans")
   // }, [input]);
 
-
   return (
-    <div>
-      <div>
-        <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
-          <div className="signupLegend absolute categoryLink">
-            {link === "all" ? `Category Overview` : `${cat[category]}`}
-          </div>
-        </Link>
-        <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
-          {keys?.map((element, i) =>
-            posts[element]?.categories &&
-            (input?.length < 1 ||
-              posts[element].categories[category].textfield
-                .toLowerCase()
-                .includes(input.toLowerCase())) ? (
-              <Link
-                key={i}
-                className="postDiv"
-                to={`/local/${posts[element]._id}`}
-              >
-                {posts[element].pic ? (
-                  <div
-                    className="cat-avatarSmall"
-                    style={{
-                      backgroundImage: `url(${posts[element].pic})`,
-                      backgroundSize: "cover",
-                    }}
-                  ></div>
-                ) : (
-                  <div
-                    className="cat-avatarSmall"
-                    style={{
-                      backgroundImage: `url(${img})`,
-                      backgroundSize: "cover",
-                    }}
-                  ></div>
-                )}
-                {/*                 {posts[element].pic ? (
+    <div className="post-macro-cont">
+      <div className={size === "small" ? "postDisplay" : "postDisplayBig"}>
+        {keys?.map((element, i) =>
+          posts[element]?.categories &&
+          (input?.length < 1 ||
+            posts[element].categories[category].textfield
+              .toLowerCase()
+              .includes(input.toLowerCase())) ? (
+            <Link
+              key={i}
+              className="postDiv"
+              to={`/local/${posts[element]._id}`}
+            >
+              {posts[element].pic ? (
+                <div
+                  className="cat-avatarSmall"
+                  style={{
+                    backgroundImage: `url(${posts[element].pic})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+              ) : (
+                <div
+                  className="cat-avatarSmall"
+                  style={{
+                    backgroundImage: `url(${img})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+              )}
+              {/*                 {posts[element].pic ? (
                   <img src={posts[element].pic} className="cat-avatarSmall" />
                 ) : (
                   <img src={img} className="cat-avatarSmall" />
                 )} */}
-                <div className="cat-nameCity">
-                  <p className="cat-name">
-                    <b>{posts[element].firstname} in</b>
-                  </p>{" "}
-                  <p className="cat-label">
-                    <b>{posts[element].city}</b>
-                  </p>
-                </div>
-                <div className="cat-message">
-                  <p>
-                    "
-                    {posts[element].categories[category].textfield.slice(0, 50)}
-                    "
-                  </p>
-                </div>
-                <div className="cat-price">
-                  <p>
-                    <b>{posts[element].categories[category].price} €</b>
-                  </p>
-                </div>
-              </Link>
-            ) : (
-              <div />
-            )
-          )}
-        </div>{" "}
+              <div className="cat-nameCity">
+                <p className="cat-name">
+                  <b>{posts[element].firstname} in</b>
+                </p>{" "}
+                <p className="cat-label">
+                  <b>{posts[element].city}</b>
+                </p>
+              </div>
+              <div className="cat-message">
+                <p>
+                  "{posts[element].categories[category].textfield.slice(0, 50)}"
+                </p>
+              </div>
+              <div className="cat-price">
+                <p>
+                  <b>{posts[element].categories[category].price} €</b>
+                </p>
+              </div>
+            </Link>
+          ) : (
+            <div />
+          )
+        )}
       </div>
-      {/* ) : (
-        [] */}
-      {/* )} */}
     </div>
   );
 };
