@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
 import "./LocalForm.css";
 
@@ -57,18 +57,19 @@ export default function Form({ local, setLocal }) {
 
   const { decodedToken, isExpired } = useJwt(token);
 
-  console.log(decodedToken);
-  console.log("EL LOCALLLLL", local);
+  //console.log(decodedToken);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const response = await fetch(url, {
+      const response = await fetch(url2, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: local.email,
           bio: bio,
+          isComplete: true,
           emailP: {
             category: emailCategory,
             textfield: email,
@@ -105,8 +106,46 @@ export default function Form({ local, setLocal }) {
       if (response.ok) {
         setError(null);
         const data = await response.json();
-        console.log(data);
-        navigate(`/local/${decodedToken.id}`);
+        console.log("data!", data);
+        console.log("oldLocal", local);
+        setLocal({
+          ...local,
+          bio,
+          isComplete: true,
+          categories: {
+            emailP: {
+              category: emailCategory,
+              textfield: email,
+              price: emailPrice,
+            },
+            callP: {
+              category: phoneCategory,
+              textfield: phoneCalls,
+              price: phoneCallsPrice,
+            },
+            flatP: {
+              category: flatCategory,
+              textfield: flatView,
+              price: flatViewPrice,
+            },
+            appointmentP: {
+              category: officialCategory,
+              textfield: appointments,
+              price: appointmentsPrice,
+            },
+            serviceP: {
+              category: serviceCategory,
+              textfield: service,
+              price: servicePrice,
+            },
+            interviewP: {
+              category: jobCategory,
+              textfield: interviews,
+              price: interviewsPrice,
+            },
+          },
+        });
+        navigate(`/yourinfo`);
       }
 
       if (!response.ok) {
