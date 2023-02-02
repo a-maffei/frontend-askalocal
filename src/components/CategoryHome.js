@@ -20,8 +20,8 @@ const Categories = ({ input, setInput }) => {
     if (data.status === 404) {
       throw new Response("Not Found", { status: 404 });
     }
-    setPosts(data);
-    console.log(data);
+    setPosts(data.locals);
+    setCityPosts(data.locals);
   };
 
   useEffect(() => {
@@ -53,10 +53,10 @@ const Categories = ({ input, setInput }) => {
 
   const filterCities = (city) => {
     if (city === "City") {
-      setCityPosts(null);
+      setCityPosts(posts);
       return;
     }
-    let postList = posts?.locals.filter((el) => el.city === city);
+    let postList = posts?.filter((el) => el.city === city);
     setCityPosts(postList);
     console.log("postlist", postList);
   };
@@ -71,17 +71,27 @@ const Categories = ({ input, setInput }) => {
         setInput={setInput}
         filterFunction={filterCities}
       />
-      {posts ? (
+      {cityPosts &&
+      cityPosts?.some((el) =>
+        el.categories && el.categories[category]
+          ? Object.values(el.categories[category]).some((elem) =>
+              elem === null
+                ? false
+                : elem.toString().toLowerCase().includes(input.toLowerCase())
+            )
+          : false
+      ) ? (
         <>
           <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
+            posts={cityPosts ? cityPosts : posts}
             category={category}
+            input={input}
             size={"big"}
             link={"all"}
           />
         </>
       ) : (
-        []
+        <p>No Posts matching the criteria</p>
       )}
     </div>
   );

@@ -87,3 +87,18 @@
   position: absolute;
   /* top: 0; */
 }
+
+
+ /* .categoryLink {
+  background-color: aqua;
+  padding: 1rem;
+  border-radius: 25px;
+  font-size: x-large;
+  font-weight: 900;
+}
+
+.categoryLink:hover {
+  background-color: var(--background);
+  color: var(--accent);
+  box-shadow: 0 0 50px var(--accent);
+}*/

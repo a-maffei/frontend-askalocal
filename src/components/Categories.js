@@ -2,12 +2,14 @@ import React from "react";
 import PostDisplay from "./PostDisplay";
 import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
+import cat from "./categories.json";
 
-const Categories = ({ input, setInput }) => {
+const Categories = ({ input, setInput, selectedValue, setSelectedValue }) => {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [cityPosts, setCityPosts] = useState(null);
+  const keys = Object.keys(cat);
 
   const url = `https://backend-askalocal.onrender.com/local`;
   const url2 = "http://localhost:8080/local";
@@ -19,12 +21,12 @@ const Categories = ({ input, setInput }) => {
     if (data.status === 404) {
       throw new Response("Not Found", { status: 404 });
     }
-    setPosts(data);
-    console.log(data);
+    setPosts(data.locals);
+    setCityPosts(data.locals);
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (
@@ -52,12 +54,11 @@ const Categories = ({ input, setInput }) => {
 
   const filterCities = (city) => {
     if (city === "City") {
-      setCityPosts(null);
+      setCityPosts(posts);
       return;
     }
-    let postList = posts?.locals.filter((el) => el.city === city);
+    const postList = posts?.filter((el) => el.city === city);
     setCityPosts(postList);
-    console.log("postlist", postList);
   };
 
   return (
@@ -74,42 +75,64 @@ const Categories = ({ input, setInput }) => {
       {/* </div> */}
       {posts ? (
         <>
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"appointmentP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"serviceP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"interviewP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"flatP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"callP"}
-            size={"small"}
-          />
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={"emailP"}
-            size={"small"}
-          />
+          {keys.map((element, i) => (
+            <div key={i}>
+              {cityPosts.some((el) =>
+                el.categories && el.categories[element]
+                  ? Object.values(el.categories[element]).some((elem) =>
+                      elem === null
+                        ? false
+                        : elem
+                            .toString()
+                            .toLowerCase()
+                            .includes(input.toLowerCase())
+                    )
+                  : false
+              ) ? (
+                <PostDisplay
+                  posts={cityPosts}
+                  category={element}
+                  size={"small"}
+                  input={input}
+                  key={element}
+                />
+              ) : (
+                ""
+              )}
+            </div>
+          ))}
         </>
       ) : (
-        []
+        ""
       )}
     </div>
   );
 };
 
 export default Categories;
+
+// let postKeys = cityPosts ? Object.keys(cityPosts) : Object.keys(posts.locals);
+// console.log("input", input);
+
+// input.length > 0 &&
+// posts[element].categories[category].textfield.contains(input) ?
+
+// useEffect(() => {
+//   console.log(
+//     posts.some((element) =>
+//       Object.values(element?.categories[category]).includes("trans")
+//     )
+//   );
+// posts.locals.some(
+//   (el) =>
+//     -1 !==
+//     Object.values(el.categories[element]).findIndex((elem) =>
+//       elem.toString().toLowerCase().includes(input)
+//     )
+// cityPosts.length > 100 ? (
+//   cityPosts.some((el) =>
+//     Object.values(el.categories[element]).some((elem) =>
+//       elem.toString().toLowerCase().includes(input)
+//     )
+//   )
+// ) :

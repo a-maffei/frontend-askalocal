@@ -16,10 +16,10 @@ import cat6 from "./svg/resume.svg";
 import cat7 from "./svg/writer.svg";
 import AboutUs from "./AboutUs";
 
-const Home = ({ input, setInput }) => {
+const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   // const options = optionsImp;
-  const [selectedValue, setSelectedValue] = useState("All");
-  const [posts, setPosts] = useState(null);
+  // const [selectedValue, setSelectedValue] = useState("City");
+  const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [cityPosts, setCityPosts] = useState(null);
@@ -120,26 +120,28 @@ const Home = ({ input, setInput }) => {
           <CircleFlag countryCode="at" height="40" />
           <CircleFlag countryCode="it" height="40" />
         </div>
-        <Searchbar
-          options={options}
-          setSelectedValue={setSelectedValue}
-          selectedValue={selectedValue}
-          searchedPosts={searchedPosts}
-          setSearchedPosts={setSearchedPosts}
+      <Searchbar
+        options={options}
+        setSelectedValue={setSelectedValue}
+        selectedValue={selectedValue}
+        searchedPosts={searchedPosts}
+        setSearchedPosts={setSearchedPosts}
+        input={input}
+        setInput={setInput}
+        filterFunction={filterCities}
+      /> 
+             
+      {posts.locals ? (
+        <PostDisplay
+          posts={cityPosts ? cityPosts : posts.locals}
+          category={category}
+          size={"small"}
+          link={"all"}
           input={input}
-          setInput={setInput}
-          filterFunction={filterCities}
         />
-        {posts ? (
-          <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
-            category={category}
-            size={"small"}
-            link={"all"}
-          />
-        ) : (
-          []
-        )}
+      ) : (
+        ""
+      )}
       </div>
       <div className="home-cont-white" id="howitworks-section">
         <h2 className="section-title-black">How it works</h2>
@@ -175,7 +177,6 @@ const Home = ({ input, setInput }) => {
               </div>
             </Link>
           </div>
-
           <div className="cardOuterDiv">
             <Link to="/categories/appointmentsp" className="categoriesDiv">
               <div className="cat-container">

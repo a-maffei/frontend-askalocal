@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 const Login = ({ setUser, setLocal, urlPath, user, local }) => {
   const email = useRef();
   const password = useRef();
-  const url = `http://localhost:8080/${urlPath}/login`;
+  const url = `https://backend-askalocal.onrender.com/${urlPath}/login`;
+  const url2 = `http://localhost:8080/${urlPath}/login`;
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(url, {
+    const response = await fetch(url2, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -41,9 +42,15 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
   return (
     <div className="signupOuterDiv">
       <div className="alreadyDiv">
-        <Link to="/signup">
-          <button className="already">{"I don't have an account"}</button>
-        </Link>
+        {urlPath === "local" ? (
+          <Link to="/local-signup">
+            <button className="already">{"I don't have an account"}</button>
+          </Link>
+        ) : (
+          <Link to="/user-signup">
+            <button className="already">{"I don't have an account"}</button>
+          </Link>
+        )}
       </div>
       <fieldset className="signupField">
         <legend>
