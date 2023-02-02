@@ -27,9 +27,10 @@
   --button-secondary: #f3f3f1;
   --button-secondary-hover: #eff0ec;
   --button-secondary-text: #1e2330;
-  --button-bright: #e8c0e8;
-  --button-bright-hover: #d2e823;
+  --button-bright: #d2e823;
+  --button-bright-hover: #1e2330;
   --button-bright-text: #1e2330;
+  --button-bright-text-hover: #d2e823;
 }
 
 [data-theme="light"] {
@@ -107,6 +108,7 @@ body {
 
 .bright-bttn:hover {
   background-color: var(--button-bright-hover);
+  color: var(--button-bright-text-hover);
 }
 
 .bright-bttn-cont {
