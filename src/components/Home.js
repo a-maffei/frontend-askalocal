@@ -5,7 +5,7 @@ import Searchbar from "./Searchbar";
 import { CircleFlag } from "react-circle-flags";
 import { GoChevronDown } from "react-icons/go";
 import { HashLink } from "react-router-hash-link";
-
+import locals from "./pics/locals.png";
 import PostDisplay from "./PostDisplay";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
@@ -96,16 +96,19 @@ const Home = ({ input, setInput }) => {
       <div className="homeDiv">
         <div className="homeDiv-titles">
           <h2>New in a city where you don't speak the language?</h2>
-          <h3>Let the locals help you.</h3>
+          <h3>Let the locals help you out.</h3>
         </div>
-        <div className="bright-bttn-cont">
-          <Link to="/user-signup" state="gi">
-            <button className="bright-bttn">Sign up for free</button>
-          </Link>
-          <HashLink to="/#search-section">
-            <GoChevronDown className="homepage-arrow" />
-          </HashLink>
+        <div className="homeDiv-img">
+          <img src={locals} />
         </div>
+      </div>
+      <div className="bright-bttn-cont">
+        <Link to="/user-signup" state="gi">
+          <button className="bright-bttn">Sign up for free</button>
+        </Link>
+        <HashLink to="/#search-section">
+          <GoChevronDown className="homepage-arrow" />
+        </HashLink>
       </div>
       <div id="search-section"></div>
       <div className="home-cont-pink">

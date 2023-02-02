@@ -14,7 +14,7 @@
   --nav-background: white;
   --text-primary: #1e2330;
   --recurring-text: #676b5f;
-  --text-secondary: #d2e823;
+  --text-secondary: #d9faff;
   --accent: #e8c0e8;
   --green-light: #d2e823;
   --green-dark: #254f1a;
@@ -64,7 +64,7 @@ body {
 }
 
 body {
-  background: #264f1a;
+  background: #00204a;
   /* linear-gradient(-45deg, #000000, #01320f, #093342, #012b22); */
   background-size: 500% 500%;
   animation: wsBackground 30s ease infinite;
@@ -96,11 +96,11 @@ body {
   background-color: var(--button-bright);
   color: var(--button-secondary-text);
   font-family: "Montserrat", sans-serif;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   padding: 1.3rem 2rem;
   border-radius: 40px;
   border: none;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 600;
   text-decoration: none !important;
   cursor: pointer;
@@ -157,7 +157,7 @@ body {
 .section-title-green {
   color: var(--green-light);
   display: inline-block;
-  font-size: 2.5em;
+  font-size: 2.3em;
   margin: 0.8em 0 0.5em;
 }
 

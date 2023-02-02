@@ -7,21 +7,29 @@
 
 .homeDiv {
   color: var(--text-secondary);
-  width: 70%;
-  height: 75vh;
-  margin: 0 auto;
-  margin-top: 5rem;
+  width: 80%;
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeDiv-img {
+  width: 60%;
+}
+
+.homeDiv-img > img {
+  width: 100%;
+}
+
+.homeDiv-titles {
+  width: 40%;
   display: flex;
   flex-direction: column;
 }
 
-.homeDiv-titles {
-  width: 50%;
-  height: 50vh;
-}
-
 .homeDiv-titles > h2 {
-  font-size: 3.2em;
+  font-size: 2.6em;
   font-weight: 800;
 }
 
