@@ -16,32 +16,32 @@ export default function AboutUs() {
               network="linkedin"
               style={{ height: 30, width: 30 }}
               url="https://www.linkedin.com/in/alessandramaffei/"
-              bgColor="#e8c0e8"
+              bgColor="var(--accent)"
             />
             <SocialIcon
               network="github"
               style={{ height: 30, width: 30 }}
               url="https://github.com/a-maffei"
-              bgColor="#e8c0e8"
+              bgColor="var(--accent)"
             />
           </div>
         </div>
         <div className="us-individual-container">
           <img className="us-pic" src={alessandra}></img>
           <h5 className="us-name paragraph-title-green">Antonio</h5>
-          <h6 className="us-city paragraph-title-green">?</h6>
+          <h6 className="us-city paragraph-title-green">Stuttgart</h6>
           <div className="us-social">
             <SocialIcon
               network="linkedin"
               style={{ height: 30, width: 30 }}
-              url=""
-              bgColor="#e8c0e8"
+              url="https://www.linkedin.com/in/antonio-macan-51bb91207/"
+              bgColor="var(--accent)"
             />
             <SocialIcon
               network="github"
               style={{ height: 30, width: 30 }}
-              url=""
-              bgColor="#e8c0e8"
+              url="https://github.com/Macanijus"
+              bgColor="var(--accent)"
             />
           </div>
         </div>
@@ -53,14 +53,14 @@ export default function AboutUs() {
             <SocialIcon
               network="linkedin"
               style={{ height: 30, width: 30 }}
-              url=""
-              bgColor="#e8c0e8"
+              url="https://www.linkedin.com/in/timonschell/"
+              bgColor="var(--accent)"
             />
             <SocialIcon
               network="github"
               style={{ height: 30, width: 30 }}
-              url=""
-              bgColor="#e8c0e8"
+              url="https://github.com/Apollosport"
+              bgColor="var(--accent)"
             />
           </div>
         </div>

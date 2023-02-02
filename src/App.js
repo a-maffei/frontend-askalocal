@@ -11,7 +11,7 @@ import Categories from "./components/Categories";
 import PostDisplay from "./components/PostDisplay";
 import CategoryHome from "./components/CategoryHome";
 import LocalForm from "./components/LocalForm";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 
 function App() {
   const [user, setUser] = useState(null);

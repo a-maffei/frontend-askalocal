@@ -11,10 +11,11 @@
 
 :root {
   --background: #f3f3f1;
-  --nav-background: white;
+  --nav-background: #f3f3f1;
   --text-primary: #1e2330;
   --recurring-text: #676b5f;
   --text-secondary: #d2e823;
+  --accent: #e8c0e8;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red-dark: #49000d;
@@ -34,16 +35,15 @@
 }
 
 [data-theme="light"] {
-  --background: #1e2330;
+  --background: black;
   --nav-background: black;
   --text-primary: #f3f3f1;
   --recurring-text: #eff0ec;
   --text-secondary: #d2e823;
-  --accent: #676b5f;
+  --accent: #1e2330;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red--dark: #780016;
-  --red--light: #e8c0e8;
   --border: #f3f3f1;
   --border-secondary: #1e2330;
   --button-primary: #1e2330;
@@ -53,8 +53,12 @@
   --button-secondary-hover: #1e2330;
   --button-secondary-text: #e2bae3;
   --button-bright: #1e2330;
-  --button-bright-hover: #d2e823;
+  --button-bright-hover: #f3f3f1;
   --button-bright-text: #e8c0e8;
+  --button-bright: black;
+  --button-bright-hover: #1e2330;
+  --button-bright-text: #d2e823;
+  --button-bright-text-hover: #d2e823;
 }
 
 html,
@@ -94,13 +98,13 @@ body {
 
 .bright-bttn {
   background-color: var(--button-bright);
-  color: var(--button-secondary-text);
+  color: var(--button-bright-text);
   font-family: "Montserrat", sans-serif;
   margin-bottom: 1.5rem;
   padding: 1.3rem 2rem;
   border-radius: 40px;
   border: none;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 600;
   text-decoration: none !important;
   cursor: pointer;
@@ -148,7 +152,7 @@ body {
 .paragraph-title-black {
   color: var(--text-primary);
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: center;
   width: 70%;
   font-weight: 500;

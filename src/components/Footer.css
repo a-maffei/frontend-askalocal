@@ -1,6 +1,6 @@
 .footer-container {
-  background-color: #1e2330;
-  color: var(--button-primary-text);
+  background-color: var(--nav-background);
+  color: var(--text-primary);
   height: 10vh;
   display: flex;
   justify-content: center;
@@ -11,8 +11,8 @@
 }
 
 .footer-text {
-  font-weight: 400;
-  font-size: 1em;
+  font-weight: 500;
+  font-size: 0.8em;
   display: inline-block;
   margin: 0 auto;
 }

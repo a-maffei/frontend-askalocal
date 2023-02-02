@@ -7,23 +7,23 @@
 
 .homeDiv {
   color: var(--text-secondary);
-  width: 80%;
-  margin: 3rem auto;
+  width: 70%;
+  margin: 4rem auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .homeDiv-img {
-  width: 60%;
+  width: 40%;
 }
 
 .homeDiv-img > img {
-  width: 100%;
+  width: 80%;
 }
 
 .homeDiv-titles {
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
