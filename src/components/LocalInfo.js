@@ -35,6 +35,12 @@ export default function LocalInfo({ user }) {
       setStarError("Please give a star rating");
       return;
     }
+    if (review.length > 150) {
+      setStarError(
+        `Please type a maximum of 150 characters. You currently have ${review.length}`
+      );
+      return;
+    }
     if (!user) {
       setStarError("Please login");
       return;
@@ -74,12 +80,7 @@ export default function LocalInfo({ user }) {
       {local.categories ? (
         <>
           <Profile local={local} />{" "}
-          <div className="contact-button">
-            <Link to="/signup" state="gi" className="navLinks">
-              {`Contact ${local.firstname}`}
-            </Link>
-          </div>
-          <button onClick={() => navigate(-1)} className="navLinks topMargin">
+          <button onClick={() => navigate(-1)} className="navLinks">
             Back
           </button>{" "}
         </>
@@ -95,6 +96,8 @@ export default function LocalInfo({ user }) {
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
                 required
+                minLength={5}
+                maxLength={100}
               />
             </label>
             <Starrating

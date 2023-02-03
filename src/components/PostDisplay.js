@@ -110,16 +110,14 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
                 )} */}
               <div className="cat-nameCity">
                 <p className="cat-name">
-                  <b>{posts[element].firstname} in</b>
+                  <b>{posts[element].firstname}</b>
                 </p>{" "}
                 <p className="cat-label">
                   <b>{posts[element].city}</b>
                 </p>
               </div>
               <div className="cat-message">
-                <p>
-                  "{posts[element].categories[category].textfield.slice(0, 50)}"
-                </p>
+                <p>"{posts[element].categories[category].textfield}"</p>
               </div>
               <div className="cat-price">
                 <p>

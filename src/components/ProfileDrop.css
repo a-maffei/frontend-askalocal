@@ -57,8 +57,16 @@
   cursor: default;
 }
 
-#nav-drop-menu > li > button:hover {
+.profileLink {
+  text-decoration: none;
+  padding: 1rem;
+  display: block;
+}
+
+#nav-drop-menu > li > button:hover,
+.nav-menu-item:hover {
   background-color: var(--accent);
+  border-radius: 10px;
 }
 
 #nav-drop-menu > li > button {
