@@ -172,7 +172,7 @@ export default function Form({ local, setLocal }) {
               name="bio"
               className="bio"
               minLength={100}
-              maxLength={500}
+              maxLength={550}
             />
           </div>
           <h2>Choose your services</h2>

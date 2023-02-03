@@ -6,12 +6,16 @@
 
 .avatarBig {
   height: 18rem;
+
   width: 18rem;
+
+  min-width: 18rem;
   border-radius: 25%;
   /* padding: 1rem; */
   margin: 1.5rem 3rem;
   /* size: cover; */
   /* overflow: hidden; */
+  object-fit: fill;
 }
 
 .localDetailDiv {
@@ -27,7 +31,7 @@
 
 .bioInfo {
   /* margin: 0 3rem 0 1.5rem; */
-  margin: 1.5rem 3rem 1.5rem 0;
+  margin: 0 2rem 1.5rem 0;
   text-align: justify;
 }
 
@@ -45,7 +49,8 @@
 
 .first-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .textend {
