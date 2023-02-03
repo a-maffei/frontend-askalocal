@@ -18,7 +18,7 @@
   --accent: #e8c0e8;
   --green-light: #d2e823;
   --green-dark: #254f1a;
-  --red-dark: #49000d;
+  --red-dark: #4c1a4c;
   --red--light: #e8c0e8;
   --border: #1e2330;
   --border-secondary: #f3f3f1;
@@ -32,6 +32,10 @@
   --button-bright-hover: #1e2330;
   --button-bright-text: #1e2330;
   --button-bright-text-hover: #d2e823;
+  --button-dark: #254f1a;
+  --button-dark-hover: #1e2330;
+  --button-dark-text: #e6e7e5;
+  --button-dark-text-hover: #e6e7e5;
 }
 
 [data-theme="light"] {

@@ -114,18 +114,25 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
       <div className="alreadyDiv">
         {urlPath === "local" ? (
           <Link to="/local-login">
-            <button className="already">{"I already have an account"}</button>
+            <button className="bright-bttn already">
+              {"I already have an account"}
+            </button>
           </Link>
         ) : (
           <Link to="/user-login">
-            <button className="already">{"I already have an account"}</button>
+            <button className="bright-bttn already">
+              {"I already have an account"}
+            </button>
           </Link>
         )}
       </div>
       <fieldset className="signupField">
-        <legend>
-          <h1 className="signupLegend">Signup</h1>
-        </legend>
+        <div className="signup-cont">
+          <h1>Sign Up</h1>
+        </div>
+        {/*         <legend className="signupLegend">
+          <h1>Sign up</h1>
+        </legend> */}
         <form
           onSubmit={handleSubmit}
           className="signupForm"
@@ -134,7 +141,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
         >
           <div className="signupDiv">
             <label className="signupLabel" htmlFor="firstName">
-              Firstname
+              First name
             </label>
             <input
               type="text"
@@ -145,12 +152,12 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               // ref={firstname}
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
-              placeholder={"Your Firstname"}
+              placeholder={"Your first name"}
               required
               title={"eg. 'John'"}
             />
             <label className="signupLabel" htmlFor="lastName">
-              Lastname
+              Last name
             </label>
             <input
               type="text"
@@ -160,13 +167,13 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               className="signupInput"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
-              placeholder={"Your Lastname"}
+              placeholder={"Your last name"}
               required
               title={"eg. 'Doe'"}
             />
 
             <label className="signupLabel" htmlFor="email">
-              eMail
+              Email
             </label>
             <input
               type="email"
@@ -176,7 +183,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               className="signupInput"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="eMail"
+              placeholder="Email"
               required
             />
 
@@ -195,12 +202,12 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               required
             />
             <label className="signupLabel" htmlFor="pic">
-              Image
+              Profile picture
             </label>
             <input
               type="file"
               accept="image/*"
-              className="form-control-file signupInput"
+              className="form-control-file signupInput signup-pic"
               id="pic"
               name="pic"
               required
@@ -221,7 +228,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               className="signupInput"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phonenumber"
+              placeholder="Phone number"
               required
             />
 
@@ -242,14 +249,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>
-        {error && (
-          <div
-            className="error"
-            style={{ color: "white", border: "2px solid red" }}
-          >
-            {error.response.data.error}
-          </div>
-        )}
+        {error && <div className="error">{error.response.data.error}</div>}
       </fieldset>
     </div>
   );

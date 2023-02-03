@@ -44,22 +44,29 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
       <div className="alreadyDiv">
         {urlPath === "local" ? (
           <Link to="/local-signup">
-            <button className="already">{"I don't have an account"}</button>
+            <button className="bright-bttn already">
+              {"I don't have an account yet"}
+            </button>
           </Link>
         ) : (
           <Link to="/user-signup">
-            <button className="already">{"I don't have an account"}</button>
+            <button className="bright-bttn already">
+              {"I don't have an account yet"}
+            </button>
           </Link>
         )}
       </div>
       <fieldset className="signupField">
-        <legend>
+        <div className="signup-cont">
+          <h1>Log In</h1>
+        </div>
+        {/*         <legend>
           <h1 className="signupLegend">Login</h1>
-        </legend>
+        </legend> */}
         <form onSubmit={handleSubmit} className="signupForm">
           <div className="signupDiv">
             <label className="signupLabel" htmlFor="email">
-              eMail
+              Email
             </label>
             <input
               type="email"
@@ -67,7 +74,7 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
               name="email"
               className="signupInput"
               ref={email}
-              placeholder="eMail"
+              placeholder="Email"
               required
               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
             />
@@ -86,14 +93,9 @@ const Login = ({ setUser, setLocal, urlPath, user, local }) => {
               required
             />
           </div>
-          {error ? (
-            <p style={{ color: "red" }}>
-              <b>{error}</b>
-            </p>
-          ) : (
-            []
-          )}
+
           <button className="signupButton">{"Login"}</button>
+          {error ? <p className="error">{error}</p> : []}
         </form>
       </fieldset>
     </div>
