@@ -4,20 +4,119 @@
   align-items: center;
 }
 
+.section-title-green {
+  margin: 2em 0 0;
+}
+
+.paragraph-title-green {
+  margin: 1em 0 2em;
+}
+
+.localForm-cont {
+  width: 80%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 7rem;
+  margin: 0 0 2rem;
+}
+
+.profile-img {
+  width: 35%;
+  fill: var(--green-light);
+}
+
 .localFormDiv {
   background-color: var(--background);
   color: var(--text-primary);
-  width: 48rem;
+  width: 40%;
   border-radius: 25px;
-  margin: 3vh;
-  padding: 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
 }
+
+.form-title {
+  font-size: 1em;
+}
+
 .bio {
-  height: 50px;
-  border-radius: 5%;
+  height: 4em;
+  width: 60%;
+  padding: 1em;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 1.5em;
 }
 
 .price {
-  width: 45px;
+  width: 8%;
+  padding: 0.5em;
+}
+
+.form-services {
+  width: 90%;
+  margin: 0 auto 0.5em;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.textfield {
+  width: 50%;
+  padding: 0.5em;
+}
+
+form-services .section-title-green {
+  margin: 2.3rem 0 0.2rem;
+}
+
+.price:focus,
+.textfield:focus {
+  outline: 1px solid var(--green-light);
+}
+
+.form-bttn {
+  background-color: var(--button-dark);
+  color: var(--button-dark-text);
+  font-family: "Montserrat", sans-serif;
+  margin: 1.5rem 0;
+  padding: 1rem 1.8rem;
+  border-radius: 40px;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.form-bttn:hover {
+  background-color: var(--button-dark-hover);
+  color: var(--button-dark-text-hover);
+  font-family: "Montserrat", sans-serif;
+  margin: 1.5rem 0;
+  padding: 1rem 1.8rem;
+  border-radius: 40px;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 980px) {
+  .localFormDiv {
+    width: 60%;
+  }
+
+  .profile-img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .localFormDiv {
+    width: 90%;
+  }
 }
