@@ -81,10 +81,10 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
             </NavHashLink>
 
             <NavLink to="/user-signup" state="gi" className="navLinks">
-              Signup
+              Sign up
             </NavLink>
             <NavLink to="/user-login" state="login" className="navLinks">
-              Login
+              Log in
             </NavLink>
             <button
               onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}

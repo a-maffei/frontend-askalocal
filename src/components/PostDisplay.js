@@ -59,7 +59,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
       {size !== "home" ? (
         <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
           <div className="absolute bright-bttn">
-            {link === "all" ? `Category Overview` : `${cat[category]}`}
+            {link === "all" ? `All Categories` : `${cat[category]}`}
           </div>
         </Link>
       ) : (
