@@ -171,6 +171,8 @@ export default function Form({ local, setLocal }) {
               required
               name="bio"
               className="bio"
+              minLength={100}
+              maxLength={500}
             />
           </div>
           <h2>Choose your services</h2>
@@ -187,6 +189,9 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setEmail(e.target.value)}
               name="emailP"
               disabled={!emailChecked}
+              required={emailChecked ? true : false}
+              minLength={10}
+              maxLength={125}
             />
             <input
               type="number"
@@ -194,8 +199,10 @@ export default function Form({ local, setLocal }) {
               value={emailPrice}
               onChange={(e) => setEmailPrice(e.target.value)}
               disabled={!emailChecked}
+              required={emailChecked ? true : false}
               className="price"
               min="0"
+              max="999"
             />
           </div>
           <div>
@@ -211,6 +218,9 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setPhoneCalls(e.target.value)}
               name="callP"
               disabled={!phoneCallsChecked}
+              required={phoneCallsChecked ? true : false}
+              minLength={10}
+              maxLength={125}
             />
             <input
               type="number"
@@ -218,8 +228,10 @@ export default function Form({ local, setLocal }) {
               value={phoneCallsPrice}
               onChange={(e) => setPhoneCallsPrice(e.target.value)}
               disabled={!phoneCallsChecked}
+              required={phoneCallsChecked ? true : false}
               className="price"
               min="0"
+              max="999"
             />
           </div>
           <div>
@@ -235,6 +247,9 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setFlatView(e.target.value)}
               name="flatP"
               disabled={!flatViewChecked}
+              required={flatViewChecked ? true : false}
+              minLength={10}
+              maxLength={125}
             />
             <input
               type="number"
@@ -242,8 +257,11 @@ export default function Form({ local, setLocal }) {
               value={flatViewPrice}
               onChange={(e) => setFlatViewPrice(e.target.value)}
               disabled={!flatViewChecked}
+              required={flatViewChecked ? true : false}
+              title="Enter a Price Here"
               className="price"
               min="0"
+              max="999"
             />
           </div>
 
@@ -260,6 +278,9 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setAppointments(e.target.value)}
               name="appointmentP"
               disabled={!appointmentsChecked}
+              required={appointmentsChecked ? true : false}
+              minLength={10}
+              maxLength={125}
             />
             <input
               type="number"
@@ -267,8 +288,10 @@ export default function Form({ local, setLocal }) {
               value={appointmentsPrice}
               onChange={(e) => setAppointmentsPrice(e.target.value)}
               disabled={!appointmentsChecked}
+              required={appointmentsChecked ? true : false}
               className="price"
               min="0"
+              max="999"
             />
           </div>
           <div>
@@ -284,6 +307,8 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setService(e.target.value)}
               name="serviceP"
               disabled={!serviceChecked}
+              minLength={10}
+              maxLength={125}
             />
             <input
               type="number"
@@ -293,6 +318,7 @@ export default function Form({ local, setLocal }) {
               disabled={!serviceChecked}
               className="price"
               min="0"
+              max="999"
             />
           </div>
           <div>
@@ -308,6 +334,8 @@ export default function Form({ local, setLocal }) {
               onChange={(e) => setInterviews(e.target.value)}
               name="interviewP"
               disabled={!interviewsChecked}
+              minLength={10}
+              maxLength={125}
             />
             <input
               type="number"
@@ -317,6 +345,7 @@ export default function Form({ local, setLocal }) {
               disabled={!interviewsChecked}
               className="price"
               min="0"
+              max="999"
             />
           </div>
           <div>

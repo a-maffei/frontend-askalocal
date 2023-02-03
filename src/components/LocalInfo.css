@@ -5,11 +5,13 @@
 }
 
 .avatarBig {
-  max-height: 18rem;
-  max-width: 18rem;
+  height: 18rem;
+  width: 18rem;
   border-radius: 25%;
   /* padding: 1rem; */
   margin: 1.5rem 3rem;
+  /* size: cover; */
+  /* overflow: hidden; */
 }
 
 .localDetailDiv {
@@ -17,7 +19,7 @@
   color: var(--text-primary);
   width: 48rem;
   border-radius: 25px;
-  margin: 4rem;
+  margin: 3rem;
   padding: 1rem;
   text-align: center;
   /* margin-top: 4rem; */
@@ -37,7 +39,7 @@
 
 .offersInnerDiv {
   display: grid;
-  grid-template-columns: 1.1fr 2fr 0.2fr;
+  grid-template-columns: 1.2fr 2fr 0.3fr;
   align-items: center;
 }
 
@@ -60,12 +62,16 @@
   max-height: 6rem;
 }
 
-.starsListLi {
-  display: grid;
-}
+/* .reviews {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+} */
 
 .review {
   padding: 0 3rem;
+  margin-bottom: 2rem;
 }
 
 .reviewText {
@@ -74,13 +80,19 @@
 
 .reviewer {
   font-weight: bold;
-  text-align: center;
+}
+
+.starsListDiv {
+  display: grid;
+  grid-template-columns: 0.8fr 2fr 0.1fr;
+  align-items: center;
 }
 
 .starsList p {
   margin: 0;
 }
 
-.review ul {
-  /* margin: 0 */
+.addStar::after {
+  content: "\2605";
+  color: #d4af37;
 }

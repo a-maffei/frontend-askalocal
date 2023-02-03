@@ -27,43 +27,44 @@ export default function Profile({ local }) {
         {
           ((keys = Object.keys(local?.categories)),
           local.categories &&
-            keys?.map((element, i) => (
-              <div key={i} className="offersInnerDiv">
-                <h3 className="textstart">{cat[element]}</h3>
-                <p className="textstart">
-                  {local.categories[element].textfield}
-                </p>
-                <p className="textend">{local.categories[element].price} €</p>
-              </div>
-            )))
+            keys?.map((element, i) =>
+              local.categories[element].textfield.length > 5 ? (
+                <div key={i} className="offersInnerDiv">
+                  <h3 className="textstart">{cat[element]}</h3>
+                  <p className="textstart">
+                    {local.categories[element].textfield}
+                  </p>
+                  <p className="textend">{local.categories[element].price} €</p>
+                </div>
+              ) : (
+                ""
+              )
+            ))
         }
       </div>
       {local.ratings?.length > 0 ? (
         <div className="review">
-          <div className="reviews">
-            <h2>
+          <div>
+            <h2 className="addStar">
               Rating{" "}
               {Math.round(
                 (local.ratings?.reduce((a, b) => a + b, 0) /
                   local.ratings?.length) *
                   10
               ) / 10}{" "}
-              {String.fromCharCode(9733)}
             </h2>
           </div>
           <div className="starsList">
             {local.reviews?.map((review, index) => (
-              <div className="starsListLi" key={index}>
-                <div className="offersInnerDiv">
-                  <p className="textstart reviewer">{review[0]}</p>
-                  <p className="textstart reviewText">{review[1]}</p>
-                  <div className="textend">
-                    <Starrating
-                      rating={local.ratings[index]}
-                      total={5}
-                      reactive={false}
-                    />
-                  </div>
+              <div className="starsListDiv" key={index}>
+                <p className="textstart reviewer">{review[0]}</p>
+                <p className="textstart reviewText">{review[1]}</p>
+                <div className="textend">
+                  <Starrating
+                    rating={local.ratings[index]}
+                    total={5}
+                    reactive={false}
+                  />
                 </div>
               </div>
             ))}
@@ -72,6 +73,11 @@ export default function Profile({ local }) {
       ) : (
         ""
       )}
+      <div className="bright-bttn-cont">
+        <Link to={`/${local._id}/contact`} state="gi">
+          <button className="bright-bttn">{`Contact ${local.firstname}`}</button>
+        </Link>
+      </div>
     </div>
   );
 }

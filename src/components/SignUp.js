@@ -39,7 +39,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("isComplete", false);
 
     axios
-      .post(url, formData, {
+      .post(url2, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },
