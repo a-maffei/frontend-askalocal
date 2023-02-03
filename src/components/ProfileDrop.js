@@ -55,7 +55,7 @@ export default function ProfileDrop({
         >
           {isMenuOpen ? (
             <ul id="nav-drop-menu">
-              <li className="nav-menu-item">
+              <li className="nav-menu-item static-li">
                 <p>
                   {user.firstname} {`${user.lastname.charAt(0)}.`} ({user.email}
                   )

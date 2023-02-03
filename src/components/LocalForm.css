@@ -22,9 +22,9 @@
   margin: 0 0 2rem;
 }
 
-.profile-img {
+svg {
   width: 35%;
-  fill: var(--green-light);
+  fill: var(--nav-background);
 }
 
 .localFormDiv {
