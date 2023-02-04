@@ -1,14 +1,5 @@
 .post-macro-cont {
-  width: 65vw;
-}
-
-.postDisplay {
-  background-color: var(--background);
-  margin: 2rem;
-  overflow-y: scroll;
-  height: 45vh;
-  border-radius: 30px;
-  padding-top: 3.8rem;
+  width: 70vw;
 }
 
 .postDisplayBig {
@@ -30,7 +21,7 @@
 }
 
 .postDisplay {
-  padding-top: 3.8rem;
+  /* padding-top: 1.8rem; */
 }
 
 .cat-avatarSmall {
@@ -116,3 +107,29 @@
   color: var(--accent);
   box-shadow: 0 0 50px var(--accent);
 }*/
+
+.filter,
+.filterHome {
+  display: flex;
+  justify-content: end;
+}
+
+.filter {
+  margin: 0 1rem 1.7rem;
+}
+
+.filterHome {
+  margin: 0 1rem;
+}
+
+.postDisplayArrows {
+  color: var(--button-bright);
+  font-size: 1.5em;
+  display: inline-block;
+}
+
+.postDisplayArrows:hover {
+  color: var(--green-light);
+  transform: translateY(0.2rem);
+  cursor: pointer;
+}

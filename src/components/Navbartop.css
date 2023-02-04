@@ -119,9 +119,9 @@ input:checked + .slider:before {
   transform: translateY(-13px);
 }
 
-/* a.active {
-  color: var(--text-primary);
-} */
+.active {
+  color: var(--green-light);
+}
 
 a {
   color: var(--text-primary);

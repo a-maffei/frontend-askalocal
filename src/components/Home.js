@@ -12,8 +12,7 @@ import cat2 from "./svg/contract.svg";
 import cat3 from "./svg/doctor.svg";
 import cat4 from "./svg/mail.svg";
 import cat5 from "./svg/reminder.svg";
-import cat6 from "./svg/resume.svg";
-import cat7 from "./svg/writer.svg";
+import cat6 from "./svg/writer.svg";
 import AboutUs from "./AboutUs";
 
 const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
@@ -201,7 +200,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <div className="cardOuterDiv">
             <Link to="/categories/interviewP" className="categoriesDiv">
               <div className="cat-container">
-                <img src={cat7} className="categoriesPic" alt="Job Search" />
+                <img src={cat6} className="categoriesPic" alt="Job Search" />
                 <p>Interview practice</p>
               </div>
             </Link>

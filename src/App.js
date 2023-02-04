@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="App" data-theme={theme}>
       <div className="page-container">
-        <div className="content-wrapper">
+        <div className="content-wrapper" id="top">
           <Navbartop
             switchTheme={switchTheme}
             user={user}
