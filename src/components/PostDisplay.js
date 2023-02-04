@@ -1,58 +1,55 @@
 import img from "./pics/profile.png";
 import "./PostDisplay.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import cat from "./categories.json";
-import { useEffect } from "react";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
 
 const PostDisplay = ({ posts, category, size, link, input }) => {
+  const [order, setOrder] = useState(null);
   let keys = Object.keys(posts);
-  console.log("input", input);
+  const [up, setUp] = useState(true);
 
-  console.log("POSSSSSTTTTSSS", posts, "length: ", posts.length);
+  useEffect(() => {
+    postOrder();
+  }, [order, up]);
 
-  // input.length > 0 &&
-  // posts[element].categories[category].textfield.contains(input) ?
+  const postOrder = () => {
+    if (order === "price") {
+      if (up) {
+        posts.sort(
+          (a, b) => a.categories[category].price < b.categories[category].price
+        );
+      } else {
+        posts.sort(
+          (a, b) => a.categories[category].price > b.categories[category].price
+        );
+      }
+    }
+    if (order === "rating") {
+      if (up) {
+        posts.sort(
+          (a, b) =>
+            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
+            b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+        );
+      } else {
+        posts.sort(
+          (a, b) =>
+            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
+            b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+        );
+      }
+    }
+  };
 
-  // useEffect(() => {
-  //   const what = Object.values(posts[0].categories[category]);
-  //   const whatone = what;
-  //   console.log(
-  //     "first",
-  //     posts.some(
-  //       (element) =>
-  //         -1 !==
-  //         Object.values(element.categories[category]).findIndex((elem) =>
-  //           elem.toString().toLowerCase().includes(input)
-  //         )
-  //     ),
-  //     // .map((el) => el)
-
-  //     "what",
-  //     what.findIndex((elem) => elem.toString().includes(input)),
-  //     what
-  //     // .includes(input.toLowerCase())
-  //   );
-  //   console.log(
-  //     Object.values(posts[0].categories[category]).map((el) =>
-  //       Object.values(el).includes(input.toLowerCase())
-  //     ),
-  //     // Object.values(posts[0].categories[category])[0],
-  //     Object.values(posts[0].categories[category]).find((el) =>
-  //       Object.values(el).includes(input.toLowerCase())
-  //     )
-  //     // posts.some((element) => Object.values(element?.categories[category]))
-  //   );
-  // Object.values(posts[0].categories[category])
-  //.includes(input);
-  // posts.forEach(
-  //   (element) =>
-  //     Object.values(element?.categories[category]).includes("trans")
-  //   ,
-  // posts[Object].categories[category]?.textfield
-  //   .toLowerCase()
-  //   .includes("trans")
-  // }, [input]);
+  const options = (
+    <>
+      <option value="sort">Sort by</option>
+      <option value="price">Price</option>
+      <option value="rating">Rating</option>
+    </>
+  );
 
   return (
     <div className="post-macro-cont">
@@ -65,6 +62,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
       ) : (
         ""
       )}
+
       <div
         className={
           size === "small"
@@ -74,6 +72,17 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
             : "postDisplayBig"
         }
       >
+        <div className={size === "home" ? "filterHome" : "filter"}>
+          <select onChange={(e) => setOrder(e.target.value)}>{options}</select>
+          <GoChevronDown
+            className="postDisplayArrows"
+            onClick={() => setUp(() => false)}
+          />
+          <GoChevronUp
+            className="postDisplayArrows"
+            onClick={() => setUp(() => true)}
+          />
+        </div>
         {keys?.map((element, i) =>
           posts[element]?.categories &&
           (input?.length < 1 ||
@@ -126,7 +135,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
               </div>
             </Link>
           ) : (
-            <div />
+            <div key={i} />
           )
         )}
       </div>
@@ -135,6 +144,3 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
 };
 
 export default PostDisplay;
-
-// ((keys = Object.keys(item)),
-//               keys.map((element, index) => (

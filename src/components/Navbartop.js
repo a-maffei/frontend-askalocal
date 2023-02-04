@@ -1,14 +1,15 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import ProfileDrop from "./ProfileDrop";
 import { useRef, useState, useEffect } from "react";
-import { NavHashLink } from "react-router-hash-link";
+import { HashLink } from "react-router-hash-link";
 import React from "react";
 import "./Navbartop.css";
 import logo from "./svg/default-monochrome-black.svg";
 import { ReactComponent as Logo } from "./svg/default-monochrome-black.svg";
 const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
   const ref = useRef();
-
+  const { hash } = useLocation();
+  const isActive = (iHash) => hash === iHash;
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -39,11 +40,11 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
         className="imgNavbar"
         style={{ textColor: "blue" }}
       /> */}{" "}
-      <NavLink className="nav-logo-link" to="/">
+      <HashLink to="/#top" state="homeTop" className="nav-logo-link">
         <>
           <Logo alt="PC" className="imgNavbar" />
         </>
-      </NavLink>
+      </HashLink>
       <div className="navbarTwo">
         {user ? (
           <ProfileDrop
@@ -63,22 +64,26 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
           />
         ) : (
           <div>
-            <NavHashLink
+            <HashLink
               to="/#howitworks-section"
               state="how-it-works"
-              className="navLinks"
+              className={
+                isActive("#howitworks-section") ? "active navLinks" : "navLinks"
+              }
               // etc...
             >
               How it works
-            </NavHashLink>
-            <NavHashLink
+            </HashLink>
+            <HashLink
               to="/#aboutus-section"
               state="about-us"
-              className="navLinks"
+              className={
+                isActive("#aboutus-section") ? "active navLinks" : "navLinks"
+              }
               // etc...
             >
               About us
-            </NavHashLink>
+            </HashLink>
 
             <NavLink to="/user-signup" state="gi" className="navLinks">
               Sign up
