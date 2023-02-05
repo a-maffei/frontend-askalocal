@@ -74,14 +74,14 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
       >
         <div className={size === "home" ? "sortHome" : "sort"}>
           <select onChange={(e) => setOrder(e.target.value)}>{options}</select>
-          <GoChevronDown
+          {/* <GoChevronDown
             className="postDisplayArrows"
             onClick={() => setUp(() => false)}
           />
           <GoChevronUp
             className="postDisplayArrows"
             onClick={() => setUp(() => true)}
-          />
+          /> */}
         </div>
         {keys?.map((element, i) =>
           posts[element]?.categories &&
