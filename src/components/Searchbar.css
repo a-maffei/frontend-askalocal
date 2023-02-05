@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 4em 0 1.5em;
+  margin: 3em 0 1.5em;
   width: 60%;
 }
 
@@ -13,7 +13,7 @@
 
 .search-icon {
   background-color: var(--background);
-  color: var(--text-primary);
+  color: black;
   height: 3rem;
   border-radius: 5px 0 0 5px;
   padding: 0 1em;

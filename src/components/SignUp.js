@@ -1,7 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
+import domtoimage from "dom-to-image";
 
 const Signup = ({ setUser, setLocal, urlPath }) => {
   /*   const firstname = useRef();
@@ -17,6 +18,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
+  const [imageUrl, setImageUrl] = useState(null);
 
   const [selectedFile, setSelectedFile] = useState("");
   const url = `https://backend-askalocal.onrender.com/${urlPath}/signup`;
@@ -107,10 +109,17 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     console.log("FORMDATAaaaaa", formData);
   };
 
+  useEffect(() => {
+    if (selectedFile) {
+      setImageUrl(URL.createObjectURL(selectedFile));
+    }
+  }, [selectedFile]);
+
   console.log("ERRRRROR", error);
 
   return (
     <div className="signupOuterDiv">
+      {" "}
       <div className="alreadyDiv">
         {urlPath === "local" ? (
           <Link to="/local-login">
@@ -201,21 +210,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               placeholder="Password"
               required
             />
-            <label className="signupLabel" htmlFor="pic">
-              Profile picture
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              className="form-control-file signupInput signup-pic"
-              id="pic"
-              name="pic"
-              required
-              onChange={(e) => {
-                setSelectedFile(e.target.files[0]);
-              }}
-            />
-
             <label className="signupLabel" htmlFor="phone">
               Phone
             </label>
@@ -246,6 +240,31 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               placeholder="City"
               required
             />
+            <div className="profile-pic-section">
+              <div className="profile-pic-upload">
+                <label className="signupLabel" htmlFor="pic">
+                  Profile picture and preview
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="form-control-file signupInput signup-pic"
+                  id="pic"
+                  name="pic"
+                  required
+                  onChange={(e) => {
+                    setSelectedFile(e.target.files[0]);
+                  }}
+                />
+              </div>
+              <div
+                className="profile-pic-preview"
+                style={{
+                  backgroundImage: `url(${imageUrl}`,
+                  backgroundSize: "cover",
+                }}
+              ></div>
+            </div>
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>

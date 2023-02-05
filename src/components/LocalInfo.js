@@ -80,7 +80,7 @@ export default function LocalInfo({ user }) {
       {local.categories ? (
         <>
           <Profile local={local} />{" "}
-          <button onClick={() => navigate(-1)} className="navLinks">
+          <button onClick={() => navigate(-1)} className="bright-bttn">
             Back
           </button>{" "}
         </>
