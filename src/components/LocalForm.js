@@ -159,8 +159,8 @@ export default function Form({ local, setLocal }) {
 
   return (
     <div className="form">
-      <h2 className="section-title-green">Create your profile</h2>
-      <h4 className="paragraph-title-green">
+      <h2 className="greeting-title">Create your profile</h2>
+      <h4 className="greeting-subtitle">
         Tell us a bit about yourself and share what you can offer to newcomers
         in {local?.city}.
       </h4>

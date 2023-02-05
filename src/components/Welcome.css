@@ -1,8 +1,11 @@
 #greeting-bg {
-  background-color: var(--background);
-  color: var(--text-primary);
-  width: 70%;
+  width: 80%;
+  font-weight: 0.3em;
   height: auto;
-  margin: 1.5rem auto;
+  margin: 0 auto;
   padding: 0.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

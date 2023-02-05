@@ -11,8 +11,8 @@ export default function AboutUs() {
       <div className="us-container">
         <div className="us-individual-container">
           <img className="us-pic" src={alessandra}></img>
-          <h5 className="us-name paragraph-title-green">Alessandra</h5>
-          <h6 className="us-city paragraph-title-green">Berlin</h6>
+          <h5 className="us-name">Alessandra</h5>
+          <h6 className="us-city">Berlin</h6>
           <div className="us-social">
             <SocialIcon
               network="linkedin"
@@ -30,8 +30,8 @@ export default function AboutUs() {
         </div>
         <div className="us-individual-container">
           <img className="us-pic" src={antonio}></img>
-          <h5 className="us-name paragraph-title-green">Antonio</h5>
-          <h6 className="us-city paragraph-title-green">Stuttgart</h6>
+          <h5 className="us-name">Antonio</h5>
+          <h6 className="us-city">Stuttgart</h6>
           <div className="us-social">
             <SocialIcon
               network="linkedin"
@@ -49,8 +49,8 @@ export default function AboutUs() {
         </div>
         <div className="us-individual-container">
           <img className="us-pic" src={timon}></img>
-          <h5 className="us-name paragraph-title-green">Timon</h5>
-          <h6 className="us-city paragraph-title-green">Berlin</h6>
+          <h5 className="us-name">Timon</h5>
+          <h6 className="us-city">Berlin</h6>
           <div className="us-social">
             <SocialIcon
               network="linkedin"

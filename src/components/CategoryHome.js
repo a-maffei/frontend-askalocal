@@ -45,8 +45,8 @@ const Categories = ({ input, setInput }) => {
       <option value="Paris" className="options">
         Paris
       </option>
-      <option value="Rom" className="options">
-        Rom
+      <option value="Rome" className="options">
+        Rome
       </option>
     </>
   );
