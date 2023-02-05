@@ -55,7 +55,7 @@ export default function ProfileDrop({
         >
           {isMenuOpen ? (
             <ul id="nav-drop-menu">
-              <li className="nav-menu-item">
+              <li className="nav-menu-item static-li">
                 <p>
                   {user.firstname} {`${user.lastname.charAt(0)}.`} ({user.email}
                   )
@@ -82,7 +82,10 @@ export default function ProfileDrop({
           {isMenuOpen ? (
             <ul id="nav-drop-menu">
               <li className="nav-menu-item">
-                <Link to="/yourinfo" className="profileLink">
+                <Link
+                  to={local.isComplete ? "/yourinfo" : "/form"}
+                  className="profileLink"
+                >
                   {local.firstname} {`${local.lastname.charAt(0)}.`}
                   <br />
                   {local.email}

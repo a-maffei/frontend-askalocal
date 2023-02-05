@@ -1,24 +1,42 @@
 .post-macro-cont {
-  width: 70vw;
+  width: 58em;
   display: flex;
   flex-direction: column;
 }
 
-.postDisplayBig {
-  background-color: var(--background);
-  border-radius: 25px;
-  margin: 2rem;
-  padding: 1rem;
-  padding-top: 1.8rem;
-}
-
-.postDisplayHome,
 .postDisplay {
   background-color: var(--background);
-  margin: 2rem;
+  border-radius: 2em;
+  margin: 2em;
+  overflow: hidden;
+}
+
+.postDisplay {
+  overflow: hidden;
+}
+
+.postDisplayInner {
   overflow-y: scroll;
-  height: 45vh;
-  border-radius: 30px;
+  height: 37em;
+}
+
+.postDisplayInner::-webkit-scrollbar {
+  width: 1em;
+}
+
+.postDisplayInner::-webkit-scrollbar-thumb {
+  border-radius: 2em;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background-color: var(--button-bright);
+}
+
+.postDisplayInner::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  /* background-color: var(--button-bright); */
+}
+
+.postDisplayInner::-webkit-scrollbar-thumb:hover {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .cat-avatarSmall {
@@ -29,13 +47,11 @@
 }
 
 .cat-nameCity {
-  height: 50;
-  /* width: 15%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.8rem;
+  margin: 0.8em;
   gap: 0.4em;
 }
 
@@ -46,19 +62,19 @@
 .cat-message {
   /* width: 45%; */
   font-style: italic;
-  margin: 1rem;
+  margin: 1em;
 }
 
 .cat-price {
   font-size: 1em;
   border-left: 1px solid var(--border);
-  padding: 0 1rem;
+  padding: 0 1em;
 }
 
 .cat-label {
   background-color: var(--button-primary);
   color: var(--red--light);
-  border-radius: 25px;
+  border-radius: 2em;
   padding: 0.5em;
   text-align: center;
   font-weight: 600;
@@ -81,7 +97,7 @@
   background-color: var(--button-primary);
   color: var(--button-primary-text);
   /*color: var(--text-secondary);*/
-  border-radius: 25px;
+  border-radius: 2em;
   /*box-shadow: 0 0 50px var(--accent); */
 }
 
@@ -89,20 +105,30 @@
   position: absolute;
 }
 
-.sort,
-.sortHome {
+.sort {
   display: flex;
-  justify-content: flex-end;
-  padding-top: 0.5rem;
-  margin-right: 1rem;
+  justify-content: end;
+  padding-top: 0.5em;
+  margin-right: 1em;
 }
+
+.sortArrows {
+  display: flex;
+  justify-content: end;
+  margin-left: 0px;
+}
+
 .postDisplayArrows {
+  /* display: block; */
   color: var(--button-bright);
+
   font-size: 1.5em;
+  margin-left: 0.1em;
 }
 
 .postDisplayArrows:hover {
+  color: aqua;
   color: var(--green-light);
-  transform: translateY(0.2rem);
+  transform: translateY(0.2em);
   cursor: pointer;
 }

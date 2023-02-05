@@ -63,81 +63,79 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
         ""
       )}
 
-      <div
-        className={
-          size === "small"
-            ? "postDisplay"
-            : size === "home"
-            ? "postDisplayHome"
-            : "postDisplayBig"
-        }
-      >
-        <div className={size === "home" ? "sortHome" : "sort"}>
-          <select onChange={(e) => setOrder(e.target.value)}>{options}</select>
-          {/* <GoChevronDown
-            className="postDisplayArrows"
-            onClick={() => setUp(() => false)}
-          />
-          <GoChevronUp
-            className="postDisplayArrows"
-            onClick={() => setUp(() => true)}
-          /> */}
-        </div>
-        {keys?.map((element, i) =>
-          posts[element]?.categories &&
-          (input?.length < 1 ||
-            posts[element].categories[category].textfield
-              .toLowerCase()
-              .includes(input.toLowerCase())) &&
-          posts[element].categories[category].textfield?.length > 0 ? (
-            <Link
-              key={i}
-              className="postDiv"
-              to={`/local/${posts[element]._id}`}
-            >
-              {posts[element].pic ? (
-                <div
-                  className="cat-avatarSmall"
-                  style={{
-                    backgroundImage: `url(${posts[element].pic})`,
-                    backgroundSize: "cover",
-                  }}
-                ></div>
-              ) : (
-                <div
-                  className="cat-avatarSmall"
-                  style={{
-                    backgroundImage: `url(${img})`,
-                    backgroundSize: "cover",
-                  }}
-                ></div>
-              )}
-              {/*                 {posts[element].pic ? (
+      <div className="postDisplay">
+        <div className={size !== "big" ? "postDisplayInner" : ""}>
+          <div className="sort">
+            <select onChange={(e) => setOrder(e.target.value)}>
+              {options}
+            </select>
+            <div className="sortArrows">
+              <GoChevronDown
+                className="postDisplayArrows"
+                onClick={() => setUp(() => false)}
+              />
+              <GoChevronUp
+                className="postDisplayArrows"
+                onClick={() => setUp(() => true)}
+              />
+            </div>
+          </div>
+          {keys?.map((element, i) =>
+            posts[element]?.categories &&
+            (input?.length < 1 ||
+              posts[element].categories[category].textfield
+                .toLowerCase()
+                .includes(input.toLowerCase())) &&
+            posts[element].categories[category].textfield?.length > 0 ? (
+              <Link
+                key={i}
+                className="postDiv"
+                to={`/local/${posts[element]._id}`}
+              >
+                {posts[element].pic ? (
+                  <div
+                    className="cat-avatarSmall"
+                    style={{
+                      backgroundImage: `url(${posts[element].pic})`,
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                ) : (
+                  <div
+                    className="cat-avatarSmall"
+                    style={{
+                      backgroundImage: `url(${img})`,
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                )}
+                {/*                 {posts[element].pic ? (
                   <img src={posts[element].pic} className="cat-avatarSmall" />
                 ) : (
                   <img src={img} className="cat-avatarSmall" />
                 )} */}
-              <div className="cat-nameCity">
-                <p className="cat-name">
-                  <b>{posts[element].firstname}</b>
-                </p>{" "}
-                <p className="cat-label">
-                  <b>{posts[element].city}</b>
-                </p>
-              </div>
-              <div className="cat-message">
-                <p>"{posts[element].categories[category].textfield}"</p>
-              </div>
-              <div className="cat-price">
-                <p>
-                  <b>{posts[element].categories[category].price} €</b>
-                </p>
-              </div>
-            </Link>
-          ) : (
-            <div key={i} />
-          )
-        )}
+                <div className="cat-nameCity">
+                  <p className="cat-name">
+                    <b>{posts[element].firstname}</b>
+                  </p>{" "}
+                  <p className="cat-label">
+                    <b>{posts[element].city}</b>
+                  </p>
+                </div>
+                <div className="cat-message">
+                  <p>"{posts[element].categories[category].textfield}"</p>
+                </div>
+                <div className="cat-price">
+                  <p>
+                    <b>{posts[element].categories[category].price} €</b>
+                  </p>
+                </div>
+              </Link>
+            ) : (
+              <div key={i} />
+            )
+          )}
+        </div>
       </div>
     </div>
   );
