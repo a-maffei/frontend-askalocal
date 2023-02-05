@@ -20,10 +20,6 @@
   padding-top: 1rem;
 }
 
-.postDisplay {
-  /* padding-top: 1.8rem; */
-}
-
 .cat-avatarSmall {
   height: 8em;
   width: 8em;
@@ -90,28 +86,12 @@
 
 .absolute {
   position: absolute;
-  /* top: 0; */
-  /* left: 50px; */
 }
-
-/* .categoryLink {
-  background-color: aqua;
-  padding: 1rem;
-  border-radius: 25px;
-  font-size: x-large;
-  font-weight: 900;
-}
-
-.categoryLink:hover {
-  background-color: var(--background);
-  color: var(--accent);
-  box-shadow: 0 0 50px var(--accent);
-}*/
 
 .filter,
 .filterHome {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .filter {
@@ -125,7 +105,6 @@
 .postDisplayArrows {
   color: var(--button-bright);
   font-size: 1.5em;
-  display: inline-block;
 }
 
 .postDisplayArrows:hover {

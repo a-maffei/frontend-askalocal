@@ -14,6 +14,7 @@ import cat4 from "./svg/mail.svg";
 import cat5 from "./svg/reminder.svg";
 import cat6 from "./svg/writer.svg";
 import AboutUs from "./AboutUs";
+import ImageSlide from "./ImageSlide";
 
 const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   // const options = optionsImp;
@@ -98,8 +99,22 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <h3>Let the locals help you out.</h3>
         </div>
         <div className="homeDiv-img">
-          <img src={locals} />
+          {posts.locals ? <ImageSlide posts={posts.locals} /> : ""}
         </div>
+        {/* {posts.locals ? (
+          <div className="testingRelative">
+            <img
+              alt="Second slide"
+              className="testing"
+              src={posts.locals[0].pic}
+            />
+            <p className="imgText">
+              {posts.locals[0].firstname} <b>{posts.locals[0].city}</b>
+            </p>
+          </div>
+        ) : (
+          ""
+        )} */}
       </div>
       <div className="bright-bttn-cont">
         <Link to="/user-signup" state="gi">
