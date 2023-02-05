@@ -63,7 +63,7 @@ export default function Form({ local, setLocal }) {
     event.preventDefault();
 
     try {
-      const response = await fetch(url2, {
+      const response = await fetch(url, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
