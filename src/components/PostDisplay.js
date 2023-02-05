@@ -11,14 +11,17 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   const [up, setUp] = useState(true);
 
   useEffect(() => {
+    console.log("what", posts);
     postOrder();
   }, [order, up]);
 
   const postOrder = () => {
     if (order === "price") {
       if (up) {
-        posts.sort(
-          (a, b) => a.categories[category].price < b.categories[category].price
+        posts.sort((a, b) =>
+          a.isComplete && b.isComplete
+            ? a.categories[category].price < b.categories[category].price
+            : ""
         );
       } else {
         posts.sort(

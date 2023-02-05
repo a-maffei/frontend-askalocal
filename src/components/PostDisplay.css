@@ -120,15 +120,16 @@
 
 .postDisplayArrows {
   /* display: block; */
-  color: var(--button-bright);
-
+  color: var(--green-light) !important;
+  background-color: aqua;
+  /* color: aqua; */
   font-size: 1.5em;
   margin-left: 0.1em;
 }
 
 .postDisplayArrows:hover {
-  color: aqua;
-  color: var(--green-light);
+  /* color: aqua; */
+  /* color: var(--green-light); */
   transform: translateY(0.2em);
   cursor: pointer;
 }

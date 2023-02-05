@@ -23,13 +23,13 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [cityPosts, setCityPosts] = useState(null);
-  const url = `https://backend-askalocal.onrender.com/local`;
-  const url2 = "http://localhost:8080/local";
+  const url = `https://backend-askalocal.onrender.com/local/sample`;
+  const url2 = "http://localhost:8080/local/sample";
 
   const getData = async (url) => {
     const data = await fetch(url)
       .then((data) => data.json())
-      .catch((e) => setError(e));
+      .catch((e) => console.log(e.message.value));
     if (data.status === 404) {
       throw new Response("Not Found", { status: 404 });
     }
@@ -101,20 +101,6 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
         <div className="homeDiv-img">
           {posts.locals ? <ImageSlide posts={posts.locals} /> : ""}
         </div>
-        {/* {posts.locals ? (
-          <div className="testingRelative">
-            <img
-              alt="Second slide"
-              className="testing"
-              src={posts.locals[0].pic}
-            />
-            <p className="imgText">
-              {posts.locals[0].firstname} <b>{posts.locals[0].city}</b>
-            </p>
-          </div>
-        ) : (
-          ""
-        )} */}
       </div>
       <div className="bright-bttn-cont">
         <Link to="/user-signup" state="gi">
