@@ -1,5 +1,7 @@
 .post-macro-cont {
   width: 70vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .postDisplayBig {
@@ -17,7 +19,6 @@
   overflow-y: scroll;
   height: 45vh;
   border-radius: 30px;
-  padding-top: 1rem;
 }
 
 .cat-avatarSmall {
@@ -88,20 +89,13 @@
   position: absolute;
 }
 
-.filter,
-.filterHome {
+.sort,
+.sortHome {
   display: flex;
   justify-content: flex-end;
+  padding-top: 0.5rem;
+  margin-right: 1rem;
 }
-
-.filter {
-  margin: 0 1rem 1.7rem;
-}
-
-.filterHome {
-  margin: 0 1rem;
-}
-
 .postDisplayArrows {
   color: var(--button-bright);
   font-size: 1.5em;

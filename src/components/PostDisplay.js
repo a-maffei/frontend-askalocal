@@ -72,7 +72,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
             : "postDisplayBig"
         }
       >
-        <div className={size === "home" ? "filterHome" : "filter"}>
+        <div className={size === "home" ? "sortHome" : "sort"}>
           <select onChange={(e) => setOrder(e.target.value)}>{options}</select>
           <GoChevronDown
             className="postDisplayArrows"
