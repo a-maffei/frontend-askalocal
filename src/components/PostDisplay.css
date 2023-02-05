@@ -35,6 +35,10 @@
   /* background-color: var(--button-bright); */
 }
 
+.postDisplayInner::-webkit-scrollbar-thumb:hover {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
 .cat-avatarSmall {
   height: 8em;
   width: 8em;
