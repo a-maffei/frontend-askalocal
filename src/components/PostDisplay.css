@@ -1,24 +1,19 @@
 .post-macro-cont {
-  width: 70vw;
+  width: 58em;
   display: flex;
   flex-direction: column;
 }
 
+.postDisplay,
 .postDisplayBig {
   background-color: var(--background);
-  border-radius: 25px;
-  margin: 2rem;
-  padding: 1rem;
-  padding-top: 1.8rem;
+  border-radius: 2em;
+  margin: 2em;
 }
 
-.postDisplayHome,
 .postDisplay {
-  background-color: var(--background);
-  margin: 2rem;
   overflow-y: scroll;
-  height: 45vh;
-  border-radius: 30px;
+  height: 37em;
 }
 
 .cat-avatarSmall {
@@ -29,13 +24,11 @@
 }
 
 .cat-nameCity {
-  height: 50;
-  /* width: 15%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.8rem;
+  margin: 0.8em;
   gap: 0.4em;
 }
 
@@ -46,19 +39,19 @@
 .cat-message {
   /* width: 45%; */
   font-style: italic;
-  margin: 1rem;
+  margin: 1em;
 }
 
 .cat-price {
   font-size: 1em;
   border-left: 1px solid var(--border);
-  padding: 0 1rem;
+  padding: 0 1em;
 }
 
 .cat-label {
   background-color: var(--button-primary);
   color: var(--red--light);
-  border-radius: 25px;
+  border-radius: 2em;
   padding: 0.5em;
   text-align: center;
   font-weight: 600;
@@ -81,7 +74,7 @@
   background-color: var(--button-primary);
   color: var(--button-primary-text);
   /*color: var(--text-secondary);*/
-  border-radius: 25px;
+  border-radius: 2em;
   /*box-shadow: 0 0 50px var(--accent); */
 }
 
@@ -89,12 +82,11 @@
   position: absolute;
 }
 
-.sort,
-.sortHome {
+.sort {
   display: flex;
   justify-content: flex-end;
-  padding-top: 0.5rem;
-  margin-right: 1rem;
+  padding-top: 0.5em;
+  margin-right: 1em;
 }
 .postDisplayArrows {
   color: var(--button-bright);
@@ -103,6 +95,6 @@
 
 .postDisplayArrows:hover {
   color: var(--green-light);
-  transform: translateY(0.2rem);
+  transform: translateY(0.2em);
   cursor: pointer;
 }

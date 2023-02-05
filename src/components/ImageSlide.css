@@ -1,5 +1,5 @@
 #carousel {
-  height: 23rem;
+  height: 23em;
   overflow: hidden;
   position: relative;
 }
@@ -14,7 +14,7 @@
 .carousel-item img {
   width: 100%;
   height: 100%;
-  border-radius: 2rem;
+  border-radius: 2em;
 }
 @keyframes autoplay {
   0% {
@@ -61,6 +61,6 @@
 
 .imgText {
   position: absolute;
-  bottom: 0rem;
-  left: 1rem;
+  bottom: 0em;
+  left: 1em;
 }
