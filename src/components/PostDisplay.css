@@ -4,16 +4,35 @@
   flex-direction: column;
 }
 
-.postDisplay,
-.postDisplayBig {
+.postDisplay {
   background-color: var(--background);
   border-radius: 2em;
   margin: 2em;
+  overflow: hidden;
 }
 
 .postDisplay {
+  overflow: hidden;
+}
+
+.postDisplayInner {
   overflow-y: scroll;
   height: 37em;
+}
+
+.postDisplayInner::-webkit-scrollbar {
+  width: 1em;
+}
+
+.postDisplayInner::-webkit-scrollbar-thumb {
+  border-radius: 2em;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background-color: var(--button-bright);
+}
+
+.postDisplayInner::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  /* background-color: var(--button-bright); */
 }
 
 .cat-avatarSmall {
@@ -84,16 +103,27 @@
 
 .sort {
   display: flex;
-  justify-content: flex-end;
+  justify-content: end;
   padding-top: 0.5em;
   margin-right: 1em;
 }
+
+.sortArrows {
+  display: flex;
+  justify-content: end;
+  margin-left: 0px;
+}
+
 .postDisplayArrows {
+  /* display: block; */
   color: var(--button-bright);
+
   font-size: 1.5em;
+  margin-left: 0.1em;
 }
 
 .postDisplayArrows:hover {
+  color: aqua;
   color: var(--green-light);
   transform: translateY(0.2em);
   cursor: pointer;
