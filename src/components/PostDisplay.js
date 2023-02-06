@@ -51,9 +51,9 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
     }
   };
 
-  const getRandom = (localcat, i) => {
+  const getRandom = (localcat) => {
     const temp = Object.keys(localcat);
-    catKeys = temp.filter((cat) => localcat[cat].price !== null);
+    catKeys = temp.filter((cat) => localcat[cat].textfield.length > 0);
     current = catKeys[Math.floor(Math.random() * catKeys.length)];
     return current;
   };
@@ -96,14 +96,18 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
             </div>
           </div>
           {posts?.map((element, i) =>
-            (element?.categories &&
-              (input?.length < 1 ||
-                size === "home" ||
-                element.categories[category].textfield
+            (size === "home" &&
+              element.categories[getRandom(element.categories)]?.textfield >
+                0) ||
+            ((input?.length < 1 ||
+              (size === "home" &&
+                element.categories[current]?.textfield
                   .toLowerCase()
-                  .includes(input.toLowerCase())) &&
-              element.categories[category].textfield?.length > 0) ||
-            size === "home" ? (
+                  .includes(input.toLowerCase())) ||
+              element.categories[category].textfield
+                .toLowerCase()
+                .includes(input.toLowerCase())) &&
+              element.categories[category].textfield?.length > 0) ? (
               <Link key={i} className="postDiv" to={`/local/${element._id}`}>
                 {element.pic ? (
                   <div
@@ -133,10 +137,8 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
                 {size === "home" ? (
                   <div className="cat-message">
                     <p>
-                      {
-                        element.categories[getRandom(element.categories, i)]
-                          .textfield
-                      }
+                      {console.log(current, "wtf")}
+                      {element.categories[current].textfield}
                       {console.log(
                         "this is the most current",
                         current,
