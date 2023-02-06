@@ -246,29 +246,27 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
             <label className="signupLabel" htmlFor="city">
               City
             </label>
-            {
-              (urlPath = "local" ? (
-                <select
-                  onChange={(e) => setCity(e.target.value)}
-                  className="signupInputSelect"
-                  id="city"
-                >
-                  {options}
-                </select>
-              ) : (
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  pattern="[a-zA-Z]+"
-                  className="signupInput"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  placeholder="City"
-                  required
-                />
-              ))
-            }
+            {urlPath === "local" ? (
+              <select
+                onChange={(e) => setCity(e.target.value)}
+                className="signupInputSelect"
+                id="city"
+              >
+                {options}
+              </select>
+            ) : (
+              <input
+                type="text"
+                id="city"
+                name="city"
+                pattern="[a-zA-Z]+"
+                className="signupInput"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="City"
+                required
+              />
+            )}
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>
