@@ -11,39 +11,42 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   const [up, setUp] = useState(true);
 
   useEffect(() => {
-    console.log("what", posts);
     postOrder();
   }, [order, up]);
 
   const postOrder = () => {
     if (order === "price") {
       if (up) {
-        posts.sort((a, b) =>
-          a.isComplete && b.isComplete
-            ? a.categories[category].price < b.categories[category].price
-            : ""
+        posts.sort(
+          (a, b) =>
+            // a.isComplete && b.isComplete ?
+            a.categories[category].price < b.categories[category].price ? 1 : -1
+          // : ""
         );
       } else {
-        posts.sort(
-          (a, b) => a.categories[category].price > b.categories[category].price
+        posts.sort((a, b) =>
+          a.categories[category].price > b.categories[category].price ? 1 : -1
         );
       }
     }
     if (order === "rating") {
       if (up) {
-        posts.sort(
-          (a, b) =>
-            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
-            b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+        posts.sort((a, b) =>
+          a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
+          b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+            ? 1
+            : -1
         );
       } else {
-        posts.sort(
-          (a, b) =>
-            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
-            b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+        posts.sort((a, b) =>
+          a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
+          b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+            ? 1
+            : -1
         );
       }
     }
+    console.log(posts);
   };
 
   const options = (

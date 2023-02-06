@@ -183,7 +183,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
                 {" "}
                 <img src={cat3} className="categoriesPic" alt="Appointments" />
               </div>
-              <p>Appointments</p>
+              <p>Meetings</p>
             </Link>
           </div>
           <div className="cardOuterDiv">
