@@ -1,30 +1,62 @@
 import Conversation from "./Conversation";
 import "./Messenger.css";
 import Message from "./Message";
-import ChatOnline from "./ChatOnline";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import userEvent from "@testing-library/user-event";
 import { useJwt } from "react-jwt";
+import { io } from "socket.io-client";
 
 export default function Messenger({ user, local }) {
   const [conversations, setConversations] = useState([]);
+  const [currentUser, setCurrentUser] = useState();
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [newMessage, setNewMessage] = useState("");
+  const [notMyId, setNotMyId] = useState("");
+  const socket = useRef(io("ws://localhost:8900"));
+  const scrollRef = useRef(null);
+
   console.log("USER", user);
 
-  const token = user?.token;
+  console.log("LOCALLL", local);
 
+  const token = user ? user?.token : local?.token;
   const { decodedToken, isExpired } = useJwt(token);
-
   console.log("DECODED TOKEN", decodedToken);
 
   useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    socket.current.emit("addUser", decodedToken?.id);
+    socket.current.on("getUsers", (users) => {
+      console.log("WWWWWWWWWW", users);
+    });
+  }, [decodedToken?.id]);
+
+  useEffect(() => {
+    user ? setCurrentUser(user) : setCurrentUser(local);
     const getConversations = async () => {
       try {
-        console.log("HOLA");
         const res = await axios.get(
-          "http://localhost:8080/conversations/" + decodedToken?.id
+          `http://localhost:8080/conversations/${decodedToken?.id}`
         );
-        console.log("RESSSSSSSSSSSSSSSSSSS", res);
         setConversations(res.data);
       } catch (error) {
         console.log(error);
@@ -33,47 +65,118 @@ export default function Messenger({ user, local }) {
     getConversations();
   }, [decodedToken?.id]);
 
-  console.log("CONVO", conversations);
+  console.log("IIIIIIIDDDDDD");
+  useEffect(() => {
+    //console.log("INSIDE EFFECT", currentChat?.id);
+    // const id = currentChat?._id;
+    const getMessages = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8080/messages/" + currentChat?._id
+        );
+
+        // console.log("RESSSSSgSSSSSSSSS", res.data);
+        setMessages(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getMessages();
+  }, [currentChat?._id]);
+
+  function handleClick(c) {
+    setCurrentChat(c);
+  }
+
+  console.log("MESSAGESSSSSSSSSSSSSSSSSSSSSS", messages);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const message = {
+      sender: decodedToken?.id,
+      text: newMessage,
+      conversationId: currentChat?._id,
+    };
+
+    const receiverId = currentChat.members.find(
+      (member) => member !== decodedToken?.id
+    );
+    socket.current.emit("sendMessage", {
+      senderId: decodedToken?.id,
+      receiverId,
+      text: newMessage,
+    });
+    try {
+      const res = await axios.post("http://localhost:8080/messages", message);
+      setMessages([...messages, res.data]);
+      setNewMessage("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  function handleChange(e) {
+    setNewMessage(e.target.value);
+  }
+
+  //console.log("AAAAAAAAAA JA", messages);
+  console.log("CHdäAApAAAZ", currentChat);
+  console.log("BODHKUBVDSHUJ", currentChat);
 
   return (
     <div className="messenger">
       <div className="chatMenu">
         <div className="chatMenuWrapper">
-          <input placeholder="Serach for friends" className="chatMenuInput" />
+          <input placeholder="Search for friends" className="chatMenuInput" />
           {conversations?.map((c) => (
-            <Conversation conversation={c} currentUser={decodedToken} />
+            <div onClick={() => handleClick(c)}>
+              <Conversation
+                conversation={c}
+                currentUser={decodedToken}
+                setNotMyId={setNotMyId}
+              />
+            </div>
           ))}
         </div>
       </div>
       <div className="chatBox">
         <div className="chatBoxWrapper">
-          <div className="chatBoxTop">
-            <Message />
-            <Message own={true} />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-          </div>
+          {currentChat ? (
+            <>
+              <div className="chatBoxTop">
+                {[...messages].map((m) => (
+                  <div ref={scrollRef}>
+                    <Message
+                      user={user}
+                      local={local}
+                      message={m}
+                      own={m.sender === decodedToken?.id}
+                      notMyId={notMyId}
+                    />
+                  </div>
+                ))}
+              </div>
 
-          <div className="chatBoxBottom"></div>
-          <textarea
-            className="chatMessageInput"
-            placeholder="write something..."
-          ></textarea>
-          <button className="chatSubmitButton">Send</button>
-        </div>
-      </div>
-      <div className="chatOnline">
-        <div className="chatOnlineWrapper">
-          <ChatOnline />
+              <div className="chatBoxBottom"></div>
+              <textarea
+                className="chatMessageInput"
+                placeholder="write something..."
+                onChange={(e) => handleChange(e)}
+                value={newMessage}
+              ></textarea>
+              <button className="chatSubmitButton" onClick={handleSubmit}>
+                Send
+              </button>
+            </>
+          ) : (
+            <span className="noConversationText">
+              Open a conversation to start a chat.
+            </span>
+          )}
         </div>
       </div>
     </div>
