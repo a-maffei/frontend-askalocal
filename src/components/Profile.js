@@ -11,16 +11,23 @@ export default function Profile({ local }) {
   return (
     <div className="localDetailDiv">
       <div className="first-section">
-        <img
-          src={local?.pic}
-          className="avatarBig"
-          alt={`${local?.firstname}s Picture`}
-        />
+        <div
+          id="avatarBig"
+          style={{
+            backgroundImage: `url(${local.pic}`,
+            backgroundSize: "cover",
+          }}
+        ></div>
         <div className="bioInfo">
           <h1>
             {local?.firstname} {local?.lastname.charAt(0)}.
           </h1>
-          <p>{local?.bio}</p>
+          <p>
+            Local in: <b>{local?.city}</b>
+          </p>
+          <p>
+            <i>{local?.bio}</i>
+          </p>
         </div>
       </div>
       <div className="offers">
@@ -30,10 +37,14 @@ export default function Profile({ local }) {
             keys?.map((element, i) =>
               local.categories[element].textfield.length > 5 ? (
                 <div key={i} className="offersInnerDiv">
-                  <h3 className="textstart">{cat[element]}</h3>
-                  <p className="textstart">
-                    {local.categories[element].textfield}
-                  </p>
+                  <div className="offer-type">
+                    <h3 className="textstart ">{cat[element]}</h3>
+                  </div>
+                  <div className="offer-textfield">
+                    <p className="textstart ">
+                      {local.categories[element].textfield}
+                    </p>
+                  </div>
                   <p className="textend">{local.categories[element].price} €</p>
                 </div>
               ) : (
@@ -73,9 +84,9 @@ export default function Profile({ local }) {
       ) : (
         ""
       )}
-      <div className="bright-bttn-cont">
+      <div className="purple-bttn-cont">
         <Link to={`/${local._id}/contact`} state="gi">
-          <button className="bright-bttn">{`Contact ${local.firstname}`}</button>
+          <button className="purple-bttn">{`Contact ${local.firstname}`}</button>
         </Link>
       </div>
     </div>

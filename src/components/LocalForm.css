@@ -4,14 +4,6 @@
   align-items: center;
 }
 
-.section-title-green {
-  margin: 2em 0 0;
-}
-
-.paragraph-title-green {
-  margin: 1em 0 2em;
-}
-
 .localForm-cont {
   width: 80%;
   display: flex;
@@ -19,10 +11,10 @@
   align-items: center;
   justify-content: center;
   gap: 7rem;
-  margin: 0 0 2rem;
+  margin: 0 2rem 0;
 }
 
-svg {
+.profile-img {
   width: 35%;
   fill: var(--nav-background);
 }

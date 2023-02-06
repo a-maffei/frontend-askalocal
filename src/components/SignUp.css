@@ -58,10 +58,15 @@
   width: 102.8%;
 }
 
+/* .signupInput:last-of-type {
+  padding: 0.3em 0;
+} */
+
 .signup-pic {
   background-color: transparent;
   color: var(--text-primary);
   font-weight: 400;
+  width: 60%;
 }
 
 .signup-cont {
@@ -72,6 +77,26 @@
 .signup-cont > h1 {
   font-size: 2rem;
   margin: 0;
+}
+
+.profile-pic-section {
+  display: flex;
+  border: 1px solid var(--green-dark);
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+  padding: 1rem 0;
+}
+
+.profile-pic-upload {
+  width: 70%;
+  padding-left: 1rem;
+}
+
+.profile-pic-preview {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
 }
 
 /* .signupLegend {
@@ -146,6 +171,21 @@ textarea {
 
 @media only screen and (max-width: 1100px) {
   .signupField {
+    width: 100%;
+  }
+
+  .profile-pic-section {
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem auto 0;
+  }
+
+  .profile-pic-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+
     width: 100%;
   }
 
