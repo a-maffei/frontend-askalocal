@@ -4,7 +4,7 @@ import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Categories = ({ input, setInput }) => {
+const Categories = ({ input, setInput, user, local }) => {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
@@ -15,7 +15,11 @@ const Categories = ({ input, setInput }) => {
   const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
-    const data = await fetch(url)
+    const data = await fetch(url, {
+      headers: {
+        Authorization: user ? `Bearer ${user.token}` : `Bearer ${local.token}`,
+      },
+    })
       .then((data) => data.json())
       .catch((e) => console.log(e.message.value));
     if (data.status === 404) {

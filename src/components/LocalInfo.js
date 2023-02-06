@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import "./LocalInfo.css";
 import Starrating from "./Starrating";
 
-export default function LocalInfo({ user }) {
+export default function LocalInfo({ user, local }) {
   // const { id } = useParams()
   const { id } = useParams();
-  const [local, setLocal] = useState([]);
+  const [localDisplay, setLocalDisplay] = useState([]);
   const [review, setReview] = useState("");
   const [error, setError] = useState(null);
   const [rating, setRating] = useState(0);
@@ -22,10 +22,17 @@ export default function LocalInfo({ user }) {
 
   const fetchData = async (url) => {
     try {
-      const result = await axios.get(url);
-      setLocal(result.data.local);
+      const result = await axios.get(url, {
+        headers: {
+          Authorization: user
+            ? `Bearer ${user.token}`
+            : `Bearer ${local.token}`,
+        },
+      });
+      setLocalDisplay(result.data.local);
     } catch (err) {
       setError(err);
+      console.log(err);
     }
   };
 
@@ -53,13 +60,13 @@ export default function LocalInfo({ user }) {
         rating,
       })
       .then((res) => {
-        setLocal({
-          ...local,
+        setLocalDisplay({
+          ...localDisplay,
           reviews: [
-            ...local.reviews,
+            ...localDisplay.reviews,
             [`${user.firstname} ${user.lastname.charAt(0)}.`, review],
           ],
-          ratings: [...local.ratings, rating],
+          ratings: [...localDisplay.ratings, rating],
         });
         setReview("");
         setRating(0);
@@ -77,9 +84,9 @@ export default function LocalInfo({ user }) {
 
   return (
     <div className="localDiv">
-      {local.categories ? (
+      {localDisplay.categories ? (
         <>
-          <Profile local={local} />{" "}
+          <Profile local={localDisplay} />{" "}
           <button onClick={() => navigate(-1)} className="bright-bttn">
             Back
           </button>{" "}

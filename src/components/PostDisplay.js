@@ -13,7 +13,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   let current = null;
 
   useEffect(() => {
-    postOrder();
+    order && postOrder();
     console.log("postdisplay", posts);
   }, [order, up]);
 
@@ -53,9 +53,9 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
 
   const getRandom = (localcat) => {
     const temp = Object.keys(localcat);
-    catKeys = temp.filter((cat) => localcat[cat].textfield.length > 0);
+    catKeys = temp.filter((cat) => localcat[cat].textfield.length);
     current = catKeys[Math.floor(Math.random() * catKeys.length)];
-    return current;
+    console.log("random");
   };
 
   const options = (
@@ -96,9 +96,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
             </div>
           </div>
           {posts?.map((element, i) =>
-            (size === "home" &&
-              element.categories[getRandom(element.categories)]?.textfield >
-                0) ||
+            (size === "home" && getRandom(element.categories)) ||
             ((input?.length < 1 ||
               (size === "home" &&
                 element.categories[current]?.textfield

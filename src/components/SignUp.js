@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 import domtoimage from "dom-to-image";
+import ImageCrop from "./ImageCrop";
 
 const Signup = ({ setUser, setLocal, urlPath }) => {
   /*   const firstname = useRef();
@@ -262,7 +263,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
                 required
               />
             )}
-            
             <div className="profile-pic-section">
               <div className="profile-pic-upload">
                 <label className="signupLabel" htmlFor="pic">
@@ -288,7 +288,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
                 }}
               ></div>
             </div>
-
+            <ImageCrop />
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>

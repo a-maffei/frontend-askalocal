@@ -68,7 +68,7 @@ function App() {
                     <Navigate to="/yourinfo" local={local} />
                   )
                 ) : (
-                  <Navigate to="/welcome" />
+                  <Navigate to="/welcome" user={user} />
                 )
               }
             />
@@ -81,7 +81,7 @@ function App() {
                 !user ? (
                   <Login setUser={setUser} urlPath="user" />
                 ) : (
-                  <Navigate to="/welcome" />
+                  <Navigate to="/welcome" user={user} local={local} />
                 )
               }
             />
@@ -91,7 +91,7 @@ function App() {
                 !user ? (
                   <Signup user={user} setUser={setUser} urlPath="user" />
                 ) : (
-                  <Navigate to="/welcome" />
+                  <Navigate to="/welcome" user={user} local={local} />
                 )
               }
             />
@@ -113,7 +113,7 @@ function App() {
                 ) : local.isComplete ? (
                   <Navigate to="/yourinfo" local={local} />
                 ) : (
-                  <Navigate to="/form" />
+                  <Navigate to="/form" local={local} />
                 )
               }
             />
@@ -139,23 +139,36 @@ function App() {
                   setInput={setInput}
                   selectedValue={selectedValue}
                   setSelectedValue={setSelectedValue}
+                  user={user}
+                  local={local}
                 />
               }
             />
+
             <Route
               path="/categories/:category"
               element={
-                <CategoryHome
-                  searchedPosts={searchedPosts}
-                  setSearchedPosts={setSearchedPosts}
-                  input={input}
-                  setInput={setInput}
-                  selectedValue={selectedValue}
-                  setSelectedValue={setSelectedValue}
-                />
+                user || local ? (
+                  <CategoryHome
+                    searchedPosts={searchedPosts}
+                    setSearchedPosts={setSearchedPosts}
+                    input={input}
+                    setInput={setInput}
+                    selectedValue={selectedValue}
+                    setSelectedValue={setSelectedValue}
+                    user={user}
+                    local={local}
+                  />
+                ) : (
+                  <Login urlPath="user" />
+                )
               }
             />
-            <Route path="/local/:id" element={<LocalInfo user={user} />} />
+
+            <Route
+              path="/local/:id"
+              element={<LocalInfo user={user} local={local} />}
+            />
 
             {/* Paths reserved for  locals */}
             <Route

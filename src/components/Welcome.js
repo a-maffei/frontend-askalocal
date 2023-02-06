@@ -43,7 +43,7 @@ export default function Welcome({ user, input, setInput }) {
         </h3>
       </div>
 
-      <Categories input={input} setInput={setInput} />
+      <Categories input={input} setInput={setInput} user={user} />
     </>
   );
 }

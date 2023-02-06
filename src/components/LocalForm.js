@@ -66,7 +66,11 @@ export default function Form({ local, setLocal }) {
     try {
       const response = await fetch(url2, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${local.token}`,
+        },
+
         body: JSON.stringify({
           email: local.email,
           bio: bio,
