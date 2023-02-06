@@ -160,14 +160,20 @@ function App() {
                     local={local}
                   />
                 ) : (
-                  <Login urlPath="user" />
+                  <Login urlPath="user" setUser={setUser} />
                 )
               }
             />
 
             <Route
               path="/local/:id"
-              element={<LocalInfo user={user} local={local} />}
+              element={
+                user || local ? (
+                  <LocalInfo user={user} local={local} />
+                ) : (
+                  <Login urlPath="user" setUser={setUser} />
+                )
+              }
             />
 
             {/* Paths reserved for  locals */}
