@@ -17,7 +17,7 @@ import YourInfo from "./components/YourInfo";
 function App() {
   const [user, setUser] = useState(null);
   const [local, setLocal] = useState(null);
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
   const [input, setInput] = useState("");
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [selectedValue, setSelectedValue] = useState("City");
@@ -34,7 +34,10 @@ function App() {
     if (!local) {
       setLocal(JSON.parse(localStorage.getItem("local")));
     }
-  }, [user, local]);
+    // setTheme(JSON.parse(localStorage.getItem("theme")));
+    localStorage.setItem("theme", theme);
+    console.log(localStorage, "hello");
+  }, [user, local, theme]);
 
   return (
     <div className="App" data-theme={theme}>
