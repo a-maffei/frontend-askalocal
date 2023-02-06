@@ -7,11 +7,14 @@ import { GoChevronDown, GoChevronUp } from "react-icons/go";
 
 const PostDisplay = ({ posts, category, size, link, input }) => {
   const [order, setOrder] = useState(null);
-  let keys = Object.keys(posts);
+  // let keys = Object.keys(posts);
   const [up, setUp] = useState(true);
+  let catKeys = null;
+  let current = null;
 
   useEffect(() => {
     postOrder();
+    console.log("postdisplay", posts);
   }, [order, up]);
 
   const postOrder = () => {
@@ -46,7 +49,13 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
         );
       }
     }
-    console.log(posts);
+  };
+
+  const getRandom = (localcat, i) => {
+    const temp = Object.keys(localcat);
+    catKeys = temp.filter((cat) => localcat[cat].price !== null);
+    current = catKeys[Math.floor(Math.random() * catKeys.length)];
+    return current;
   };
 
   const options = (
@@ -86,23 +95,21 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
               />
             </div>
           </div>
-          {keys?.map((element, i) =>
-            posts[element]?.categories &&
-            (input?.length < 1 ||
-              posts[element].categories[category].textfield
-                .toLowerCase()
-                .includes(input.toLowerCase())) &&
-            posts[element].categories[category].textfield?.length > 0 ? (
-              <Link
-                key={i}
-                className="postDiv"
-                to={`/local/${posts[element]._id}`}
-              >
-                {posts[element].pic ? (
+          {posts?.map((element, i) =>
+            (element?.categories &&
+              (input?.length < 1 ||
+                size === "home" ||
+                element.categories[category].textfield
+                  .toLowerCase()
+                  .includes(input.toLowerCase())) &&
+              element.categories[category].textfield?.length > 0) ||
+            size === "home" ? (
+              <Link key={i} className="postDiv" to={`/local/${element._id}`}>
+                {element.pic ? (
                   <div
                     className="cat-avatarSmall"
                     style={{
-                      backgroundImage: `url(${posts[element].pic})`,
+                      backgroundImage: `url(${element.pic})`,
                       backgroundSize: "cover",
                     }}
                   ></div>
@@ -115,30 +122,49 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
                     }}
                   ></div>
                 )}
-                {/*                 {posts[element].pic ? (
-                  <img src={posts[element].pic} className="cat-avatarSmall" />
-                ) : (
-                  <img src={img} className="cat-avatarSmall" />
-                )} */}
                 <div className="cat-nameCity">
                   <p className="cat-name">
-                    <b>{posts[element].firstname}</b>
+                    <b>{element.firstname}</b>
                   </p>{" "}
                   <p className="cat-label">
-                    <b>{posts[element].city}</b>
+                    <b>{element.city}</b>
                   </p>
                 </div>
-                <div className="cat-message">
-                  <p>"{posts[element].categories[category].textfield}"</p>
-                </div>
-                <div className="cat-price">
-                  <p>
-                    <b>{posts[element].categories[category].price} €</b>
-                  </p>
-                </div>
+                {size === "home" ? (
+                  <div className="cat-message">
+                    <p>
+                      {
+                        element.categories[getRandom(element.categories, i)]
+                          .textfield
+                      }
+                      {console.log(
+                        "this is the most current",
+                        current,
+                        element
+                      )}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="cat-message">
+                    <p>"{element.categories[category].textfield}"</p>
+                  </div>
+                )}
+                {size === "home" ? (
+                  <div className="cat-price">
+                    <p>
+                      <b>{element.categories[current]?.price} €</b>
+                    </p>
+                  </div>
+                ) : (
+                  <div className="cat-price">
+                    <p>
+                      <b>{element.categories[category].price} €</b>
+                    </p>
+                  </div>
+                )}
               </Link>
             ) : (
-              <div key={i} />
+              ""
             )
           )}
         </div>
