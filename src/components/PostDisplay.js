@@ -57,7 +57,10 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   return (
     <div className="post-macro-cont">
       {size !== "home" ? (
-        <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
+        <Link
+          to={link === "all" ? `/categories` : `/categories/${category}`}
+          className="  category-links"
+        >
           <div className="absolute bright-bttn">
             {link === "all" ? `All Categories` : `${cat[category]}`}
           </div>
@@ -92,7 +95,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
             posts[element].categories[category].textfield?.length > 0 ? (
               <Link
                 key={i}
-                className="postDiv"
+                className="postDiv category-links"
                 to={`/local/${posts[element]._id}`}
               >
                 {posts[element].pic ? (
