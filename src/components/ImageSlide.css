@@ -1,10 +1,12 @@
 #carousel {
-  height: 23em;
+  height: 25em;
+  width: 25em;
   overflow: hidden;
   position: relative;
 }
 .carousel-item {
-  width: 100%;
+  height: 23em;
+  width: 23em;
   position: absolute;
   top: 0;
   left: 110%;
