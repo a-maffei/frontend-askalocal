@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import YourInfo from "./components/YourInfo";
 import Messenger from "./components/Messenger";
 import Confirmation from "./components/Confirmation";
+import ImageCrop from "./components/ImageCrop";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -162,19 +163,24 @@ function App() {
               element={<Messenger user={user} local={local} />}
             />
             <Route path="/:id/confirmation" element={<Confirmation />} />
+            <Route path="/crop" element={<ImageCrop />} />
             <Route
               path="/categories"
               element={
-                <Categories
-                  searchedPosts={searchedPosts}
-                  setSearchedPosts={setSearchedPosts}
-                  input={input}
-                  setInput={setInput}
-                  selectedValue={selectedValue}
-                  setSelectedValue={setSelectedValue}
-                  user={user}
-                  local={local}
-                />
+                user || local ? (
+                  <Categories
+                    searchedPosts={searchedPosts}
+                    setSearchedPosts={setSearchedPosts}
+                    input={input}
+                    setInput={setInput}
+                    selectedValue={selectedValue}
+                    setSelectedValue={setSelectedValue}
+                    user={user}
+                    local={local}
+                  />
+                ) : (
+                  <Login urlPath="user" setUser={setUser} />
+                )
               }
             />
 

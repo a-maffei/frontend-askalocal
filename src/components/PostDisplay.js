@@ -5,19 +5,26 @@ import cat from "./categories.json";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import PostDisplayLink from "./PostDisplayLink";
 
-const PostDisplay = ({ posts, category, size, link, input }) => {
+const PostDisplay = ({ posts, category, size, link, input, selectedValue }) => {
   const [price, setPrice] = useState(null);
-  const [postToDisplay, setPostToDisplay] = useState(
-    size === "home" ? posts : posts
-  );
-  let catKeys = null;
-  // let current = "callp";
-  const keys = Object.keys(cat);
 
-  // useEffect(() => {
-  // order && postOrder();
-  // console.log("postdisplay", posts);
-  // }, []);
+  function filterCities(city) {
+    console.log("City", city);
+    if (city === "City") {
+      setPostToDisplay(posts);
+      console.log("postlist", postToDisplay);
+      return;
+    }
+    setPostToDisplay([...posts]?.filter((el) => el.city === city));
+  }
+
+  useEffect(() => {
+    filterCities(selectedValue);
+  }, [selectedValue]);
+
+  const [postToDisplay, setPostToDisplay] = useState([...posts]);
+  let catKeys = null;
+  const keys = Object.keys(cat);
 
   const newPostOrder = (x) => {
     if (price === "price") {
@@ -57,59 +64,6 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
     }
   };
 
-  // element.categories[category].textfield
-  //               .toLowerCase()
-  //               .includes(input.toLowerCase()))
-
-  // const postOrder = () => {
-  //   if (order === "price") {
-  //     if (up) {
-  //       posts.sort(
-  //         (a, b) =>
-  //           // a.isComplete && b.isComplete ?
-  //           a.categories[category].price < b.categories[category].price ? 1 : -1
-  //         // : ""
-  //       );
-  //     } else {
-  //       posts.sort((a, b) =>
-  //         a.categories[category].price > b.categories[category].price ? 1 : -1
-  //       );
-  //     }
-  //   }
-  //   if (order === "rating") {
-  //     if (up) {
-  //       posts.sort((a, b) =>
-  //         a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
-  //         b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
-  //           ? 1
-  //           : -1
-  //       );
-  //     } else {
-  //       posts.sort((a, b) =>
-  //         a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
-  //         b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
-  //           ? 1
-  //           : -1
-  //       );
-  //     }
-  //   }
-  // };
-
-  // const getRandom = (localcat) => {
-  //   const temp = Object.keys(localcat);
-  //   catKeys = temp.filter((cat) => localcat[cat].textfield.length);
-  //   current = catKeys[Math.floor(Math.random() * catKeys.length)];
-  // };
-
-  // const getRandom = () => {
-  //   const temp = Object.keys(posts);
-  //   catKeys = temp.filter((cat) => localcat[cat].textfield.length);
-  //   current = catKeys[Math.floor(Math.random() * catKeys.length)];
-  //   console.log("random");
-  // };
-
-  // console.log(posts);
-
   const options = (
     <>
       <option value="sort">Sort by</option>
@@ -117,16 +71,6 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
       <option value="rating">Rating</option>
     </>
   );
-
-  const getRandom = (element) => {
-    // const temp = Object.keys(element.categories);
-    catKeys = keys.filter((cat) => element.categories[cat].textfield.length);
-    // current = catKeys[Math.floor(Math.random() * catKeys.length)];
-    return catKeys[Math.floor(Math.random() * catKeys.length)];
-    // console.log("size", size, catKeys);
-    // console.log("random", current);
-    // console.log(element.categories[current]?.price);
-  };
 
   return (
     <div className="post-macro-cont">
@@ -162,34 +106,30 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
           </div>
 
           {postToDisplay?.map(
-            (element, i) =>
-              // (size === "home" && getRandom(element.categories)) ||
-              // ((input?.length < 1 ||
-              //   (size === "home" &&
-              //     element.categories[current]?.textfield
-              //       .toLowerCase()
-              //       .includes(input.toLowerCase())) ||
-              //   element.categories[category].textfield
+            (element, i) => (
+              // input?.length < 1 ||
+              // (size === "home" &&
+              //   element.categories[element.current]?.textfield
               //     .toLowerCase()
-              //     .includes(input.toLowerCase())) &&
-              //   element.categories[category].textfield?.length > 0) ? (
-              size === "home" ||
-              element.categories[category].textfield.length ? (
-                <PostDisplayLink
-                  element={element}
-                  i={i}
-                  category={size === "home" ? getRandom(element) : category}
-                  size={size}
-                  key={i}
-                  input={input}
-                />
-              ) : (
-                ""
-              )
+              //     .includes(input.toLowerCase())) ||
+              // element.categories[category].textfield
+              //   .toLowerCase()
+              //   .includes(input.toLowerCase()) ? (
+              <PostDisplayLink
+                element={element}
+                i={i}
+                category={size === "home" ? element.current : category}
+                size={size}
+                key={i}
+                input={input}
+              />
+            )
             // ) : (
             //   ""
             // )
-
+            // ) : (
+            // ""
+            // )
           )}
         </div>
       </div>
