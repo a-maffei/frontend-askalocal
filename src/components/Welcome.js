@@ -4,8 +4,6 @@ import { CircleFlag } from "react-circle-flags";
 import "./Welcome.css";
 
 export default function Welcome({ user, input, setInput }) {
-  console.log(user);
-
   const [greeting, setGreeting] = useState("");
 
   useEffect(() => {

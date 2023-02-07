@@ -130,8 +130,6 @@
 .postDisplayArrows {
   /* display: block; */
   color: var(--red--light);
-  /*   background-color: aqua;
-  /* color: aqua; */
   font-size: 1.5em;
   margin-left: 0.1em;
 }
