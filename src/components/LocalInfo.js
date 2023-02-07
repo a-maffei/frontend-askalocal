@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 import "./LocalInfo.css";
 import Starrating from "./Starrating";
 
-
-export default function LocalInfo({ user, local }) {
+export default function LocalInfo({ local, user }) {
   // To create a conversation, we need the ID of the currently logged in person and the chosen local.
   // The ID of the chosen local we can get from here.
   // Lines 82 to 84 redirect us to the messenger. The messenger will need both these IDs to start up the convo
   // The function to take in the 2 IDs and create the chat still has to be implemented
- 
+
   const { id } = useParams();
   const [localDisplay, setLocalDisplay] = useState([]);
   const [review, setReview] = useState("");
@@ -21,6 +20,8 @@ export default function LocalInfo({ user, local }) {
   const [starError, setStarError] = useState(null);
   let keys = null;
   const navigate = useNavigate();
+
+  console.log(local);
 
   const url = `https://backend-askalocal.onrender.com/local/${id}`;
   const url2 = `http://localhost:8080/local/${id}`;
@@ -91,8 +92,7 @@ export default function LocalInfo({ user, local }) {
     <div className="localDiv">
       {localDisplay.categories ? (
         <>
-
-          <Profile local={local} />{" "}
+          <Profile local={localDisplay} />{" "}
           <div className="contact-button">
             {/* if I'm signed in as a local, I don't want to be able to see this button */}
             <Link
@@ -100,11 +100,10 @@ export default function LocalInfo({ user, local }) {
               state={{ test: "test" }}
               className="navLinks"
             >
-              {`Contact ${local.firstname}`}
+              {`Contact ${localDisplay.firstname}`}
             </Link>
           </div>
           <button onClick={() => navigate(-1)} className="navLinks topMargin">
-
             Back
           </button>{" "}
         </>

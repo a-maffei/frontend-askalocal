@@ -177,7 +177,10 @@ function App() {
               path="/local/:id"
               element={
                 user || local ? (
-                  <LocalInfo user={user} local={local} />
+                  <div>
+                    {console.log("this is passing the thing", user)}
+                    <LocalInfo user={user} local={local} />
+                  </div>
                 ) : (
                   <Login urlPath="user" setUser={setUser} />
                 )
