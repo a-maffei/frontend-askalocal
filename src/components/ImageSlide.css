@@ -4,11 +4,12 @@
   overflow: hidden;
   position: relative;
 }
+
 .carousel-item {
-  height: 23em;
-  width: 23em;
+  height: 20em;
+  width: 20em;
   position: absolute;
-  top: 0;
+  top: 5%;
   left: 110%;
   /* margin: 0 5em; */
   animation: 20s autoplay infinite;
@@ -63,7 +64,7 @@
 .imgText {
   /*   /* position: absolute; */
   position: absolute;
-  top: 25em;
+  top: 20rem;
   right: 0.5rem;
   font-size: 0.9em;
 }
