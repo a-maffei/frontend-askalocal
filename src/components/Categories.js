@@ -40,7 +40,7 @@ const Categories = ({
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (
@@ -93,7 +93,7 @@ const Categories = ({
         selectedValue={selectedValue}
       />
       {/* </div> */}
-      {posts ? (
+      {cityPosts ? (
         <>
           {keys.map((element, i) => (
             <div key={i}>

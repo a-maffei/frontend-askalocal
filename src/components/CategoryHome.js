@@ -38,7 +38,7 @@ const Categories = ({
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (

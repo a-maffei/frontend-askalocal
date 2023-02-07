@@ -4,6 +4,7 @@ import { CircleFlag } from "react-circle-flags";
 import "./Welcome.css";
 
 export default function Welcome({
+  local,
   user,
   input,
   setInput,
