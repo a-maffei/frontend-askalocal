@@ -13,6 +13,7 @@
     "react-circle-flags": "^0.0.18",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-image-crop": "^10.0.9",
     "react-jwt": "^1.1.8",
     "react-router-dom": "^6.7.0",
     "react-router-hash-link": "^2.4.3",

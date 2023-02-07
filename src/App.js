@@ -17,7 +17,7 @@ import YourInfo from "./components/YourInfo";
 function App() {
   const [user, setUser] = useState(null);
   const [local, setLocal] = useState(null);
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
   const [input, setInput] = useState("");
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [selectedValue, setSelectedValue] = useState("City");
@@ -34,7 +34,10 @@ function App() {
     if (!local) {
       setLocal(JSON.parse(localStorage.getItem("local")));
     }
-  }, [user, local]);
+    // setTheme(JSON.parse(localStorage.getItem("theme")));
+    localStorage.setItem("theme", theme);
+    console.log(localStorage, "hello");
+  }, [user, local, theme]);
 
   return (
     <div className="App" data-theme={theme}>
@@ -68,7 +71,7 @@ function App() {
                     <Navigate to="/yourinfo" local={local} />
                   )
                 ) : (
-                  <Navigate to="/welcome" />
+                  <Navigate to="/welcome" user={user} />
                 )
               }
             />
@@ -81,7 +84,7 @@ function App() {
                 !user ? (
                   <Login setUser={setUser} urlPath="user" />
                 ) : (
-                  <Navigate to="/welcome" />
+                  <Navigate to="/welcome" user={user} local={local} />
                 )
               }
             />
@@ -91,7 +94,7 @@ function App() {
                 !user ? (
                   <Signup user={user} setUser={setUser} urlPath="user" />
                 ) : (
-                  <Navigate to="/welcome" />
+                  <Navigate to="/welcome" user={user} local={local} />
                 )
               }
             />
@@ -113,7 +116,7 @@ function App() {
                 ) : local.isComplete ? (
                   <Navigate to="/yourinfo" local={local} />
                 ) : (
-                  <Navigate to="/form" />
+                  <Navigate to="/form" local={local} />
                 )
               }
             />
@@ -139,23 +142,42 @@ function App() {
                   setInput={setInput}
                   selectedValue={selectedValue}
                   setSelectedValue={setSelectedValue}
+                  user={user}
+                  local={local}
                 />
               }
             />
+
             <Route
               path="/categories/:category"
               element={
-                <CategoryHome
-                  searchedPosts={searchedPosts}
-                  setSearchedPosts={setSearchedPosts}
-                  input={input}
-                  setInput={setInput}
-                  selectedValue={selectedValue}
-                  setSelectedValue={setSelectedValue}
-                />
+                user || local ? (
+                  <CategoryHome
+                    searchedPosts={searchedPosts}
+                    setSearchedPosts={setSearchedPosts}
+                    input={input}
+                    setInput={setInput}
+                    selectedValue={selectedValue}
+                    setSelectedValue={setSelectedValue}
+                    user={user}
+                    local={local}
+                  />
+                ) : (
+                  <Login urlPath="user" setUser={setUser} />
+                )
               }
             />
-            <Route path="/local/:id" element={<LocalInfo user={user} />} />
+
+            <Route
+              path="/local/:id"
+              element={
+                user || local ? (
+                  <LocalInfo user={user} local={local} />
+                ) : (
+                  <Login urlPath="user" setUser={setUser} />
+                )
+              }
+            />
 
             {/* Paths reserved for  locals */}
             <Route

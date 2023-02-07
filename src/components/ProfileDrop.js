@@ -29,7 +29,7 @@ export default function ProfileDrop({
   }, [isMenuOpen]);
 
   const handleClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     if (user) {
       setUser(null);

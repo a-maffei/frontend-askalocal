@@ -1,49 +1,61 @@
-import img from "./pics/profile.png";
 import "./PostDisplay.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import cat from "./categories.json";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import PostDisplayLink from "./PostDisplayLink";
 
 const PostDisplay = ({ posts, category, size, link, input }) => {
   const [order, setOrder] = useState(null);
-  let keys = Object.keys(posts);
+  // let keys = Object.keys(posts);
   const [up, setUp] = useState(true);
+  let catKeys = null;
+  let current = null;
 
   useEffect(() => {
-    console.log("what", posts);
-    postOrder();
+    order && postOrder();
+    console.log("postdisplay", posts);
   }, [order, up]);
 
   const postOrder = () => {
     if (order === "price") {
       if (up) {
-        posts.sort((a, b) =>
-          a.isComplete && b.isComplete
-            ? a.categories[category].price < b.categories[category].price
-            : ""
+        posts.sort(
+          (a, b) =>
+            // a.isComplete && b.isComplete ?
+            a.categories[category].price < b.categories[category].price ? 1 : -1
+          // : ""
         );
       } else {
-        posts.sort(
-          (a, b) => a.categories[category].price > b.categories[category].price
+        posts.sort((a, b) =>
+          a.categories[category].price > b.categories[category].price ? 1 : -1
         );
       }
     }
     if (order === "rating") {
       if (up) {
-        posts.sort(
-          (a, b) =>
-            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
-            b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+        posts.sort((a, b) =>
+          a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
+          b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+            ? 1
+            : -1
         );
       } else {
-        posts.sort(
-          (a, b) =>
-            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
-            b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+        posts.sort((a, b) =>
+          a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
+          b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
+            ? 1
+            : -1
         );
       }
     }
+  };
+
+  const getRandom = (localcat) => {
+    const temp = Object.keys(localcat);
+    catKeys = temp.filter((cat) => localcat[cat].textfield.length);
+    current = catKeys[Math.floor(Math.random() * catKeys.length)];
+    console.log("random");
   };
 
   const options = (
@@ -86,59 +98,28 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
               />
             </div>
           </div>
-          {keys?.map((element, i) =>
-            posts[element]?.categories &&
-            (input?.length < 1 ||
-              posts[element].categories[category].textfield
+          {posts?.map((element, i) =>
+            (size === "home" && getRandom(element.categories)) ||
+            ((input?.length < 1 ||
+              (size === "home" &&
+                element.categories[current]?.textfield
+                  .toLowerCase()
+                  .includes(input.toLowerCase())) ||
+              element.categories[category].textfield
                 .toLowerCase()
                 .includes(input.toLowerCase())) &&
-            posts[element].categories[category].textfield?.length > 0 ? (
-              <Link
-                key={i}
-                className="postDiv category-links"
-                to={`/local/${posts[element]._id}`}
-              >
-                {posts[element].pic ? (
-                  <div
-                    className="cat-avatarSmall"
-                    style={{
-                      backgroundImage: `url(${posts[element].pic})`,
-                      backgroundSize: "cover",
-                    }}
-                  ></div>
-                ) : (
-                  <div
-                    className="cat-avatarSmall"
-                    style={{
-                      backgroundImage: `url(${img})`,
-                      backgroundSize: "cover",
-                    }}
-                  ></div>
-                )}
-                {/*                 {posts[element].pic ? (
-                  <img src={posts[element].pic} className="cat-avatarSmall" />
-                ) : (
-                  <img src={img} className="cat-avatarSmall" />
-                )} */}
-                <div className="cat-nameCity">
-                  <p className="cat-name">
-                    <b>{posts[element].firstname}</b>
-                  </p>{" "}
-                  <p className="cat-label">
-                    <b>{posts[element].city}</b>
-                  </p>
-                </div>
-                <div className="cat-message">
-                  <p>"{posts[element].categories[category].textfield}"</p>
-                </div>
-                <div className="cat-price">
-                  <p>
-                    <b>{posts[element].categories[category].price} €</b>
-                  </p>
-                </div>
-              </Link>
+
+              element.categories[category].textfield?.length > 0) ? (
+              <PostDisplayLink
+                element={element}
+                i={i}
+                current={current}
+                category={category}
+                size={size}
+              />
+
             ) : (
-              <div key={i} />
+              ""
             )
           )}
         </div>

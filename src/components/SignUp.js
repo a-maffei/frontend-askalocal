@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 import domtoimage from "dom-to-image";
+import ImageCrop from "./ImageCrop";
 
 const Signup = ({ setUser, setLocal, urlPath }) => {
   /*   const firstname = useRef();
@@ -117,6 +118,17 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
 
   console.log("ERRRRROR", error);
 
+  const options = (
+    <>
+      <option value="City">City</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Berlin">Berlin</option>
+      <option value="Vienna">Vienna</option>
+      <option value="Paris">Paris</option>
+      <option value="Rom">Rome</option>
+    </>
+  );
+
   return (
     <div className="signupOuterDiv">
       {" "}
@@ -229,17 +241,28 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
             <label className="signupLabel" htmlFor="city">
               City
             </label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              pattern="[a-zA-Z]+"
-              className="signupInput"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="City"
-              required
-            />
+
+            {urlPath === "local" ? (
+              <select
+                onChange={(e) => setCity(e.target.value)}
+                className="signupInputSelect"
+                id="city"
+              >
+                {options}
+              </select>
+            ) : (
+              <input
+                type="text"
+                id="city"
+                name="city"
+                pattern="[a-zA-Z]+"
+                className="signupInput"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="City"
+                required
+              />
+            )}
             <div className="profile-pic-section">
               <div className="profile-pic-upload">
                 <label className="signupLabel" htmlFor="pic">
@@ -265,6 +288,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
                 }}
               ></div>
             </div>
+            <ImageCrop />
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>

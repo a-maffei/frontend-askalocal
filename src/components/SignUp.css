@@ -44,13 +44,18 @@
   margin: 1em 0 0.5em;
 }
 
-.signupInput {
+.signupInput,
+.signupInputSelect {
   width: 100%;
   font-size: medium;
   padding: 0.3em;
   border-radius: 5px;
   background-color: var(--border);
   color: var(--border-secondary);
+}
+
+.signupInputSelect {
+  width: 101%;
 }
 
 /* .signupInput:last-of-type {
