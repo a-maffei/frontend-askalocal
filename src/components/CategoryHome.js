@@ -4,7 +4,14 @@ import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Categories = ({ input, setInput, user, local }) => {
+const Categories = ({
+  input,
+  setInput,
+  user,
+  local,
+  setSelectedValue,
+  selectedValue,
+}) => {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
@@ -57,14 +64,17 @@ const Categories = ({ input, setInput, user, local }) => {
     </>
   );
 
+  useEffect(() => {
+    filterCities(selectedValue);
+  }, [selectedValue]);
+
   const filterCities = (city) => {
     if (city === "City") {
       setCityPosts(posts);
       return;
     }
-    let postList = posts?.filter((el) => el.city === city);
-    setCityPosts(postList);
-    console.log("postlist", postList);
+    // const postList = posts?.filter((el) => el.city === city);
+    setCityPosts(posts?.filter((el) => el.city === city));
   };
 
   return (
@@ -76,20 +86,17 @@ const Categories = ({ input, setInput, user, local }) => {
         input={input}
         setInput={setInput}
         filterFunction={filterCities}
+        setSelectedValue={setSelectedValue}
+        selectedValue={selectedValue}
       />
-      {cityPosts &&
-      cityPosts?.some((el) =>
-        el.categories && el.categories[category]
-          ? Object.values(el.categories[category]).some((elem) =>
-              elem === null
-                ? false
-                : elem.toString().toLowerCase().includes(input.toLowerCase())
-            )
-          : false
+      {cityPosts?.some((el) =>
+        Object.values(el.categories[category]).some((elem) =>
+          elem.toString().toLowerCase().includes(input.toLowerCase())
+        )
       ) ? (
         <>
           <PostDisplay
-            posts={cityPosts ? cityPosts : posts}
+            posts={cityPosts}
             category={category}
             input={input}
             size={"big"}

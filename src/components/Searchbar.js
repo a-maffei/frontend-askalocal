@@ -44,7 +44,11 @@ const Searchbar = ({
         name="cities"
         id="cities"
         className="dropdown-container"
-        onChange={(e) => filterFunction(e.target.value)}
+        onChange={(e) =>
+          // filterFunction(e.target.value),
+          setSelectedValue(e.target.value)
+        }
+        defaultValue={selectedValue}
       >
         {options}
       </select>
