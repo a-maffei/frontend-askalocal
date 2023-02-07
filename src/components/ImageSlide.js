@@ -1,11 +1,9 @@
 import React from "react";
 import local1 from "./pics/local1.jpg";
 import local2 from "./pics/local2.jpg";
-import local3 from "./pics/local3.jpg";
-import local4 from "./pics/local4.jpg";
-import local5 from "./pics/local5.jpg";
-import local6 from "./pics/local6.jpg";
-import local7 from "./pics/local7.jpg";
+import local3 from "./pics/local3.jpeg";
+import local4 from "./pics/local4.jpeg";
+import local5 from "./pics/local5.jpeg";
 
 import "./ImageSlide.css";
 const ImageSlide = ({ posts }) => {
@@ -23,38 +21,62 @@ const ImageSlide = ({ posts }) => {
 
       <div className="carousel-item">
         <div
-          id="profile-pic-cont"
+          className="single-img-slide"
           style={{
             backgroundImage: `url(${local1}`,
             backgroundSize: "cover",
           }}
         ></div>
         <p className="imgText">
-          {slicedPosts[0].firstname} <b>{slicedPosts[0].city}</b>
+          Elena, <b>Rome</b>
         </p>
       </div>
       <div className="carousel-item">
-        <img alt="Second slide" src={local2} />
+        <div
+          className="single-img-slide"
+          style={{
+            backgroundImage: `url(${local2}`,
+            backgroundSize: "cover",
+          }}
+        ></div>
         <p className="imgText">
-          {slicedPosts[1].firstname} <b>{slicedPosts[0].city}</b>
+          Sara, <b>Barcelona</b>
         </p>
       </div>
       <div className="carousel-item">
-        <img alt="Third slide" src={local3} />
+        <div
+          className="single-img-slide"
+          style={{
+            backgroundImage: `url(${local3}`,
+            backgroundSize: "cover",
+          }}
+        ></div>
         <p className="imgText">
-          {slicedPosts[2].firstname} <b>{slicedPosts[0].city}</b>
+          Daniel, <b>Berlin</b>
         </p>
       </div>
       <div className="carousel-item">
-        <img alt="Fourth slide" src={local4} />
+        <div
+          className="single-img-slide"
+          style={{
+            backgroundImage: `url(${local4}`,
+            backgroundSize: "cover",
+          }}
+        ></div>{" "}
         <p className="imgText">
-          {slicedPosts[3].firstname} <b>{slicedPosts[0].city}</b>
+          Anne, <b>Vienna</b>
         </p>
       </div>
       <div className="carousel-item">
-        <img alt="Fourth slide" src={local5} />
+        <div
+          className="single-img-slide"
+          style={{
+            backgroundImage: `url(${local5}`,
+            backgroundSize: "cover",
+          }}
+        ></div>{" "}
         <p className="imgText">
-          {slicedPosts[4].firstname} <b>{slicedPosts[0].city}</b>
+          Charles, <b>Paris</b>
         </p>
       </div>
     </div>
