@@ -6,8 +6,7 @@ import local4 from "./pics/local4.jpeg";
 import local5 from "./pics/local5.jpeg";
 
 import "./ImageSlide.css";
-const ImageSlide = ({ posts }) => {
-  const slicedPosts = posts.slice(0, 5);
+const ImageSlide = () => {
   return (
     <div className="carousel" id="carousel">
       {/* <img alt="First slide" src={slicedPosts[0]?.pic} /> */}

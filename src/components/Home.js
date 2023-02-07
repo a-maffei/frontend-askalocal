@@ -113,7 +113,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <h3>Let the locals help you out.</h3>
         </div>
         <div className="homeDiv-img">
-          {posts.locals ? <ImageSlide posts={posts.locals} /> : ""}
+          <ImageSlide />
         </div>
       </div>
       <div className="bright-bttn-cont">
