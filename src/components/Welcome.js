@@ -3,7 +3,13 @@ import Categories from "./Categories";
 import { CircleFlag } from "react-circle-flags";
 import "./Welcome.css";
 
-export default function Welcome({ user, input, setInput }) {
+export default function Welcome({
+  user,
+  input,
+  setInput,
+  selectedValue,
+  setSelectedValue,
+}) {
   const [greeting, setGreeting] = useState("");
 
   useEffect(() => {
@@ -41,7 +47,13 @@ export default function Welcome({ user, input, setInput }) {
         </h3>
       </div>
 
-      <Categories input={input} setInput={setInput} user={user} />
+      <Categories
+        input={input}
+        setInput={setInput}
+        user={user}
+        selectedValue={selectedValue}
+        setSelectedValue={setSelectedValue}
+      />
     </>
   );
 }

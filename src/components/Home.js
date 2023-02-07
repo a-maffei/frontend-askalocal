@@ -33,7 +33,8 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
     if (data.status === 404) {
       throw new Response("Not Found", { status: 404 });
     }
-    setPosts(data);
+    setCityPosts(data.locals);
+    setPosts(data.locals);
     console.log(data);
   };
 
@@ -43,51 +44,65 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
 
   const options = (
     <>
-      <option value="City">City</option>
-      <option value="Barcelona">Barcelona</option>
-      <option value="Berlin">Berlin</option>
-      <option value="Vienna">Vienna</option>
-      <option value="Paris">Paris</option>
-      <option value="Rom">Rome</option>
+      <option value="City" className="options">
+        City
+      </option>
+      <option value="Barcelona" className="options">
+        Barcelona
+      </option>
+      <option value="Berlin" className="options">
+        Berlin
+      </option>
+      <option value="Vienna" className="options">
+        Vienna
+      </option>
+      <option value="Paris" className="options">
+        Paris
+      </option>
+      <option value="Rome" className="options">
+        Rome
+      </option>
     </>
   );
 
-  const findPosts = () => {
-    if (input) {
-      const result = input
-        ? [
-            // posts.filter(
-            //   (post) =>
-            //     post.name[lang].toLowerCase().includes(input.toLowerCase()),
-            //   pokemons.filter((poke) =>
-            //     Object.values(poke.type).find((element) =>
-            //       element.toLowerCase().includes(input.toLowerCase())
-            //     )
-            //   )
-            // ),
-          ]
-        : // )
-          [];
-      setSearchedPosts(result[0]);
-      console.log(result);
-    }
-  };
+  // const findPosts = () => {
+  //   if (input) {
+  //     const result = input
+  //       ? [
+  // posts.filter(
+  //   (post) =>
+  //     post.name[lang].toLowerCase().includes(input.toLowerCase()),
+  //   pokemons.filter((poke) =>
+  //     Object.values(poke.type).find((element) =>
+  //       element.toLowerCase().includes(input.toLowerCase())
+  //     )
+  //   )
+  // ),
+  // ]
+  // )
+  //         [];
+  //     setSearchedPosts(result[0]);
+  //     console.log(result);
+  //   }
+  // };
 
   const filterCities = (city) => {
+    console.log("City", city);
     if (city === "City") {
-      setCityPosts(null);
+      setCityPosts(posts);
+      console.log("postlist", cityPosts);
       return;
     }
-    let postList = posts?.locals.filter((el) => el.city === city);
-    setCityPosts(postList);
-    console.log("postlist", postList);
+    // let postList = posts?.filter((el) => el.city === city);
+    setCityPosts(posts?.filter((el) => el.city === city));
+    // console.log("postlist", postList);
   };
 
-  useEffect(() => {
-    return () => {
-      filterCities(selectedValue);
-    };
-  }, [selectedValue]);
+  // useEffect(() => {
+  //   return () => {
+  //     filterCities(selectedValue);
+  //   };
+  // }, [selectedValue]);
 
   const category = "appointmentP";
 
@@ -131,16 +146,22 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           filterFunction={filterCities}
         />
 
-        {posts.locals ? (
+        {cityPosts?.some((el) =>
+          el.categories && el.categories[category]
+            ? Object.values(el.categories[category]).some((elem) =>
+                elem.toString().toLowerCase().includes(input.toLowerCase())
+              )
+            : false
+        ) ? (
           <PostDisplay
-            posts={cityPosts ? cityPosts : posts.locals}
+            posts={cityPosts}
             category={category}
             size={"home"}
             link={"all"}
             input={input}
           />
         ) : (
-          ""
+          <p>Nothing to see here...move along</p>
         )}
       </div>
       <div className="home-cont-white" id="howitworks-section">

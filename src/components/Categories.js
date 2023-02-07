@@ -24,6 +24,7 @@ const Categories = ({
   const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
+    console.log(user, local);
     const data = await fetch(url, {
       headers: {
         Authorization: user ? `Bearer ${user.token}` : `Bearer ${local.token}`,
@@ -59,19 +60,23 @@ const Categories = ({
       <option value="Paris" className="options">
         Paris
       </option>
-      <option value="Rom" className="options">
-        Rom
+      <option value="Rome" className="options">
+        Rome
       </option>
     </>
   );
+
+  useEffect(() => {
+    filterCities(selectedValue);
+  }, [selectedValue]);
 
   const filterCities = (city) => {
     if (city === "City") {
       setCityPosts(posts);
       return;
     }
-    const postList = posts?.filter((el) => el.city === city);
-    setCityPosts(postList);
+    // const postList = posts?.filter((el) => el.city === city);
+    setCityPosts(posts?.filter((el) => el.city === city));
   };
 
   return (
@@ -84,21 +89,34 @@ const Categories = ({
         input={input}
         setInput={setInput}
         filterFunction={filterCities}
+        setSelectedValue={setSelectedValue}
+        selectedValue={selectedValue}
       />
       {/* </div> */}
       {posts ? (
         <>
           {keys.map((element, i) => (
             <div key={i}>
+              {/* {cityPosts.map(
+                (el, j) => (
+                    el.categories && el.categories[element]
+                      ? Object.values(el.categories[element]).some((elem) =>
+                          elem === null
+                            ? false
+                            : elem
+                                .toString()
+                                .toLowerCase()
+                                .includes(input.toLowerCase())
+                        )
+                      : false
+                  ) ? ( */}
               {cityPosts.some((el) =>
-                el.categories && el.categories[element]
+                el.categories[element]
                   ? Object.values(el.categories[element]).some((elem) =>
-                      elem === null
-                        ? false
-                        : elem
-                            .toString()
-                            .toLowerCase()
-                            .includes(input.toLowerCase())
+                      elem
+                        .toString()
+                        .toLowerCase()
+                        .includes(input.toLowerCase())
                     )
                   : false
               ) ? (
@@ -107,9 +125,10 @@ const Categories = ({
                   category={element}
                   size={"small"}
                   input={input}
-                  key={element}
+                  key={i}
                 />
               ) : (
+                //  )
                 ""
               )}
             </div>

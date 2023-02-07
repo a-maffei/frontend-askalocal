@@ -71,7 +71,13 @@ function App() {
                     <Navigate to="/yourinfo" local={local} />
                   )
                 ) : (
-                  <Navigate to="/welcome" user={user} />
+                  <Navigate
+                    to="/welcome"
+                    user={user}
+                    local={local}
+                    setSelectedValue={setSelectedValue}
+                    selectedValue={selectedValue}
+                  />
                 )
               }
             />
@@ -84,7 +90,13 @@ function App() {
                 !user ? (
                   <Login setUser={setUser} urlPath="user" />
                 ) : (
-                  <Navigate to="/welcome" user={user} local={local} />
+                  <Navigate
+                    to="/welcome"
+                    user={user}
+                    local={local}
+                    setSelectedValue={setSelectedValue}
+                    selectedValue={selectedValue}
+                  />
                 )
               }
             />
@@ -94,7 +106,13 @@ function App() {
                 !user ? (
                   <Signup user={user} setUser={setUser} urlPath="user" />
                 ) : (
-                  <Navigate to="/welcome" user={user} local={local} />
+                  <Navigate
+                    to="/welcome"
+                    user={user}
+                    local={local}
+                    setSelectedValue={setSelectedValue}
+                    selectedValue={selectedValue}
+                  />
                 )
               }
             />
@@ -126,7 +144,13 @@ function App() {
               path="/welcome"
               element={
                 user ? (
-                  <Welcome user={user} input={input} setInput={setInput} />
+                  <Welcome
+                    user={user}
+                    input={input}
+                    setInput={setInput}
+                    setSelectedValue={setSelectedValue}
+                    selectedValue={selectedValue}
+                  />
                 ) : (
                   <Navigate to="/" />
                 )
@@ -177,10 +201,7 @@ function App() {
               path="/local/:id"
               element={
                 user || local ? (
-                  <div>
-                    {console.log("this is passing the thing", user)}
-                    <LocalInfo user={user} local={local} />
-                  </div>
+                  <LocalInfo user={user} local={local} />
                 ) : (
                   <Login urlPath="user" setUser={setUser} />
                 )
