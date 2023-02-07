@@ -22,6 +22,7 @@ const Categories = ({
   const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
+    console.log("what is this now");
     const data = await fetch(url, {
       headers: {
         Authorization: user ? `Bearer ${user.token}` : `Bearer ${local.token}`,
@@ -41,68 +42,44 @@ const Categories = ({
     getData(url2);
   }, []);
 
-  const options = (
-    <>
-      <option value="City" className="options">
-        City
-      </option>
-      <option value="Barcelona" className="options">
-        Barcelona
-      </option>
-      <option value="Berlin" className="options">
-        Berlin
-      </option>
-      <option value="Vienna" className="options">
-        Vienna
-      </option>
-      <option value="Paris" className="options">
-        Paris
-      </option>
-      <option value="Rome" className="options">
-        Rome
-      </option>
-    </>
-  );
+  // useEffect(() => {
+  //   filterCities(selectedValue);
+  // }, [selectedValue]);
 
-  useEffect(() => {
-    filterCities(selectedValue);
-  }, [selectedValue]);
+  // const filterCities = (city) => {
+  //   if (city === "City") {
+  //     setCityPosts(posts);
+  //     return;
+  //   }
 
-  const filterCities = (city) => {
-    if (city === "City") {
-      setCityPosts(posts);
-      return;
-    }
-    // const postList = posts?.filter((el) => el.city === city);
-    setCityPosts([...posts]?.filter((el) => el.city === city));
-  };
+  //   setCityPosts([...posts]?.filter((el) => el.city === city));
+  // };
 
   return (
     <div className="categoriesBigDiv">
       <Searchbar
-        options={options}
         searchedPosts={searchedPosts}
         setSearchedPosts={setSearchedPosts}
         input={input}
         setInput={setInput}
-        filterFunction={filterCities}
+        // filterFunction={filterCities}
         setSelectedValue={setSelectedValue}
         selectedValue={selectedValue}
       />
-      {cityPosts?.some((el) =>
-        Object.values(el.categories[category]).some((elem) =>
-          elem.toString().toLowerCase().includes(input.toLowerCase())
-        )
+      {(posts?.length && input?.length < 1) ||
+      posts?.some((el) =>
+        el.categories[category]?.textfield
+          .toLowerCase()
+          .includes(input.toLowerCase())
       ) ? (
-        <>
-          <PostDisplay
-            posts={cityPosts}
-            category={category}
-            input={input}
-            size={"big"}
-            link={"all"}
-          />
-        </>
+        <PostDisplay
+          posts={cityPosts}
+          category={category}
+          input={input}
+          size={"big"}
+          link={"all"}
+          selectedValue={selectedValue}
+        />
       ) : (
         <p>No Posts matching the criteria</p>
       )}

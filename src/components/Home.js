@@ -15,54 +15,46 @@ import cat6 from "./svg/writer.svg";
 import AboutUs from "./AboutUs";
 import ImageSlide from "./ImageSlide";
 
+import cat from "./categories.json";
+
 const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   // const options = optionsImp;
   // const [selectedValue, setSelectedValue] = useState("City");
+  let catKeys = null;
+  const keys = [
+    "appointmentP",
+    "callP",
+    "emailP",
+    "flatP",
+    "interviewP",
+    "serviceP",
+  ];
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
-  const [cityPosts, setCityPosts] = useState(null);
+  const [cityPosts, setCityPosts] = useState([]);
   const url = `https://backend-askalocal.onrender.com/local/sample`;
   const url2 = "http://localhost:8080/local/sample";
 
   const getData = async (url) => {
-    const data = await fetch(url)
-      .then((data) => data.json())
-      .catch((e) => console.log(e.message.value));
-    if (data.status === 404) {
-      throw new Response("Not Found", { status: 404 });
+    const data = await fetch(url);
+    const parsedData = await data.json();
+    // .then((data) => data.json())
+    // .catch((e) => console.log(e.message.value));
+    if (!data.ok) {
+      throw new Error("Not Found", { status: data.status });
     }
-    setCityPosts(data.locals);
-    setPosts(data.locals);
-    console.log(data);
+    // posts.map((el) => ({ ...el, current: getRandom(el) }));
+    setCityPosts(
+      parsedData.locals.map((el) => ({ ...el, current: getRandom(el) }))
+    );
+    setPosts(parsedData.locals);
+    console.log(parsedData);
   };
 
   useEffect(() => {
     getData(url2);
   }, []);
-
-  const options = (
-    <>
-      <option value="City" className="options">
-        City
-      </option>
-      <option value="Barcelona" className="options">
-        Barcelona
-      </option>
-      <option value="Berlin" className="options">
-        Berlin
-      </option>
-      <option value="Vienna" className="options">
-        Vienna
-      </option>
-      <option value="Paris" className="options">
-        Paris
-      </option>
-      <option value="Rome" className="options">
-        Rome
-      </option>
-    </>
-  );
 
   // const findPosts = () => {
   //   if (input) {
@@ -85,25 +77,39 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   //   }
   // };
 
-  const filterCities = (city) => {
-    console.log("City", city);
-    if (city === "City") {
-      setCityPosts(posts);
-      console.log("postlist", cityPosts);
-      return;
-    }
-    // let postList = posts?.filter((el) => el.city === city);
-    setCityPosts([...posts]?.filter((el) => el.city === city));
-    // console.log("postlist", postList);
-  };
+  // const filterCities = (city) => {
+  //   console.log("City", city);
+  //   if (city === "City") {
+  //     setCityPosts(posts);
+  //     console.log("postlist", cityPosts);
+  //     return;
+  //   }
+  //   setCityPosts([...posts]?.filter((el) => el.city === city));
+  // };
 
   // useEffect(() => {
-  //   return () => {
-  //     filterCities(selectedValue);
-  //   };
+  //   //   return () => {
+  //   selectedValue !== "City"
+  //     ? filterCities(selectedValue)
+  //     : setCityPosts([...posts]);
+  //   //   };
   // }, [selectedValue]);
 
   const category = "appointmentP";
+
+  function getRandom(element) {
+    // const temp = Object.keys(element.categories);
+    catKeys = keys.filter((cat) => element.categories[cat].textfield.length);
+    // current = catKeys[Math.floor(Math.random() * catKeys.length)];
+    return catKeys[Math.floor(Math.random() * catKeys.length)];
+    // console.log("size", size, catKeys);
+    // console.log("random", current);
+    // console.log(element.categories[current]?.price);
+  }
+
+  // function doStuff() {
+  //   posts.map((el) => ({ ...el, current: getRandom(el) }));
+  // }
 
   return (
     <div className="home">
@@ -135,33 +141,46 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <CircleFlag countryCode="it" height="40" />
         </div>
         <Searchbar
-          options={options}
           setSelectedValue={setSelectedValue}
           selectedValue={selectedValue}
           searchedPosts={searchedPosts}
           setSearchedPosts={setSearchedPosts}
           input={input}
           setInput={setInput}
-          filterFunction={filterCities}
+          // filterFunction={filterCities}
         />
 
-        {cityPosts?.some((el) =>
-          el.categories && el.categories[category]
-            ? Object.values(el.categories[category]).some((elem) =>
-                elem.toString().toLowerCase().includes(input.toLowerCase())
-              )
-            : false
-        ) ? (
+        {/* (size === "home" &&
+                element.categories[element.current]?.textfield
+                  .toLowerCase()
+                  .includes(input.toLowerCase())) ||
+              element.categories[category].textfield
+                .toLowerCase()
+                .includes(input.toLowerCase()) ? ( */}
+
+        {cityPosts.length &&
+        (input?.length < 1 ||
+          cityPosts?.some((el) =>
+            el.categories[el.current]?.textfield
+              .toLowerCase()
+              .includes(input.toLowerCase())
+          )) ? (
+          // {cityPosts.length ? (
           <PostDisplay
             posts={cityPosts}
             category={category}
             size={"home"}
             link={"all"}
             input={input}
+            selectedValue={selectedValue}
           />
         ) : (
-          <p>Nothing to see here...move along</p>
+          <p>No sample Offerings match your search criteria</p>
         )}
+        {console.log(cityPosts)}
+        {/* ) : (
+          <p>Nothing to see here...move along</p>
+        )} */}
       </div>
       <div className="home-cont-white" id="howitworks-section">
         <h2 className="section-title-black">How it works</h2>
