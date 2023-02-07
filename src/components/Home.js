@@ -5,7 +5,6 @@ import Searchbar from "./Searchbar";
 import { CircleFlag } from "react-circle-flags";
 import { GoChevronDown } from "react-icons/go";
 import { HashLink } from "react-router-hash-link";
-import locals from "./pics/local_1.png";
 import PostDisplay from "./PostDisplay";
 import cat1 from "./svg/business.svg";
 import cat2 from "./svg/contract.svg";
