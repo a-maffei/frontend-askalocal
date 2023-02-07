@@ -24,7 +24,6 @@ const Categories = ({
   const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
-    console.log("here", user);
     const data = await fetch(url, {
       headers: {
         Authorization: user ? `Bearer ${user.token}` : `Bearer ${local.token}`,

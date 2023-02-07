@@ -2,7 +2,6 @@ import React from "react";
 import "./ImageSlide.css";
 const ImageSlide = ({ posts }) => {
   const slicedPosts = posts.slice(0, 5);
-  console.log(slicedPosts);
   return (
     <div className="carousel" id="carousel">
       {/* <img alt="First slide" src={slicedPosts[0]?.pic} /> */}

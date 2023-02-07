@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import "./Searchbar.css";
 import { BsSearch } from "react-icons/bs";
@@ -16,10 +16,6 @@ const Searchbar = ({
   const changeHandler = (e) => {
     setInput(e.target.value);
   };
-
-  useEffect(() => {
-    console.log(selectedValue);
-  }, [selectedValue]);
 
   return (
     <div className="home-search-wrapper">

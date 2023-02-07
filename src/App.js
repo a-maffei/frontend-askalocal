@@ -36,7 +36,6 @@ function App() {
     }
     // setTheme(JSON.parse(localStorage.getItem("theme")));
     localStorage.setItem("theme", theme);
-    console.log(localStorage, "hello");
   }, [user, local, theme]);
 
   return (
