@@ -5,7 +5,7 @@ import "./LocalInfo.css";
 import Starrating from "./Starrating";
 import cat from "./categories.json";
 
-export default function Profile({ local }) {
+export default function Profile({ local, user }) {
   let keys = null;
 
   return (
@@ -84,10 +84,18 @@ export default function Profile({ local }) {
       ) : (
         ""
       )}
+      {/* NEEDS UPDATING Button going to general messages if you're a local and
+      contacting the local if you're user */}
       <div className="purple-bttn-cont">
-        <Link to={`/${local._id}/contact`} state="gi">
-          <button className="purple-bttn">{`Contact ${local.firstname}`}</button>
-        </Link>
+        {user ? (
+          <Link to={`/${local._id}/contact`} state="gi">
+            <button className="purple-bttn">{`Contact ${local.firstname}`}</button>
+          </Link>
+        ) : (
+          <Link to={`/messenger`} state="gi">
+            <button className="purple-bttn">Check your messages</button>
+          </Link>
+        )}
       </div>
     </div>
   );

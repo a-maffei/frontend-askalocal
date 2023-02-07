@@ -208,4 +208,9 @@
   .card-macro-cont {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .paragraph-title-black,
+  .paragraph-title-green {
+    width: 90%;
+  }
 }

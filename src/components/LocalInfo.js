@@ -14,10 +14,11 @@ export default function LocalInfo({ local, user }) {
 
   const { id } = useParams();
   const [localDisplay, setLocalDisplay] = useState([]);
-  const [review, setReview] = useState("");
+  const [error, setError] = useState(null);
+  /* const [review, setReview] = useState("");
   const [error, setError] = useState(null);
   const [rating, setRating] = useState(0);
-  const [starError, setStarError] = useState(null);
+  const [starError, setStarError] = useState(null); */
   let keys = null;
   const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ export default function LocalInfo({ local, user }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  /* const handleSubmit = (e) => {
     e.preventDefault();
     if (rating === 0) {
       setStarError("Please give a star rating");
@@ -61,10 +62,18 @@ export default function LocalInfo({ local, user }) {
     setStarError(null);
 
     axios
-      .post(url2 + "/review", {
-        review: [`${user.firstname} ${user.lastname.charAt(0)}.`, review],
-        rating,
-      })
+      .post(
+        url2 + "/review",
+        {
+          review: [`${user.firstname} ${user.lastname.charAt(0)}.`, review],
+          rating,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
       .then((res) => {
         setLocalDisplay({
           ...localDisplay,
@@ -78,7 +87,7 @@ export default function LocalInfo({ local, user }) {
         setRating(0);
       })
       .catch((err) => console.error(err));
-  };
+  }; */
 
   useEffect(() => {
     fetchData(url2);
@@ -92,14 +101,16 @@ export default function LocalInfo({ local, user }) {
     <div className="localDiv">
       {localDisplay.categories ? (
         <>
-          <Profile local={localDisplay} />{" "}
-          <button onClick={() => navigate(-1)} className="navLinks topMargin">
+          <Profile local={localDisplay} user={user} />{" "}
+          <button onClick={() => navigate(-1)} className="bright-bttn">
             Back
           </button>{" "}
         </>
       ) : (
         ""
       )}
+      {/* LEAVE A
+      
       <div>
         <form onSubmit={handleSubmit}>
           <div className="reviews">
@@ -131,7 +142,7 @@ export default function LocalInfo({ local, user }) {
             </button>
           </div>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }
