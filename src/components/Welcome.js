@@ -35,9 +35,8 @@ export default function Welcome({ user, input, setInput }) {
           {greeting}, {user.firstname}!
         </h1>
         <h3 className="paragraph-title-green">
-          Our community of locals in is ready to help you for all your
-          language-related needs. Select your city below and start browsing
-          around.
+          Our community of locals is ready to help you. Select your city below
+          and find the right person for your language-related needs.
         </h3>
       </div>
 
