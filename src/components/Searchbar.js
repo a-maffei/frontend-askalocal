@@ -4,7 +4,6 @@ import "./Searchbar.css";
 import { BsSearch } from "react-icons/bs";
 
 const Searchbar = ({
-  options,
   setSelectedValue,
   selectedValue,
   searchedPosts,
@@ -16,6 +15,29 @@ const Searchbar = ({
   const changeHandler = (e) => {
     setInput(e.target.value);
   };
+
+  const options = (
+    <>
+      <option value="City" className="options">
+        City
+      </option>
+      <option value="Barcelona" className="options">
+        Barcelona
+      </option>
+      <option value="Berlin" className="options">
+        Berlin
+      </option>
+      <option value="Vienna" className="options">
+        Vienna
+      </option>
+      <option value="Paris" className="options">
+        Paris
+      </option>
+      <option value="Rome" className="options">
+        Rome
+      </option>
+    </>
+  );
 
   return (
     <div className="home-search-wrapper">
@@ -45,7 +67,7 @@ const Searchbar = ({
         id="cities"
         className="dropdown-container"
         onChange={(e) =>
-          // filterFunction(e.target.value),
+          // filterFunction(e.target.value)
           setSelectedValue(e.target.value)
         }
         defaultValue={selectedValue}

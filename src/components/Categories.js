@@ -43,52 +43,27 @@ const Categories = ({
     getData(url2);
   }, []);
 
-  const options = (
-    <>
-      <option value="City" className="options">
-        City
-      </option>
-      <option value="Barcelona" className="options">
-        Barcelona
-      </option>
-      <option value="Berlin" className="options">
-        Berlin
-      </option>
-      <option value="Vienna" className="options">
-        Vienna
-      </option>
-      <option value="Paris" className="options">
-        Paris
-      </option>
-      <option value="Rome" className="options">
-        Rome
-      </option>
-    </>
-  );
+  // useEffect(() => {
+  //   filterCities(selectedValue);
+  // }, [selectedValue]);
 
-  useEffect(() => {
-    filterCities(selectedValue);
-  }, [selectedValue]);
-
-  const filterCities = (city) => {
-    if (city === "City") {
-      setCityPosts(posts);
-      return;
-    }
-    // const postList = posts?.filter((el) => el.city === city);
-    setCityPosts([...posts]?.filter((el) => el.city === city));
-  };
+  // const filterCities = (city) => {
+  //   if (city === "City") {
+  //     setCityPosts(posts);
+  //     return;
+  //   }
+  //   setCityPosts([...posts]?.filter((el) => el.city === city));
+  // };
 
   return (
     <div className="categoriesBigDiv">
       {/* <div className="homeDiv"> */}
       <Searchbar
-        options={options}
         searchedPosts={searchedPosts}
         setSearchedPosts={setSearchedPosts}
         input={input}
         setInput={setInput}
-        filterFunction={filterCities}
+        // filterFunction={filterCities}
         setSelectedValue={setSelectedValue}
         selectedValue={selectedValue}
       />
@@ -110,25 +85,21 @@ const Categories = ({
                         )
                       : false
                   ) ? ( */}
-              {cityPosts.some((el) =>
-                el.categories[element]
-                  ? Object.values(el.categories[element]).some((elem) =>
-                      elem
-                        .toString()
-                        .toLowerCase()
-                        .includes(input.toLowerCase())
-                    )
-                  : false
+              {input?.length < 1 ||
+              posts?.some((el) =>
+                el.categories[element]?.textfield
+                  .toLowerCase()
+                  .includes(input.toLowerCase())
               ) ? (
                 <PostDisplay
-                  posts={cityPosts}
+                  posts={posts}
                   category={element}
                   size={"small"}
                   input={input}
                   key={i}
+                  selectedValue={selectedValue}
                 />
               ) : (
-                //  )
                 ""
               )}
             </div>

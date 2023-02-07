@@ -52,10 +52,11 @@ const PostDisplayLink = ({ element, i, category, size, input }) => {
 
   return (
     // size !== "home" ||
-    element.categories[category]?.textfield
-      .toString()
-      .toLowerCase()
-      .includes(input.toLowerCase()) ? (
+    element.categories[category]?.textfield.length &&
+      element.categories[category]?.textfield
+        .toString()
+        .toLowerCase()
+        .includes(input.toLowerCase()) ? (
       <Link key={i} className="postDiv" to={`/local/${element._id}`}>
         {element.pic ? (
           <div

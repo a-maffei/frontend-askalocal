@@ -27,13 +27,11 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   const url2 = `http://localhost:8080/${urlPath}/signup`;
 
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
 
   console.log("URL PATH", urlPath);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
     let formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
@@ -53,14 +51,11 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
       })
       .then((res) => {
         localStorage.setItem(urlPath, JSON.stringify(res.data));
-        //setIsLoading(false);
         if (urlPath === "user") setUser(res.data);
         else setLocal(res.data);
-        setIsLoading(false);
       })
       .catch((error) => {
         setError(error);
-        setIsLoading(false);
       });
   };
 
@@ -242,12 +237,12 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
                 }}
               ></div>
             </div>
-            <ImageCrop />
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>
         {error && <div className="error">{error.response.data.error}</div>}
       </fieldset>
+      <ImageCrop />
     </div>
   );
 };
