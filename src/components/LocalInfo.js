@@ -7,7 +7,11 @@ import "./LocalInfo.css";
 import Starrating from "./Starrating";
 
 export default function LocalInfo({ user }) {
-  // const { id } = useParams()
+  // To create a conversation, we need the ID of the currently logged in person and the chosen local.
+  // The ID of the chosen local we can get from here.
+  // Lines 82 to 84 redirect us to the messenger. The messenger will need both these IDs to start up the convo
+  // The function to take in the 2 IDs and create the chat still has to be implemented
+
   const { id } = useParams();
   const [local, setLocal] = useState([]);
   const [review, setReview] = useState("");
@@ -75,7 +79,12 @@ export default function LocalInfo({ user }) {
         <>
           <Profile local={local} />{" "}
           <div className="contact-button">
-            <Link to="/signup" state="gi" className="navLinks">
+            {/* if I'm signed in as a local, I don't want to be able to see this button */}
+            <Link
+              to={"/messenger"}
+              state={{ test: "test" }}
+              className="navLinks"
+            >
               {`Contact ${local.firstname}`}
             </Link>
           </div>

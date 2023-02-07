@@ -1,3 +1,4 @@
+import "./App.css";
 import { useState, useEffect } from "react";
 import Signup from "./components/SignUp";
 import Login from "./components/LogIn";

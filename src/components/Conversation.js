@@ -6,15 +6,13 @@ export default function Conversation({
   conversation,
   currentUser,
   setNotMyId,
+  setUserz,
 }) {
   const [users, setUsers] = useState(null);
-
-  // console.log("CURREN>T USER", currentUser);
 
   useEffect(() => {
     const friendId = conversation?.members?.find((m) => m !== currentUser?.id);
     setNotMyId(friendId);
-    //console.log("FRIEND ID", friendId);
 
     const getUser = async () => {
       try {
@@ -26,7 +24,7 @@ export default function Conversation({
         );
         const data = await res.json();
         setUsers(data);
-        console.log("DATA INSIDE FETCH", data);
+        setUserz(data);
       } catch (error) {
         console.log(error);
       }

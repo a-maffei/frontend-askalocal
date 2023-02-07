@@ -17,14 +17,10 @@ export default function Messenger({ user, local }) {
   const [notMyId, setNotMyId] = useState("");
   const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef(null);
-
-  console.log("USER", user);
-
-  console.log("LOCALLL", local);
+  const [userz, setUserz] = useState(null);
 
   const token = user ? user?.token : local?.token;
   const { decodedToken, isExpired } = useJwt(token);
-  console.log("DECODED TOKEN", decodedToken);
 
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
@@ -45,9 +41,7 @@ export default function Messenger({ user, local }) {
 
   useEffect(() => {
     socket.current.emit("addUser", decodedToken?.id);
-    socket.current.on("getUsers", (users) => {
-      console.log("WWWWWWWWWW", users);
-    });
+    socket.current.on("getUsers", (users) => {});
   }, [decodedToken?.id]);
 
   useEffect(() => {
@@ -65,7 +59,6 @@ export default function Messenger({ user, local }) {
     getConversations();
   }, [decodedToken?.id]);
 
-  console.log("IIIIIIIDDDDDD");
   useEffect(() => {
     //console.log("INSIDE EFFECT", currentChat?.id);
     // const id = currentChat?._id;
@@ -74,8 +67,6 @@ export default function Messenger({ user, local }) {
         const res = await axios.get(
           "http://localhost:8080/messages/" + currentChat?._id
         );
-
-        // console.log("RESSSSSgSSSSSSSSS", res.data);
         setMessages(res.data);
       } catch (error) {
         console.log(error);
@@ -87,8 +78,6 @@ export default function Messenger({ user, local }) {
   function handleClick(c) {
     setCurrentChat(c);
   }
-
-  console.log("MESSAGESSSSSSSSSSSSSSSSSSSSSS", messages);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,21 +112,18 @@ export default function Messenger({ user, local }) {
     setNewMessage(e.target.value);
   }
 
-  //console.log("AAAAAAAAAA JA", messages);
-  console.log("CHdäAApAAAZ", currentChat);
-  console.log("BODHKUBVDSHUJ", currentChat);
-
   return (
     <div className="messenger">
       <div className="chatMenu">
         <div className="chatMenuWrapper">
-          <input placeholder="Search for friends" className="chatMenuInput" />
           {conversations?.map((c) => (
             <div onClick={() => handleClick(c)}>
               <Conversation
                 conversation={c}
                 currentUser={decodedToken}
                 setNotMyId={setNotMyId}
+                userz={userz}
+                setUserz={setUserz}
               />
             </div>
           ))}
@@ -156,6 +142,7 @@ export default function Messenger({ user, local }) {
                       message={m}
                       own={m.sender === decodedToken?.id}
                       notMyId={notMyId}
+                      userz={userz}
                     />
                   </div>
                 ))}
