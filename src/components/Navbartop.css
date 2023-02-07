@@ -5,7 +5,6 @@
   background-color: var(--nav-background);
   color: var(--text-primary);
   font-weight: 500;
-  font-size: 0.9em;
   position: sticky;
   left: 5vw;
   top: 1rem;
@@ -20,13 +19,14 @@
 
 .navbarTwo {
   display: flex;
-  margin-right: 2rem;
+  justify-content: flex-end;
+  width: 80%;
 }
 
 .imgNavbar {
   width: 70%;
   fill: var(--nav-background);
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 }
 
 .nav-logo-link:visited,
@@ -35,8 +35,8 @@
 }
 
 .navLinks {
-  font-size: 1.1rem;
-  padding: 1rem;
+  font-size: 1.2rem;
+  padding: 0.8rem 0.5rem;
   color: var(--text-primary);
   text-decoration: none;
   /* position: relative; */
@@ -55,17 +55,19 @@
 .nav-local-bttn {
   background-color: var(--button-primary);
   font-size: 1.1rem;
+  margin: 0 0.5rem;
   color: var(--button-primary-text);
-  padding: 1rem;
+  padding: 0.8rem 0.5rem;
   border-radius: 25px;
-  margin: 0 1rem;
 }
 
 #toggledark {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  padding: 0;
+  width: 10%;
 }
 
 .switch {
@@ -120,7 +122,8 @@ input:checked + .slider:before {
 }
 
 .active {
-  color: var(--green-light);
+  color: var(--active-link);
+  font-weight: 700;
 }
 
 a {
@@ -136,8 +139,8 @@ a {
 #main-nav-drop-menu {
   position: absolute;
   font-size: 1em;
-  top: 4rem;
-  right: 0.5rem;
+  top: 3.4rem;
+  right: 0.3rem;
   list-style-type: none;
   border-radius: 10px;
   border: none;
@@ -156,8 +159,75 @@ a {
   text-decoration: none;
   text-align: left;
   font-size: 1em;
+  width: 90%;
 }
 
 .nav-local-drop:hover {
   color: var(--green-light);
+}
+
+.responsive-nav {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  gap: 0.2rem;
+}
+
+.nav-bttn {
+  cursor: pointer;
+  color: var(--text-primary);
+  padding: 0.5rem 0.5rem 0.2rem;
+  border: none;
+  font-size: 1.5rem;
+  background-color: transparent;
+}
+
+.mobile-bttn-cont {
+  display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+  .mobile-bttn-cont {
+    display: block;
+  }
+
+  .responsive-nav {
+    position: fixed;
+    justify-content: center;
+    top: -8rem;
+    left: 15%;
+    width: 70%;
+    margin: 0 auto;
+    background-color: var(--nav-background);
+    color: var(--text-primary);
+  }
+
+  .visible-nav {
+    top: 7.5rem;
+    padding: 0.3rem;
+    border-radius: 25px;
+  }
+
+  .nav-local-bttn,
+  .navLinks {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  #toggledark {
+    width: 20%;
+  }
+
+  #main-nav-drop-menu {
+    top: 3.5rem;
+    right: 0.3rem;
+  }
+  /*   .navbar {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }  */
+
+  /*   .extended-nav {
+    height: 10rem;
+  } */
 }

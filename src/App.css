@@ -17,6 +17,7 @@
   --text-secondary: #d2e823;
   --accent: #e8c0e8;
   --green-light: #d2e823;
+  --active-link: #254f1a;
   --green-dark: #254f1a;
   --red-dark: #4c1a4c;
   --red--light: #e8c0e8;
@@ -45,6 +46,8 @@
   --recurring-text: #eff0ec;
   --text-secondary: #d2e823;
   --accent: #1e2330;
+
+  --active-link: #d2e823;
   --green-light: #d2e823;
   --green-dark: #254f1a;
   --red--dark: #780016;

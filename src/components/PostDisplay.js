@@ -69,7 +69,10 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   return (
     <div className="post-macro-cont">
       {size !== "home" ? (
-        <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
+        <Link
+          to={link === "all" ? `/categories` : `/categories/${category}`}
+          className="  category-links"
+        >
           <div className="absolute bright-bttn">
             {link === "all" ? `All Categories` : `${cat[category]}`}
           </div>
@@ -105,6 +108,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
               element.categories[category].textfield
                 .toLowerCase()
                 .includes(input.toLowerCase())) &&
+
               element.categories[category].textfield?.length > 0) ? (
               <PostDisplayLink
                 element={element}
@@ -113,6 +117,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
                 category={category}
                 size={size}
               />
+
             ) : (
               ""
             )

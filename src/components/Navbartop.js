@@ -6,12 +6,19 @@ import React from "react";
 import "./Navbartop.css";
 import logo from "./svg/default-monochrome-black.svg";
 import { ReactComponent as Logo } from "./svg/default-monochrome-black.svg";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
   const ref = useRef();
   const { hash } = useLocation();
   const isActive = (iHash) => hash === iHash;
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const showNavbar = () => {
+    setIsClicked(!isClicked);
+  };
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -33,7 +40,7 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
   }, [isMainMenuOpen, isMenuOpen]);
 
   return (
-    <div className="navbar">
+    <div className={isClicked ? "navbar extended-nav" : "navbar"}>
       {/*       <img
         src={logo}
         alt="PC"
@@ -63,62 +70,82 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
             setIsMenuOpen={setIsMenuOpen}
           />
         ) : (
-          <div>
-            <HashLink
-              to="/#howitworks-section"
-              state="how-it-works"
+          <>
+            <div
               className={
-                isActive("#howitworks-section") ? "active navLinks" : "navLinks"
+                isClicked ? "responsive-nav  visible-nav " : "responsive-nav"
               }
-              // etc...
             >
-              How it works
-            </HashLink>
-            <HashLink
-              to="/#aboutus-section"
-              state="about-us"
-              className={
-                isActive("#aboutus-section") ? "active navLinks" : "navLinks"
-              }
-              // etc...
-            >
-              About us
-            </HashLink>
+              <HashLink
+                to="/#howitworks-section"
+                state="how-it-works"
+                className={
+                  isActive("#howitworks-section")
+                    ? "active navLinks"
+                    : "navLinks"
+                }
+                // etc...
+              >
+                How it works
+              </HashLink>
+              <HashLink
+                to="/#aboutus-section"
+                state="about-us"
+                className={
+                  isActive("#aboutus-section") ? "active navLinks" : "navLinks"
+                }
+                // etc...
+              >
+                About us
+              </HashLink>
 
-            <NavLink to="/user-signup" state="gi" className="navLinks">
-              Sign up
-            </NavLink>
-            <NavLink to="/user-login" state="login" className="navLinks">
-              Log in
-            </NavLink>
-            <button
-              onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
-              id="main-nav-drop-cont"
-              className="bttn-primary nav-local-bttn"
-              ref={ref}
-            >
+              <NavLink to="/user-signup" state="gi" className="navLinks">
+                Sign up
+              </NavLink>
+              <NavLink to="/user-login" state="login" className="navLinks">
+                Log in
+              </NavLink>
+              <button
+                onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
+                id="main-nav-drop-cont"
+                className="bttn-primary nav-local-bttn"
+                ref={ref}
+              >
+                {" "}
+                {isMainMenuOpen ? (
+                  <div id="main-nav-drop-menu">
+                    <NavLink
+                      to="/local-signup"
+                      state="gi"
+                      className="nav-local-drop"
+                    >
+                      Join us
+                    </NavLink>
+                    <NavLink
+                      to="/local-login"
+                      state="gi"
+                      className="nav-local-drop"
+                    >
+                      Log in
+                    </NavLink>
+                  </div>
+                ) : null}{" "}
+                For Locals
+              </button>
+            </div>
+            <div className="mobile-bttn-cont" onClick={showNavbar}>
               {" "}
-              {isMainMenuOpen ? (
-                <div id="main-nav-drop-menu">
-                  <NavLink
-                    to="/local-signup"
-                    state="gi"
-                    className="nav-local-drop"
-                  >
-                    Join us
-                  </NavLink>
-                  <NavLink
-                    to="/local-login"
-                    state="gi"
-                    className="nav-local-drop"
-                  >
-                    Log in
-                  </NavLink>
-                </div>
-              ) : null}{" "}
-              For Locals
-            </button>
-          </div>
+              {isClicked ? (
+                <button className="nav-bttn">
+                  <FaTimes />
+                </button>
+              ) : (
+                <button className="nav-bttn">
+                  <FaBars />
+                </button>
+              )}
+            </div>
+          </>
         )}
 
         <div id="toggledark" title={"(De)activate dark mode"}>
