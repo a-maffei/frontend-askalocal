@@ -93,7 +93,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
       return;
     }
     // let postList = posts?.filter((el) => el.city === city);
-    setCityPosts(posts?.filter((el) => el.city === city));
+    setCityPosts([...posts]?.filter((el) => el.city === city));
     // console.log("postlist", postList);
   };
 

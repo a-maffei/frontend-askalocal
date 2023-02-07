@@ -76,7 +76,7 @@ const Categories = ({
       return;
     }
     // const postList = posts?.filter((el) => el.city === city);
-    setCityPosts(posts?.filter((el) => el.city === city));
+    setCityPosts([...posts]?.filter((el) => el.city === city));
   };
 
   return (
