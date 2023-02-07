@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
+import { ReactComponent as Profile } from "./svg/profile.svg";
 import "./LocalForm.css";
 
 export default function Form({ local, setLocal }) {
@@ -65,7 +66,11 @@ export default function Form({ local, setLocal }) {
     try {
       const response = await fetch(url, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${local.token}`,
+        },
+
         body: JSON.stringify({
           email: local.email,
           bio: bio,
@@ -157,172 +162,215 @@ export default function Form({ local, setLocal }) {
   };
 
   return (
-    <div className="home">
-      <div className="localFormDiv">
-        <h1>Local Form</h1>
-        <form onSubmit={handleSubmit}>
-          <h2>Tell us something about yourself</h2>
-          <div>
-            <input
-              type="text"
-              placeholder="Bio"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-              required
-              name="bio"
-              className="bio"
-            />
-          </div>
-          <h2>Choose your services</h2>
-          <div>
-            <input
-              type="checkbox"
-              checked={emailChecked}
-              onChange={() => setEmailChecked(!emailChecked)}
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              name="emailP"
-              disabled={!emailChecked}
-            />
-            <input
-              type="number"
-              placeholder="Price"
-              value={emailPrice}
-              onChange={(e) => setEmailPrice(e.target.value)}
-              disabled={!emailChecked}
-              className="price"
-              min="0"
-            />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              checked={phoneCallsChecked}
-              onChange={() => setPhoneCallsChecked(!phoneCallsChecked)}
-            />
-            <input
-              type="text"
-              placeholder="Phone Calls"
-              value={phoneCalls}
-              onChange={(e) => setPhoneCalls(e.target.value)}
-              name="callP"
-              disabled={!phoneCallsChecked}
-            />
-            <input
-              type="number"
-              placeholder="Price"
-              value={phoneCallsPrice}
-              onChange={(e) => setPhoneCallsPrice(e.target.value)}
-              disabled={!phoneCallsChecked}
-              className="price"
-              min="0"
-            />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              checked={flatViewChecked}
-              onChange={() => setFlatViewChecked(!flatViewChecked)}
-            />
-            <input
-              type="text"
-              placeholder="Flat View"
-              value={flatView}
-              onChange={(e) => setFlatView(e.target.value)}
-              name="flatP"
-              disabled={!flatViewChecked}
-            />
-            <input
-              type="number"
-              placeholder="Price"
-              value={flatViewPrice}
-              onChange={(e) => setFlatViewPrice(e.target.value)}
-              disabled={!flatViewChecked}
-              className="price"
-              min="0"
-            />
-          </div>
+    <div className="form">
+      <h2 className="greeting-title">Create your profile</h2>
+      <h4 className="greeting-subtitle">
+        Tell us a bit about yourself and share what you can offer to newcomers
+        in {local?.city}.
+      </h4>
+      <div className="localForm-cont">
+        <Profile className="profile-img" />
+        <div className="localFormDiv">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <h2 className="form-title">Add few sentences about you</h2>
+              <textarea
+                placeholder="Bio"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                required
+                name="Your bio (100-550 charachters)"
+                className="bio"
+                minLength={100}
+                maxLength={550}
+              />
+            </div>
+            <h2 className="form-title">The services you'd like to offer</h2>
+            <div className="form-services">
+              <input
+                type="checkbox"
+                checked={emailChecked}
+                onChange={() => setEmailChecked(!emailChecked)}
+              />
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                name="emailP"
+                disabled={!emailChecked}
+                required={emailChecked ? true : false}
+                minLength={10}
+                maxLength={125}
+                className="textfield"
+              />
+              <input
+                type="number"
+                placeholder="€"
+                value={emailPrice}
+                onChange={(e) => setEmailPrice(e.target.value)}
+                disabled={!emailChecked}
+                required={emailChecked ? true : false}
+                className="price"
+                min="0"
+                max="999"
+              />
+            </div>
+            <div className="form-services">
+              <input
+                type="checkbox"
+                checked={phoneCallsChecked}
+                onChange={() => setPhoneCallsChecked(!phoneCallsChecked)}
+              />
+              <input
+                type="text"
+                placeholder="Phone Calls"
+                value={phoneCalls}
+                onChange={(e) => setPhoneCalls(e.target.value)}
+                name="callP"
+                disabled={!phoneCallsChecked}
+                required={phoneCallsChecked ? true : false}
+                minLength={10}
+                maxLength={125}
+                className="textfield"
+              />
+              <input
+                type="number"
+                placeholder="€"
+                value={phoneCallsPrice}
+                onChange={(e) => setPhoneCallsPrice(e.target.value)}
+                disabled={!phoneCallsChecked}
+                required={phoneCallsChecked ? true : false}
+                className="price"
+                min="0"
+                max="999"
+              />
+            </div>
+            <div className="form-services">
+              <input
+                type="checkbox"
+                checked={flatViewChecked}
+                onChange={() => setFlatViewChecked(!flatViewChecked)}
+              />
+              <input
+                type="text"
+                placeholder="Flat View"
+                value={flatView}
+                onChange={(e) => setFlatView(e.target.value)}
+                name="flatP"
+                disabled={!flatViewChecked}
+                required={flatViewChecked ? true : false}
+                minLength={10}
+                maxLength={125}
+                className="textfield"
+              />
+              <input
+                type="number"
+                placeholder="€"
+                value={flatViewPrice}
+                onChange={(e) => setFlatViewPrice(e.target.value)}
+                disabled={!flatViewChecked}
+                required={flatViewChecked ? true : false}
+                title="Enter a Price Here"
+                className="price"
+                min="0"
+                max="999"
+              />
+            </div>
 
-          <div>
-            <input
-              type="checkbox"
-              checked={appointmentsChecked}
-              onChange={() => setAppointmentsChecked(!appointmentsChecked)}
-            />
-            <input
-              type="text"
-              placeholder="Appointments"
-              value={appointments}
-              onChange={(e) => setAppointments(e.target.value)}
-              name="appointmentP"
-              disabled={!appointmentsChecked}
-            />
-            <input
-              type="number"
-              placeholder="Price"
-              value={appointmentsPrice}
-              onChange={(e) => setAppointmentsPrice(e.target.value)}
-              disabled={!appointmentsChecked}
-              className="price"
-              min="0"
-            />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              checked={serviceChecked}
-              onChange={() => setServiceChecked(!serviceChecked)}
-            />
-            <input
-              type="text"
-              placeholder="Service provider"
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              name="serviceP"
-              disabled={!serviceChecked}
-            />
-            <input
-              type="number"
-              placeholder="Price"
-              value={servicePrice}
-              onChange={(e) => setServicePrice(e.target.value)}
-              disabled={!serviceChecked}
-              className="price"
-              min="0"
-            />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              checked={interviewsChecked}
-              onChange={() => setInterviewsChecked(!interviewsChecked)}
-            />
-            <input
-              type="text"
-              placeholder="Interviews"
-              value={interviews}
-              onChange={(e) => setInterviews(e.target.value)}
-              name="interviewP"
-              disabled={!interviewsChecked}
-            />
-            <input
-              type="number"
-              placeholder="Price"
-              value={interviewsPrice}
-              onChange={(e) => setInterviewsPrice(e.target.value)}
-              disabled={!interviewsChecked}
-              className="price"
-              min="0"
-            />
-          </div>
-          <div>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
+            <div className="form-services">
+              <input
+                type="checkbox"
+                checked={appointmentsChecked}
+                onChange={() => setAppointmentsChecked(!appointmentsChecked)}
+              />
+              <input
+                type="text"
+                placeholder="Appointments"
+                value={appointments}
+                onChange={(e) => setAppointments(e.target.value)}
+                name="appointmentP"
+                disabled={!appointmentsChecked}
+                required={appointmentsChecked ? true : false}
+                minLength={10}
+                maxLength={125}
+                className="textfield"
+              />
+              <input
+                type="number"
+                placeholder="€"
+                value={appointmentsPrice}
+                onChange={(e) => setAppointmentsPrice(e.target.value)}
+                disabled={!appointmentsChecked}
+                required={appointmentsChecked ? true : false}
+                className="price"
+                min="0"
+                max="999"
+              />
+            </div>
+            <div className="form-services">
+              <input
+                type="checkbox"
+                checked={serviceChecked}
+                onChange={() => setServiceChecked(!serviceChecked)}
+              />
+              <input
+                type="text"
+                placeholder="Service providers"
+                value={service}
+                onChange={(e) => setService(e.target.value)}
+                name="serviceP"
+                disabled={!serviceChecked}
+                minLength={10}
+                maxLength={125}
+                className="textfield"
+              />
+              <input
+                type="number"
+                placeholder="€"
+                value={servicePrice}
+                onChange={(e) => setServicePrice(e.target.value)}
+                disabled={!serviceChecked}
+                className="price"
+                min="0"
+                max="999"
+              />
+            </div>
+            <div className="form-services">
+              <input
+                type="checkbox"
+                checked={interviewsChecked}
+                onChange={() => setInterviewsChecked(!interviewsChecked)}
+              />
+              <input
+                type="text"
+                placeholder="Interviews"
+                value={interviews}
+                onChange={(e) => setInterviews(e.target.value)}
+                name="interviewP"
+                disabled={!interviewsChecked}
+                minLength={10}
+                maxLength={125}
+                className="textfield"
+              />
+              <input
+                type="number"
+                placeholder="€"
+                value={interviewsPrice}
+                onChange={(e) => setInterviewsPrice(e.target.value)}
+                disabled={!interviewsChecked}
+                className="price"
+                min="0"
+                max="999"
+              />
+            </div>
+            <div>
+              <button className="form-bttn" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
       {error && <div>{error}</div>}
     </div>

@@ -4,8 +4,8 @@
 }
 
 #profile-pic-cont {
-  height: 3.5em;
-  width: 3.5em;
+  height: 4.5em;
+  width: 4.5em;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid var(--accent);
@@ -18,12 +18,11 @@
 
 #nav-drop-menu {
   position: absolute;
-  top: 3.8rem;
-  right: 1.2rem;
+  top: 4.3rem;
+  right: 1.8rem;
   list-style-type: none;
   padding: 0;
   border: 1px solid var(--border);
-  background-color: var(--background);
   border-radius: 10px;
 }
 
@@ -37,7 +36,7 @@
   transform: rotate(45deg);
   border-left: 1px solid var(--border);
   border-top: 1px solid var(--border);
-  background-color: var(--background);
+  background-color: var(--button-primary);
 }
 
 #nav-drop-menu > li {
@@ -45,20 +44,34 @@
   color: var(--text-primary);
   border: none;
   font-size: 1.1em;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 #nav-drop-menu > li > p {
   margin: 0;
-  color: var(--text-primary);
+  color: white;
   border: none;
   text-align: left;
-  padding: 0.4rem 0.8rem;
-  font-size: 1.1rem;
+  padding: 0.2rem 0.8rem;
+  font-size: 1rem;
   cursor: default;
 }
 
-#nav-drop-menu > li > button:hover {
-  background-color: var(--accent);
+.profileLink {
+  text-decoration: none;
+  padding: 1rem;
+  display: block;
+  background-color: var(--button-primary);
+  font-size: 1rem;
+  color: var(--button-primary-text);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#nav-drop-menu > li > button:hover,
+.profileLink:hover {
+  color: var(--red--light);
 }
 
 #nav-drop-menu > li > button {
@@ -72,8 +85,15 @@
   margin: 0;
   font: inherit;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  padding: 0.8rem;
+  padding: 1rem;
+  background-color: var(--button-primary);
+  color: var(--button-primary-text);
+}
+
+.static-li {
+  background-color: var(--button-primary);
+  color: white;
 }

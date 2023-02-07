@@ -6,7 +6,14 @@ import cat from "./categories.json";
 import options from "./options.json";
 import "./Categories.css";
 
-const Categories = ({ input, setInput, selectedValue, setSelectedValue }) => {
+const Categories = ({
+  user,
+  local,
+  input,
+  setInput,
+  selectedValue,
+  setSelectedValue,
+}) => {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
@@ -17,7 +24,11 @@ const Categories = ({ input, setInput, selectedValue, setSelectedValue }) => {
   const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
-    const data = await fetch(url)
+    const data = await fetch(url, {
+      headers: {
+        Authorization: user ? `Bearer ${user.token}` : `Bearer ${local.token}`,
+      },
+    })
       .then((data) => data.json())
       .catch((e) => setError(e));
     if (data.status === 404) {

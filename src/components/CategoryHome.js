@@ -4,7 +4,7 @@ import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Categories = ({ input, setInput }) => {
+const Categories = ({ input, setInput, user, local }) => {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
@@ -12,20 +12,26 @@ const Categories = ({ input, setInput }) => {
   const { category } = useParams();
 
   const url = `https://backend-askalocal.onrender.com/local`;
+  const url2 = "http://localhost:8080/local";
 
   const getData = async (url) => {
-    const data = await fetch(url)
+    const data = await fetch(url, {
+      headers: {
+        Authorization: user ? `Bearer ${user.token}` : `Bearer ${local.token}`,
+      },
+    })
       .then((data) => data.json())
-      .catch((e) => setError(e));
+      .catch((e) => console.log(e.message.value));
     if (data.status === 404) {
       throw new Response("Not Found", { status: 404 });
     }
     setPosts(data.locals);
     setCityPosts(data.locals);
+    console.log(data.locals);
   };
 
   useEffect(() => {
-    getData(url);
+    getData(url2);
   }, []);
 
   const options = (
@@ -45,8 +51,8 @@ const Categories = ({ input, setInput }) => {
       <option value="Paris" className="options">
         Paris
       </option>
-      <option value="Rom" className="options">
-        Rom
+      <option value="Rome" className="options">
+        Rome
       </option>
     </>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./ProfileDrop.css";
 
 export default function ProfileDrop({
@@ -28,7 +29,7 @@ export default function ProfileDrop({
   }, [isMenuOpen]);
 
   const handleClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     if (user) {
       setUser(null);
@@ -54,7 +55,7 @@ export default function ProfileDrop({
         >
           {isMenuOpen ? (
             <ul id="nav-drop-menu">
-              <li className="nav-menu-item">
+              <li className="nav-menu-item static-li">
                 <p>
                   {user.firstname} {`${user.lastname.charAt(0)}.`} ({user.email}
                   )
@@ -81,10 +82,14 @@ export default function ProfileDrop({
           {isMenuOpen ? (
             <ul id="nav-drop-menu">
               <li className="nav-menu-item">
-                <p>
-                  {local.firstname} {`${local.lastname.charAt(0)}.`} (
-                  {local.email})
-                </p>
+                <Link
+                  to={local.isComplete ? "/yourinfo" : "/form"}
+                  className="profileLink"
+                >
+                  {local.firstname} {`${local.lastname.charAt(0)}.`}
+                  <br />
+                  {local.email}
+                </Link>
               </li>
               <li className="nav-menu-item">
                 <button onClick={handleClick}>Log out</button>

@@ -6,14 +6,15 @@ import { Link } from "react-router-dom";
 import "./LocalInfo.css";
 import Starrating from "./Starrating";
 
-export default function LocalInfo({ user }) {
+
+export default function LocalInfo({ user, local }) {
   // To create a conversation, we need the ID of the currently logged in person and the chosen local.
   // The ID of the chosen local we can get from here.
   // Lines 82 to 84 redirect us to the messenger. The messenger will need both these IDs to start up the convo
   // The function to take in the 2 IDs and create the chat still has to be implemented
-
+ 
   const { id } = useParams();
-  const [local, setLocal] = useState([]);
+  const [localDisplay, setLocalDisplay] = useState([]);
   const [review, setReview] = useState("");
   const [error, setError] = useState(null);
   const [rating, setRating] = useState(0);
@@ -26,10 +27,17 @@ export default function LocalInfo({ user }) {
 
   const fetchData = async (url) => {
     try {
-      const result = await axios.get(url);
-      setLocal(result.data.local);
+      const result = await axios.get(url, {
+        headers: {
+          Authorization: user
+            ? `Bearer ${user.token}`
+            : `Bearer ${local.token}`,
+        },
+      });
+      setLocalDisplay(result.data.local);
     } catch (err) {
       setError(err);
+      console.log(err);
     }
   };
 
@@ -37,6 +45,12 @@ export default function LocalInfo({ user }) {
     e.preventDefault();
     if (rating === 0) {
       setStarError("Please give a star rating");
+      return;
+    }
+    if (review.length > 150) {
+      setStarError(
+        `Please type a maximum of 150 characters. You currently have ${review.length}`
+      );
       return;
     }
     if (!user) {
@@ -51,13 +65,13 @@ export default function LocalInfo({ user }) {
         rating,
       })
       .then((res) => {
-        setLocal({
-          ...local,
+        setLocalDisplay({
+          ...localDisplay,
           reviews: [
-            ...local.reviews,
+            ...localDisplay.reviews,
             [`${user.firstname} ${user.lastname.charAt(0)}.`, review],
           ],
-          ratings: [...local.ratings, rating],
+          ratings: [...localDisplay.ratings, rating],
         });
         setReview("");
         setRating(0);
@@ -75,8 +89,9 @@ export default function LocalInfo({ user }) {
 
   return (
     <div className="localDiv">
-      {local.categories ? (
+      {localDisplay.categories ? (
         <>
+
           <Profile local={local} />{" "}
           <div className="contact-button">
             {/* if I'm signed in as a local, I don't want to be able to see this button */}
@@ -89,6 +104,7 @@ export default function LocalInfo({ user }) {
             </Link>
           </div>
           <button onClick={() => navigate(-1)} className="navLinks topMargin">
+
             Back
           </button>{" "}
         </>
@@ -104,6 +120,8 @@ export default function LocalInfo({ user }) {
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
                 required
+                minLength={5}
+                maxLength={100}
               />
             </label>
             <Starrating

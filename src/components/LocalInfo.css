@@ -2,70 +2,124 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 3rem;
 }
 
-.avatarBig {
-  max-height: 18rem;
-  max-width: 18rem;
-  border-radius: 25%;
+#avatarBig {
+  height: 15rem !important;
+  width: 15rem !important;
+  border-radius: 50%;
   /* padding: 1rem; */
-  margin: 1.5rem 3rem;
+  /* size: cover; */
+  /* overflow: hidden; */
+  object-fit: cover;
+  border: 2px solid var(--red--light);
 }
 
 .localDetailDiv {
+  /*   background-color: var(--red-dark); */
+  border: 4px solid var(--red--light);
   background-color: var(--background);
   color: var(--text-primary);
-  width: 48rem;
+  width: 50%;
   border-radius: 25px;
-  margin: 4rem;
+  margin: 0.5rem 0 3rem;
   padding: 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* margin-top: 4rem; */
 }
 
 .bioInfo {
   /* margin: 0 3rem 0 1.5rem; */
-  margin: 1.5rem 3rem 1.5rem 0;
+  margin: 0 2rem 1.5rem 0;
   text-align: justify;
+  color: var(--text-primary);
+  width: 50%;
+}
+
+.bioInfo > h1 {
+  /* margin: 0 3rem 0 1.5rem; */
+  font-size: 1.8em;
+}
+
+.bioInfo > p {
+  /* margin: 0 3rem 0 1.5rem; */
+  font-size: 1em;
 }
 
 .offers {
   display: flex;
   flex-direction: column;
   padding: 0 3rem;
+  width: 100%;
 }
 
 .offersInnerDiv {
   display: grid;
-  grid-template-columns: 1.1fr 2fr 0.2fr;
+  grid-template-columns: 1.2fr 2fr 0.3fr;
   align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  /* background-color: var(--background);
+  color: var(--text-primary); */
+  border-radius: 25px;
+  padding: 0 2em;
+  margin: 0 auto 1rem;
+  width: 85%;
+  gap: 0.5rem;
 }
 
 .first-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto 2rem;
+  gap: 2rem;
+}
+
+.offersInnerDiv > h3,
+.offersInnerDiv > p {
+  font-size: 1em;
 }
 
 .textend {
   text-align: end;
+  margin: 0.5rem 0;
 }
 
 .textstart {
   text-align: start;
+  margin: 0.5rem 0;
+}
+
+.offer-type {
+  width: 90%;
+}
+
+.offer-textfield {
+  width: 100%;
 }
 
 .starsList {
   background-color: var(--background);
   overflow-y: scroll;
-  max-height: 6rem;
+  max-height: 10rem;
 }
 
-.starsListLi {
-  display: grid;
-}
+/* .reviews {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+} */
 
 .review {
   padding: 0 3rem;
+  width: 90%;
 }
 
 .reviewText {
@@ -74,13 +128,106 @@
 
 .reviewer {
   font-weight: bold;
-  text-align: center;
+}
+
+.addStar {
+  color: var(--text-primary);
+}
+
+.starsListDiv {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.reviewStar {
+  margin: 0;
+  text-align: start;
 }
 
 .starsList p {
   margin: 0;
 }
 
-.review ul {
-  /* margin: 0 */
+.starsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  width: 70%;
+}
+
+.addStar::after {
+  content: "\2605";
+  color: #d4af37;
+}
+
+@media only screen and (max-width: 1100px) {
+  .localDetailDiv {
+    width: 65%;
+  }
+
+  .offersInnerDiv {
+    width: 80%;
+  }
+
+  .offersInnerDiv > h3,
+  .offersInnerDiv > p {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 940px) {
+  .localDetailDiv {
+    width: 75%;
+  }
+
+  .bioInfo {
+    text-align: center;
+    margin: 0 auto 1em;
+    width: 80%;
+  }
+
+  .first-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 0.5em;
+  }
+
+  .offers {
+    width: 95%;
+  }
+
+  .textstart {
+    font-size: 0.9em;
+  }
+
+  .offersInnerDiv {
+    display: grid;
+    grid-template-columns: 1.5fr 2.5fr 0.8fr;
+    margin: 0 auto 1em;
+    gap: 0.8em;
+  }
+
+  .offersInnerDiv > h3,
+  .offersInnerDiv > p {
+    font-size: 0.9em;
+  }
+
+  .starsList {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .starsListDiv {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
 }

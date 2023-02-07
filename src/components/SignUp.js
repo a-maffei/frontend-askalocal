@@ -1,7 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
+import domtoimage from "dom-to-image";
+import ImageCrop from "./ImageCrop";
 
 const Signup = ({ setUser, setLocal, urlPath }) => {
   /*   const firstname = useRef();
@@ -17,7 +19,9 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [imageUrl, setImageUrl] = useState(null);
+
 
   const [selectedFile, setSelectedFile] = useState("");
   const url = `https://backend-askalocal.onrender.com/${urlPath}/signup`;
@@ -60,27 +64,52 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
       });
   };
 
+  useEffect(() => {
+    if (selectedFile) {
+      setImageUrl(URL.createObjectURL(selectedFile));
+    }
+  }, [selectedFile]);
+
   console.log("ERRRRROR", error);
 
-  return isLoading ? (
-    "Loading..."
-  ) : (
+
+  const options = (
+    <>
+      <option value="City">City</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Berlin">Berlin</option>
+      <option value="Vienna">Vienna</option>
+      <option value="Paris">Paris</option>
+      <option value="Rom">Rome</option>
+    </>
+  );
+
+  return (
+
     <div className="signupOuterDiv">
+      {" "}
       <div className="alreadyDiv">
         {urlPath === "local" ? (
           <Link to="/local-login">
-            <button className="already">{"I already have an account"}</button>
+            <button className="bright-bttn already">
+              {"I already have an account"}
+            </button>
           </Link>
         ) : (
           <Link to="/user-login">
-            <button className="already">{"I already have an account"}</button>
+            <button className="bright-bttn already">
+              {"I already have an account"}
+            </button>
           </Link>
         )}
       </div>
       <fieldset className="signupField">
-        <legend>
-          <h1 className="signupLegend">Signup</h1>
-        </legend>
+        <div className="signup-cont">
+          <h1>Sign Up</h1>
+        </div>
+        {/*         <legend className="signupLegend">
+          <h1>Sign up</h1>
+        </legend> */}
         <form
           onSubmit={handleSubmit}
           className="signupForm"
@@ -89,7 +118,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
         >
           <div className="signupDiv">
             <label className="signupLabel" htmlFor="firstName">
-              Firstname
+              First name
             </label>
             <input
               type="text"
@@ -100,12 +129,12 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               // ref={firstname}
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
-              placeholder={"Your Firstname"}
+              placeholder={"Your first name"}
               required
               title={"eg. 'John'"}
             />
             <label className="signupLabel" htmlFor="lastName">
-              Lastname
+              Last name
             </label>
             <input
               type="text"
@@ -115,13 +144,13 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               className="signupInput"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
-              placeholder={"Your Lastname"}
+              placeholder={"Your last name"}
               required
               title={"eg. 'Doe'"}
             />
 
             <label className="signupLabel" htmlFor="email">
-              eMail
+              Email
             </label>
             <input
               type="email"
@@ -131,7 +160,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               className="signupInput"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="eMail"
+              placeholder="Email"
               required
             />
 
@@ -149,21 +178,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               placeholder="Password"
               required
             />
-            <label className="signupLabel" htmlFor="pic">
-              Image
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              className="form-control-file signupInput"
-              id="pic"
-              name="pic"
-              required
-              onChange={(e) => {
-                setSelectedFile(e.target.files[0]);
-              }}
-            />
-
             <label className="signupLabel" htmlFor="phone">
               Phone
             </label>
@@ -176,35 +190,65 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               className="signupInput"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phonenumber"
+              placeholder="Phone number"
               required
             />
 
             <label className="signupLabel" htmlFor="city">
               City
             </label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              pattern="[a-zA-Z]+"
-              className="signupInput"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="City"
-              required
-            />
+
+            {urlPath === "local" ? (
+              <select
+                onChange={(e) => setCity(e.target.value)}
+                className="signupInputSelect"
+                id="city"
+              >
+                {options}
+              </select>
+            ) : (
+              <input
+                type="text"
+                id="city"
+                name="city"
+                pattern="[a-zA-Z]+"
+                className="signupInput"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="City"
+                required
+              />
+            )}
+            <div className="profile-pic-section">
+              <div className="profile-pic-upload">
+                <label className="signupLabel" htmlFor="pic">
+                  Profile picture and preview
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="form-control-file signupInput signup-pic"
+                  id="pic"
+                  name="pic"
+                  required
+                  onChange={(e) => {
+                    setSelectedFile(e.target.files[0]);
+                  }}
+                />
+              </div>
+              <div
+                className="profile-pic-preview"
+                style={{
+                  backgroundImage: `url(${imageUrl}`,
+                  backgroundSize: "cover",
+                }}
+              ></div>
+            </div>
+            <ImageCrop />
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>
-        {error && (
-          <div
-            className="error"
-            style={{ color: "white", border: "2px solid red" }}
-          >
-            {error.response.data.error}
-          </div>
-        )}
+        {error && <div className="error">{error.response.data.error}</div>}
       </fieldset>
     </div>
   );

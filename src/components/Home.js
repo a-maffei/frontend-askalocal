@@ -12,9 +12,9 @@ import cat2 from "./svg/contract.svg";
 import cat3 from "./svg/doctor.svg";
 import cat4 from "./svg/mail.svg";
 import cat5 from "./svg/reminder.svg";
-import cat6 from "./svg/resume.svg";
-import cat7 from "./svg/writer.svg";
+import cat6 from "./svg/writer.svg";
 import AboutUs from "./AboutUs";
+import ImageSlide from "./ImageSlide";
 
 const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   // const options = optionsImp;
@@ -23,13 +23,13 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   const [error, setError] = useState(null);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [cityPosts, setCityPosts] = useState(null);
-  const url = `https://backend-askalocal.onrender.com/local`;
-  const url2 = "http://localhost:8080/local";
+  const url = `https://backend-askalocal.onrender.com/local/sample`;
+  const url2 = "http://localhost:8080/local/sample";
 
   const getData = async (url) => {
     const data = await fetch(url)
       .then((data) => data.json())
-      .catch((e) => setError(e));
+      .catch((e) => console.log(e.message.value));
     if (data.status === 404) {
       throw new Response("Not Found", { status: 404 });
     }
@@ -99,7 +99,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <h3>Let the locals help you out.</h3>
         </div>
         <div className="homeDiv-img">
-          <img src={locals} />
+          {posts.locals ? <ImageSlide posts={posts.locals} /> : ""}
         </div>
       </div>
       <div className="bright-bttn-cont">
@@ -183,7 +183,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
                 {" "}
                 <img src={cat3} className="categoriesPic" alt="Appointments" />
               </div>
-              <p>Appointments</p>
+              <p>Meetings</p>
             </Link>
           </div>
           <div className="cardOuterDiv">
@@ -201,7 +201,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
           <div className="cardOuterDiv">
             <Link to="/categories/interviewP" className="categoriesDiv">
               <div className="cat-container">
-                <img src={cat7} className="categoriesPic" alt="Job Search" />
+                <img src={cat6} className="categoriesPic" alt="Job Search" />
                 <p>Interview practice</p>
               </div>
             </Link>

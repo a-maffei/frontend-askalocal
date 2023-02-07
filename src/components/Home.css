@@ -77,8 +77,9 @@
 .card-macro-cont {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 70%;
-  margin: 0;
+  margin: 0 auto;
+  justify-self: center;
+  gap: 3rem;
 }
 
 .categoriesDiv {
@@ -133,7 +134,11 @@
 
 .home-cont-green {
   background-color: #264f1a;
-  padding: 3rem;
+  justify-content: flex-start;
+}
+
+.home-cont-green > h2 {
+  margin-top: 2rem;
 }
 
 .flex-row {
@@ -159,7 +164,7 @@
   border-radius: 1.5rem;
   width: 13rem;
   height: 15rem;
-  margin: 1.5rem;
+  margin: 1.5rem uato;
 }
 
 .cat-container {
@@ -167,8 +172,40 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
 }
 
 .cat-container {
   font-size: 1.1em;
+}
+
+@media only screen and (max-width: 1100px) {
+  .homeDiv-img {
+    display: none;
+  }
+
+  .homeDiv-titles {
+    text-align: center;
+    padding-top: 1.5rem;
+    width: 95%;
+  }
+
+  .homeDiv-titles > h3 {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .home-cont-pink > h2 {
+    text-align: center;
+  }
+
+  .card-macro-cont {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .card-macro-cont {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

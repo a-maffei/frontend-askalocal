@@ -11,59 +11,71 @@ export default function Profile({ local }) {
   return (
     <div className="localDetailDiv">
       <div className="first-section">
-        <img
-          src={local?.pic}
-          className="avatarBig"
-          alt={`${local?.firstname}s Picture`}
-        />
+        <div
+          id="avatarBig"
+          style={{
+            backgroundImage: `url(${local.pic}`,
+            backgroundSize: "cover",
+          }}
+        ></div>
         <div className="bioInfo">
           <h1>
             {local?.firstname} {local?.lastname.charAt(0)}.
           </h1>
-          <p>{local?.bio}</p>
+          <p>
+            Local in: <b>{local?.city}</b>
+          </p>
+          <p>
+            <i>{local?.bio}</i>
+          </p>
         </div>
       </div>
       <div className="offers">
         {
           ((keys = Object.keys(local?.categories)),
           local.categories &&
-            keys?.map((element, i) => (
-              <div key={i} className="offersInnerDiv">
-                <h3 className="textstart">{cat[element]}</h3>
-                <p className="textstart">
-                  {local.categories[element].textfield}
-                </p>
-                <p className="textend">{local.categories[element].price} €</p>
-              </div>
-            )))
+            keys?.map((element, i) =>
+              local.categories[element].textfield.length > 5 ? (
+                <div key={i} className="offersInnerDiv">
+                  <div className="offer-type">
+                    <h3 className="textstart ">{cat[element]}</h3>
+                  </div>
+                  <div className="offer-textfield">
+                    <p className="textstart ">
+                      {local.categories[element].textfield}
+                    </p>
+                  </div>
+                  <p className="textend">{local.categories[element].price} €</p>
+                </div>
+              ) : (
+                ""
+              )
+            ))
         }
       </div>
       {local.ratings?.length > 0 ? (
         <div className="review">
-          <div className="reviews">
-            <h2>
+          <div>
+            <h2 className="addStar">
               Rating{" "}
               {Math.round(
                 (local.ratings?.reduce((a, b) => a + b, 0) /
                   local.ratings?.length) *
                   10
               ) / 10}{" "}
-              {String.fromCharCode(9733)}
             </h2>
           </div>
           <div className="starsList">
             {local.reviews?.map((review, index) => (
-              <div className="starsListLi" key={index}>
-                <div className="offersInnerDiv">
-                  <p className="textstart reviewer">{review[0]}</p>
-                  <p className="textstart reviewText">{review[1]}</p>
-                  <div className="textend">
-                    <Starrating
-                      rating={local.ratings[index]}
-                      total={5}
-                      reactive={false}
-                    />
-                  </div>
+              <div className="starsListDiv" key={index}>
+                <p className="textstart reviewer">{review[0]}</p>
+                <p className="textstart reviewText">{review[1]}</p>
+                <div className="reviewStar">
+                  <Starrating
+                    rating={local.ratings[index]}
+                    total={5}
+                    reactive={false}
+                  />
                 </div>
               </div>
             ))}
@@ -72,6 +84,11 @@ export default function Profile({ local }) {
       ) : (
         ""
       )}
+      <div className="purple-bttn-cont">
+        <Link to={`/${local._id}/contact`} state="gi">
+          <button className="purple-bttn">{`Contact ${local.firstname}`}</button>
+        </Link>
+      </div>
     </div>
   );
 }
