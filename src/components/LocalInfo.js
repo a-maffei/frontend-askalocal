@@ -6,8 +6,13 @@ import { Link } from "react-router-dom";
 import "./LocalInfo.css";
 import Starrating from "./Starrating";
 
+
 export default function LocalInfo({ user, local }) {
-  // const { id } = useParams()
+  // To create a conversation, we need the ID of the currently logged in person and the chosen local.
+  // The ID of the chosen local we can get from here.
+  // Lines 82 to 84 redirect us to the messenger. The messenger will need both these IDs to start up the convo
+  // The function to take in the 2 IDs and create the chat still has to be implemented
+ 
   const { id } = useParams();
   const [localDisplay, setLocalDisplay] = useState([]);
   const [review, setReview] = useState("");
@@ -86,8 +91,20 @@ export default function LocalInfo({ user, local }) {
     <div className="localDiv">
       {localDisplay.categories ? (
         <>
-          <Profile local={localDisplay} />{" "}
-          <button onClick={() => navigate(-1)} className="bright-bttn">
+
+          <Profile local={local} />{" "}
+          <div className="contact-button">
+            {/* if I'm signed in as a local, I don't want to be able to see this button */}
+            <Link
+              to={"/messenger"}
+              state={{ test: "test" }}
+              className="navLinks"
+            >
+              {`Contact ${local.firstname}`}
+            </Link>
+          </div>
+          <button onClick={() => navigate(-1)} className="navLinks topMargin">
+
             Back
           </button>{" "}
         </>

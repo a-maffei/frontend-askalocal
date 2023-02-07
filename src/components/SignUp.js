@@ -19,7 +19,9 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
+
   const [imageUrl, setImageUrl] = useState(null);
+
 
   const [selectedFile, setSelectedFile] = useState("");
   const url = `https://backend-askalocal.onrender.com/${urlPath}/signup`;
@@ -31,6 +33,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     let formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
@@ -40,6 +43,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("city", city);
     formData.append("pic", selectedFile);
     formData.append("isComplete", false);
+    formData.append("isLocal", true);
 
     axios
       .post(url2, formData, {
@@ -52,62 +56,12 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
         //setIsLoading(false);
         if (urlPath === "user") setUser(res.data);
         else setLocal(res.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         setError(error);
+        setIsLoading(false);
       });
-
-    /*     const response = await fetch(url2, {
-      method: "POST",
-      headers: {
-        "Content-type": "multipart-formdata",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const data = await response.json();
-    console.log("RESPONSE", response);
-    console.log("WHO'S YOUR DATA", data);
-    if (response.ok) {
-      console.log("DATA", data);
-      setError(null);
-      localStorage.setItem(urlPath, JSON.stringify(data));
-      if (urlPath === "user") setUser(data);
-      else setLocal(data);
-    }
-
-    if (!response.ok) {
-      console.log("RESPONSE", response);
-      setError(response.error);
-    } */
-
-    /*     const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email.current.value,
-        password: password.current.value,
-        firstname: firstname.current.value,
-        lastname: lastname.current.value,
-        phone: phone.current.value,
-        city: city.current.value,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      // setIsLoading(false);
-      setError(data.error);
-    }
-
-    if (response.ok) {
-      localStorage.setItem("user", JSON.stringify(data));
-      // setIsLoading(false);
-      setUser(data);
-    } */
-
-    console.log("FORMDATAaaaaa", formData);
   };
 
   useEffect(() => {
@@ -117,6 +71,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   }, [selectedFile]);
 
   console.log("ERRRRROR", error);
+
 
   const options = (
     <>
@@ -130,6 +85,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   );
 
   return (
+
     <div className="signupOuterDiv">
       {" "}
       <div className="alreadyDiv">

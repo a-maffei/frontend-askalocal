@@ -13,6 +13,7 @@ import CategoryHome from "./components/CategoryHome";
 import LocalForm from "./components/LocalForm";
 import Footer from "./components/Footer";
 import YourInfo from "./components/YourInfo";
+import Messenger from "./components/Messenger";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -131,6 +132,11 @@ function App() {
                 )
               }
             />
+            <Route
+              path="/messenger"
+              element={<Messenger user={user} local={local} />}
+            />
+
             <Route
               path="/categories"
               element={
