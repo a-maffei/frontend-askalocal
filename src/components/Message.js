@@ -7,7 +7,9 @@ export default function Message({ message, own, user, local, notMyId, userz }) {
 
   useEffect(() => {
     const getOtherPerson = async () => {
-      const res = await fetch(`http://localhost:8080/user/${notMyId}`);
+      const res = await fetch(
+        `https://backend-askalocal.onrender.com/user/${notMyId}`
+      );
       const data = await res.json();
       setOtherPerson(data.user);
     };
