@@ -93,16 +93,6 @@ export default function LocalInfo({ local, user }) {
       {localDisplay.categories ? (
         <>
           <Profile local={localDisplay} />{" "}
-          <div className="contact-button">
-            {/* if I'm signed in as a local, I don't want to be able to see this button */}
-            <Link
-              to={"/messenger"}
-              state={{ test: "test" }}
-              className="navLinks"
-            >
-              {`Contact ${localDisplay.firstname}`}
-            </Link>
-          </div>
           <button onClick={() => navigate(-1)} className="navLinks topMargin">
             Back
           </button>{" "}

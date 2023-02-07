@@ -140,6 +140,8 @@
   width: 40%;
   gap: 0.5rem;
   justify-content: flex-start;
+  margin: 0 auto;
+  padding-bottom: 1em;
 }
 
 .reviewStar {
@@ -229,5 +231,9 @@
     gap: 0.5rem;
     align-items: center;
     justify-content: center;
+  }
+
+  .starsListDiv > p {
+    text-align: center;
   }
 }

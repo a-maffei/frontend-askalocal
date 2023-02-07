@@ -18,7 +18,7 @@
 
 #nav-drop-menu {
   position: absolute;
-  top: 4.3rem;
+  top: 4.5rem;
   right: 1.8rem;
   list-style-type: none;
   padding: 0;
@@ -29,7 +29,7 @@
 #nav-drop-menu::before {
   content: "";
   position: absolute;
-  top: -0.7rem;
+  top: -0.5rem;
   right: 1.3rem;
   width: 20px;
   height: 20px;
@@ -60,13 +60,18 @@
 
 .profileLink {
   text-decoration: none;
-  padding: 1rem;
+  padding: 0.5rem 0.8rem;
   display: block;
   background-color: var(--button-primary);
   font-size: 1rem;
   color: var(--button-primary-text);
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+
+.central {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
 }
 
 #nav-drop-menu > li > button:hover,
@@ -88,7 +93,7 @@
   font-size: 1rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  padding: 1rem;
+  padding: 0.5rem 0.8rem;
   background-color: var(--button-primary);
   color: var(--button-primary-text);
 }
