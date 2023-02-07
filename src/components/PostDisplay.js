@@ -131,7 +131,10 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
   return (
     <div className="post-macro-cont">
       {size !== "home" ? (
-        <Link to={link === "all" ? `/categories` : `/categories/${category}`}>
+        <Link
+          to={link === "all" ? `/categories` : `/categories/${category}`}
+          className="  category-links"
+        >
           <div className="absolute bright-bttn">
             {link === "all" ? `All Categories` : `${cat[category]}`}
           </div>
@@ -157,6 +160,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
               />
             </div>
           </div>
+
           {postToDisplay?.map(
             (element, i) =>
               // (size === "home" && getRandom(element.categories)) ||
@@ -185,6 +189,7 @@ const PostDisplay = ({ posts, category, size, link, input }) => {
             // ) : (
             //   ""
             // )
+
           )}
         </div>
       </div>

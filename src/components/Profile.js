@@ -70,7 +70,7 @@ export default function Profile({ local }) {
               <div className="starsListDiv" key={index}>
                 <p className="textstart reviewer">{review[0]}</p>
                 <p className="textstart reviewText">{review[1]}</p>
-                <div className="textend">
+                <div className="reviewStar">
                   <Starrating
                     rating={local.ratings[index]}
                     total={5}
