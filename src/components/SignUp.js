@@ -22,7 +22,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
 
   const [imageUrl, setImageUrl] = useState(null);
 
-
   const [selectedFile, setSelectedFile] = useState("");
   const url = `https://backend-askalocal.onrender.com/${urlPath}/signup`;
   const url2 = `http://localhost:8080/${urlPath}/signup`;
@@ -46,7 +45,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("isLocal", true);
 
     axios
-      .post(url2, formData, {
+      .post(url, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },
@@ -72,7 +71,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
 
   console.log("ERRRRROR", error);
 
-
   const options = (
     <>
       <option value="City">City</option>
@@ -85,7 +83,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   );
 
   return (
-
     <div className="signupOuterDiv">
       {" "}
       <div className="alreadyDiv">

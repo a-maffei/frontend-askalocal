@@ -19,8 +19,8 @@ export default function Conversation({
         //make a ternary that fetched either from local or from user based on the current user
         const res = await fetch(
           currentUser.isLocal
-            ? `http://localhost:8080/user/user/${friendId}`
-            : `http://localhost:8080/local/local/${friendId}`
+            ? `https://backend-askalocal.onrender.com/user/user/${friendId}`
+            : `https://backend-askalocal.onrender.com/local/local/${friendId}`
         );
         const data = await res.json();
         setUsers(data);
