@@ -69,6 +69,10 @@
   border-top-left-radius: 10px;
 }
 
+.profileLink > p {
+  margin: 0;
+}
+
 .central {
   border-top-right-radius: 0 !important;
   border-top-left-radius: 0 !important;

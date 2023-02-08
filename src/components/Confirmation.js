@@ -1,46 +1,20 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Profile from "./Profile";
-import { useParams, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import "./LocalInfo.css";
-import Starrating from "./Starrating";
+import React from "react";
+import "./Confirmation.css";
+import maestro from "./pics/maestro.png";
+import mastercard from "./pics/mastercard.png";
+import paypal from "./pics/paypal.png";
+import visa from "./pics/visa.png";
 
-export default function LocalInfo({ local, user }) {
-  // To create a conversation, we need the ID of the currently logged in person and the chosen local.
-  // The ID of the chosen local we can get from here.
-  // Lines 82 to 84 redirect us to the messenger. The messenger will need both these IDs to start up the convo
-  // The function to take in the 2 IDs and create the chat still has to be implemented
-
-  const { id } = useParams();
-  const [localDisplay, setLocalDisplay] = useState([]);
-  const [error, setError] = useState(null);
-  /* const [review, setReview] = useState("");
+export default function Confirmation() {
+  /*   const [review, setReview] = useState("");
   const [error, setError] = useState(null);
   const [rating, setRating] = useState(0);
   const [starError, setStarError] = useState(null); */
-  let keys = null;
-  const navigate = useNavigate();
 
-  console.log(local);
-
-  const url = `https://backend-askalocal.onrender.com/local/${id}`;
-  const url2 = `http://localhost:8080/local/${id}`;
-
-  const fetchData = async (url) => {
-    try {
-      const result = await axios.get(url, {
-        headers: {
-          Authorization: user
-            ? `Bearer ${user.token}`
-            : `Bearer ${local.token}`,
-        },
-      });
-      setLocalDisplay(result.data.local);
-    } catch (err) {
-      setError(err);
-      console.log(err);
-    }
+  const handleCheckout = () => {
+    alert(
+      "Payment isn't really available at this stage. Thank you for making it this far into our project!"
+    );
   };
 
   /* const handleSubmit = (e) => {
@@ -89,29 +63,51 @@ export default function LocalInfo({ local, user }) {
       .catch((err) => console.error(err));
   }; */
 
-  useEffect(() => {
-    fetchData(url2);
-  }, []);
-
-  // const oneLocal = local.find((local) => local._id === id)
-
-  console.log("HERE", local);
-
   return (
-    <div className="localDiv">
-      {localDisplay.categories ? (
-        <>
-          <Profile local={localDisplay} user={user} />{" "}
-          <button onClick={() => navigate(-1)} className="bright-bttn">
-            Back
-          </button>{" "}
-        </>
-      ) : (
-        ""
-      )}
-      {/* LEAVE A
-      
-      <div>
+    <div className="confirmation-cont">
+      {" "}
+      <h3 className="greeting-title">Booking</h3>
+      <h4 className="greeting-subtitle">
+        Have you agreed on all details and are ready to receive some language
+        support? <br></br>
+        Send us your payment to finalize the booking 🚀
+      </h4>
+      <div className="booking-cont">
+        <div className="recap-table">
+          <div className="recap-table-title">
+            <h3>Summary</h3>
+          </div>
+          <div className="recap-table-total">
+            <div className="payment-row">
+              <p>Service:</p>
+              <p>15 €</p>
+            </div>
+            <div className="payment-row">
+              <p>Ask A Local fee:</p>
+              <p>
+                <i>included</i>
+              </p>
+            </div>
+            <div className="payment-row">
+              <p>Total:</p>
+              <p>
+                <b>15 €</b>
+              </p>
+            </div>
+            <h4>We accept</h4>
+            <div className="payment-method-inner">
+              <img src={visa} alt="visa" className="method" />
+              <img src={mastercard} alt="mastercard" className="method" />
+              <img src={maestro} alt="maestro" className="method" />
+              <img src={paypal} alt="paypal" className="method" />
+            </div>
+            <div className="checkout-bttn" onClick={handleCheckout}>
+              Proceed to checkout ➡{" "}
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div>
         <form onSubmit={handleSubmit}>
           <div className="reviews">
             <label>

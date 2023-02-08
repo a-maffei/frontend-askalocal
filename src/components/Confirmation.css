@@ -1,0 +1,104 @@
+.confirmation-cont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .booking-cont {
+  width: 70%;
+  margin: 0 auto;
+}
+ */
+.recap-table {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.recap-table-title {
+  width: 100%;
+  background-color: var(--text-primary);
+  color: var(--background);
+  padding: 0.5em 0;
+  text-align: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.recap-table-title > h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.recap-table-total {
+  background-color: var(--background);
+  color: var(--text-primary);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 1rem;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-row > p {
+  margin: 0.2em;
+}
+
+.payment-row:last-child {
+  border-top: 1px dotted var(--text-primary);
+  margin-top: 0.3em;
+}
+
+.checkout-bttn {
+  margin-top: 1rem;
+  padding: 0.5em;
+  color: #f3f3f1;
+  text-align: center;
+  width: 95%;
+  background-color: var(--green-dark);
+  font-weight: 600;
+}
+
+.checkout-bttn {
+  margin-top: 1rem;
+  padding: 0.5em;
+  color: #f3f3f1;
+  text-align: center;
+  width: 95%;
+  background-color: var(--green-dark);
+  border-radius: 5px;
+}
+
+.checkout-bttn:hover {
+  cursor: pointer;
+  color: var(--green-light);
+}
+
+.payment-method-inner {
+  display: flex;
+  width: 100%;
+  gap: 0.5em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.method {
+  width: 15%;
+}
+
+.recap-table-total > h4 {
+  margin: 1rem 0 0.2rem;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .recap-table {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
