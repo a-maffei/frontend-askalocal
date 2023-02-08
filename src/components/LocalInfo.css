@@ -237,3 +237,8 @@
     text-align: center;
   }
 }
+
+.breaktext {
+  display: block;
+  word-break: break-word;
+}

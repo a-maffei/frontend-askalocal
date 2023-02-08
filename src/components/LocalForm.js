@@ -182,7 +182,7 @@ export default function Form({ local, setLocal }) {
                 name="Your bio (100-550 charachters)"
                 className="bio"
                 minLength={100}
-                maxLength={550}
+                maxLength={300}
               />
             </div>
             <h2 className="form-title">The services you'd like to offer</h2>

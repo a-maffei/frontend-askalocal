@@ -63,6 +63,8 @@
   /* width: 45%; */
   font-style: italic;
   margin: 1em;
+  display: inline-block;
+  word-break: break-word;
 }
 
 .cat-price {

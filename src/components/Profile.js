@@ -26,7 +26,7 @@ export default function Profile({ local, user, setPayment }) {
             Local in: <b>{local?.city}</b>
           </p>
           <p>
-            <i>{local?.bio}</i>
+            <i className="breaktext">{local?.bio}</i>
           </p>
         </div>
       </div>
@@ -41,7 +41,7 @@ export default function Profile({ local, user, setPayment }) {
                     <h3 className="textstart ">{cat[element]}</h3>
                   </div>
                   <div className="offer-textfield">
-                    <p className="textstart ">
+                    <p className="textstart breaktext">
                       {local.categories[element].textfield}
                     </p>
                   </div>
