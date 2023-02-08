@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+/*import { useState, useCallback, useRef } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import "./ImageCrop.css";
@@ -100,7 +100,7 @@ const ImageCrop = () => {
 
   return (
     <div className="topabstand">
-      {/* <div className="App">
+      { <div className="App">
         <center>
           <input
             type="file"
@@ -132,7 +132,7 @@ const ImageCrop = () => {
           </div>
           <div className="front">{<img src={output} />}</div>
         </center>
-      </div> */}
+      </div> }
       <form onSubmit={handleSubmit}>
         <center>
           <label>Select Image you want to crop</label>
@@ -172,3 +172,4 @@ const ImageCrop = () => {
 };
 
 export default ImageCrop;
+*/

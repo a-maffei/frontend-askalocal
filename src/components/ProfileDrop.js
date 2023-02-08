@@ -63,11 +63,11 @@ export default function ProfileDrop({
                   </p>
                 </Link>
               </li>
-              <li className="nav-menu-item ">
+              {/*  <li className="nav-menu-item ">
                 <Link to={"/messenger"} className="profileLink central">
                   Messages
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-menu-item">
                 <button onClick={handleClick}>Log out</button>
               </li>
@@ -98,11 +98,11 @@ export default function ProfileDrop({
                   {local.email}
                 </Link>
               </li>
-              <li className="nav-menu-item ">
+              {/*  <li className="nav-menu-item ">
                 <Link to={"/messenger"} className="profileLink central">
                   Messages
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-menu-item">
                 <button onClick={handleClick}>Log out</button>
               </li>

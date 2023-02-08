@@ -175,7 +175,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
             selectedValue={selectedValue}
           />
         ) : (
-          <p>No sample Offerings match your search criteria</p>
+          <p className="no-result">No post matches your search criteria</p>
         )}
         {console.log(cityPosts)}
         {/* ) : (

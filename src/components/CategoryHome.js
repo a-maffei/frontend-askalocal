@@ -3,6 +3,7 @@ import PostDisplay from "./PostDisplay";
 import Searchbar from "./Searchbar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./Categories.css";
 
 const Categories = ({
   input,
@@ -81,7 +82,7 @@ const Categories = ({
           selectedValue={selectedValue}
         />
       ) : (
-        <p>No Posts matching the criteria</p>
+        <p className="no-result">No post matches your search criteria</p>
       )}
     </div>
   );
