@@ -9,7 +9,7 @@
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid var(--accent);
-  margin-right: 2rem;
+  margin: 0 1rem;
 }
 
 #nav-drop-cont {
@@ -105,4 +105,13 @@
 .static-li {
   background-color: var(--button-primary);
   color: white;
+}
+
+@media only screen and (max-width: 1100px) {
+  #profile-pic-cont {
+    height: 3em;
+    width: 3em;
+
+    margin: 0 0.6rem;
+  }
 }

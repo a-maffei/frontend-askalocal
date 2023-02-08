@@ -40,12 +40,12 @@
 }
 
 [data-theme="light"] {
-  --background: black;
-  --nav-background: black;
+  --background: #4a4a4a;
+  --nav-background: #4a4a4a;
   --text-primary: #f3f3f1;
   --recurring-text: #eff0ec;
   --text-secondary: #d2e823;
-  --accent: #1e2330;
+  --accent: #e2bae3;
 
   --active-link: #d2e823;
   --green-light: #d2e823;
@@ -54,15 +54,14 @@
   --border: #f3f3f1;
   --border-secondary: #1e2330;
   --button-primary: #1e2330;
-  --button-primary-hover: black;
+  --button-primary-hover: #4a4a4a;
   --button-primary-text: #f3f3f1;
-  --button-secondary: black;
+  --button-secondary: #4a4a4a;
   --button-secondary-hover: #1e2330;
   --button-secondary-text: #e2bae3;
-  --button-bright: #1e2330;
+  --button-bright: #4a4a4a;
   --button-bright-hover: #f3f3f1;
   --button-bright-text: #e8c0e8;
-  --button-bright: black;
   --button-bright-hover: #1e2330;
   --button-bright-text: #d2e823;
   --button-bright-text-hover: #d2e823;
@@ -183,6 +182,14 @@ body {
   font-weight: 500;
   line-height: 1.5;
   margin: 2em 0 0em;
+}
+
+.section-title-white {
+  color: #f3f3f1;
+  display: inline-block;
+  font-size: 2.3em;
+  margin: 0.8em 0 0.5em;
+  text-align: center;
 }
 
 /* @keyframes wsBackground {

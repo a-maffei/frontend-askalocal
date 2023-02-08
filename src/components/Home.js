@@ -131,8 +131,8 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
         </HashLink>
       </div>
       <div id="search-section"></div>
-      <div className="home-cont-pink">
-        <h2 className="section-title-pink">You ask, they translate.</h2>
+      <div className="home-cont-black">
+        <h2 className="section-title-white">You ask, they translate.</h2>
         <div className="home-flags-cont">
           <CircleFlag countryCode="de" height="40" />
           <CircleFlag countryCode="fr" height="40" />

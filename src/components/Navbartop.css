@@ -169,6 +169,7 @@ a {
 .responsive-nav {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   width: 90%;
   gap: 0.2rem;
 }
@@ -176,10 +177,11 @@ a {
 .nav-bttn {
   cursor: pointer;
   color: var(--text-primary);
-  padding: 0.5rem 0.5rem 0.2rem;
+  padding: 0.5rem 0.5rem 0.5rem;
   border: none;
   font-size: 1.5rem;
   background-color: transparent;
+  height: 2em;
 }
 
 .mobile-bttn-cont {
@@ -188,7 +190,9 @@ a {
 
 @media only screen and (max-width: 1100px) {
   .mobile-bttn-cont {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .responsive-nav {
@@ -202,7 +206,24 @@ a {
     color: var(--text-primary);
   }
 
+  .responsive-nav-logged {
+    position: fixed;
+    justify-content: center;
+    top: -8rem;
+    left: 15%;
+    width: 70%;
+    margin: 0 auto;
+    background-color: var(--nav-background);
+    color: var(--text-primary);
+  }
+
   .visible-nav {
+    top: 7.5rem;
+    padding: 0.3rem;
+    border-radius: 25px;
+  }
+
+  .visible-nav-logged {
     top: 7.5rem;
     padding: 0.3rem;
     border-radius: 25px;
