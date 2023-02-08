@@ -31,13 +31,25 @@ const PostDisplay = ({ posts, category, size, link, input, selectedValue }) => {
       if (x) {
         setPostToDisplay((postToDisplay) =>
           [...posts].sort((a, b) =>
-            a.categories[category].price > b.categories[category].price ? 1 : -1
+            size === "home"
+              ? a.categories[a.current].price > b.categories[b.current].price
+                ? 1
+                : -1
+              : a.categories[category].price > b.categories[category].price
+              ? 1
+              : -1
           )
         );
       } else {
         setPostToDisplay((postToDisplay) =>
           [...posts].sort((a, b) =>
-            a.categories[category].price < b.categories[category].price ? 1 : -1
+            size === "home"
+              ? a.categories[a.current].price < b.categories[b.current].price
+                ? 1
+                : -1
+              : a.categories[category].price < b.categories[category].price
+              ? 1
+              : -1
           )
         );
       }
