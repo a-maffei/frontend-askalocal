@@ -214,7 +214,7 @@ export default function Confirmation({
               <div className="recap-table-total">
                 <div className="payment-row">
                   <p>Service:</p>
-                  <p>{currentPrice}</p>
+                  <p>{currentPrice} €</p>
                 </div>
                 <div className="payment-row">
                   <p>Ask A Local fee:</p>
@@ -225,7 +225,7 @@ export default function Confirmation({
                 <div className="payment-row">
                   <p>Total:</p>
                   <p>
-                    <b>{currentPrice}</b>
+                    <b>{currentPrice} €</b>
                   </p>
                 </div>
                 <h4>We accept</h4>
