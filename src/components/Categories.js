@@ -69,10 +69,16 @@ const Categories = ({
       />
       {/* </div> */}
       {cityPosts ? (
-        <>
-          {keys.map((element, i) => (
-            <div key={i}>
-              {/* {cityPosts.map(
+        input?.length < 1 ||
+        posts?.some((el) =>
+          el.categories[element]?.textfield
+            .toLowerCase()
+            .includes(input.toLowerCase())
+        ) ? (
+          <>
+            {keys.map((element, i) => (
+              <div key={i}>
+                {/* {cityPosts.map(
                 (el, j) => (
                     el.categories && el.categories[element]
                       ? Object.values(el.categories[element]).some((elem) =>
@@ -85,26 +91,29 @@ const Categories = ({
                         )
                       : false
                   ) ? ( */}
-              {input?.length < 1 ||
-              posts?.some((el) =>
-                el.categories[element]?.textfield
-                  .toLowerCase()
-                  .includes(input.toLowerCase())
-              ) ? (
-                <PostDisplay
-                  posts={posts}
-                  category={element}
-                  size={"small"}
-                  input={input}
-                  key={i}
-                  selectedValue={selectedValue}
-                />
-              ) : (
-                ""
-              )}
-            </div>
-          ))}
-        </>
+                {input?.length < 1 ||
+                posts?.some((el) =>
+                  el.categories[element]?.textfield
+                    .toLowerCase()
+                    .includes(input.toLowerCase())
+                ) ? (
+                  <PostDisplay
+                    posts={posts}
+                    category={element}
+                    size={"small"}
+                    input={input}
+                    key={i}
+                    selectedValue={selectedValue}
+                  />
+                ) : (
+                  ""
+                )}
+              </div>
+            ))}
+          </>
+        ) : (
+          <div>No posts match the searching criteria </div>
+        )
       ) : (
         ""
       )}
