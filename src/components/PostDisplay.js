@@ -31,13 +31,13 @@ const PostDisplay = ({ posts, category, size, link, input, selectedValue }) => {
       if (x) {
         setPostToDisplay((postToDisplay) =>
           [...posts].sort((a, b) =>
-            a.categories[category].price < b.categories[category].price ? 1 : -1
+            a.categories[category].price > b.categories[category].price ? 1 : -1
           )
         );
       } else {
         setPostToDisplay((postToDisplay) =>
           [...posts].sort((a, b) =>
-            a.categories[category].price > b.categories[category].price ? 1 : -1
+            a.categories[category].price < b.categories[category].price ? 1 : -1
           )
         );
       }
@@ -45,7 +45,7 @@ const PostDisplay = ({ posts, category, size, link, input, selectedValue }) => {
       if (x) {
         setPostToDisplay((postToDisplay) =>
           [...posts].sort((a, b) =>
-            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
+            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
             b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
               ? 1
               : -1
@@ -54,7 +54,7 @@ const PostDisplay = ({ posts, category, size, link, input, selectedValue }) => {
       } else {
         setPostToDisplay((postToDisplay) =>
           [...posts].sort((a, b) =>
-            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length >
+            a.ratings?.reduce((c, d) => c + d, 0) / a.ratings?.length <
             b.ratings?.reduce((e, f) => e + f, 0) / b.ratings?.length
               ? 1
               : -1
