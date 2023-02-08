@@ -45,7 +45,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("isLocal", true);
 
     axios
-      .post(url2, formData, {
+      .post(url, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },
@@ -240,7 +240,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
           </div>
           <button className="signupButton">{"Submit"}</button>
         </form>
-        {error && <div className="error">{error.response.data.error}</div>}
+        {error && <div className="error">{error?.response?.data?.error}</div>}
       </fieldset>
     </div>
   );
