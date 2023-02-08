@@ -57,30 +57,30 @@ function App() {
             <Route
               path="/"
               element={
-                !user ? (
-                  !local ? (
-                    <Home
-                      searchedPosts={searchedPosts}
-                      setSearchedPosts={setSearchedPosts}
-                      input={input}
-                      setInput={setInput}
-                      selectedValue={selectedValue}
-                      setSelectedValue={setSelectedValue}
-                    />
-                  ) : !local.isComplete ? (
-                    <Navigate to="/form" />
-                  ) : (
-                    <Navigate to="/yourinfo" local={local} />
-                  )
-                ) : (
-                  <Navigate
-                    to="/welcome"
-                    user={user}
-                    local={local}
-                    setSelectedValue={setSelectedValue}
-                    selectedValue={selectedValue}
-                  />
-                )
+                // !user ? (
+                //   !local ? (
+                <Home
+                  searchedPosts={searchedPosts}
+                  setSearchedPosts={setSearchedPosts}
+                  input={input}
+                  setInput={setInput}
+                  selectedValue={selectedValue}
+                  setSelectedValue={setSelectedValue}
+                />
+                //   ) : !local.isComplete ? (
+                //     <Navigate to="/form" />
+                //   ) : (
+                //     <Navigate to="/yourinfo" local={local} />
+                //   )
+                // ) : (
+                //   <Navigate
+                //     to="/welcome"
+                //     user={user}
+                //     local={local}
+                //     setSelectedValue={setSelectedValue}
+                //     selectedValue={selectedValue}
+                //   />
+                // )
               }
             />
 
