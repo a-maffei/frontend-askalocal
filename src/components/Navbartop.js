@@ -54,13 +54,55 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
       </HashLink>
       <div className="navbarTwo">
         {user ? (
-          <ProfileDrop
-            user={user}
-            setUser={setUser}
-            type="user"
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={setIsMenuOpen}
-          />
+          <>
+            <div
+              className={
+                isClicked ? "responsive-nav  visible-nav" : "responsive-nav"
+              }
+            >
+              <HashLink
+                to="/#howitworks-section"
+                state="how-it-works"
+                className={
+                  isActive("#howitworks-section")
+                    ? "active navLinks"
+                    : "navLinks"
+                }
+                // etc...
+              >
+                How it works
+              </HashLink>
+              <HashLink
+                to="/#aboutus-section"
+                state="about-us"
+                className={
+                  isActive("#aboutus-section") ? "active navLinks" : "navLinks"
+                }
+                // etc...
+              >
+                About us
+              </HashLink>
+            </div>
+            <div className="mobile-bttn-cont" onClick={showNavbar}>
+              {" "}
+              {isClicked ? (
+                <button className="nav-bttn">
+                  <FaTimes />
+                </button>
+              ) : (
+                <button className="nav-bttn">
+                  <FaBars />
+                </button>
+              )}
+            </div>
+            <ProfileDrop
+              user={user}
+              setUser={setUser}
+              type="user"
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={setIsMenuOpen}
+            />
+          </>
         ) : local ? (
           <>
             <div
