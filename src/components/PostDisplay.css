@@ -159,13 +159,12 @@
   }
 
   .post-macro-cont {
-    width: 100vh;
+    width: 45rem;
   }
 
   .postDisplay {
     margin: 0.8rem auto 0;
     width: 60%;
-    max-width: 90%;
     display: grid;
   }
 
@@ -196,5 +195,17 @@
     /* width: 45%; */
     margin: 0;
     text-align: center;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .post-macro-cont {
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .post-macro-cont {
+    width: 25rem;
   }
 }

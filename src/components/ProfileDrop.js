@@ -56,7 +56,7 @@ export default function ProfileDrop({
           {isMenuOpen ? (
             <ul id="nav-drop-menu">
               <li className="nav-menu-item">
-                <Link to={"/welcome"} className="profileLink central">
+                <Link to={"/welcome"} className="profileLink">
                   <p>
                     {user.firstname} {`${user.lastname.charAt(0)}.`} (
                     {user.email})
