@@ -5,6 +5,15 @@
 .starInactive,
 .star {
   color: #d4af37;
+  height: 3em;
+}
+
+.star-rating {
+  display: inline-block;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .star {

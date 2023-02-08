@@ -120,46 +120,45 @@ export default function Confirmation({
             {localDisplay?.firstname}? <br></br>
             Here you can finalize your booking 🚀
           </h4>
-          <div className="recap-table">
-            <div className="recap-table-title">
-              <h3>Confirm the support you need</h3>
-            </div>
-            <div className="recap-table-total">
-              {
-                ((keys = Object.keys(localDisplay?.categories)),
-                localDisplay.categories &&
-                  keys?.map((element, i) =>
-                    localDisplay.categories[element].textfield.length > 5 ? (
-                      <div key={i}>
-                        <input
-                          type="radio"
-                          name="services"
-                          id={cat[element]}
-                          onChange={(e) =>
-                            setCurrentPrice(
-                              localDisplay.categories[element].price
-                            )
-                          }
-                          value={currentPrice}
-                        />
-                        <label htmlFor={cat[element]}>
-                          {" "}
-                          <h3 className="textstart ">
-                            {cat[element]}{" "}
-                            <p className="textend">
+          <div className="recap-tables">
+            <div className="recap-table">
+              <div className="recap-table-title">
+                <h3>Confirm the support you need</h3>
+              </div>
+              <div className="recap-table-total">
+                {
+                  ((keys = Object.keys(localDisplay?.categories)),
+                  localDisplay.categories &&
+                    keys?.map((element, i) =>
+                      localDisplay.categories[element].textfield.length > 5 ? (
+                        <div key={i} className="payment-input-radio">
+                          <input
+                            type="radio"
+                            name="services"
+                            id={cat[element]}
+                            onChange={(e) =>
+                              setCurrentPrice(
+                                localDisplay.categories[element].price
+                              )
+                            }
+                            value={currentPrice}
+                          />
+                          <label htmlFor={cat[element]}>
+                            {" "}
+                            <h3 className="">{cat[element]} </h3>
+                            <p className="">
                               {localDisplay.categories[element].price} €
                             </p>
-                          </h3>
-                        </label>
-                      </div>
-                    ) : (
-                      ""
-                    )
-                  ))
-              }
-            </div>
+                          </label>
+                        </div>
+                      ) : (
+                        ""
+                      )
+                    ))
+                }
+              </div>
 
-            {/*             <div className="offers">
+              {/*             <div className="offers">
               {console.log("what is happening", chosenLocal)(
                 (keys = Object?.keys(chosenLocal?.categories)), //
                 chosenLocal?.categories &&
@@ -185,7 +184,7 @@ export default function Confirmation({
               )}
             </div> */}
 
-            {/*           <div className="offers">
+              {/*           <div className="offers">
             {
               ((keys = Object.keys(chosenLocal?.categories)),
               chosenLocal.categories &&
@@ -205,8 +204,7 @@ export default function Confirmation({
                 ))
             }
           </div> */}
-          </div>
-          <div className="booking-cont">
+            </div>
             <div className="recap-table">
               <div className="recap-table-title">
                 <h3>Price and payment</h3>
@@ -242,36 +240,35 @@ export default function Confirmation({
             </div>
           </div>
           {
-            <div>
-              <form onSubmit={handleSubmit}>
-                <div className="reviews">
-                  <label>
-                    Leave a review:
-                    <textarea
-                      value={review}
-                      onChange={(e) => setReview(e.target.value)}
-                      required
-                      minLength={5}
-                      maxLength={100}
-                    />
-                  </label>
-                  <Starrating
-                    rating={rating}
-                    setRating={setRating}
-                    total={5}
-                    reactive={true}
-                  />
-                  {starError ? (
-                    <p>
-                      <b>{starError}</b>
-                    </p>
-                  ) : (
-                    ""
-                  )}
-                  <button className="button-review" type="submit">
-                    Submit
-                  </button>
-                </div>
+            <div className="review-box">
+              <h3 className="greeting-subtitle-book">
+                Leave a review for {localDisplay?.firstname}:
+              </h3>
+              <form onSubmit={handleSubmit} className="review-form">
+                {" "}
+                <textarea
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+                  required
+                  minLength={5}
+                  maxLength={100}
+                />
+                <Starrating
+                  rating={rating}
+                  setRating={setRating}
+                  total={5}
+                  reactive={true}
+                />
+                {starError ? (
+                  <p>
+                    <b>{starError}</b>
+                  </p>
+                ) : (
+                  ""
+                )}
+                <button className="bright-bttn" type="submit">
+                  Submit
+                </button>
               </form>
             </div>
           }
