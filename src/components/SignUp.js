@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 import domtoimage from "dom-to-image";
-import ImageCrop from "./ImageCrop";
 import defaultpic from "./pics/profile.png";
 
 const Signup = ({ setUser, setLocal, urlPath }) => {
@@ -243,7 +242,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
         </form>
         {error && <div className="error">{error.response.data.error}</div>}
       </fieldset>
-      {/*  <ImageCrop /> */}
     </div>
   );
 };

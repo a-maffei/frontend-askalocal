@@ -43,18 +43,6 @@ const Categories = ({
     getData(url);
   }, []);
 
-  // useEffect(() => {
-  //   filterCities(selectedValue);
-  // }, [selectedValue]);
-
-  // const filterCities = (city) => {
-  //   if (city === "City") {
-  //     setCityPosts(posts);
-  //     return;
-  //   }
-  //   setCityPosts([...posts]?.filter((el) => el.city === city));
-  // };
-
   return (
     <div className="categoriesBigDiv">
       {/* <div className="homeDiv"> */}
@@ -69,51 +57,29 @@ const Categories = ({
       />
       {/* </div> */}
       {cityPosts ? (
-        input?.length < 1 ||
-        posts?.some((el) =>
-          el.categories[element]?.textfield
-            .toLowerCase()
-            .includes(input.toLowerCase())
-        ) ? (
-          <>
-            {keys.map((element, i) => (
-              <div key={i}>
-                {/* {cityPosts.map(
-                (el, j) => (
-                    el.categories && el.categories[element]
-                      ? Object.values(el.categories[element]).some((elem) =>
-                          elem === null
-                            ? false
-                            : elem
-                                .toString()
-                                .toLowerCase()
-                                .includes(input.toLowerCase())
-                        )
-                      : false
-                  ) ? ( */}
-                {input?.length < 1 ||
-                posts?.some((el) =>
-                  el.categories[element]?.textfield
-                    .toLowerCase()
-                    .includes(input.toLowerCase())
-                ) ? (
-                  <PostDisplay
-                    posts={posts}
-                    category={element}
-                    size={"small"}
-                    input={input}
-                    key={i}
-                    selectedValue={selectedValue}
-                  />
-                ) : (
-                  ""
-                )}
-              </div>
-            ))}
-          </>
-        ) : (
-          <div>No posts match the searching criteria </div>
-        )
+        <>
+          {keys.map((element, i) => (
+            <div key={i}>
+              {input?.length < 1 ||
+              posts?.some((el) =>
+                el.categories[element]?.textfield
+                  .toLowerCase()
+                  .includes(input.toLowerCase())
+              ) ? (
+                <PostDisplay
+                  posts={posts}
+                  category={element}
+                  size={"small"}
+                  input={input}
+                  key={i}
+                  selectedValue={selectedValue}
+                />
+              ) : (
+                ""
+              )}
+            </div>
+          ))}
+        </>
       ) : (
         ""
       )}

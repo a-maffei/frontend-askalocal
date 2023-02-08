@@ -15,7 +15,6 @@ import Footer from "./components/Footer";
 import YourInfo from "./components/YourInfo";
 import Messenger from "./components/Messenger";
 import Confirmation from "./components/Confirmation";
-import ImageCrop from "./components/ImageCrop";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -162,7 +161,6 @@ function App() {
               path="/messenger"
               element={<Messenger user={user} local={local} />}
             />
-            <Route path="/crop" element={<ImageCrop />} />
             <Route
               path="/categories"
               element={
