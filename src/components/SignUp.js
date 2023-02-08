@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./SignUp.css";
 import domtoimage from "dom-to-image";
 import ImageCrop from "./ImageCrop";
+import defaultpic from "./pics/profile.png";
 
 const Signup = ({ setUser, setLocal, urlPath }) => {
   /*   const firstname = useRef();
@@ -31,6 +32,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
   console.log("URL PATH", urlPath);
 
   const handleSubmit = async (e) => {
+    console.log(defaultpic);
     e.preventDefault();
     let formData = new FormData();
     formData.append("email", email);
@@ -39,12 +41,12 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
     formData.append("lastname", lastname);
     formData.append("phone", phone);
     formData.append("city", city);
-    formData.append("pic", selectedFile);
+    formData.append("pic", selectedFile || defaultpic);
     formData.append("isComplete", false);
     formData.append("isLocal", true);
 
     axios
-      .post(url, formData, {
+      .post(url2, formData, {
         headers: {
           "Content-type": "multipart-formdata",
         },
@@ -223,7 +225,6 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
                   className="form-control-file signupInput signup-pic"
                   id="pic"
                   name="pic"
-                  required
                   onChange={(e) => {
                     setSelectedFile(e.target.files[0]);
                   }}
@@ -232,7 +233,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
               <div
                 className="profile-pic-preview"
                 style={{
-                  backgroundImage: `url(${imageUrl}`,
+                  backgroundImage: `url(${imageUrl || defaultpic}`,
                   backgroundSize: "cover",
                 }}
               ></div>

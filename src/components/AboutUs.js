@@ -4,6 +4,7 @@ import alessandra from "./pics/alessandra.jpeg";
 import timon from "./pics/timon.jpeg";
 import antonio from "./pics/antonio.jpeg";
 import "./AboutUs.css";
+import { Link } from "react-router-dom";
 
 export default function AboutUs() {
   return (
@@ -19,12 +20,15 @@ export default function AboutUs() {
               style={{ height: 30, width: 30 }}
               url="https://www.linkedin.com/in/alessandramaffei/"
               bgColor="var(--accent)"
+              target="_blank"
             />
+
             <SocialIcon
               network="github"
               style={{ height: 30, width: 30 }}
               url="https://github.com/a-maffei"
               bgColor="var(--accent)"
+              target="_blank"
             />
           </div>
         </div>
@@ -38,12 +42,14 @@ export default function AboutUs() {
               style={{ height: 30, width: 30 }}
               url="https://www.linkedin.com/in/antonio-macan-51bb91207/"
               bgColor="var(--accent)"
+              target="_blank"
             />
             <SocialIcon
               network="github"
               style={{ height: 30, width: 30 }}
               url="https://github.com/Macanijus"
               bgColor="var(--accent)"
+              target="_blank"
             />
           </div>
         </div>
@@ -57,12 +63,14 @@ export default function AboutUs() {
               style={{ height: 30, width: 30 }}
               url="https://www.linkedin.com/in/timonschell/"
               bgColor="var(--accent)"
+              target="_blank"
             />
             <SocialIcon
               network="github"
               style={{ height: 30, width: 30 }}
               url="https://github.com/Apollosport"
               bgColor="var(--accent)"
+              target="_blank"
             />
           </div>
         </div>
