@@ -29,16 +29,26 @@
 }
  */
 .recap-table {
-  width: 60%;
-  margin: 0 auto;
+  width: 40%;
+  height: 20rem;
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.recap-tables {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0 auto 2.5rem;
 }
 
 .recap-table-title {
   width: 100%;
-  background-color: var(--text-primary);
-  color: var(--background);
+  height: 2em;
+  background-color: #1e2330;
+  color: var(--red--light);
   padding: 0.5em 0;
   text-align: center;
   border-top-right-radius: 10px;
@@ -47,7 +57,7 @@
 
 .recap-table-title > h3 {
   margin: 0;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .recap-table-total {
@@ -56,6 +66,30 @@
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   padding: 1rem;
+  height: 20rem;
+}
+
+.payment-input-radio {
+  display: flex;
+  gap: 1rem;
+}
+
+.payment-input-radio > label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.payment-input-radio > label > h3,
+.payment-input-radio > label > p {
+  display: inline;
+  margin: 1rem;
+}
+
+.payment-input-radio > label > h3 {
+  border-bottom: 1px solid var(--red--light);
 }
 
 .payment-row {
@@ -114,9 +148,71 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 1000px) {
-  .recap-table {
+.review-box {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.review-form {
+  margin: 0 auto;
+  width: 40%;
+  gap: 0.5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.review-form > textarea {
+  border-radius: 5px;
+  height: 6em;
+  padding: 0.5rem;
+}
+
+.review-form > button {
+  background-color: var(--button-bright);
+  color: var(--button-bright-text);
+  font-family: "Montserrat", sans-serif;
+  padding: 0.3rem 0;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.review-form > button:hover {
+  background-color: var(--button-bright-hover);
+  color: var(--button-bright-text-hover);
+}
+
+@media only screen and (max-width: 980px) {
+  /* .recap-table {
     width: 80%;
     margin: 0 auto;
+  } */
+  .recap-tables {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recap-table {
+    width: 70%;
+  }
+
+  .review-form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .recap-table {
+    width: 90%;
+  }
+
+  .greeting-subtitle-book {
+    width: 100%;
   }
 }
