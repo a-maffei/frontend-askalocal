@@ -162,7 +162,6 @@ function App() {
               path="/messenger"
               element={<Messenger user={user} local={local} />}
             />
-            <Route path="/:id/confirmation" element={<Confirmation />} />
             <Route path="/crop" element={<ImageCrop />} />
             <Route
               path="/categories"
