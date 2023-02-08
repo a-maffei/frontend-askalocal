@@ -20,7 +20,7 @@ export default function Confirmation({
   const [rating, setRating] = useState(0);
   const [starError, setStarError] = useState(null);
 
-  const url = `http://localhost:8080/local/${localDisplay._id}`;
+  const url = `https://backend-askalocal.onrender.com/local/${localDisplay._id}`;
 
   /* const [chosenLocal, setChosenLocal] = useState([]);
   const [error, setError] = useState(null);
