@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import "./ImageCrop.css";
@@ -14,8 +14,11 @@ const ImageCrop = () => {
   });
   const [image, setImage] = useState(null);
   const [result, setResult] = useState(null);
-  const [completedCrop, setCompletedCrop] = useState(null);
   const croppedImgRef = useRef();
+  const imageRef = useRef();
+  const rcImageref = useRef();
+  const canvasRef = useRef();
+  const [completedCrop, setCompletedCrop] = useState(null);
 
   const handleOnLoad = useCallback((img) => {
     croppedImgRef.current = img;
@@ -29,12 +32,17 @@ const ImageCrop = () => {
       reader.readAsDataURL(files[0]);
       reader.addEventListener("load", () => {
         setImage(reader.result);
+        console.log(reader.result);
       });
     }
     // setSrc(URL.createObjectURL(event.target.files[0]));
     // setImage(URL.createObjectURL(event.target.files[0]));
     // console.log(event.target.files[0]);
   };
+
+  useEffect(() => {
+    console.log(image);
+  }, [image]);
 
   // const selectImage = (file) => {
   //   setSrc(URL.createObjectURL(file));
@@ -99,6 +107,63 @@ const ImageCrop = () => {
     console.log(result);
   };
 
+  useEffect(() => {
+    if (!completedCrop || !rcImageref) {
+      return null;
+    }
+
+    const rc_image = rcImageref.current;
+    const canvas = canvasRef.current;
+
+    const crop = completedCrop;
+
+    const scaleX = rc_image.naturalWidth / rc_image.width;
+    const scaleY = rc_image.naturalHeight / rc_image.height;
+
+    const pixelRatio = window.devicePixelRatio;
+
+    const dImageWidth = crop.width * scaleX;
+    const dImageHeight = crop.height * scaleY;
+
+    canvas.width = dImageWidth * pixelRatio;
+    canvas.height = dImageHeight * pixelRatio;
+
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.imageSmoothingQuality = "large";
+    ctx.imageSmoothingEnabled = true;
+
+    ctx.drawImage(
+      rc_image,
+      crop.x * scaleX,
+      crop.y * scaleY,
+      dImageWidth,
+      dImageHeight,
+      0,
+      0,
+      dImageWidth,
+      dImageHeight
+    );
+  }, [completedCrop]);
+
+  const downloadImage = () => {
+    if (!completedCrop || !canvasRef.current) {
+      return;
+    }
+    canvasRef.current.toBlob(
+      (blob) => {
+        const previewUrl = window.URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.download = "cropPreview.jpg";
+        anchor.href = URL.createObjectURL(blob);
+        anchor.click();
+        window.URL.revokeObjectURL(previewUrl);
+      },
+      "image/jpg",
+      1
+    );
+  };
+
   return (
     <div className="topabstand">
       {/* <div className="App">
@@ -145,7 +210,7 @@ const ImageCrop = () => {
               <div>
                 <ReactCrop
                   style={{ maxWidth: "50%" }}
-                  src={src}
+                  src={image}
                   onComplete={(c) => setCompletedCrop(c)}
                   crop={crop}
                   onChange={(c) => setCrop(c)}
@@ -156,9 +221,14 @@ const ImageCrop = () => {
                 </button>
               </div>
             )}
-            {result && (
+            {image && (
               <div>
-                <img src={result} alt="cropped image" />
+                <canvas
+                  src={canvasRef.current}
+                  alt="cropped image"
+                  style={{ maxWidth: "30%" }}
+                />
+                <img src={image} alt="damn" style={{ maxWidth: "30%" }} />
               </div>
             )}
           </div>

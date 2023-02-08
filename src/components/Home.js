@@ -53,7 +53,7 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
   };
 
   useEffect(() => {
-    getData(url2);
+    getData(url);
   }, []);
 
   // const findPosts = () => {

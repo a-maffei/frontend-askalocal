@@ -40,7 +40,7 @@ const Categories = ({
   };
 
   useEffect(() => {
-    getData(url2);
+    getData(url);
   }, []);
 
   // useEffect(() => {

@@ -90,7 +90,7 @@ export default function LocalInfo({ local, user }) {
   }; */
 
   useEffect(() => {
-    fetchData(url2);
+    fetchData(url);
   }, []);
 
   // const oneLocal = local.find((local) => local._id === id)
