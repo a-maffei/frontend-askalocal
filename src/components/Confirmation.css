@@ -5,6 +5,24 @@
   align-items: center;
 }
 
+.greeting-title-book {
+  color: var(--green-light);
+  display: inline-block;
+  font-size: 2.3rem;
+  margin: 0.5em;
+}
+
+.greeting-subtitle-book {
+  margin: 0 auto 2em;
+  color: var(--green-light);
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  text-align: center;
+  width: 70%;
+  font-weight: 500;
+}
+
 /* .booking-cont {
   width: 70%;
   margin: 0 auto;

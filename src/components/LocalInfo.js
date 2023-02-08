@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./LocalInfo.css";
 import Starrating from "./Starrating";
+import Confirmation from "./Confirmation";
 
 export default function LocalInfo({ local, user }) {
   // To create a conversation, we need the ID of the currently logged in person and the chosen local.
@@ -15,6 +16,7 @@ export default function LocalInfo({ local, user }) {
   const { id } = useParams();
   const [localDisplay, setLocalDisplay] = useState([]);
   const [error, setError] = useState(null);
+  const [payment, setPayment] = useState(false);
   /* const [review, setReview] = useState("");
   const [error, setError] = useState(null);
   const [rating, setRating] = useState(0);
@@ -101,10 +103,25 @@ export default function LocalInfo({ local, user }) {
     <div className="localDiv">
       {localDisplay.categories ? (
         <>
-          <Profile local={localDisplay} user={user} />{" "}
-          <button onClick={() => navigate(-1)} className="bright-bttn">
-            Back
-          </button>{" "}
+          {payment ? (
+            <Confirmation
+              setLocalDisplay={setLocalDisplay}
+              localDisplay={localDisplay}
+              setPayment={setPayment}
+              user={user}
+            />
+          ) : (
+            <>
+              <Profile
+                local={localDisplay}
+                user={user}
+                setPayment={setPayment}
+              />
+              <button onClick={() => navigate(-1)} className="bright-bttn">
+                Back
+              </button>
+            </>
+          )}
         </>
       ) : (
         ""

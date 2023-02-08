@@ -5,7 +5,7 @@ import "./LocalInfo.css";
 import Starrating from "./Starrating";
 import cat from "./categories.json";
 
-export default function Profile({ local, user }) {
+export default function Profile({ local, user, setPayment }) {
   let keys = null;
 
   return (
@@ -88,13 +88,12 @@ export default function Profile({ local, user }) {
       contacting the local if you're user */}
       <div className="purple-bttn-cont">
         {user ? (
-          <Link to={`/${local._id}/contact`} state="gi">
-            <button className="purple-bttn">{`Contact ${local.firstname}`}</button>
-          </Link>
+          <button
+            className="purple-bttn"
+            onClick={() => setPayment(true)}
+          >{`Confirm booking with ${local.firstname}`}</button>
         ) : (
-          <Link to={`/messenger`} state="gi">
-            <button className="purple-bttn">Check your messages</button>
-          </Link>
+          ""
         )}
       </div>
     </div>
