@@ -242,7 +242,7 @@ const Signup = ({ setUser, setLocal, urlPath }) => {
         </form>
         {error && <div className="error">{error.response.data.error}</div>}
       </fieldset>
-      <ImageCrop />
+      {/*  <ImageCrop /> */}
     </div>
   );
 };

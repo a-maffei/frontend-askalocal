@@ -238,3 +238,7 @@ body {
   width: 70%;
   font-weight: 500;
 }
+
+.no-result {
+  color: var(--red--light);
+}

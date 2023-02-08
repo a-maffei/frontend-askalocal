@@ -231,3 +231,43 @@ a {
     height: 10rem;
   } */
 }
+
+@media only screen and (max-width: 600px) {
+  .responsive-nav {
+    position: fixed;
+    justify-content: center;
+    top: -8rem;
+    left: 5%;
+    width: 90%;
+    margin: 0 auto;
+    background-color: var(--nav-background);
+    color: var(--text-primary);
+  }
+
+  .visible-nav {
+    top: 7.5rem;
+    padding: 0.3rem;
+    border-radius: 25px;
+  }
+
+  .nav-local-bttn {
+    padding: 0.3em;
+  }
+
+  #toggledark {
+    width: 30%;
+  }
+
+  #main-nav-drop-menu {
+    top: 3.5rem;
+    right: 0.3rem;
+  }
+  /*   .navbar {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }  */
+
+  /*   .extended-nav {
+    height: 10rem;
+  } */
+}
