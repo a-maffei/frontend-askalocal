@@ -6,6 +6,7 @@
 
 .postDisplay {
   background-color: var(--background);
+  border: 1px solid var(--green-light);
   border-radius: 2em;
   margin: 2em;
   overflow: hidden;
@@ -69,8 +70,9 @@
 
 .cat-price {
   font-size: 1em;
-  border-left: 1px solid var(--border);
+  border-left: 1px solid var(--red--light);
   padding: 0 1em;
+  width: 100%;
 }
 
 .cat-label {
@@ -181,8 +183,9 @@
 
   .cat-price > p {
     font-size: 1em;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    text-align: center;
   }
 
   .cat-price {

@@ -62,13 +62,55 @@ const Navbartop = ({ switchTheme, user, setUser, local, setLocal }) => {
             setIsMenuOpen={setIsMenuOpen}
           />
         ) : local ? (
-          <ProfileDrop
-            local={local}
-            setLocal={setLocal}
-            type="local"
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={setIsMenuOpen}
-          />
+          <>
+            <div
+              className={
+                isClicked ? "responsive-nav  visible-nav" : "responsive-nav"
+              }
+            >
+              <HashLink
+                to="/#howitworks-section"
+                state="how-it-works"
+                className={
+                  isActive("#howitworks-section")
+                    ? "active navLinks"
+                    : "navLinks"
+                }
+                // etc...
+              >
+                How it works
+              </HashLink>
+              <HashLink
+                to="/#aboutus-section"
+                state="about-us"
+                className={
+                  isActive("#aboutus-section") ? "active navLinks" : "navLinks"
+                }
+                // etc...
+              >
+                About us
+              </HashLink>
+            </div>
+            <div className="mobile-bttn-cont" onClick={showNavbar}>
+              {" "}
+              {isClicked ? (
+                <button className="nav-bttn">
+                  <FaTimes />
+                </button>
+              ) : (
+                <button className="nav-bttn">
+                  <FaBars />
+                </button>
+              )}
+            </div>
+            <ProfileDrop
+              local={local}
+              setLocal={setLocal}
+              type="local"
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={setIsMenuOpen}
+            />
+          </>
         ) : (
           <>
             <div
