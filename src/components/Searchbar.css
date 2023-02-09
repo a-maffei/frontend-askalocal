@@ -69,13 +69,14 @@
   }
 
   .home-search-cont {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     justify-content: center;
   }
 
   .search-input {
     font-size: 0.8em;
+    padding: 0.8em;
   }
 
   .search-icon {
@@ -83,17 +84,23 @@
   }
 
   .search-input {
-    width: 100%;
-    padding: 0.8em;
+    width: 70%;
+    padding: 1em;
     font-size: 0.8em;
     border-radius: 10px;
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
   .dropdown-container {
     font-size: 0.8em;
     padding: 0.3em;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.8em;
+    font-size: 0.8em;
   }
 }
 

@@ -291,4 +291,8 @@ a {
   /*   .extended-nav {
     height: 10rem;
   } */
+  .imgNavbar {
+    margin-left: 1.5rem;
+    width: 80%;
+  }
 }

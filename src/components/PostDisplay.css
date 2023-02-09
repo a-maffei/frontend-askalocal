@@ -12,10 +12,6 @@
   overflow: hidden;
 }
 
-.postDisplay {
-  overflow: hidden;
-}
-
 .postDisplayInner {
   overflow-y: scroll;
   height: 37em;
@@ -89,7 +85,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr 3fr 0.55fr;
   width: 90%;
-  background-color: var(--background);
   color: var(--text-primary);
   justify-content: start;
   align-items: center;
@@ -171,7 +166,7 @@
   .postDiv {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
     justify-content: center;
   }
 
@@ -196,11 +191,24 @@
     margin: 0;
     text-align: center;
   }
+
+  .cat-message > p {
+    /* width: 45%; */
+    margin: 0.3rem;
+    text-align: center;
+  }
 }
 
 @media only screen and (max-width: 650px) {
   .post-macro-cont {
     width: 30rem;
+  }
+
+  .postDisplay {
+    margin: 0.5 auto;
+    padding: 0.3rem;
+    width: 60%;
+    overflow: hidden;
   }
 }
 
