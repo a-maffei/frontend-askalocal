@@ -166,7 +166,7 @@
   .postDiv {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem 0.5rem 0.5rem 0;
+    padding: 0.5rem 0rem 0.5rem 0.5rem;
     justify-content: center;
   }
 
