@@ -264,4 +264,8 @@
   .payment-input-radio > label > p {
     font-size: 0.9em;
   }
+
+  .payment-input-radio > input {
+    margin: auto 0;
+  }
 }
