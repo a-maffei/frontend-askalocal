@@ -91,7 +91,7 @@ const PostDisplay = ({ posts, category, size, link, input, selectedValue }) => {
           to={link === "all" ? `/categories` : `/categories/${category}`}
           className="  category-links"
         >
-          <div className="absolute bright-bttn">
+          <div className="absolute bright-bttn smaller-bttn ">
             {link === "all" ? `All Categories` : `${cat[category]}`}
           </div>
         </Link>
