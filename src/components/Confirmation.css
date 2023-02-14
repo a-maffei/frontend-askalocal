@@ -240,12 +240,28 @@
 
 @media only screen and (max-width: 400px) {
   .recap-table-title {
-    height: 4em;
+    height: 3em;
+  }
+
+  .recap-table-title > h3 {
+    width: 60%;
+    text-align: center;
+    display: inline-block;
   }
 
   .recap-tables {
     display: flex;
     flex-direction: column;
     gap: 0;
+  }
+
+  .payment-input-radio > label > h3 {
+    display: inline;
+    margin: 0.4rem;
+    font-size: 0.9em;
+  }
+
+  .payment-input-radio > label > p {
+    font-size: 0.9em;
   }
 }
