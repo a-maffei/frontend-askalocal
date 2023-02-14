@@ -19,6 +19,7 @@ export default function Confirmation({
   const [error, setError] = useState(null);
   const [rating, setRating] = useState(0);
   const [starError, setStarError] = useState(null);
+  const [reviewConf, setReviewConf] = useState(null);
 
   const url = `https://backend-askalocal.onrender.com/local/${localDisplay._id}`;
 
@@ -61,10 +62,12 @@ export default function Confirmation({
   let keys = null;
 
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [date, setDate] = useState("");
   console.log(currentPrice);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (rating === 0) {
       setStarError("Please give a star rating");
       return;
@@ -78,6 +81,12 @@ export default function Confirmation({
     if (!user) {
       setStarError("Please login");
       return;
+    }
+
+    if (rating !== 0) {
+      setReviewConf(
+        "Your review has been submitted! Go back to the profile to see it."
+      );
     }
     setStarError(null);
 
@@ -126,6 +135,17 @@ export default function Confirmation({
                 <h3>Confirm the support you need</h3>
               </div>
               <div className="recap-table-total">
+                <div className="payment-input-date">
+                  <label>
+                    <h3>Date of service</h3>
+                  </label>
+
+                  <input
+                    type="date"
+                    onChange={(e) => setDate(e.target.value)}
+                    value={date}
+                  />
+                </div>
                 {
                   ((keys = Object.keys(localDisplay?.categories)),
                   localDisplay.categories &&
@@ -211,6 +231,10 @@ export default function Confirmation({
               </div>
               <div className="recap-table-total">
                 <div className="payment-row">
+                  <p>Date of service:</p>
+                  <p>{date}</p>
+                </div>
+                <div className="payment-row">
                   <p>Service:</p>
                   <p>{currentPrice} €</p>
                 </div>
@@ -242,7 +266,7 @@ export default function Confirmation({
           {
             <div className="review-box">
               <h3 className="greeting-subtitle-book">
-                Leave a review for {localDisplay?.firstname}:
+                Leave a review for {localDisplay?.firstname}
               </h3>
               <form onSubmit={handleSubmit} className="review-form">
                 {" "}
@@ -259,8 +283,15 @@ export default function Confirmation({
                   total={5}
                   reactive={true}
                 />
+                {reviewConf ? (
+                  <p className="no-result">
+                    <b>{reviewConf}</b>
+                  </p>
+                ) : (
+                  ""
+                )}
                 {starError ? (
-                  <p>
+                  <p className="no-result">
                     <b>{starError}</b>
                   </p>
                 ) : (

@@ -30,7 +30,6 @@
  */
 .recap-table {
   width: 40%;
-  height: 20rem;
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
@@ -65,13 +64,34 @@
   color: var(--text-primary);
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  padding: 1rem;
+
   height: 20rem;
+}
+
+.recap-table-total:first-of-type {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.recap-table-total:last-of-type {
+  padding: 1rem;
 }
 
 .payment-input-radio {
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
+}
+
+.payment-input-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--red--light);
+}
+
+.payment-input-date > label {
+  font-size: 0.9em;
 }
 
 .payment-input-radio > label {
@@ -86,10 +106,6 @@
 .payment-input-radio > label > p {
   display: inline;
   margin: 1rem;
-}
-
-.payment-input-radio > label > h3 {
-  border-bottom: 1px solid var(--red--light);
 }
 
 .payment-row {
@@ -196,6 +212,7 @@
   .recap-tables {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
   }
 
   .recap-table {
@@ -214,5 +231,17 @@
 
   .greeting-subtitle-book {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .recap-table-title {
+    height: 4em;
+  }
+
+  .recap-tables {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 }
