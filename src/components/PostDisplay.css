@@ -216,4 +216,9 @@
   .post-macro-cont {
     width: 25rem;
   }
+  .smaller-bttn {
+    font-size: 0.9em;
+    text-align: center;
+    padding: 1em 2em;
+  }
 }
