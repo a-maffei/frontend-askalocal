@@ -184,7 +184,7 @@
 
 @media only screen and (max-width: 940px) {
   .localDetailDiv {
-    width: 75%;
+    width: 90%;
   }
 
   .bioInfo {
@@ -198,11 +198,11 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    gap: 0.5em;
+    gap: 1em;
   }
 
   .offers {
-    width: 95%;
+    width: 100%;
   }
 
   .textstart {
@@ -211,9 +211,10 @@
 
   .offersInnerDiv {
     display: grid;
-    grid-template-columns: 1.5fr 2.5fr 0.8fr;
+    grid-template-columns: 2fr 3fr 1.3fr;
     margin: 0 auto 1em;
-    gap: 0.8em;
+    gap: 1em;
+    padding: 0;
   }
 
   .offersInnerDiv > h3,
