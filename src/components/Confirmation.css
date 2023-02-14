@@ -258,11 +258,11 @@
   .payment-input-radio > label > h3 {
     display: inline;
     margin: 0.4rem;
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .payment-input-radio > label > p {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .payment-input-radio > input {
