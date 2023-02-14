@@ -185,11 +185,9 @@ const Home = ({ input, setInput, selectedValue, setSelectedValue }) => {
       <div className="home-cont-white" id="howitworks-section">
         <h2 className="section-title-black">How it works</h2>
         <h4 className="paragraph-title-black">
-          Once you have an account, browse through our list of locals in your
+          Once you have an account, browse through the list of locals in your
           new city. <br></br>When you find the one that suits your needs, you
-          can start chatting with them (in English) to agree on the details and
-          final price. Payment takes place on our platform, too. Then you're all
-          set!{" "}
+          can finalize the booking and pay directly on our platform.
         </h4>
         <div className="card-macro-cont">
           <div className="cardOuterDiv">

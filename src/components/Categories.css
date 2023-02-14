@@ -7,4 +7,5 @@
 
 .no-result {
   color: var(--red--light);
+  text-align: center;
 }
