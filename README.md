@@ -20,15 +20,9 @@ Ask A Local is the app I wish I had available when I moved to Berlin and spoke z
 
 **Deployed with:** Netlify (client), Render (server)
 
-## Project screenshots
-
-Insert gif or link to demo
+## Overview
 
 Dark mode available 🌚
-
-## Demo
-
-_Demo link to be added soon_
 
 **An expat can:**
 
@@ -41,12 +35,30 @@ _Demo link to be added soon_
 - Book the local by selecting a date and service
 - Leave locals a rating and review
 
-**A local can:**
+<p align="center">
+  <img width="500" margin="0 auto" alt="header" src="https://user-images.githubusercontent.com/113006001/220897004-ea3b137e-90dd-4990-b0df-5030f200eb39.png"><br>
+<img width="500" alt="preview" src="https://user-images.githubusercontent.com/113006001/220897024-82cbd11d-2fa3-4a39-a987-84ae299c3aab.png"><br>
+<img width="500" alt="user-profile" src="https://user-images.githubusercontent.com/113006001/220898097-b80ba2d9-1792-45dd-90e2-0a9dcf1c2c04.png"><br>
+<img width="500" alt="localinfo" src="https://user-images.githubusercontent.com/113006001/220897276-97a2e847-6a0e-4686-b0a5-3d0919ba1733.png"><br>
+<img width="500" alt="booking" src="https://user-images.githubusercontent.com/113006001/220897093-e5a555b8-150a-4730-8022-6882822e2aa1.png"><br>
+ </p>
+
+ **A local can:**
 
 - Create an account (including a profile picture) or log in
 - Build a personal profile with bio, services offered, prices, and description of each service
 - Check out offers by other locals
 - Visit other locals' profiles
+
+<p align="center">
+<img width="500" alt="profcreate" src="https://user-images.githubusercontent.com/113006001/220897352-65b97cfe-6c80-408c-b397-906b629ee7af.png"><br>
+<img width="500" alt="localprof" src="https://user-images.githubusercontent.com/113006001/220897318-3048c3af-bf97-404e-95c7-03719049dca6.png"><br>
+</p>
+
+## Demo
+
+_Demo link to be added soon_
+
 
 ## Reflection
 
@@ -63,10 +75,12 @@ Among others, working with more complex MongoDB collection schemas than I was us
 
 ## Wishes for V2
 
-- A chat feature to allow expats and locals to communicate, built with Socket.io
 - A more functional signup, including email confirmation of created account
 - A more functional login, including the option to retrieve a forgotten password
 - A social login feature
+- A chat feature to allow expats and locals to communicate, built with Socket.io
+- Once the chat is complete, a new placement and logic for the "leave a review" feature (now it's in the same page where you proceed with payment, which is counterintutive)
+
 
 ## Acknowledgements
 
