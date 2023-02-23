@@ -77,6 +77,7 @@ Among others, working with more complex MongoDB collection schemas than I was us
 
 - A more functional signup, including email confirmation of created account
 - A more functional login, including the option to retrieve a forgotten password
+- An update to the payment logic (now it's unclear if you pay per hour or per single task)
 - A social login feature
 - A chat feature to allow expats and locals to communicate, built with Socket.io
 - Once the chat is complete, a new placement and logic for the "leave a review" feature (now it's in the same page where you proceed with payment, which is counterintutive)
