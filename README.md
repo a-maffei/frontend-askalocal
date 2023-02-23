@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Ask A Local
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ask A Local connects newcomers in a city with local native-speakers that can support them to accomplish day-to-day tasks such as attending official appointments, flat hunting, setting up contracts with service providers, and more.
 
-## Available Scripts
+Check out the live project on Netlify ➡️ [Ask A Local](https://askalocal.netlify.app/).
 
-In the project directory, you can run:
+## Purpose
 
-### `npm start`
+For our final bootcamp project, our team was eager to work on an idea that allowed us to **practice and showcase our skills** while also addressing a **real-world problem/need**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Have you ever moved to a country where you don't speak the local language? If so, you might be familiar with the mix of confusion, frustration, and terror that comes with not being able to understand (and be understood by) those around you.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ask A Local is the app I wish I had available when I moved to Berlin and spoke zero German, so one could say I embodied the user persona for this project.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**[Client](https://github.com/a-maffei/frontend-askalocal):** React, CSS
 
-### `npm run build`
+**[Server](https://github.com/a-maffei/backend-askalocal):** Node.js, Express, MongoDB, Mongoose
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Deployed with:** Netlify (client), Render (server)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Insert gif or link to demo
 
-### `npm run eject`
+Dark mode available 🌚
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_Demo link to be added soon_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**An expat can:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Create an account (including a profile picture) or log in
+- Browse through offers created by locals
+- Search for specific types of services
+- Sort locals by city
+- Sort offers by price and rating
+- Visit each local's personal profile
+- Book the local by selecting a date and service
+- Leave locals a rating and review
 
-## Learn More
+**A local can:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Create an account (including a profile picture) or log in
+- Build a personal profile with bio, services offered, prices, and description of each service
+- Check out offers by other locals
+- Visit other locals' profiles
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Reflection
 
-### Code Splitting
+This project was built in 2 weeks, at the end of my Full-Stack Web and App Development bootcamp at WBS Coding school.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**What I enjoyed while building this app:**
+_Everything_. This final project was a great way to practice, test, and expand what I had learned in the months prior. Every day brough many challenges and many breakthroughs. I enjoyed both equally––from building dedicated **user flows** for two different types of users, to implementing authentication through **JWT**, to building **React components** that can be used flexibly and efficiently, to incorporating **Cloudinary** to store media, to making the **UI** cohesive across pages and responsive across devices.
 
-### Analyzing the Bundle Size
+**What I struggled with while building this app:**
+As an individual, I struggled the most with my perfectionism (which doesn't get along well with building an MVP in two weeks) and with the authentication flows. Right when I thought they were working smoothly, a new error would appear. I solved these issues through a mix of persistance, error handling, and collaboration with my teammates. As a group, we didn't have enough time to implement a chat component with Socket.io, which we were eager to add.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Things I learned through building this app:**
+Among others, working with more complex MongoDB collection schemas than I was used to, implementing authentication and authorization for different user types, managing React forms that include both media and text, finding efficient ways for data to be passed from component to component in React. I also learned about how to foster effective and supportive group dynamics in high pressure and high speed environments.
 
-### Making a Progressive Web App
+## Wishes for V2
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- A chat feature to allow expats and locals to communicate, built with Socket.io
+- A more functional signup, including email confirmation of created account
+- A more functional login, including the option to retrieve a forgotten password
+- A social login feature
 
-### Advanced Configuration
+## Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Pexels for the photos](https://www.pexels.com/)
+- [UnDraw for the illustrations](https://undraw.co/)
+- [IconScout for the payment icons](https://iconscout.com/contributors/xinhstudio)
 
-### Deployment
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@a-maffei](https://www.github.com/a-maffei)
+- [@apollosport](https://www.github.com/apollosport)
+- [@macanjus](https://www.github.com/macanjus)
