@@ -1,6 +1,6 @@
 # Ask A Local
 
-Ask A Local connects expats moving to a new country with locals that can support them with accomplishing tasks that require communication in the official language––attending official appointments, flat hunting, setting up contracts with service providers, job search, and more.
+Ask A Local connects expats moving to a new country with locals that can support them with accomplishing tasks that require communication in the official language—attending official appointments, flat hunting, setting up contracts with service providers, interviews, and more.
 
 Check out the live project on Netlify ➡️ [Ask A Local](https://askalocal.netlify.app/).
 
@@ -10,7 +10,7 @@ For our final bootcamp project, our team was eager to work on an idea that allow
 
 Have you ever moved to a country where you don't speak the local language? If so, you might be familiar with the mix of confusion, frustration, and terror that comes with not being able to understand (and be understood by) those around you.
 
-Ask A Local is the app I wish I had available when I moved to Berlin and spoke zero German, so one could say I embodied the user persona for this project.
+Ask A Local is the app I wish I had available when I moved to Berlin and spoke no German. One could say I embody the user persona for this product.
 
 ## Tech Stack
 
